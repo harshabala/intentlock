@@ -10,7 +10,7 @@ Heuristics run with no API key. An optional AI provider in Settings is a second 
 2. Unzip it.
 3. Chrome → `chrome://extensions` → enable **Developer mode**.
 4. **Load unpacked** → select the unzipped folder.
-5. Open a new tab. Declare your intent. → set default policy → **Lock in** an intent.
+5. Open a new tab and follow [First run](#first-run).
 
 From source: clone this repo, load the repo folder unpacked, then `npm test`.
 
@@ -33,6 +33,16 @@ AI providers are not part of setup. Add one in **Settings** if you want a second
 - No accounts, cloud sync, or telemetry
 - No habit dashboard or rewards
 - No Chrome Web Store listing yet (use the GitHub Release zip)
+
+## Permissions
+
+| Permission | Why |
+|------------|-----|
+| `storage` | Session, policy, settings and history stay in `chrome.storage` on this device; the optional AI key lives in session storage only |
+| `tabs`, `tabGroups` | Read the active tab's URL to check it against your intent; group and replace tabs when locking |
+| `idle` | Pause dwell tracking when you step away |
+| `alarms` | Time budgets, pause timer and periodic pruning |
+| Host access (`http://*/*`, `https://*/*`) | Inject the in-page lock overlay and dwell tracker on the pages you visit. Only origins are stored, never page text or titles |
 
 ## Privacy
 
@@ -262,10 +272,10 @@ Key `chrome.storage.local` entries:
 ### Testing
 
 ```bash
-npm test                                        # all unit tests (358)
-npm run verify:static                           # static/runtime/release checks (74)
+npm test                                        # all unit tests
+npm run verify:static                           # static/runtime/release checks
 node --test tests/heuristic-policy.test.mjs     # one suite, e.g. the policy engine
-npx playwright test                             # real-Chromium journeys + lifecycle (5)
+npx playwright test                             # real-Chromium journeys + lifecycle (needs Playwright)
 ```
 
 Unit tests use Node's built-in `node:test` + `assert/strict`, with no dependencies. The browser suite loads the unpacked extension in Chromium and covers two user journeys plus lifecycle cases: a real service-worker restart (lock and paused timer survive), the same URL in two tabs, and a real one-minute budget expiry. CI runs all three on every push and pull request.
