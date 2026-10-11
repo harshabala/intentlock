@@ -11,7 +11,7 @@
 ## Resume here
 
 - Current checkpoint: Task 1 specification approved at `13cb946`; independent quality review is running. Tasks 2–6 have not started. Do not mark Task 1 accepted until the quality gate passes. No current-turn runtime commits pushed yet. Execution-log entries below are historical checkpoints in order, not simultaneous current statuses.
-- Working directory: `/Users/harshabalakrishnan/Documents/Projects/IntentLock/.worktrees/browser-journeys`.
+- Working directory: `<local-path>`.
 - Branch: `feat/browser-journeys`; initial HEAD `5df4f3d5ac4b1fd9c0b34c32dc20ed299008e5c5`.
 - Existing draft PR: https://github.com/harshabala/IntentLock/pull/6. Main is `195f57f20f2d9f7206e99fad74c987df65a3b96d`. Recheck before resuming.
 - Read `../specs/2026-09-13-trust-first-design.md` relative to this plan directory. User approved the design direction and execution; do not restart brainstorming.

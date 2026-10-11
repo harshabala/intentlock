@@ -2,7 +2,7 @@
 
 **Goal:** Address the top 5 userinterface-wiki findings from the IntentLock UI audit.
 
-**Architecture:** CSS token and utility updates in `newtab.css`; accessibility and modal behavior in `newtab.js`; progressive disclosure and validation in `options.html` / `options.js`; smoke tests in `tests/static-smoke.test.mjs`. Sync loadable copy to `/Users/harshabalakrishnan/Documents/Intentlock` after all tasks.
+**Architecture:** CSS token and utility updates in `newtab.css`; accessibility and modal behavior in `newtab.js`; progressive disclosure and validation in `options.html` / `options.js`; smoke tests in `tests/static-smoke.test.mjs`. Sync loadable copy to `<local-path>` after all tasks.
 
 ## Global Constraints
 
@@ -93,7 +93,7 @@ Add `font-variant-numeric: tabular-nums` to:
 
 ## Task 6: Sync loadable extension folder
 
-**Files:** Copy runtime assets to `/Users/harshabalakrishnan/Documents/Intentlock`
+**Files:** Copy runtime assets to `<local-path>`
 
 Copy all extension runtime files (same set as prior sync). Verify manifest version unchanged unless intentionally bumped.
 

@@ -19,7 +19,7 @@
 - Tab replacement remains **fallback** when content script cannot inject (e.g. chrome:// pages)
 - All new logic must have **Node unit tests** where testable (extract pure functions)
 - Run `node --test tests/*.mjs` after each task — all must pass
-- Bump version to **1.4.0** on final task; sync `/Users/harshabalakrishnan/Documents/Intentlock`
+- Bump version to **1.4.0** on final task; sync `<local-path>`
 
 ---
 
@@ -118,7 +118,7 @@
 - Modify: `newtab.js` (active session monitoring hint)
 - Modify: `manifest.json` (version 1.4.0)
 - Modify: `CHANGELOG.md`
-- Sync: `/Users/harshabalakrishnan/Documents/Intentlock`
+- Sync: `<local-path>`
 
 **Steps:**
 1. Add one-line hint on active session: monitoring via tab switches, page loads, dwell time
