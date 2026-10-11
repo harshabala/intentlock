@@ -13,7 +13,7 @@
 ### Task 1.1: Mock chrome.storage.session in Tests
 
 **Files:**
-- Modify: `/Users/harshabalakrishnan/Documents/Projects/IntentLock/tests/llm.test.mjs`
+- Modify: `<local-path>`
 
 **Step 1: Write mock for storage.session**
 Update `globalThis.chrome` in `tests/llm.test.mjs` to define `chrome.storage.session`.
@@ -46,7 +46,7 @@ git commit -m "test: mock chrome.storage.session in llm test suite"
 ### Task 1.2: Update API Key Getter in llm.js
 
 **Files:**
-- Modify: `/Users/harshabalakrishnan/Documents/Projects/IntentLock/llm.js`
+- Modify: `<local-path>`
 
 **Step 1: Update getApiKey()**
 Modify `getApiKey()` to read from `chrome.storage.session` first, falling back to `chrome.storage.local`.
@@ -92,7 +92,7 @@ git commit -m "security: update getApiKey helper to read from session storage wi
 ### Task 1.3: Implement Background Migration Logic
 
 **Files:**
-- Modify: `/Users/harshabalakrishnan/Documents/Projects/IntentLock/background.js`
+- Modify: `<local-path>`
 
 **Step 1: Implement migration on load/startup**
 Add migration function in background.js startup logic:
@@ -125,7 +125,7 @@ git commit -m "security: implement automatic api key migration in background wor
 ### Task 1.4: Update Options Page logic (options.js)
 
 **Files:**
-- Modify: `/Users/harshabalakrishnan/Documents/Projects/IntentLock/options.js`
+- Modify: `<local-path>`
 
 **Step 1: Update Load, Save, and Delete logic**
 Modify `options.js` to query/migrate on load, save to `chrome.storage.session` on save, and clear session storage on delete.
@@ -141,7 +141,7 @@ git commit -m "security: update options settings to use secure session storage f
 ### Task 1.5: Update Options HTML Page (options.html)
 
 **Files:**
-- Modify: `/Users/harshabalakrishnan/Documents/Projects/IntentLock/options.html`
+- Modify: `<local-path>`
 
 **Step 1: Modify settings description and add a notice**
 Update description text and notice under LLM Configuration.
@@ -157,7 +157,7 @@ git commit -m "docs: update settings page descriptions for secure session storag
 ### Task 1.6: Update New Tab Page logic (newtab.js)
 
 **Files:**
-- Modify: `/Users/harshabalakrishnan/Documents/Projects/IntentLock/newtab.js`
+- Modify: `<local-path>`
 
 **Step 1: Check for API Key in session storage**
 Read API key from `chrome.storage.session` with fallback.

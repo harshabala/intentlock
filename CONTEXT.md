@@ -1,13 +1,13 @@
 # IntentLock — Work Done & Context Summary
 **Generated**: July 10, 2026  
-**Primary Repository Path**: `/Users/harshabalakrishnan/Documents/Projects/IntentLock`  
+**Primary Repository Path**: `<local-path>`  
 **Base Branch**: `feat/flow-metrics-2026-07`
 
 ---
 
 ## 1. Executive Summary & Parallel Worktree Structure
 
-To accelerate execution and keep task isolation clean, we structured our development across 5 isolated Git worktrees rooted at `/Users/harshabalakrishnan/Documents/Projects/IntentLock*`:
+To accelerate execution and keep task isolation clean, we structured our development across 5 isolated Git worktrees rooted at `<local-path>`:
 
 | Worktree Path | Branch Name | Task | Status | Commit SHA | Verification |
 |---|---|---|---|---|---|
@@ -122,11 +122,11 @@ To accelerate execution and keep task isolation clean, we structured our develop
 ## 4. Next Steps & Recommended Workflow
 
 1. **Complete IL-3 Implementation**:
-   Apply the exact `heuristic-policy.js`, `intervention-overlay.js`, `content.js`, `background.js`, and `intervention.html/js` edits in `/Users/harshabalakrishnan/Documents/Projects/IntentLock-il3`. Run `node --test tests/*.mjs` to confirm all unit tests pass, then commit on `feat/il-3-teach-overlay`.
+   Apply the exact `heuristic-policy.js`, `intervention-overlay.js`, `content.js`, `background.js`, and `intervention.html/js` edits in `<local-path>`. Run `node --test tests/*.mjs` to confirm all unit tests pass, then commit on `feat/il-3-teach-overlay`.
 2. **Merge & Resolve across Branches**:
    Merge | feat/il-2-session-form      | IL-2 | Completed | Yes       | Yes          |
 | feat/il-3-teach-overlay     | IL-3 | Completed | Yes       | Yes          |
 | feat/il-4-weekly-glance     | IL-4 | Completed | Yes       | Yes          |
-| feat/il-5-onboarding-default| IL-5 | Completed | Yes       | Yes          | inside `/Users/harshabalakrishnan/Documents/Projects/IntentLock`.
+| feat/il-5-onboarding-default| IL-5 | Completed | Yes       | Yes          | inside `<local-path>`.
 3. **Run Final Suite**:
    Run `node --check *.js` and `node --test tests/*.mjs` on the merged `feat/flow-metrics-2026-07` branch to confirm 100% test passing before opening the final PR or tagging the release.

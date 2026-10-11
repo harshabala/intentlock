@@ -1,6 +1,6 @@
 # IntentLock — Flow + metrics tasks
 
-Source: `~/Desktop/product-flow-metrics-task-list.md` · Branch: `feat/flow-metrics-2026-07`
+Source: `<local-path>` · Branch: `feat/flow-metrics-2026-07`
 
 | ID | Task | Status | Notes |
 |----|------|--------|-------|

@@ -119,7 +119,7 @@ test('vague single-word intent returns low confidence', () => {
 - [ ] **Step 2: Run to verify the file is missing (expected failure)**
 
 ```bash
-cd /Users/harshabalakrishnan/Documents/Projects/IntentLock
+cd <local-path>
 node --test tests/heuristic-policy.test.mjs
 ```
 Expected: `Error: Cannot find module '../heuristic-policy.js'`

@@ -5,3 +5,11 @@ dist/
 node_modules/
 test-results/
 playwright-report/
+xcuserdata/
+*.xcuserstate
+*.tsbuildinfo
+.claude/launch.json
+.superpowers/
+data/app-state.json
+data/app-state.json.lock
+storage/logs/

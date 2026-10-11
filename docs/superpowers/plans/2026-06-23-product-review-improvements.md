@@ -18,7 +18,7 @@
 - Domain validation for any user-entered domain text: `HOSTNAME_RE = /^[a-z0-9][a-z0-9\-.]*\.[a-z]{2,}$/`
 - Match existing code style: minimal comments, ES modules, no TypeScript, `createElement` for all DOM
 - Tests use `node:test` + `assert/strict` — no Jest, no Mocha, no external test runner
-- The extension is tested in the `/Users/harshabalakrishnan/Documents/Projects/IntentLock` directory (primary repo)
+- The extension is tested in the `<local-path>` directory (primary repo)
 - Current version: 1.5.0 (manifest.json). Final task bumps to 1.6.0.
 - Branch: `feature/product-review-improvements` (already created)
 
@@ -126,7 +126,7 @@ container.appendChild(histLink);
 - [ ] **Step 5: Commit**
 
 ```bash
-cd /Users/harshabalakrishnan/Documents/Projects/IntentLock
+cd <local-path>
 git add newtab.js
 git commit -m "feat: add top drifted sites and history link to session summary"
 ```
@@ -297,7 +297,7 @@ Insert this block after the session-active display logic (so it appears below th
 - [ ] **Step 7: Run all tests**
 
 ```bash
-cd /Users/harshabalakrishnan/Documents/Projects/IntentLock
+cd <local-path>
 node --test tests/llm-backoff.test.mjs
 node --test tests/background.test.mjs
 ```
