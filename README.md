@@ -39,9 +39,9 @@ AI providers are not part of setup. Add one in **Settings** if you want a second
 | Permission | Why |
 |------------|-----|
 | `storage` | Session, policy, settings and history stay in `chrome.storage` on this device; the optional AI key lives in session storage only |
-| `tabs`, `tabGroups` | Read the active tab's URL to check it against your intent; group and replace tabs when locking |
-| `idle` | Pause dwell tracking when you step away |
-| `alarms` | Time budgets, pause timer and periodic pruning |
+| `tabs`, `tabGroups` | Read tab URLs to check them against your intent, and replace a tab with the lock page when the content script cannot run. `tabGroups` puts the session's tab in a group |
+| `idle` | Detect when you are idle or the screen is locked so away time is not counted |
+| `alarms` | Session time-budget expiry and hourly pruning of old history and diagnostics |
 | Host access (`http://*/*`, `https://*/*`) | Inject the in-page lock overlay and dwell tracker on the pages you visit. Only origins are stored, never page text or titles |
 
 ## Privacy
