@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>IntentLock — Settings</title>
+  <link rel="stylesheet" href="newtab.css">
+</head>
+<body class="options">
+  <div class="options-container">
+    <div class="header">
+      <h1>Settings</h1>
+      <p>Configure parameters and privacy controls.</p>
+    </div>
+
+    <div class="section">
+      <h2>LLM provider</h2>
+      <p id="provider-description">Choose a provider for drift detection and plan generation. API keys are stored in secure session memory and cleared when the browser closes.</p>
+      <p class="field-hint privacy-note">When AI is enabled, your declared intent, current page URL, and recent browsing events are sent directly to your chosen provider for drift checks and plan generation. Data is not sent through IntentLock servers.</p>
+
+      <div class="input-group">
+        <label for="provider-select">Provider</label>
+        <select id="provider-select"></select>
+      </div>
+
+      <div id="custom-provider-fields" class="provider-advanced hidden">
+        <div class="input-group">
+          <label for="custom-label">Provider name</label>
+          <input type="text" id="custom-label" placeholder="My API provider">
+        </div>
+
+        <div class="input-group">
+          <label for="api-style-select">API format</label>
+          <select id="api-style-select">
+            <option value="openai">OpenAI-compatible (chat/completions)</option>
+            <option value="gemini">Google Gemini (generateContent)</option>
+            <option value="ollama">Ollama (local /api/chat)</option>
+          </select>
+        </div>
+
+        <div class="input-group">
+          <label for="auth-type-select">Authentication</label>
+          <select id="auth-type-select">
+            <option value="bearer">Bearer token</option>
+            <option value="header">API key header (x-api-key)</option>
+            <option value="query">Query parameter (?key=)</option>
+            <option value="none">None</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="api-key-group" class="input-group">
+        <label for="api-key">API key</label>
+        <input type="password" id="api-key" placeholder="sk-...">
+        <p class="field-hint" id="api-key-hint">Stored in transient session memory — cleared when the browser closes.</p>
+      </div>
+
+      <div id="provider-advanced-disclosure" class="disclosure hidden">
+        <button type="button" id="provider-advanced-toggle" class="disclosure-toggle" aria-expanded="false" aria-controls="provider-model-fields">
+          Advanced
+        </button>
+      </div>
+
+      <div id="provider-model-fields" class="hidden">
+        <div class="input-group">
+          <label for="model-input">Model</label>
+          <input type="text" id="model-input" placeholder="gpt-4o-mini">
+        </div>
+
+        <div id="base-url-group" class="input-group">
+          <label for="base-url-input">API endpoint</label>
+          <input type="text" id="base-url-input" placeholder="https://api.openai.com/v1/chat/completions">
+          <p class="field-hint" id="base-url-hint"></p>
+        </div>
+      </div>
+
+      <button id="save-provider-btn">Save provider settings</button>
+      <div id="provider-status" class="hidden status-feedback"></div>
+    </div>
+
+    <div class="section">
+      <h2>Distraction sites</h2>
+      <p>Sites that trigger an intervention when visited during a session. One domain per line.</p>
+
+      <div class="input-group">
+        <label for="distraction-sites">Domains</label>
+        <textarea id="distraction-sites" placeholder="twitter.com&#10;reddit.com&#10;youtube.com"></textarea>
+      </div>
+
+      <button id="save-sites-btn">Save sites</button>
+      <div id="sites-status" class="hidden status-feedback"></div>
+      <p class="field-hint">youtube.com is included by default. If the list is empty, defaults are used automatically.</p>
+    </div>
+
+    <div class="section">
+      <h2>Test intervention</h2>
+      <p>Start a session on the new tab, then click below to trigger a test intervention on your current tab. You can also visit youtube.com during an active session — that should intervene without AI.</p>
+      <button id="test-intervention-btn" class="primary-btn">Test intervention on current tab</button>
+      <div id="test-intervention-status" class="hidden status-feedback"></div>
+    </div>
+
+    <div class="section">
+      <h2>Privacy &amp; data</h2>
+      <p>Manage what the extension tracks on your local machine.</p>
+
+      <div class="toggle-row">
+        <label class="tracking-toggle-label">
+          <span class="tracking-toggle-hit">
+            <input type="checkbox" id="tracking-toggle" checked>
+          </span>
+          <span class="tracking-toggle-text">Enable behavior &amp; time tracking</span>
+        </label>
+      </div>
+
+      <button id="export-btn" class="complete-btn">Export session history (JSON)</button>
+      <button id="delete-data-btn" class="danger-btn" style="margin-top: 8px;">Delete all data</button>
+      <div id="data-status" class="hidden status-feedback"></div>
+    </div>
+
+    <div class="section">
+      <h2>Diagnostics</h2>
+      <p>View recent errors — API failures, quota limits, misconfigured keys, validation issues, and actions that did not complete.</p>
+      <button id="open-diagnostics-btn" class="complete-btn">Open diagnostics log</button>
+    </div>
+
+    <div class="section">
+      <h2>Appearance</h2>
+      <p>Choose your preferred color scheme.</p>
+
+      <div class="theme-toggle">
+        <button class="theme-btn" data-theme="auto">Auto</button>
+        <button class="theme-btn" data-theme="dark">Dark</button>
+        <button class="theme-btn" data-theme="light">Light</button>
+      </div>
+      <div id="theme-status" class="hidden status-feedback"></div>
+    </div>
+  </div>
+
+  <script type="module" src="options.js"></script>
+</body>
+</html>
