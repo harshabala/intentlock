@@ -13,3 +13,6 @@ xcuserdata/
 data/app-state.json
 data/app-state.json.lock
 storage/logs/
+# macOS Finder / sync-conflict duplicates such as "background 2.js"
+* [0-9].*
+* [0-9]

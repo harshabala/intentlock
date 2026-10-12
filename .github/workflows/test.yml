@@ -8,6 +8,26 @@ permissions:
   contents: read
 
 jobs:
+  # Lint and dependency audit run once on a current Node (ESLint 10 needs >=20.19).
+  quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Set up Node.js
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 22.x
+      - name: Install dependencies
+        run: npm ci
+      - name: Lint
+        run: npm run lint
+      - name: Dependency audit
+        run: npm run audit:prod
+
   test:
     runs-on: ubuntu-latest
     timeout-minutes: 15
@@ -31,6 +51,10 @@ jobs:
         run: npm run validate:version -- "v$(node -p "require('./manifest.json').version")"
       - name: Build release package
         run: npm run package -- --output "$RUNNER_TEMP/IntentLock-ci.zip"
+      - name: Check release package contents
+        run: |
+          unzip -l "$RUNNER_TEMP/IntentLock-ci.zip" | grep -q manifest.json
+          ! unzip -l "$RUNNER_TEMP/IntentLock-ci.zip" | grep -E 'legacy-extension-source|tests/|docs/|node_modules|\.env'
 
   # Real Chromium journeys load the unpacked MV3 extension against synthetic
   # localhost fixtures only; no secrets, no network beyond installation.
