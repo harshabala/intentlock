@@ -9,6 +9,7 @@ const extensionPath = fileURLToPath(new URL('../../', import.meta.url));
 const hosts = new Set(['work.localhost', 'distraction.localhost', 'other.localhost']);
 
 export const test = base.extend({
+  // eslint-disable-next-line no-empty-pattern -- Playwright requires a destructured first argument
   journey: async ({}, use, testInfo) => {
     try {
       await access(chromium.executablePath());

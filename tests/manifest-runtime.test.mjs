@@ -253,7 +253,7 @@ test('packaging validates regular in-repository sources and rejects symlinks or 
       /symbolic link|symlink/i,
     );
     await assert.rejects(
-      validateRuntimeSources(tempDir, ['..\/outside.js']),
+      validateRuntimeSources(tempDir, ['../outside.js']),
       /repository root/i,
     );
     await assert.rejects(
