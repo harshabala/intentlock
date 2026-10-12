@@ -258,7 +258,7 @@ test('declare form is intent plus optional minutes', async () => {
   const start = code.indexOf('function showNewSessionForm');
   assert.ok(start >= 0, 'showNewSessionForm must exist');
   const rest = code.slice(start + 'function showNewSessionForm'.length);
-  const nextFn = rest.search(/\n  function /);
+  const nextFn = rest.search(/\n {2}function /);
   const formFn = nextFn === -1 ? code.slice(start) : code.slice(start, start + 'function showNewSessionForm'.length + nextFn);
   assert.ok(formFn.length > 50, 'showNewSessionForm body must be extracted');
   assert.match(formFn, /Lock in/);

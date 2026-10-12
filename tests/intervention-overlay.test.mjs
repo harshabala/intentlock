@@ -49,10 +49,9 @@ test('classic overlay script exposes its factory through the narrow global API',
 });
 
 test('createInterventionOverlay accepts onEndSession callback', () => {
-  let called = false;
   // The factory function signature should accept onEndSession without throwing
   assert.doesNotThrow(() => {
-    createInterventionOverlay({ onEndSession: () => { called = true; } });
+    createInterventionOverlay({ onEndSession: () => {} });
   });
 });
 

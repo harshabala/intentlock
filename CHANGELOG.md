@@ -14,6 +14,8 @@
 - Sessions not ended within 24 hours end automatically; history and diagnostics are pruned in storage at startup and hourly.
 
 ### Added
+- ESLint (`npm run lint`), `npm run audit:prod`, `npm run check`, and a CI quality job (lint + dependency audit); package contents are checked in CI.
+- `SECURITY.md`, `CONTRIBUTING.md`, root `ARCHITECTURE.md`, and `tests/store-readiness.test.mjs` (manifest permissions, CSP, listing justifications and packaged files stay in sync).
 - Pause timer / Resume timer on the new-tab session view. Paused time does not count toward dwell or the time budget, no dwell lock fires while paused, and the state survives worker restarts.
 
 ### Changed

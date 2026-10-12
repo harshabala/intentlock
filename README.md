@@ -303,6 +303,10 @@ Quick start:
 # After content.js change: also reload the affected tab
 ```
 
+### Contributing and security
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) (checks, release steps), [SECURITY.md](SECURITY.md) (reporting and security model) and [ARCHITECTURE.md](ARCHITECTURE.md). `npm run check` runs lint, tests, static verification and version validation.
+
 ### Version history
 
 See [CHANGELOG.md](CHANGELOG.md).

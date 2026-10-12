@@ -12,7 +12,6 @@ import {
   getEffectiveBlockList,
   evaluatePolicyDrift,
   isUrlAligned,
-  intentTerms,
 } from '../heuristic-policy.js';
 
 test('INTENT_CATEGORIES has at least 12 entries', () => {

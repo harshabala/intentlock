@@ -11,7 +11,7 @@ import { checkDriftLLM } from './llm.js';
 import { clearDriftCache } from './drift-cache.js';
 import { logError, registerErrorLogAuthority } from './error-log.js';
 import { getEffectiveDistractionSites, DEFAULT_DISTRACTION_SITES } from './distraction-sites.js';
-import { clearLlmBackoff, getQuotaBackoffUntil, registerBackoffCallback, setQuotaBackoff } from './llm-backoff.js';
+import { clearLlmBackoff, registerBackoffCallback, setQuotaBackoff } from './llm-backoff.js';
 import {
   applyDwellDelta,
   computeOnIntentRatio,
@@ -26,7 +26,6 @@ import {
 import {
   sanitizeSessionHistory,
   sanitizeUrl,
-  hostnameFromUrl,
   pruneByRetention,
   redactSecrets,
   SESSION_RETENTION_MS,
@@ -1480,7 +1479,7 @@ function triggerIntervention(reason, tabId = null) {
     const session = result.activeSession;
     if (!session?.isActive) return null;
 
-    let targetTab = null;
+    let targetTab;
     if (Number.isInteger(tabId)) {
       targetTab = await getTab(tabId);
     } else {
