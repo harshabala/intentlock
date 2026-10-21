@@ -23,6 +23,7 @@
 - Research intents no longer treat every forum as aligned.
 
 ### Fixed
+- The in-page lock overlay fell back to Courier/system fonts: Chrome ignores `@font-face` inside shadow roots. The bundled fonts are now registered on the document under IntentLock-only family names (verified in Chromium via a browser test).
 - The idle context-switch lock never fired (returning from idle cleared its timestamp). It now locks a tab switched to within 10 s of returning from idle only when that site is off-intent, not on override cooldown and the timer is not paused.
 - Dwell time counted cumulative reports repeatedly (90 s read as 180 s).
 - Custom allows and session-related corrections can no longer be overruled by the dwell rule or optional AI.

@@ -20,38 +20,39 @@
     return reason === TIME_BUDGET_COPY ? TIME_BUDGET_COPY : DRIFT_COPY;
   }
 
+  // Chrome ignores @font-face inside shadow trees, so the packaged fonts are
+  // registered on the document under IntentLock-only family names that cannot
+  // clash with the host page's own fonts.
+  const OVERLAY_FONTS = [
+    { family: 'IntentLock Plex Mono', file: 'fonts/IBMPlexMono-Regular.woff2', style: 'normal' },
+    { family: 'IntentLock Source Serif', file: 'fonts/SourceSerif4-Regular.woff2', style: 'normal' },
+    { family: 'IntentLock Source Serif', file: 'fonts/SourceSerif4-Italic.woff2', style: 'italic' },
+  ];
+  let fontsRegistered = false;
+
+  function registerOverlayFonts(doc = globalThis.document) {
+    const FontFaceCtor = doc?.defaultView?.FontFace || globalThis.FontFace;
+    if (fontsRegistered || typeof FontFaceCtor !== 'function' || !doc?.fonts?.add) return false;
+    fontsRegistered = true;
+    for (const font of OVERLAY_FONTS) {
+      const face = new FontFaceCtor(font.family, `url("${chrome.runtime.getURL(font.file)}") format("woff2")`, {
+        style: font.style, weight: '400', display: 'swap',
+      });
+      doc.fonts.add(face);
+      // A page CSP that blocks extension fonts leaves the system fallbacks in place.
+      face.load().catch(() => {});
+    }
+    return true;
+  }
+
   function buildOverlayStyles() {
-    const monoRegular = chrome.runtime.getURL('fonts/IBMPlexMono-Regular.woff2');
-    const serifRegular = chrome.runtime.getURL('fonts/SourceSerif4-Regular.woff2');
-    const serifItalic = chrome.runtime.getURL('fonts/SourceSerif4-Italic.woff2');
     return `
-    @font-face {
-      font-family: "IBM Plex Mono";
-      src: url("${monoRegular}") format("woff2");
-      font-weight: 400;
-      font-style: normal;
-      font-display: swap;
-    }
-    @font-face {
-      font-family: "Source Serif 4";
-      src: url("${serifRegular}") format("woff2");
-      font-weight: 400;
-      font-style: normal;
-      font-display: swap;
-    }
-    @font-face {
-      font-family: "Source Serif 4";
-      src: url("${serifItalic}") format("woff2");
-      font-weight: 400;
-      font-style: italic;
-      font-display: swap;
-    }
     :host {
       all: initial;
       position: fixed;
       inset: 0;
       z-index: 2147483647;
-      font-family: "IBM Plex Mono", ui-monospace, "SF Mono", monospace;
+      font-family: "IntentLock Plex Mono", ui-monospace, "SF Mono", monospace;
       --bg-white: #ffffff;
       --fg-black: #000000;
       --muted-black: #1a1a1a;
@@ -101,7 +102,7 @@
       to { opacity: 1; transform: scale(1); }
     }
     h1 {
-      font-family: "Source Serif 4", "Iowan Old Style", Palatino, Georgia, serif;
+      font-family: "IntentLock Source Serif", "Iowan Old Style", Palatino, Georgia, serif;
       font-size: 18px;
       font-weight: 400;
       line-height: 1.35;
@@ -115,7 +116,7 @@
       margin: 0 0 16px;
     }
     .intent-quote {
-      font-family: "Source Serif 4", "Iowan Old Style", Palatino, Georgia, serif;
+      font-family: "IntentLock Source Serif", "Iowan Old Style", Palatino, Georgia, serif;
       font-size: 16px;
       font-weight: 400;
       line-height: 1.35;
@@ -444,6 +445,7 @@
       // Keep page scripts from clearing or replacing the lock contents.
       shadow = host.attachShadow({ mode: 'closed' });
 
+      registerOverlayFonts(document);
       const style = document.createElement('style');
       style.textContent = buildOverlayStyles();
       shadow.appendChild(style);
@@ -708,5 +710,6 @@
   exposeApi('interventionOverlay', {
     buildOverlayStyles,
     createInterventionOverlay,
+    registerOverlayFonts,
   });
 }(globalThis));

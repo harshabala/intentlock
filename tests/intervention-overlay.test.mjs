@@ -13,7 +13,7 @@ const chrome = {
 const overlayRuntime = await loadClassicScript(new URL('../intervention-overlay.js', import.meta.url), {
   chrome,
 });
-const { buildOverlayStyles, createInterventionOverlay } = overlayRuntime.IntentLock.interventionOverlay;
+const { buildOverlayStyles, createInterventionOverlay, registerOverlayFonts } = overlayRuntime.IntentLock.interventionOverlay;
 
 test('buildOverlayStyles includes core intervention layout rules', () => {
   const css = buildOverlayStyles();
@@ -23,14 +23,31 @@ test('buildOverlayStyles includes core intervention layout rules', () => {
   assert.match(css, /\.end-session-btn[\s\S]*flex:\s*1 1 100%/);
 });
 
-test('buildOverlayStyles loads packaged fonts via chrome.runtime.getURL', () => {
+test('overlay styles use the IntentLock-registered font families', () => {
   const css = buildOverlayStyles();
-  assert.match(css, /@font-face/);
-  assert.match(css, /chrome-extension:\/\/mock\/fonts\/IBMPlexMono-Regular\.woff2/);
-  assert.match(css, /chrome-extension:\/\/mock\/fonts\/SourceSerif4-Regular\.woff2/);
-  assert.match(css, /chrome-extension:\/\/mock\/fonts\/SourceSerif4-Italic\.woff2/);
-  assert.match(css, /font-family:\s*"IBM Plex Mono"/);
-  assert.match(css, /font-family:\s*"Source Serif 4"/);
+  // @font-face inside a shadow root is ignored by Chrome; fonts are registered on the document instead.
+  assert.doesNotMatch(css, /@font-face/);
+  assert.match(css, /font-family:\s*"IntentLock Plex Mono"/);
+  assert.match(css, /font-family:\s*"IntentLock Source Serif"/);
+});
+
+test('registerOverlayFonts adds the packaged fonts to the document once', () => {
+  const added = [];
+  class FakeFontFace {
+    constructor(family, source, descriptors) { Object.assign(this, { family, source, descriptors }); }
+    load() { return Promise.reject(new Error('blocked by page CSP')); }
+  }
+  const doc = { defaultView: { FontFace: FakeFontFace }, fonts: { add: face => added.push(face) } };
+  assert.equal(registerOverlayFonts(doc), true);
+  assert.equal(registerOverlayFonts(doc), false);
+  assert.deepEqual(added.map(face => [face.family, face.descriptors.style]), [
+    ['IntentLock Plex Mono', 'normal'],
+    ['IntentLock Source Serif', 'normal'],
+    ['IntentLock Source Serif', 'italic'],
+  ]);
+  assert.match(added[0].source, /chrome-extension:\/\/mock\/fonts\/IBMPlexMono-Regular\.woff2/);
+  assert.match(added[1].source, /chrome-extension:\/\/mock\/fonts\/SourceSerif4-Regular\.woff2/);
+  assert.match(added[2].source, /chrome-extension:\/\/mock\/fonts\/SourceSerif4-Italic\.woff2/);
 });
 
 test('overlay styles include overlayEnter 160ms and no infinite animation', () => {
