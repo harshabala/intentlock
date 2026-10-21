@@ -16,3 +16,4 @@ storage/logs/
 # macOS Finder / sync-conflict duplicates such as "background 2.js"
 * [0-9].*
 * [0-9]
+store/screenshots/generated/

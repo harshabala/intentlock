@@ -4,6 +4,7 @@
   "type": "module",
   "scripts": {
     "test:browser": "playwright test --config=playwright.config.mjs",
+    "screenshots:store": "playwright test --config=playwright.screenshots.config.mjs",
     "test": "node --test tests/*.test.mjs",
     "verify:static": "node --test tests/static-smoke.test.mjs tests/manifest-runtime.test.mjs tests/content-bootstrap.test.mjs",
     "package": "node scripts/package-release.mjs",
