@@ -74,8 +74,9 @@ real browser suite separately:
 
 ```bash
 npm ci
-npx playwright install chromium
+npx playwright install chromium   # or set PLAYWRIGHT_CHROMIUM_EXECUTABLE to an installed Chromium
 npm run test:browser
+npm run screenshots:store         # real 1280x800 store shots into store/screenshots/generated/ (git-ignored)
 ```
 
 See [browser journeys](browser-journeys.md) for the pinned browser, isolation,

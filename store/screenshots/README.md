@@ -2,7 +2,7 @@
 
 Required size: **1280x800** (Chrome Web Store listing screenshots).
 
-A human must capture these from Chrome with IntentLock loaded unpacked. Do not invent or commit fake PNG screenshots of a running Chrome profile into this folder.
+Run `npm run screenshots:store` to capture all five from the real unpacked extension in Playwright's Chromium against synthetic local pages (no real browsing data). They land in `store/screenshots/generated/`, which git ignores. A human reviews them, or recaptures from Chrome by hand, before anything is uploaded. Do not invent or commit fake PNG screenshots.
 
 ## Shot list (capture in this order)
 

@@ -17,7 +17,8 @@ npm test                # unit + integration (node:test)
 npm run verify:static   # manifest, CSP, runtime references
 npm run audit:prod      # npm audit
 npm run package -- --output /tmp/IntentLock-check.zip   # deterministic release zip
-npm run test:browser    # optional: real Chromium journeys (needs npx playwright install chromium)
+npm run test:browser    # optional: real Chromium journeys (npx playwright install chromium, or PLAYWRIGHT_CHROMIUM_EXECUTABLE)
+npm run screenshots:store  # optional: capture the five store screenshots from the real extension
 ```
 
 `npm run check` runs lint, tests, static verification and version validation together.

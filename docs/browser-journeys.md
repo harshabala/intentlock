@@ -70,6 +70,18 @@ active page. Separate windows are not covered: headless Chromium moves a tab ope
 in a new window back into the first window. Shared UI steps live in
 `tests/browser/steps.mjs`.
 
+`tests/browser/accessibility.spec.mjs` audits every extension page (new tab in
+onboarding and session state, Settings, popup, history, analytics, diagnostics and the
+fallback lock page) in light and dark schemes: `lang`, a title, accessible names for
+visible controls, image `alt`, and WCAG AA text contrast computed from live styles. A
+self-test proves the audit flags low contrast and unlabelled controls.
+`tests/browser/overlay-fonts.spec.mjs` asks Chromium (CDP `CSS.getPlatformFontsForNode`)
+which font actually renders the in-page lock, so a fallback to system fonts fails.
+
+To reuse an already-installed Chromium instead of downloading Playwright's pinned
+build, set `PLAYWRIGHT_CHROMIUM_EXECUTABLE` to its binary. Last local run (2026-10-21,
+Chromium 151, macOS arm64): 9 passed in 1.7 min.
+
 | Scenario | Actual assertion |
 | --- | --- |
 | First run without an API key | Welcome, policy settings, rehearsal heading and disabled rehearsal Continue; then Got it opens intent form. Settings key is blank. |
