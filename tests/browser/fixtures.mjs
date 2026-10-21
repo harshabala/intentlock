@@ -7,15 +7,18 @@ import { fileURLToPath } from 'node:url';
 
 const extensionPath = fileURLToPath(new URL('../../', import.meta.url));
 const hosts = new Set(['work.localhost', 'distraction.localhost', 'other.localhost']);
+// Optional: reuse an already-installed Chromium instead of downloading Playwright's pinned build.
+const executablePath = process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE || chromium.executablePath();
 
 export const test = base.extend({
   // eslint-disable-next-line no-empty-pattern -- Playwright requires a destructured first argument
   journey: async ({}, use, testInfo) => {
     try {
-      await access(chromium.executablePath());
+      await access(executablePath);
     } catch {
       throw new Error('Test Chromium is missing. Run npm ci, then npx playwright install chromium. '
-        + 'Use normal environment approval for installation. Browser journeys never silently skip.');
+        + 'Use normal environment approval for installation, or set PLAYWRIGHT_CHROMIUM_EXECUTABLE. '
+        + 'Browser journeys never silently skip.');
     }
 
     // A loopback-only synthetic HTTP server also acts as a deny-by-default proxy.
@@ -49,7 +52,7 @@ export const test = base.extend({
       });
       const port = server.address().port;
       context = await chromium.launchPersistentContext(profile, {
-        channel: 'chromium', headless: true, chromiumSandbox: true,
+        channel: 'chromium', executablePath, headless: true, chromiumSandbox: true,
         timeout: 20_000, viewport: { width: 1280, height: 900 },
         reducedMotion: 'reduce',
         args: [
