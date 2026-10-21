@@ -291,6 +291,7 @@ function createHistoryEntry(session) {
 let lastIdleTime = 0;
 let isCurrentlyIdle = false;
 chrome.idle.setDetectionInterval(180); // 3 minutes
+const IDLE_SWITCH_WINDOW_MS = 10_000;
 
 function broadcastIdleState(isIdle) {
   const epoch = getStorageGeneration();
@@ -319,15 +320,19 @@ chrome.idle.onStateChanged.addListener((newState) => {
       return;
     }
 
-    const idleTimestamp = isIdle ? Date.now() : 0;
-    isCurrentlyIdle = isIdle;
-    lastIdleTime = idleTimestamp;
+    // lastIdleTime marks the return from idle, so the next tab switch can be
+    // checked as a context switch. It is 0 while idle and once that switch is seen.
+    const now = Date.now();
     void enqueueSessionMutation(async () => {
-      const latest = await storageGet(['trackingEnabled']);
+      const latest = await storageGet(['trackingEnabled', 'isCurrentlyIdle']);
       if (latest.trackingEnabled === false) return;
+      const wasIdle = latest.isCurrentlyIdle === true || isCurrentlyIdle;
+      const returnedAt = !isIdle && wasIdle ? now : 0;
+      isCurrentlyIdle = isIdle;
+      lastIdleTime = returnedAt;
       await storageSet({
         isCurrentlyIdle: isIdle,
-        lastIdleTime: idleTimestamp,
+        lastIdleTime: returnedAt,
       });
     });
     broadcastIdleState(isIdle);
@@ -1186,9 +1191,18 @@ chrome.tabs.onActivated.addListener((activeInfo) => {
 
             const isCurrentlyIdleVal = result.isCurrentlyIdle || false;
             const lastIdleTimeVal = result.lastIdleTime || 0;
-            if (!isCurrentlyIdleVal && lastIdleTimeVal > 0 && (Date.now() - lastIdleTimeVal < 10000)) {
+            if (!isCurrentlyIdleVal && lastIdleTimeVal > 0 && (Date.now() - lastIdleTimeVal < IDLE_SWITCH_WINDOW_MS)) {
+              lastIdleTime = 0;
+              // Returning to on-intent work, a paused timer or an overridden site is not drift.
+              const offIntent = !isSessionPaused(session)
+                && !isDomainOnCooldown(extractDomain(tab.url), overrideCooldowns)
+                && !isOnIntent(session, tab.url);
               enqueueSessionMutation(() => storageSet({ lastIdleTime: 0 }), epoch).then(() => {
-                triggerIntervention("You switched context after being idle.", activeInfo.tabId);
+                if (offIntent) {
+                  triggerIntervention("You switched context after being idle.", activeInfo.tabId);
+                } else {
+                  evaluateDrift(tab.url, activeInfo.tabId);
+                }
               }).catch(() => {});
               return;
             }
@@ -1216,6 +1230,14 @@ chrome.tabs.onRemoved?.addListener((tabId) => {
     if (changed) await persistInterventionStates(states);
   });
 });
+
+// Explicit allows, related corrections and aligned sites all count as on-intent.
+function isOnIntent(session, url) {
+  const policy = session.heuristicPolicy || heuristicPolicy;
+  const relatedHostnames = relatedHostnamesList();
+  if (isUrlAligned(session.intent, url, policy, relatedHostnames)) return true;
+  return evaluatePolicyDrift({ intent: session.intent, url, policy, relatedHostnames }).explicit === true;
+}
 
 // ── Event logging ──────────────────────────────────────────────────────
 

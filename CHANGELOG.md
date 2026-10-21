@@ -23,6 +23,7 @@
 - Research intents no longer treat every forum as aligned.
 
 ### Fixed
+- The idle context-switch lock never fired (returning from idle cleared its timestamp). It now locks a tab switched to within 10 s of returning from idle only when that site is off-intent, not on override cooldown and the timer is not paused.
 - Dwell time counted cumulative reports repeatedly (90 s read as 180 s).
 - Custom allows and session-related corrections can no longer be overruled by the dwell rule or optional AI.
 - Custom block/allow rules cover subdomains, most specific rule wins; `m.`/`mobile.` hosts follow their base site.

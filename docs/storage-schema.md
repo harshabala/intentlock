@@ -205,11 +205,11 @@ string[]   // bare hostnames, e.g. ['twitter.com', 'reddit.com']
 
 ### `isCurrentlyIdle` / `lastIdleTime`
 
-Written by the `chrome.idle.onStateChanged` listener. Used to pause dwell accumulation when the user is idle (3-minute threshold).
+Written by the `chrome.idle.onStateChanged` listener (3-minute threshold). A tab switch within 10 seconds of returning from idle to an off-intent site (not aligned, not on override cooldown, timer not paused) locks that tab.
 
 ```js
 isCurrentlyIdle: boolean
-lastIdleTime: number   // timestamp when idle state began, 0 if not idle
+lastIdleTime: number   // timestamp the user returned from idle; 0 while idle or once the next tab switch was checked
 ```
 
 ---
