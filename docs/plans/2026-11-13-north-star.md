@@ -122,6 +122,7 @@ Gaps:
 ### 6. Maintainability
 - Split `background.js` into modules along its existing seams, guarded by the browser journeys.
 - **Done when:** no file in the worker is over 400 lines and every test still passes.
+- 2026-11-16: not started. `background.js` is now about 1,700 lines. The split needs a shared worker-state object (12 mutable module variables are reassigned across the file) and updates to four tests that read `background.js` as text (`extractDomain` characterization, idle copy, static smoke); plan it as its own step guarded by `npm run check` and two full `npm run test:browser` runs. Candidate seams: Chrome API wrappers, intervention-state helpers, history entry, cooldowns, retention, config loading, session lifecycle, tab events and drift evaluation, message handlers.
 
 ### 7. Ship
 - Store listing with the generated screenshots, privacy policy page, a tagged release.
