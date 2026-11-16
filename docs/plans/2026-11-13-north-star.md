@@ -71,6 +71,7 @@ Gaps:
 - A scorer that replays the set through the real decision code and reports missed drifts and
   wrong locks, per strictness preset.
 - **Done when:** the baseline numbers exist. Show them to the owner before changing rules.
+- 2026-11-16: done by an agent. 239 sequences / 892 visits in `tests/drift-set/` (labels are agent proposals, `review: pending-owner`; the 30 most debatable are listed in its README), `npm run score:drift`, baseline in `docs/drift-baseline-2026-11-16.md` (balanced, all sequences: 21.8% wrong locks, 7.3% missed drifts). Verified with `npm run check` (green) and `npm run score:drift` (exit 0). No rules changed. Still needs the owner to review the labels and see the baseline.
 
 ### 2. Tighten the logic
 - Use the scorer to drive changes: page content signals beyond the domain, a grace period for

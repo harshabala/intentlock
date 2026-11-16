@@ -52,9 +52,9 @@ Best: sign-in redirects 4.1%, quick checks 6.7%, coding 7.3%.
 ## What drives the number
 
 Of the 159 wrong locks at balanced: 114 (72%) are the 2-minute dwell rule on a page the rules
-considered unaligned, 26 (16%) are a blocked category on arrival (mostly youtube.com), 16 (10%) are
+considered unaligned, 26 (16%) are a blocked category on arrival (22 of the 26 are youtube.com), 16 (10%) are
 the 60 s "repeated unrelated activity" path, and 3 are rapid tab switching. Of the 12 missed drifts,
-11 are short detours or pages the rules judged aligned, and 1 is a host named in the intent.
+8 are short detours or off-topic searches (under 0.7) and 4 are pages judged aligned (3 because the intent names the host, 1 because a topic word is in the URL).
 
 ## Three weakest rule areas
 
@@ -82,7 +82,7 @@ Wrong locks (rule locked; a person would not):
 
 1. `res-05` v1, nature.com paper, intent "Gather sources for my paper on microplastics". Rule: lock
    at 120 s dwell (`extended_unrelated_dwell`); the URL is an article id with no intent word, and
-   `nature.com` is unlisted. Person: the primary source being read. All five source pages lock.
+   `nature.com` is unlisted. Person: the primary source being read. Three of the five source pages lock.
 2. `lng-02` v0, the Raft paper PDF, "Learn about distributed consensus". Rule: 120 s on an
    unlisted host, URL has no intent word. Person: this is the task. Same shape in `lng-03`, `lng-07`.
 3. `cod-04` v3, react.dev "You Might Not Need an Effect", "Refactor the user settings component to
@@ -97,7 +97,7 @@ Wrong locks (rule locked; a person would not):
    inherit, so it is neutral and locks at 120 s. Person: the task. Same for `app.asana.com`.
 7. `res-10` v2, a YouTube lecture on transformers, "Learn how transformers work in machine
    learning". Rule: `blocked_category:short_video` on arrival; the video URL is opaque. Person: the
-   best resource. 10 wrong locks come from YouTube tutorials (`hlt-02`, `job-02`, `shp-08`, ...).
+   best resource. 22 wrong locks come from YouTube tutorials, lectures and reviews (`vid-01`, `hlt-02`, `job-02`, `shp-08`, ...).
 8. `soc-02` v0 to v2, x.com mentions and search, "Answer customer questions on our company X
    account". Rule: social media blocked on arrival, three times. Person: it is the job.
 9. `ent-02` v2, reddit r/gaming, "Play some games and chill after work". Rule: forums are not in the

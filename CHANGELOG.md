@@ -14,6 +14,7 @@
 - Sessions not ended within 24 hours end automatically; history and diagnostics are pruned in storage at startup and hourly.
 
 ### Added
+- Labelled drift set (`tests/drift-set/`, 239 agent-labelled sequences pending owner review) and `npm run score:drift`, which replays it through the real decision code and reports wrong locks and missed drifts per preset. Baseline in `docs/drift-baseline-2026-11-16.md`. No rules changed.
 - ESLint (`npm run lint`), `npm run audit:prod`, `npm run check`, and a CI quality job (lint + dependency audit); package contents are checked in CI.
 - `SECURITY.md`, `CONTRIBUTING.md`, root `ARCHITECTURE.md`, and `tests/store-readiness.test.mjs` (manifest permissions, CSP, listing justifications and packaged files stay in sync).
 - Pause timer / Resume timer on the new-tab session view. Paused time does not count toward dwell or the time budget, no dwell lock fires while paused, and the state survives worker restarts.
