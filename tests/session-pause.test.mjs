@@ -23,6 +23,7 @@ test('pause-aware timer helpers exclude paused time', () => {
 const h = privacyChrome();
 const alarms = new Map();
 const shown = [];
+const asked = [];
 h.chrome.alarms = {
   onAlarm: { addListener() {} },
   create: (name, info) => alarms.set(name, info),
@@ -30,7 +31,11 @@ h.chrome.alarms = {
   get: (name, cb) => cb(alarms.get(name)),
 };
 h.chrome.tabs.get = (id, cb) => { const tab = { id, url: 'https://unrelated.example/a' }; cb?.(tab); return Promise.resolve(tab); };
-h.chrome.tabs.sendMessage = (id, message, cb) => { if (message.type === 'SHOW_INTERVENTION') shown.push({ id, reason: message.reason }); cb?.({ shown: true }); };
+h.chrome.tabs.sendMessage = (id, message, cb) => {
+  if (message.type === 'SHOW_INTERVENTION') shown.push({ id, reason: message.reason });
+  if (message.type === 'SHOW_CHECKIN') asked.push({ id, why: message.why, checkinId: message.id });
+  cb?.({ shown: true });
+};
 h.chrome.tabs.group = () => Promise.resolve(1);
 h.chrome.tabGroups = { update: () => Promise.resolve(), get: () => Promise.resolve() };
 globalThis.chrome = h.chrome;
@@ -48,6 +53,7 @@ async function start(extra = {}) {
     id: `pause-${Math.random()}`, intent: 'write the quarterly budget memo', isActive: true, startTime: Date.now(), events: [], ...extra,
   } });
   shown.length = 0;
+  asked.length = 0;
   return h.local.activeSession;
 }
 const pause = (paused, session) => client.sendStorageAction({ type: 'PAUSE_SESSION', paused, sessionId: session.id });
@@ -73,41 +79,49 @@ test('pausing stops the budget alarm and resuming shifts it by the paused time',
   assert.equal(again.pausedMs, resumed.pausedMs, 'a repeated resume changes nothing');
 });
 
-test('two minutes of active dwell locks the page in place, once, without AI', async () => {
+test('two minutes of active dwell asks once, without locking and without AI', async () => {
   await start();
   for (const n of [1, 2, 3]) await dwell(n);
-  assert.deepEqual(shown, [], '90 seconds is below the limit');
+  assert.deepEqual(asked, [], '90 seconds is below the limit');
   await dwell(4);
-  assert.equal(shown.length, 1);
-  assert.match(shown[0].reason, /long time on an unrelated site/);
+  assert.equal(asked.length, 1);
+  assert.match(asked[0].why, /been on this page a while/);
   await dwell(5);
   await dwell(6);
-  assert.equal(shown.length, 1, 'an already displayed lock is not fired again');
+  assert.equal(asked.length, 1, 'one check-in per site per session');
+  assert.deepEqual(shown, [], 'a long stay is a question, not a lock');
 });
 
-test('an override cooldown suppresses further dwell locks on that site', async () => {
+test('answering "yes" ends further check-ins on that site and is stored with the session only', async () => {
   const session = await start();
   for (const n of [1, 2, 3, 4]) await dwell(n);
-  const state = Object.values(h.local.interventionStates).find(s => s.sessionId === session.id);
-  const result = await h.send({ type: 'INTERVENTION_TRANSITION', transition: 'override', sessionId: session.id,
-    nonce: state.nonce, reflection: 'synthetic reason' }, content);
+  const result = await h.send({ type: 'CHECKIN_ANSWER', id: asked[0].checkinId, answer: 'yes', reason: 'synthetic reason' }, content);
   assert.equal(result.ok, true);
-  shown.length = 0;
+  const stored = h.local.activeSession;
+  assert.deepEqual(stored.checkins.aligned, ['host:unrelated.example']);
+  assert.equal(stored.events.at(-1).actionType, 'CHECKIN');
+  assert.equal(h.local.relatedDomainMarks?.['unrelated.example'], undefined, 'never a permanent allow');
+  asked.length = 0;
   for (const n of [5, 6, 7, 8]) await dwell(n);
+  assert.deepEqual(asked, []);
   assert.deepEqual(shown, []);
+  const stale = await h.send({ type: 'CHECKIN_ANSWER', id: 'wrong', answer: 'yes' }, content);
+  assert.equal(stale.ok, false);
+  assert.equal(session.id, stored.id);
 });
 
-test('while paused, dwell is not recorded and no dwell lock fires', async () => {
+test('while paused, dwell is not recorded and no check-in fires', async () => {
   const session = await start();
   await pause(true, session);
   const before = structuredClone(h.local.activeSession);
   for (const n of [1, 2, 3, 4, 5, 6]) await dwell(n);
+  assert.deepEqual(asked, []);
   assert.deepEqual(shown, []);
   assert.equal(h.local.activeSession.events.filter(e => e.actionType === 'PAGE_DWELL').length, 0);
   assert.equal(h.local.activeSession.metrics.activeMs, before.metrics.activeMs);
   await pause(false, session);
   for (const n of [1, 2, 3, 4]) await dwell(n);
-  assert.equal(shown.length, 1, 'enforcement resumes with the timer');
+  assert.equal(asked.length, 1, 'enforcement resumes with the timer');
 });
 
 test('pause requests need an extension page and an epoch', async () => {

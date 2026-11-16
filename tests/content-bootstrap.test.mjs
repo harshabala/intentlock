@@ -79,7 +79,7 @@ test('manifest-ordered classic scripts bootstrap content tracking in one VM cont
     await runClassicScript(new URL(script, root), context);
   }
 
-  assert.deepEqual(Object.keys(context.IntentLock), ['pageTracker', 'interventionOverlay']);
+  assert.deepEqual(Object.keys(context.IntentLock), ['pageTracker', 'interventionOverlay', 'checkinPrompt']);
   assert.equal(calls.storageChangedListeners.length, 1);
   assert.equal(calls.runtimeMessageListeners.length, 1);
   assert.equal(calls.storageGets.length, 1);

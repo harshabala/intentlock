@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { getStorageGeneration } from '../storage-queue.js';
+import { buildDefaultPolicy } from '../heuristic-policy.js';
 
 // Setup global mock for Chrome APIs before importing background.js
 let sessionStorageData = {};
@@ -224,6 +225,8 @@ test('Cooldown Bypass avoids triggering interventions during active cooldown', a
       events: []
     },
     customDistractionSites: ['facebook.com'],
+    // An explicit block always locks; a bare social site would now only trigger a check-in.
+    heuristicPolicy: { ...buildDefaultPolicy('coding', 'balanced'), customBlockDomains: ['facebook.com'], setupCompleted: true },
     trackingEnabled: true
   };
   await reloadConfig();
@@ -266,6 +269,7 @@ test('Subdomain Matching matches subdomains bidirectionally', async () => {
       events: []
     },
     customDistractionSites: ['facebook.com', 'instagram.com'],
+    heuristicPolicy: { ...buildDefaultPolicy('coding', 'balanced'), customBlockDomains: ['facebook.com', 'instagram.com'], setupCompleted: true },
     trackingEnabled: true
   };
   await reloadConfig();

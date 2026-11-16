@@ -4,6 +4,7 @@ import test from 'node:test';
 // Optional AI must never overrule an explicit allow or a related correction.
 let fetchCalls = 0;
 const shown = [];
+const checkinsShown = [];
 const tabUpdated = [];
 const tabs = new Map();
 const storageData = {
@@ -42,7 +43,11 @@ globalThis.chrome = {
     onUpdated: { addListener: fn => tabUpdated.push(fn) }, onActivated: event, onRemoved: event,
     get: (id, cb) => { const tab = tabs.get(id) || null; cb?.(tab); return Promise.resolve(tab); },
     query: (_q, cb) => { cb?.([]); return Promise.resolve([]); },
-    sendMessage: (id, message, cb) => { if (message.type === 'SHOW_INTERVENTION') shown.push(id); cb?.({ shown: true }); },
+    sendMessage: (id, message, cb) => {
+      if (message.type === 'SHOW_INTERVENTION') shown.push(id);
+      if (message.type === 'SHOW_CHECKIN') checkinsShown.push(id);
+      cb?.({ shown: true });
+    },
     update: (_id, _props, cb) => cb?.(), group: () => Promise.resolve(1),
   },
   tabGroups: { update: () => Promise.resolve(), get: () => Promise.resolve() },
@@ -71,15 +76,18 @@ test('related correction skips the AI second opinion and never locks', async () 
   assert.deepEqual(shown, []);
 });
 
-test('an unlisted site still gets the AI second opinion', async () => {
+test('an unlisted site still gets the AI second opinion, which can only ask, never lock', async () => {
   await visit(3, 'https://unlisted.example/page');
   assert.equal(fetchCalls, 1);
-  assert.deepEqual(shown, [3]);
+  assert.deepEqual(shown, [], 'the AI never locks');
+  assert.deepEqual(checkinsShown, [3], 'a confident AI verdict becomes a check-in');
 });
 
 test('the same URL in a second tab is checked instead of debounced', async () => {
-  shown.length = 0;
+  const before = fetchCalls;
   await visit(10, 'https://same-url.example/page');
   await visit(11, 'https://same-url.example/page');
-  assert.deepEqual(shown.sort(), [10, 11]);
+  assert.equal(fetchCalls - before, 2, 'both tabs are checked');
+  assert.deepEqual(shown, []);
+  assert.deepEqual(checkinsShown, [3], 'the global minimum gap keeps the second check-in back');
 });

@@ -91,12 +91,15 @@ Gaps:
   check-in, each answer, session-only alignment and an explicit block still locking; the full suite
   and journeys pass.
 
+- 2026-11-16: built by an agent: `drift-decision.js`, `checkin-controller.js`, `checkin-prompt.js`, content/worker wiring, scorer with three outcomes, `tests/browser/checkin.spec.mjs` (5 journeys) and a check-in accessibility/contrast audit. Verified with `npm run check` and `npm run test:browser`. Numbers in `docs/drift-after-checkin-2026-11-16.md`.
+
 ### 2. Tighten the logic
 - Use the scorer to drive changes: page content signals beyond the domain, a grace period for
   short detours, smarter handling of search and sign-in pages, and the AI second opinion where
   the rules are unsure.
 - **Done when:** at the default preset, wrong locks are under 2 % and missed drifts under 10 % on
   the set, with no slowdown past the existing time budget.
+- 2026-11-16: done on the set at balanced (wrong locks 0.0 %, prompts on legitimate pages 7.6 %, missed drifts 7.3 %); relaxed misses 38 % of drifts. Tuned on the same set, no held-out data; see the after-doc.
 
 ### 3. Design direction
 - Write `DESIGN.md` and `brand.md` for IntentLock using the owner's design skills: one direction

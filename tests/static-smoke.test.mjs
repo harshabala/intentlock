@@ -42,7 +42,7 @@ test('manifest references only present extension assets and minimum V1 permissio
 
   assert.deepEqual(
     manifest.content_scripts[0].js,
-    ['page-tracker.js', 'intervention-overlay.js', 'content.js'],
+    ['page-tracker.js', 'intervention-overlay.js', 'checkin-prompt.js', 'content.js'],
   );
   assert.equal('type' in manifest.content_scripts[0], false);
 });
@@ -95,6 +95,7 @@ test('all extension javascript files parse', async () => {
     'content.js',
     'page-tracker.js',
     'intervention-overlay.js',
+    'checkin-prompt.js',
     'drift.js',
     'history.js',
     'intervention.js',

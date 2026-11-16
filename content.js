@@ -5,6 +5,7 @@ const { createInterventionOverlay } = globalThis.IntentLock.interventionOverlay;
 
 let pageTracker = null;
 let overlay = null;
+let checkin = null;
 let trackingActive = false;
 let pendingIntervention = null;
 let privacyRevision = 0;
@@ -39,10 +40,34 @@ function sendContentEvent(payload) {
   });
 }
 
+// Local page signals for the topic check. Only the title, the meta description or first heading
+// (300 characters at most) and whether a video is present; the worker keeps them in memory only.
+function sendPageSignals(url = globalThis.location?.href) {
+  try {
+    const doc = globalThis.document;
+    if (!doc || !url) return;
+    const description = doc.querySelector?.('meta[name="description"]')?.content || '';
+    const heading = doc.querySelector?.('h1')?.textContent || '';
+    const snippet = `${heading} ${description}`.replace(/\s+/g, ' ').trim().slice(0, 300);
+    sendContentEvent({
+      actionType: 'PAGE_SIGNALS',
+      url,
+      pageTitle: String(doc.title || '').slice(0, 200),
+      pageText: snippet,
+      hasVideo: Boolean(doc.querySelector?.('video')),
+    });
+  } catch {
+    // Signals are optional; the rules fall back to URL evidence.
+  }
+}
+
 function ensureTracker() {
   if (pageTracker) return pageTracker;
   pageTracker = createPageTracker({
-    onReport: (payload) => sendContentEvent(payload),
+    onReport: (payload) => {
+      sendContentEvent(payload);
+      if (payload.actionType === 'SPA_NAVIGATION') sendPageSignals(payload.navigationUrl || payload.url);
+    },
   });
   applyTrackerIdle();
   return pageTracker;
@@ -89,6 +114,22 @@ function startTracking() {
   if (trackingActive) return;
   trackingActive = true;
   ensureTracker().start();
+  sendPageSignals();
+}
+
+function ensureCheckin() {
+  const api = globalThis.IntentLock?.checkinPrompt;
+  if (!api) return null;
+  if (!checkin) {
+    checkin = api.createCheckinPrompt({
+      onAnswer: async ({ id, answer, reason }) => {
+        const result = await sendRuntimeMessage({ type: 'CHECKIN_ANSWER', id, answer, reason });
+        if (!result.response?.ok) throw new Error(result.response?.error || result.error?.message || 'Unable to send your answer.');
+        checkin.hide();
+      },
+    });
+  }
+  return checkin;
 }
 
 function stopTracking() {
@@ -139,12 +180,14 @@ chrome.storage.onChanged.addListener((changes, areaName) => {
   if (changes.privacyMutationState?.newValue?.deleting) {
     stopTracking();
     if (overlay) overlay.hide();
+    if (checkin) checkin.hide();
     pendingIntervention = null;
     return;
   }
   if (changes.trackingEnabled && changes.trackingEnabled.newValue === false) {
     stopTracking();
     if (overlay) overlay.hide();
+    if (checkin) checkin.hide();
     pendingIntervention = null;
   }
   if (changes.trackingEnabled?.newValue === true) {
@@ -157,6 +200,7 @@ chrome.storage.onChanged.addListener((changes, areaName) => {
     startTracking();
   } else if (changes.activeSession && !changes.activeSession.newValue?.isActive) {
     stopTracking();
+    if (checkin) checkin.hide();
   }
 });
 
@@ -177,6 +221,7 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
         nonce: message.nonce,
         reason: message.reason,
       };
+      if (checkin) checkin.hide();
       ensureOverlay().show({
         reason: message.reason,
         intent: message.intent,
@@ -191,7 +236,30 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
     privacyRevision++;
     stopTracking();
     if (overlay) overlay.hide();
+    if (checkin) checkin.hide();
     pendingIntervention = null;
+    sendResponse({ hidden: true });
+    return true;
+  }
+
+  if (message.type === 'SHOW_CHECKIN') {
+    const revision = privacyRevision;
+    chrome.storage.local.get(['activeSession', 'trackingEnabled', 'privacyMutationState'], (result) => {
+      const prompt = ensureCheckin();
+      if (!prompt || revision !== privacyRevision || result.privacyMutationState?.deleting
+        || result.trackingEnabled === false || !result.activeSession?.isActive
+        || (overlay && overlay.isVisible())) {
+        sendResponse({ shown: false });
+        return;
+      }
+      prompt.show({ id: message.id, intent: result.activeSession.intent || '', why: String(message.why || '').slice(0, 300) });
+      sendResponse({ shown: true });
+    });
+    return true;
+  }
+
+  if (message.type === 'HIDE_CHECKIN') {
+    if (checkin) checkin.hide();
     sendResponse({ hidden: true });
     return true;
   }

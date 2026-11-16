@@ -4,7 +4,7 @@ import { onboard, start, visit } from './steps.mjs';
 // Audits the real rendered extension pages: document language and title,
 // accessible names for every visible control, image alternatives, and WCAG AA
 // text contrast (4.5:1, 3:1 for large text) computed from the live styles.
-function audit() {
+function audit(root = document) {
   const problems = [];
   const parse = (value) => {
     const m = value.match(/rgba?\(([^)]+)\)/);
@@ -40,24 +40,24 @@ function audit() {
       && !el.closest('[hidden], [inert], [aria-hidden="true"]') && Number(style.opacity) > 0;
   };
 
-  if (!document.documentElement.lang) problems.push('html has no lang');
-  if (!document.title.trim()) problems.push('document has no title');
+  if (root === document && !document.documentElement.lang) problems.push('html has no lang');
+  if (root === document && !document.title.trim()) problems.push('document has no title');
 
-  for (const el of document.querySelectorAll('button, input:not([type=hidden]), select, textarea, a[href], [role=button], [role=switch], [role=tab]')) {
+  for (const el of root.querySelectorAll('button, input:not([type=hidden]), select, textarea, a[href], [role=button], [role=switch], [role=tab]')) {
     if (!visible(el)) continue;
     const labelled = el.getAttribute('aria-label')?.trim()
-      || (el.getAttribute('aria-labelledby') || '').split(/\s+/).some(id => document.getElementById(id)?.textContent.trim())
+      || (el.getAttribute('aria-labelledby') || '').split(/\s+/).some(id => (root.getElementById ? root : document).getElementById(id)?.textContent.trim())
       || (el.labels && [...el.labels].some(label => label.textContent.trim()))
       || el.title?.trim()
       || (['button', 'submit'].includes(el.type) || !('value' in el) || el.tagName === 'BUTTON' ? el.textContent.trim() : '')
       || (el.type === 'submit' && el.value);
     if (!labelled) problems.push(`unlabelled ${el.tagName.toLowerCase()}#${el.id || ''}.${el.className || ''}`);
   }
-  for (const img of document.querySelectorAll('img')) {
+  for (const img of root.querySelectorAll('img')) {
     if (visible(img) && !img.hasAttribute('alt')) problems.push(`img without alt: ${img.src}`);
   }
 
-  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+  const walker = document.createTreeWalker(root === document ? document.body : root, NodeFilter.SHOW_TEXT);
   const checked = new Set();
   for (let text = walker.nextNode(); text; text = walker.nextNode()) {
     const el = text.parentElement;
@@ -120,3 +120,28 @@ test('the accessibility audit detects low contrast and unlabelled controls', asy
   expect(problems.some(p => p.includes('unlabelled input#nameless'))).toBe(true);
   expect(problems.some(p => p.startsWith('unlabelled button'))).toBe(true);
 });
+
+for (const colorScheme of ['light', 'dark']) {
+  test(`the check-in card passes the accessibility audit and is keyboard reachable (${colorScheme})`, async ({ journey }) => {
+    await visit(journey, 'work.localhost', '/checkin-audit'); // a real fixture page, as in every journey
+    const page = await journey.context.newPage();
+    await page.emulateMedia({ colorScheme, reducedMotion: 'reduce' });
+    await page.goto(journey.extensionUrl('options.html'));
+    await page.addScriptTag({ url: journey.extensionUrl('checkin-prompt.js') });
+    const result = await page.evaluate(async (source) => {
+      const run = (0, eval)(`(${source})`);
+      const prompt = globalThis.IntentLock.checkinPrompt.createCheckinPrompt({ shadowMode: 'open' });
+      prompt.show({ id: 'a11y', intent: 'Draft quarterly report', why: "You're watching a video that doesn't look related to your task." });
+      await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+      const shadow = document.getElementById('intentlock-checkin-host').shadowRoot;
+      const buttons = [...shadow.querySelectorAll('button')].map(b => b.textContent.trim());
+      const focusable = [...shadow.querySelectorAll('button, input')].every(el => el.tabIndex >= 0);
+      const role = shadow.querySelector('[role=dialog]').getAttribute('aria-modal');
+      return { problems: run(shadow), buttons, focusable, role };
+    }, audit.toString());
+    expect(result.problems).toEqual([]);
+    expect(result.buttons).toEqual(['Yes, this is for my task', 'Just a quick check', 'I drifted', 'Close this tab']);
+    expect(result.focusable).toBe(true);
+    expect(result.role).toBe('false'); // non-blocking: never modal
+  });
+}

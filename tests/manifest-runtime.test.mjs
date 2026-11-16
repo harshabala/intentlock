@@ -14,11 +14,14 @@ const expectedRuntimeFiles = [
   'analytics.html',
   'analytics.js',
   'background.js',
+  'checkin-controller.js',
+  'checkin-prompt.js',
   'content.js',
   'diagnostics.html',
   'diagnostics.js',
   'distraction-sites.js',
   'drift-cache.js',
+  'drift-decision.js',
   'drift.js',
   'error-log.js',
   'fonts/IBMPlexMono-Regular.woff2',
@@ -90,6 +93,7 @@ test('manifest declares alarms and a supported ordered classic content script', 
   assert.deepEqual(contentScript.js, [
     'page-tracker.js',
     'intervention-overlay.js',
+    'checkin-prompt.js',
     'content.js',
   ]);
   assert.equal('type' in contentScript, false);

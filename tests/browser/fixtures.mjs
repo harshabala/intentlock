@@ -6,7 +6,7 @@ import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const extensionPath = fileURLToPath(new URL('../../', import.meta.url));
-const hosts = new Set(['work.localhost', 'distraction.localhost', 'other.localhost']);
+const hosts = new Set(['work.localhost', 'distraction.localhost', 'other.localhost', 'video.localhost']);
 // Optional: reuse an already-installed Chromium instead of downloading Playwright's pinned build.
 const executablePath = process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE || chromium.executablePath();
 
@@ -33,6 +33,13 @@ export const test = base.extend({
       }
       requests.push({ host: url.hostname, path: url.pathname });
       res.writeHead(200, { 'Content-Type': 'text/html', 'Cache-Control': 'no-store' });
+      if (url.hostname === 'video.localhost') {
+        // A page with a video and no link to the session intent: the rules should ask, not lock.
+        res.end('<!doctype html><html lang="en"><meta charset="utf-8"><title>Funny cat compilation</title>'
+          + '<body><main><h1>Funny cat compilation</h1><video controls width="320"></video>'
+          + '<button id="work-action">Play</button></main></body></html>');
+        return;
+      }
       res.end('<!doctype html><html lang="en"><meta charset="utf-8">'
         + '<title>Synthetic browser journey</title><body><main>'
         + '<h1>Local test document</h1><label>Document <textarea id="document"></textarea></label>'

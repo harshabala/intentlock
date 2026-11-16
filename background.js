@@ -8,6 +8,8 @@ import {
   minimizeSessionEvent,
 } from './heuristic-policy.js';
 import { checkDriftLLM } from './llm.js';
+import { decideDrift } from './drift-decision.js';
+import { createCheckinController, alignedKeys, driftedHosts } from './checkin-controller.js';
 import { clearDriftCache } from './drift-cache.js';
 import { logError, registerErrorLogAuthority } from './error-log.js';
 import { getEffectiveDistractionSites, DEFAULT_DISTRACTION_SITES } from './distraction-sites.js';
@@ -675,6 +677,7 @@ function fencePrivateState() {
   relatedDomainMarks = {};
   overrideCooldowns.clear();
   contentEventBuckets.clear();
+  pageSignals.clear();
   clearDriftCache();
   clearLlmBackoff();
   lastEvaluatedUrl = null;
@@ -720,9 +723,9 @@ const HANDLED_MESSAGES = new Set([
   'SESSION_STARTED', 'OVERRIDE_INTERVENTION', 'GET_SESSION',
   'CONFIG_UPDATED', 'SESSION_CLEARED', 'DELETE_ALL_DATA', 'END_ACTIVE_SESSION', 'LOG_ERROR',
   'CONTENT_EVENT', 'GET_INTERVENTION_STATE', 'INTERVENTION_TRANSITION',
-  'TEST_INTERVENTION', 'REPORT_VIEWED', 'STORAGE_MUTATION', 'PAUSE_SESSION',
+  'TEST_INTERVENTION', 'REPORT_VIEWED', 'STORAGE_MUTATION', 'PAUSE_SESSION', 'CHECKIN_ANSWER',
 ]);
-const CONTENT_MESSAGES = new Set(['CONTENT_EVENT', 'GET_INTERVENTION_STATE', 'INTERVENTION_TRANSITION', 'LOG_ERROR']);
+const CONTENT_MESSAGES = new Set(['CONTENT_EVENT', 'GET_INTERVENTION_STATE', 'INTERVENTION_TRANSITION', 'LOG_ERROR', 'CHECKIN_ANSWER']);
 const MUTATION_MESSAGES = new Set([
   'STORAGE_MUTATION', 'SESSION_STARTED', 'END_ACTIVE_SESSION', 'SESSION_CLEARED', 'OVERRIDE_INTERVENTION', 'PAUSE_SESSION',
 ]);
@@ -734,6 +737,34 @@ function replyOk(sendResponse, extra = {}) {
 function replyError(sendResponse, error, fallback) {
   sendResponse({ status: 'error', message: error?.message || fallback });
 }
+
+// Page title/snippet/video flag per tab for the topic check. Memory only: never stored, dropped with the tab.
+const pageSignals = new Map();
+
+function pageSignalsFor(tabId, url) {
+  const signals = pageSignals.get(tabId);
+  if (!signals) return null;
+  try {
+    const a = new URL(signals.url);
+    const b = new URL(url);
+    return a.origin === b.origin && a.pathname === b.pathname ? signals : null;
+  } catch {
+    return null;
+  }
+}
+
+function goBackTab(tabId) {
+  return new Promise((resolve, reject) => {
+    if (typeof chrome.tabs.goBack !== 'function') { reject(new Error('unavailable')); return; }
+    chrome.tabs.goBack(tabId, () => (chrome.runtime.lastError ? reject(new Error(chrome.runtime.lastError.message)) : resolve()));
+  });
+}
+
+const checkins = createCheckinController({
+  enqueue: (operation) => enqueueSessionMutation(operation),
+  storageGet, storageSet, sendTabMessage, getTab, removeTab, goBack: goBackTab,
+  minimizeEvent: minimizeSessionEvent, extractDomain, createId: createNonce,
+});
 
 const messageHandlers = {
   STORAGE_MUTATION(message, _sender, sendResponse, epoch) {
@@ -825,6 +856,11 @@ const messageHandlers = {
   CONTENT_EVENT(message, sender, sendResponse) {
     handleContentEvent(message.payload, sender.tab?.id);
     replyOk(sendResponse);
+  },
+  CHECKIN_ANSWER(message, sender, sendResponse) {
+    checkins.answer(message, sender).then(sendResponse, (error) => {
+      sendResponse({ ok: false, error: error.message || 'Check-in answer failed.' });
+    });
   },
   INTERVENTION_TRANSITION(message, sender, sendResponse) {
     handleInterventionTransition(message, sender).then(sendResponse, (error) => {
@@ -1161,6 +1197,10 @@ chrome.alarms.onAlarm.addListener((alarm) => {
 
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
   const epoch = getStorageGeneration();
+  if (changeInfo.status === 'loading') {
+    pageSignals.delete(tabId);
+    void checkins.forgetTab(tabId);
+  }
   if (changeInfo.status === 'complete' && isTrackableUrl(tab.url)) {
     loadConfig().then(() => {
       getLocalIfCurrent(['activeSession', 'trackingEnabled'], epoch, (result) => {
@@ -1217,6 +1257,8 @@ chrome.tabs.onActivated.addListener((activeInfo) => {
 
 chrome.tabs.onRemoved?.addListener((tabId) => {
   contentEventBuckets.delete(tabId);
+  pageSignals.delete(tabId);
+  void checkins.forgetTab(tabId);
   void enqueueSessionMutation(async () => {
     const result = await storageGet([INTERVENTION_STATE_KEY]);
     const states = cloneInterventionStates(result[INTERVENTION_STATE_KEY]);
@@ -1269,13 +1311,15 @@ function logEvent(actionType, url, extras = {}) {
 
 function handleContentEvent(payload, tabId) {
   if (!Number.isInteger(tabId) || !payload || typeof payload !== 'object') return;
-  const allowedActions = new Set(['PAGE_DWELL', 'SPA_NAVIGATION', 'PAGE_LOAD', 'TAB_SWITCH']);
+  const allowedActions = new Set(['PAGE_DWELL', 'SPA_NAVIGATION', 'PAGE_LOAD', 'TAB_SWITCH', 'PAGE_SIGNALS']);
   if (
     typeof payload.url !== 'string' ||
     payload.url.length === 0 ||
     payload.url.length > 2048 ||
     !allowedActions.has(payload.actionType) ||
     (payload.pageTitle !== undefined && (typeof payload.pageTitle !== 'string' || payload.pageTitle.length > 200)) ||
+    (payload.pageText !== undefined && (typeof payload.pageText !== 'string' || payload.pageText.length > 400)) ||
+    (payload.hasVideo !== undefined && typeof payload.hasVideo !== 'boolean') ||
     (payload.previousUrl !== undefined && (typeof payload.previousUrl !== 'string' || payload.previousUrl.length > 2048)) ||
     (payload.navigationUrl !== undefined && (typeof payload.navigationUrl !== 'string' || payload.navigationUrl.length > 2048)) ||
     (payload.dwellMs !== undefined && (!Number.isFinite(payload.dwellMs) || payload.dwellMs < 0 || payload.dwellMs > 86_400_000)) ||
@@ -1292,8 +1336,16 @@ function handleContentEvent(payload, tabId) {
   bucket.count += 1;
   contentEventBuckets.set(tabId, bucket);
 
-  // Page titles can carry private text (mail subjects, document names) and no
-  // decision uses them, so they are never persisted.
+  // Page titles can carry private text (mail subjects, document names), so they are never
+  // persisted. The topic check holds the title and snippet in memory for the open tab only.
+  if (payload.actionType === 'PAGE_SIGNALS') {
+    pageSignals.set(tabId, {
+      url: payload.url, title: payload.pageTitle || '', snippet: payload.pageText || '', video: payload.hasVideo === true,
+    });
+    evaluateDrift(payload.url, tabId, { dwellCheck: true, signalsWaited: true });
+    return;
+  }
+
   const extras = {};
   if (typeof payload.dwellMs === 'number') extras.dwellMs = payload.dwellMs;
   if (typeof payload.dwellDeltaMs === 'number') extras.dwellDeltaMs = payload.dwellDeltaMs;
@@ -1348,8 +1400,9 @@ function handleContentEvent(payload, tabId) {
 let lastEvaluatedUrl = null;
 let lastEvaluatedTime = 0;
 const DRIFT_DEBOUNCE_MS = 5000;
+const SIGNALS_WAIT_MS = 1500;
 
-function evaluateDrift(url, tabId, { dwellCheck = false } = {}) {
+function evaluateDrift(url, tabId, { dwellCheck = false, signalsWaited = false } = {}) {
   const epoch = getStorageGeneration();
   getLocalIfCurrent(['activeSession', 'customDistractionSites', 'trackingEnabled'], epoch, (result) => {
     if (result.trackingEnabled === false) return;
@@ -1391,22 +1444,37 @@ function evaluateDrift(url, tabId, { dwellCheck = false } = {}) {
     }
 
     const activePolicy = session.heuristicPolicy || heuristicPolicy || buildDefaultPolicy('deep_work', 'balanced');
-    const policyDrift = evaluatePolicyDrift({
+    const signals = pageSignalsFor(tabId, url);
+    const decision = decideDrift({
       intent: session.intent,
       url,
+      title: signals?.title || '',
+      snippet: signals?.snippet || '',
+      signals: { video: signals?.video === true },
       events: sessionEvents(session),
       policy: activePolicy,
       now: Date.now(),
       relatedHostnames: relatedHostnamesList(),
+      sessionAligned: alignedKeys(session),
+      driftedHosts: driftedHosts(session),
     });
 
-    if (policyDrift.shouldIntervene) {
-      triggerIntervention(policyDrift.reasonLabel || 'Your recent browsing no longer matches your declared intent.', tabId);
+    // Inferred outcomes wait a moment for the page's own title and snippet, which may show the topic.
+    if (decision.outcome !== 'silent' && !decision.explicit && !signals && !signalsWaited && !dwellCheck) {
+      setTimeout(() => evaluateDrift(url, tabId, { dwellCheck: true, signalsWaited: true }), SIGNALS_WAIT_MS);
+      return;
+    }
+    if (decision.outcome === 'lock') {
+      triggerIntervention(decision.reasonLabel || 'Your recent browsing no longer matches your declared intent.', tabId);
+      return;
+    }
+    if (decision.outcome === 'checkin') {
+      void checkins.maybeShow({ tabId, url, decision });
       return;
     }
     // Optional AI is a second opinion; it never overrules an explicit allow
-    // or a session-related correction.
-    if (policyDrift.explicit || dwellCheck) return;
+    // or a session-related correction, and it can only ask, never lock.
+    if (decision.explicit || dwellCheck) return;
 
     checkDriftLLM(session.intent, url, sessionEvents(session)).then(res => {
       if (epoch !== getStorageGeneration() || isStorageDeletionActive()) return;
@@ -1417,11 +1485,10 @@ function evaluateDrift(url, tabId, { dwellCheck = false } = {}) {
             const cooldowns = new Map(storageResult.overrideCooldowns || []);
             if (isDomainOnCooldown(extractDomain(url), cooldowns)) return;
 
-            const fire = () => triggerIntervention('Your recent browsing no longer matches your declared intent.', tabId);
-            if (!tabId) {
-              fire();
-              return;
-            }
+            const fire = () => checkins.maybeShow({
+              tabId, url, decision: { reasonLabel: 'The AI second opinion thinks this page may not be related to your task.' },
+            });
+            if (!tabId) return;
             chrome.tabs.get(tabId, (tab) => {
               if (epoch !== getStorageGeneration() || isStorageDeletionActive()) return;
               if (chrome.runtime.lastError || !tab) return;

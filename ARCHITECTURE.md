@@ -10,7 +10,8 @@ Full detail lives in [`docs/architecture.md`](docs/architecture.md); storage lay
 | Service worker | `background.js` | Owns session state, drift pipeline, alarms, history retention. Terminated when idle; state is restored from `storage.local` and alarms on wake. |
 | Content scripts | `page-tracker.js`, `intervention-overlay.js`, `content.js` | Report dwell, render the lock overlay. Untrusted page context: they can only send an allowlisted set of messages. |
 | Extension pages | `newtab`, `popup`, `options`, `history`, `analytics`, `diagnostics`, `intervention` | UI. Only these may mutate session or settings state. |
-| Drift logic | `heuristic-policy.js`, `drift.js`, `drift-cache.js` | Local rules decide locks; optional LLM verdict is a second opinion. |
+| Drift logic | `drift-decision.js`, `heuristic-policy.js`, `drift.js`, `drift-cache.js` | `decideDrift` returns silent, check-in or lock from local rules; the optional LLM verdict can only turn silence into a check-in. |
+| Check-in | `checkin-controller.js`, `checkin-prompt.js` | Small non-blocking prompt; answers are stored on the active session only. |
 | LLM | `providers.js`, `llm.js`, `llm-backoff.js` | Calls only the user-selected provider with minimized context. |
 | Storage | `storage-authority.js`, `storage-client.js`, `storage-queue.js`, `privacy-utils.js` | Epoch-guarded serialized writes, sanitization, redaction. |
 | Diagnostics | `error-log.js`, `diagnostics.*` | Local, redacted, bounded error log with manual copy/export. |

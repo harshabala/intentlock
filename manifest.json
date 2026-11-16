@@ -32,7 +32,7 @@
   "content_scripts": [
     {
       "matches": ["https://*/*", "http://*/*"],
-      "js": ["page-tracker.js", "intervention-overlay.js", "content.js"],
+      "js": ["page-tracker.js", "intervention-overlay.js", "checkin-prompt.js", "content.js"],
       "run_at": "document_idle"
     }
   ],
