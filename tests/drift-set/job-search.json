@@ -1,0 +1,290 @@
+{
+  "labelled_by": "agent",
+  "review": "pending-owner",
+  "schema_version": 1,
+  "category": "job-search",
+  "sequences": [
+    {
+      "id": "job-01",
+      "category": "job-search",
+      "intent": "Apply for product manager jobs and update my resume",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://www.linkedin.com/jobs/search/?keywords=product+manager&location=Remote",
+          "title": "Product Manager jobs | LinkedIn",
+          "text": "Jobs.",
+          "dwell_s": 150,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.indeed.com/jobs?q=product+manager&l=remote",
+          "title": "Product Manager jobs - Indeed",
+          "text": "Jobs.",
+          "dwell_s": 120,
+          "t_s": 153,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://boards.greenhouse.io/acme/jobs/4012345",
+          "title": "Senior Product Manager at Acme",
+          "text": "Job posting.",
+          "dwell_s": 140,
+          "t_s": 276,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://docs.google.com/document/d/1Resume/edit",
+          "title": "Resume 2026 - Google Docs",
+          "text": "Resume.",
+          "dwell_s": 300,
+          "t_s": 419,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.reddit.com/r/memes/",
+          "title": "r/memes",
+          "text": "Memes.",
+          "dwell_s": 120,
+          "t_s": 722,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "job-02",
+      "category": "job-search",
+      "intent": "Prepare for the interview at Acme next Tuesday",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://www.glassdoor.com/Interview/Acme-Interview-Questions-E12345.htm",
+          "title": "Acme Interview Questions | Glassdoor",
+          "text": "Questions.",
+          "dwell_s": 170,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.acme-corp.example/about",
+          "title": "About Acme",
+          "text": "Company.",
+          "dwell_s": 100,
+          "t_s": 173,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.linkedin.com/in/interviewer-name/",
+          "title": "Interviewer Name | LinkedIn",
+          "text": "Profile.",
+          "dwell_s": 60,
+          "t_s": 276,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=Int3rv1ewPr",
+          "title": "Common behavioral interview questions - YouTube",
+          "text": "Video.",
+          "dwell_s": 600,
+          "t_s": 339,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.levels.fyi/companies/acme/salaries",
+          "title": "Acme salaries - Levels.fyi",
+          "text": "Salaries.",
+          "dwell_s": 90,
+          "t_s": 942,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ],
+      "debatable": [
+        {
+          "visit": 4,
+          "reason": "Salary research before an interview: relevant job-search prep; unlisted host."
+        }
+      ]
+    },
+    {
+      "id": "job-03",
+      "category": "job-search",
+      "intent": "Write cover letters for three applications",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://docs.google.com/document/d/1Cover1/edit",
+          "title": "Cover letter - Acme - Google Docs",
+          "text": "Letter.",
+          "dwell_s": 300,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://docs.google.com/document/d/1Cover2/edit",
+          "title": "Cover letter - Globex - Google Docs",
+          "text": "Letter.",
+          "dwell_s": 280,
+          "t_s": 303,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.linkedin.com/company/globex/",
+          "title": "Globex | LinkedIn",
+          "text": "Company.",
+          "dwell_s": 70,
+          "t_s": 586,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.facebook.com/",
+          "title": "Facebook",
+          "text": "Feed.",
+          "dwell_s": 100,
+          "t_s": 659,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "job-04",
+      "category": "job-search",
+      "intent": "Track and follow up on my job applications",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://airtable.com/appJobs/tblApps",
+          "title": "Job applications - Airtable",
+          "text": "Tracker.",
+          "dwell_s": 200,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://mail.google.com/mail/u/0/#search/application",
+          "title": "Search: application - Gmail",
+          "text": "Mail.",
+          "dwell_s": 100,
+          "t_s": 203,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.linkedin.com/jobs/tracker/",
+          "title": "My Jobs | LinkedIn",
+          "text": "Tracker.",
+          "dwell_s": 80,
+          "t_s": 306,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "job-05",
+      "category": "job-search",
+      "intent": "Research salary expectations for a data engineer role",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://www.levels.fyi/t/software-engineer/focus/data-engineer",
+          "title": "Data Engineer salaries - Levels.fyi",
+          "text": "Salaries.",
+          "dwell_s": 140,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.glassdoor.com/Salaries/data-engineer-salary-SRCH_KO0,13.htm",
+          "title": "Data Engineer Salaries | Glassdoor",
+          "text": "Salaries.",
+          "dwell_s": 120,
+          "t_s": 143,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.reddit.com/r/dataengineering/comments/1sal/salary_thread_2026/",
+          "title": "Salary thread 2026 : r/dataengineering",
+          "text": "Thread.",
+          "dwell_s": 200,
+          "t_s": 266,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ],
+      "debatable": [
+        {
+          "visit": 2,
+          "reason": "Forum thread with salary data: relevant, forum category."
+        }
+      ]
+    },
+    {
+      "id": "job-06",
+      "category": "job-search",
+      "intent": "Update my portfolio site and apply to design roles",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://www.behance.net/gallery/123/my-project",
+          "title": "My project on Behance",
+          "text": "Portfolio.",
+          "dwell_s": 140,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://dribbble.com/jobs",
+          "title": "Design jobs | Dribbble",
+          "text": "Jobs.",
+          "dwell_s": 120,
+          "t_s": 143,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.figma.com/design/Port/portfolio",
+          "title": "Portfolio - Figma",
+          "text": "Portfolio.",
+          "dwell_s": 240,
+          "t_s": 266,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://dribbble.com/shots/popular",
+          "title": "Popular shots | Dribbble",
+          "text": "Shots.",
+          "dwell_s": 180,
+          "t_s": 509,
+          "via": "load",
+          "label": "drift"
+        }
+      ],
+      "debatable": [
+        {
+          "visit": 3,
+          "reason": "Browsing popular shots on a design site: inspiration or procrastination."
+        }
+      ]
+    }
+  ]
+}

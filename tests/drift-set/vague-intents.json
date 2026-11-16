@@ -1,0 +1,312 @@
+{
+  "labelled_by": "agent",
+  "review": "pending-owner",
+  "schema_version": 1,
+  "category": "vague-intents",
+  "sequences": [
+    {
+      "id": "vag-01",
+      "category": "vague-intents",
+      "intent": "work",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://docs.google.com/document/d/1Misc/edit",
+          "title": "Untitled document",
+          "text": "Doc.",
+          "dwell_s": 300,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.tiktok.com/foryou",
+          "title": "TikTok",
+          "text": "FYP.",
+          "dwell_s": 200,
+          "t_s": 303,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://github.com/acme/app",
+          "title": "acme/app",
+          "text": "Repo.",
+          "dwell_s": 120,
+          "t_s": 506,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "vag-02",
+      "category": "vague-intents",
+      "intent": "stuff",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://mail.google.com/mail/u/0/#inbox",
+          "title": "Inbox",
+          "text": "Mail.",
+          "dwell_s": 100,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.google.com/search?q=stuff",
+          "title": "stuff - Google Search",
+          "text": "Results.",
+          "dwell_s": 15,
+          "t_s": 103,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.netflix.com/browse",
+          "title": "Netflix",
+          "text": "Browse.",
+          "dwell_s": 100,
+          "t_s": 121,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "vag-03",
+      "category": "vague-intents",
+      "intent": "Get things done",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://todoist.com/app/today",
+          "title": "Today - Todoist",
+          "text": "Tasks.",
+          "dwell_s": 150,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://docs.google.com/document/d/1Task/edit",
+          "title": "Task notes",
+          "text": "Notes.",
+          "dwell_s": 250,
+          "t_s": 153,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=V4gu3One1",
+          "title": "Epic compilation - YouTube",
+          "text": "Video.",
+          "dwell_s": 400,
+          "t_s": 406,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "vag-04",
+      "category": "vague-intents",
+      "intent": "catch up",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://mail.google.com/mail/u/0/#inbox",
+          "title": "Inbox",
+          "text": "Mail.",
+          "dwell_s": 200,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://app.slack.com/client/T1/C1",
+          "title": "Slack",
+          "text": "Chat.",
+          "dwell_s": 200,
+          "t_s": 203,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.reddit.com/r/all/",
+          "title": "r/all",
+          "text": "Posts.",
+          "dwell_s": 300,
+          "t_s": 406,
+          "via": "load",
+          "label": "drift"
+        }
+      ],
+      "debatable": [
+        {
+          "visit": 2,
+          "reason": "Intent too vague to say what catch up means; maybe news and social are part of it."
+        }
+      ]
+    },
+    {
+      "id": "vag-05",
+      "category": "vague-intents",
+      "intent": "Do my homework",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://classroom.google.com/c/abc",
+          "title": "Class - Google Classroom",
+          "text": "Assignments.",
+          "dwell_s": 100,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.khanacademy.org/math/algebra",
+          "title": "Algebra | Khan Academy",
+          "text": "Math.",
+          "dwell_s": 300,
+          "t_s": 103,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.roblox.com/home",
+          "title": "Roblox",
+          "text": "Games.",
+          "dwell_s": 400,
+          "t_s": 406,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=Min3craf7Pl",
+          "title": "Minecraft let's play - YouTube",
+          "text": "Gameplay.",
+          "dwell_s": 500,
+          "t_s": 809,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "vag-06",
+      "category": "vague-intents",
+      "intent": "Finish the thing",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://docs.google.com/presentation/d/1Thing/edit",
+          "title": "The thing - Google Slides",
+          "text": "Slides.",
+          "dwell_s": 400,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.canva.com/design/DAThing/edit",
+          "title": "The thing - Canva",
+          "text": "Design.",
+          "dwell_s": 200,
+          "t_s": 403,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "vag-07",
+      "category": "vague-intents",
+      "intent": "Look stuff up",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Special:Random",
+          "title": "Random page - Wikipedia",
+          "text": "Random page.",
+          "dwell_s": 90,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.google.com/search?q=how+do+airplanes+fly",
+          "title": "how do airplanes fly - Google Search",
+          "text": "Results.",
+          "dwell_s": 15,
+          "t_s": 93,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.nasa.gov/aeronautics/",
+          "title": "Aeronautics | NASA",
+          "text": "Aero.",
+          "dwell_s": 100,
+          "t_s": 111,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=Fly1ngWhy1",
+          "title": "How do airplanes fly? - YouTube",
+          "text": "Explainer.",
+          "dwell_s": 300,
+          "t_s": 214,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "vag-08",
+      "category": "vague-intents",
+      "intent": "Personal admin",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://mail.google.com/mail/u/0/#inbox",
+          "title": "Inbox",
+          "text": "Mail.",
+          "dwell_s": 100,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://secure.chase.com/web/auth/dashboard",
+          "title": "Accounts | Chase",
+          "text": "Accounts.",
+          "dwell_s": 90,
+          "t_s": 103,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.dmv.example/renew",
+          "title": "Renew registration | DMV",
+          "text": "Renew.",
+          "dwell_s": 120,
+          "t_s": 196,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.espn.com/",
+          "title": "ESPN",
+          "text": "Scores.",
+          "dwell_s": 120,
+          "t_s": 319,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    }
+  ]
+}

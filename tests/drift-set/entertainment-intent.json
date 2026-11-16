@@ -1,0 +1,321 @@
+{
+  "labelled_by": "agent",
+  "review": "pending-owner",
+  "schema_version": 1,
+  "category": "entertainment-intent",
+  "sequences": [
+    {
+      "id": "ent-01",
+      "category": "entertainment-intent",
+      "intent": "Relax and watch some shows tonight",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://www.netflix.com/browse",
+          "title": "Netflix",
+          "text": "Browse.",
+          "dwell_s": 120,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.netflix.com/watch/80123456",
+          "title": "Watch show | Netflix",
+          "text": "Playing.",
+          "dwell_s": 2400,
+          "t_s": 123,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.hulu.com/",
+          "title": "Hulu",
+          "text": "Home.",
+          "dwell_s": 90,
+          "t_s": 2526,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "ent-02",
+      "category": "entertainment-intent",
+      "intent": "Play some games and chill after work",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://store.steampowered.com/",
+          "title": "Welcome to Steam",
+          "text": "Store.",
+          "dwell_s": 100,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.twitch.tv/directory/game/Minecraft",
+          "title": "Minecraft - Twitch",
+          "text": "Streams.",
+          "dwell_s": 600,
+          "t_s": 103,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.reddit.com/r/gaming/",
+          "title": "r/gaming",
+          "text": "Posts.",
+          "dwell_s": 300,
+          "t_s": 706,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.reddit.com/r/minecraft/",
+          "title": "r/minecraft",
+          "text": "Posts.",
+          "dwell_s": 200,
+          "t_s": 1009,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "ent-03",
+      "category": "entertainment-intent",
+      "intent": "Browse and scroll for fun, taking a break",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://www.reddit.com/r/all/",
+          "title": "r/all",
+          "text": "Posts.",
+          "dwell_s": 300,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.instagram.com/",
+          "title": "Instagram",
+          "text": "Feed.",
+          "dwell_s": 240,
+          "t_s": 303,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.youtube.com/",
+          "title": "YouTube",
+          "text": "Home.",
+          "dwell_s": 120,
+          "t_s": 546,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://9gag.com/",
+          "title": "9GAG",
+          "text": "Memes.",
+          "dwell_s": 200,
+          "t_s": 669,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "ent-04",
+      "category": "entertainment-intent",
+      "intent": "Watch the match and enjoy the weekend",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://www.espn.com/soccer/match/_/gameId/123",
+          "title": "Match - ESPN",
+          "text": "Live match.",
+          "dwell_s": 3000,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.reddit.com/r/soccer/",
+          "title": "r/soccer",
+          "text": "Match thread.",
+          "dwell_s": 600,
+          "t_s": 3003,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://x.com/search?q=%23matchday",
+          "title": "#matchday - Search / X",
+          "text": "Posts.",
+          "dwell_s": 200,
+          "t_s": 3606,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "ent-05",
+      "category": "entertainment-intent",
+      "intent": "Watch anime and relax",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://www.crunchyroll.com/",
+          "title": "Crunchyroll",
+          "text": "Anime.",
+          "dwell_s": 100,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.crunchyroll.com/watch/GR123/episode-4",
+          "title": "Episode 4 - Crunchyroll",
+          "text": "Playing.",
+          "dwell_s": 1400,
+          "t_s": 103,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://myanimelist.net/anime/1/Cowboy_Bebop",
+          "title": "Cowboy Bebop - MyAnimeList",
+          "text": "Info.",
+          "dwell_s": 100,
+          "t_s": 1506,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "ent-06",
+      "category": "entertainment-intent",
+      "intent": "Watch some YouTube and relax",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://www.youtube.com/",
+          "title": "YouTube",
+          "text": "Home.",
+          "dwell_s": 60,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=R3l4xV1d01",
+          "title": "Cozy cooking video - YouTube",
+          "text": "Video.",
+          "dwell_s": 900,
+          "t_s": 63,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.youtube.com/shorts/Sh0rtR3l4x1",
+          "title": "Short #shorts - YouTube",
+          "text": "Short.",
+          "dwell_s": 40,
+          "t_s": 966,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=R3l4xV1d02",
+          "title": "Cats being cats - YouTube",
+          "text": "Video.",
+          "dwell_s": 500,
+          "t_s": 1009,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "ent-07",
+      "category": "entertainment-intent",
+      "intent": "Spend my break scrolling and having fun",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://www.tiktok.com/foryou",
+          "title": "TikTok",
+          "text": "For You.",
+          "dwell_s": 300,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.facebook.com/",
+          "title": "Facebook",
+          "text": "Feed.",
+          "dwell_s": 120,
+          "t_s": 303,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://docs.google.com/spreadsheets/d/1WorkSheet/edit",
+          "title": "Work tracker - Google Sheets",
+          "text": "Tracker. Opened a work document during a break.",
+          "dwell_s": 200,
+          "t_s": 426,
+          "via": "load",
+          "label": "drift"
+        }
+      ],
+      "debatable": [
+        {
+          "visit": 2,
+          "reason": "Intent is leisure; work is not on-intent but this is hardly a harmful lock."
+        }
+      ]
+    },
+    {
+      "id": "ent-08",
+      "category": "entertainment-intent",
+      "intent": "Watch a movie and eat pizza with friends",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://www.netflix.com/title/70123456",
+          "title": "Movie | Netflix",
+          "text": "Movie.",
+          "dwell_s": 300,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.imdb.com/title/tt0133093/",
+          "title": "The Matrix (1999) - IMDb",
+          "text": "Details.",
+          "dwell_s": 80,
+          "t_s": 303,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.doordash.com/store/pizza-place-123",
+          "title": "Pizza Place - DoorDash",
+          "text": "Order.",
+          "dwell_s": 140,
+          "t_s": 386,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    }
+  ]
+}

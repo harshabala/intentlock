@@ -1,0 +1,589 @@
+{
+  "labelled_by": "agent",
+  "review": "pending-owner",
+  "schema_version": 1,
+  "category": "video-for-work",
+  "sequences": [
+    {
+      "id": "vid-01",
+      "category": "video-for-work",
+      "intent": "Learn how to set up Kubernetes ingress",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://kubernetes.io/docs/concepts/services-networking/ingress/",
+          "title": "Ingress | Kubernetes",
+          "text": "An API object that manages external access to the services in a cluster.",
+          "dwell_s": 120,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=80Ew_fsV4rM",
+          "title": "Kubernetes Ingress explained - YouTube",
+          "text": "Tutorial: configuring an NGINX ingress controller.",
+          "dwell_s": 900,
+          "t_s": 123,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=u948CURLDJA",
+          "title": "Kubernetes Ingress TLS with cert-manager - YouTube",
+          "text": "Tutorial.",
+          "dwell_s": 600,
+          "t_s": 1026,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=Zz9Yb3kPqRs",
+          "title": "Reacting to cursed food combinations - YouTube",
+          "text": "Reaction video.",
+          "dwell_s": 400,
+          "t_s": 1629,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "vid-02",
+      "category": "video-for-work",
+      "intent": "Learn to edit video in DaVinci Resolve",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://www.youtube.com/watch?v=Resolve01aBc",
+          "title": "DaVinci Resolve 18 full beginner course - YouTube",
+          "text": "Beginner course.",
+          "dwell_s": 1200,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.blackmagicdesign.com/products/davinciresolve/training",
+          "title": "DaVinci Resolve Training | Blackmagic Design",
+          "text": "Official training.",
+          "dwell_s": 100,
+          "t_s": 1203,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=Resolve02dEf",
+          "title": "Color grading basics in Resolve - YouTube",
+          "text": "Color grading tutorial.",
+          "dwell_s": 800,
+          "t_s": 1306,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "vid-03",
+      "category": "video-for-work",
+      "intent": "Watch the conference talk on distributed tracing for my team notes",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://www.youtube.com/watch?v=Trace0ConF1",
+          "title": "Distributed Tracing in Practice - KubeCon talk - YouTube",
+          "text": "Conference talk.",
+          "dwell_s": 1500,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://docs.google.com/document/d/1Notes/edit",
+          "title": "Talk notes: distributed tracing - Google Docs",
+          "text": "Notes.",
+          "dwell_s": 200,
+          "t_s": 1503,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://opentelemetry.io/docs/concepts/signals/traces/",
+          "title": "Traces | OpenTelemetry",
+          "text": "Traces give us the big picture.",
+          "dwell_s": 120,
+          "t_s": 1706,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "vid-04",
+      "category": "video-for-work",
+      "intent": "Follow the guitar lesson on fingerstyle basics",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://www.youtube.com/watch?v=Guit4rLes5n",
+          "title": "Fingerstyle guitar for beginners lesson 1 - YouTube",
+          "text": "Lesson.",
+          "dwell_s": 900,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=Guit4rLes6n",
+          "title": "Fingerstyle guitar for beginners lesson 2 - YouTube",
+          "text": "Lesson.",
+          "dwell_s": 840,
+          "t_s": 903,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=Fn7Tr1ckSh0t",
+          "title": "Insane basketball trick shots - YouTube",
+          "text": "Compilation.",
+          "dwell_s": 300,
+          "t_s": 1746,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "vid-05",
+      "category": "video-for-work",
+      "intent": "Study the lecture series on linear algebra",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://www.youtube.com/watch?v=fNk_zzaMoSs",
+          "title": "Vectors | Chapter 1, Essence of linear algebra - YouTube",
+          "text": "Lecture.",
+          "dwell_s": 600,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=k7RM-ot2NWY",
+          "title": "Linear transformations and matrices | Chapter 3 - YouTube",
+          "text": "Lecture.",
+          "dwell_s": 660,
+          "t_s": 603,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/",
+          "title": "Linear Algebra | Mathematics | MIT OpenCourseWare",
+          "text": "Course materials.",
+          "dwell_s": 90,
+          "t_s": 1266,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=Sp0rtsH1gh",
+          "title": "NFL top plays of the week - YouTube",
+          "text": "Highlights.",
+          "dwell_s": 240,
+          "t_s": 1359,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "vid-06",
+      "category": "video-for-work",
+      "intent": "Write the product demo script",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://docs.google.com/document/d/1Demo/edit",
+          "title": "Product demo script - Google Docs",
+          "text": "Scene 1: login.",
+          "dwell_s": 200,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=C0mpet1t0r",
+          "title": "Competitor X product demo 2026 - YouTube",
+          "text": "Demo walkthrough from a competitor.",
+          "dwell_s": 280,
+          "t_s": 203,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.loom.com/share/abc123",
+          "title": "Demo draft recording - Loom",
+          "text": "Our draft walkthrough.",
+          "dwell_s": 150,
+          "t_s": 486,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=Pr4nkC0mp",
+          "title": "Funniest office pranks - YouTube",
+          "text": "Pranks.",
+          "dwell_s": 220,
+          "t_s": 639,
+          "via": "load",
+          "label": "drift"
+        }
+      ],
+      "debatable": [
+        {
+          "visit": 1,
+          "reason": "Competitor demo video for script research; opaque URL."
+        }
+      ]
+    },
+    {
+      "id": "vid-07",
+      "category": "video-for-work",
+      "intent": "Practice yoga with a 20-minute routine",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://www.youtube.com/watch?v=YogaMorn20",
+          "title": "20-minute morning yoga flow - YouTube",
+          "text": "Yoga routine.",
+          "dwell_s": 1200,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=YogaStre20",
+          "title": "20-minute yoga for flexibility - YouTube",
+          "text": "Yoga routine.",
+          "dwell_s": 1200,
+          "t_s": 1203,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "vid-08",
+      "category": "video-for-work",
+      "intent": "Learn SQL window functions",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://www.postgresql.org/docs/current/tutorial-window.html",
+          "title": "PostgreSQL: Documentation: Window Functions",
+          "text": "A window function performs a calculation across a set of rows.",
+          "dwell_s": 130,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=Wind0wFns1",
+          "title": "SQL window functions explained with examples - YouTube",
+          "text": "Tutorial.",
+          "dwell_s": 700,
+          "t_s": 133,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://mode.com/sql-tutorial/sql-window-functions/",
+          "title": "SQL Window Functions | Mode",
+          "text": "Tutorial.",
+          "dwell_s": 150,
+          "t_s": 836,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=TrU3Cr1me2",
+          "title": "True crime: the vanishing of a heiress - YouTube",
+          "text": "Documentary.",
+          "dwell_s": 500,
+          "t_s": 989,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "vid-09",
+      "category": "video-for-work",
+      "intent": "Watch the new-hire security awareness training video",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://acme.learn.example/videos/security-awareness-2026",
+          "title": "Security Awareness Training 2026",
+          "text": "Video 1 of 4.",
+          "dwell_s": 900,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://vimeo.com/765432109",
+          "title": "Phishing recognition - Vimeo",
+          "text": "Training video.",
+          "dwell_s": 420,
+          "t_s": 903,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "vid-10",
+      "category": "video-for-work",
+      "intent": "Take the Photoshop layer masks tutorial",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://www.youtube.com/watch?v=PsMasks101",
+          "title": "Photoshop layer masks for beginners - YouTube",
+          "text": "Tutorial.",
+          "dwell_s": 800,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://helpx.adobe.com/photoshop/using/layer-masks.html",
+          "title": "Layer masks in Photoshop | Adobe",
+          "text": "Masks.",
+          "dwell_s": 120,
+          "t_s": 803,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=PsMasks102",
+          "title": "Advanced masking techniques in Photoshop - YouTube",
+          "text": "Tutorial.",
+          "dwell_s": 700,
+          "t_s": 926,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "vid-11",
+      "category": "video-for-work",
+      "intent": "Review recorded user interviews for the research synthesis",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://www.loom.com/share/interview-07",
+          "title": "User interview 07 - Loom",
+          "text": "Recording of user interview.",
+          "dwell_s": 900,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.loom.com/share/interview-08",
+          "title": "User interview 08 - Loom",
+          "text": "Recording of user interview.",
+          "dwell_s": 880,
+          "t_s": 903,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://miro.com/app/board/uXjVAbC/",
+          "title": "Research synthesis - Miro",
+          "text": "Affinity map.",
+          "dwell_s": 240,
+          "t_s": 1786,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "vid-12",
+      "category": "video-for-work",
+      "intent": "Learn how to bake sourdough bread",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://www.youtube.com/watch?v=Sourd0ugh1",
+          "title": "Beginner sourdough step by step - YouTube",
+          "text": "Tutorial.",
+          "dwell_s": 900,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.kingarthurbaking.com/recipes/sourdough-bread-recipe",
+          "title": "Sourdough Bread Recipe | King Arthur Baking",
+          "text": "Recipe.",
+          "dwell_s": 180,
+          "t_s": 903,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.reddit.com/r/Sourdough/comments/1stu/my_starter_wont_rise/",
+          "title": "My starter won't rise : r/Sourdough",
+          "text": "Troubleshooting.",
+          "dwell_s": 130,
+          "t_s": 1086,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "vid-13",
+      "category": "video-for-work",
+      "intent": "Read the API documentation for the payments provider",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://stripe.com/docs/api/payment_intents",
+          "title": "Payment Intents | Stripe API Reference",
+          "text": "A PaymentIntent guides you through the process of collecting a payment.",
+          "dwell_s": 200,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=Stripe0Ho0kah",
+          "title": "Insane fan theory about a TV finale - YouTube",
+          "text": "Theory video.",
+          "dwell_s": 260,
+          "t_s": 203,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://stripe.com/docs/webhooks",
+          "title": "Webhooks | Stripe Documentation",
+          "text": "Webhooks.",
+          "dwell_s": 150,
+          "t_s": 466,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "vid-14",
+      "category": "video-for-work",
+      "intent": "Edit the podcast episode 42",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://app.descript.com/projects/ep42",
+          "title": "Episode 42 - Descript",
+          "text": "Transcript editor.",
+          "dwell_s": 600,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=Podcast0Ed1t",
+          "title": "How to remove filler words in audio editing - YouTube",
+          "text": "Tutorial.",
+          "dwell_s": 300,
+          "t_s": 603,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://open.spotify.com/playlist/37i9dQZF1DXcBWIGoYBM5M",
+          "title": "Today's Top Hits - playlist - Spotify",
+          "text": "Playlist.",
+          "dwell_s": 600,
+          "t_s": 906,
+          "via": "load",
+          "label": "drift"
+        }
+      ],
+      "debatable": [
+        {
+          "visit": 2,
+          "reason": "Music while editing audio is normal for many people; music streaming is not in the site list at all."
+        }
+      ]
+    },
+    {
+      "id": "vid-15",
+      "category": "video-for-work",
+      "intent": "Relax and watch a movie tonight",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://www.netflix.com/browse",
+          "title": "Netflix",
+          "text": "Browse.",
+          "dwell_s": 90,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.netflix.com/watch/70123456",
+          "title": "Watch Movie | Netflix",
+          "text": "Playback.",
+          "dwell_s": 5400,
+          "t_s": 93,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "vid-16",
+      "category": "video-for-work",
+      "intent": "Watch some YouTube to unwind after work",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://www.youtube.com/",
+          "title": "YouTube",
+          "text": "Home.",
+          "dwell_s": 60,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=Unwind0001",
+          "title": "Relaxing nature documentary - YouTube",
+          "text": "Documentary.",
+          "dwell_s": 1800,
+          "t_s": 63,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=Unwind0002",
+          "title": "Best fails of the week - YouTube",
+          "text": "Compilation.",
+          "dwell_s": 600,
+          "t_s": 1866,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    }
+  ]
+}

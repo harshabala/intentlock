@@ -1,0 +1,785 @@
+{
+  "labelled_by": "agent",
+  "review": "pending-owner",
+  "schema_version": 1,
+  "category": "unlisted-hosts",
+  "sequences": [
+    {
+      "id": "unl-01",
+      "category": "unlisted-hosts",
+      "intent": "Finish the quarterly report for finance",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://wiki.acme-corp.example/finance/quarterly-process",
+          "title": "Quarterly close process - Acme wiki",
+          "text": "Steps for quarterly close.",
+          "dwell_s": 150,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://erp.acme-corp.example/reports/gl-detail",
+          "title": "GL detail report - Acme ERP",
+          "text": "Ledger lines.",
+          "dwell_s": 200,
+          "t_s": 153,
+          "via": "load",
+          "label": "serves-intent",
+          "note": "internal tool, nothing matches"
+        },
+        {
+          "url": "https://tableau.acme-corp.example/views/revenue/summary",
+          "title": "Revenue summary - Tableau",
+          "text": "Chart.",
+          "dwell_s": 180,
+          "t_s": 356,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.celebritygossip.example/kardashian-news",
+          "title": "Celebrity gossip: the latest",
+          "text": "Gossip.",
+          "dwell_s": 200,
+          "t_s": 539,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "unl-02",
+      "category": "unlisted-hosts",
+      "intent": "Debug the production outage",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://status.acme-corp.example/",
+          "title": "Acme status",
+          "text": "Incident open.",
+          "dwell_s": 60,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://logs.acme-corp.example/search?q=error%20level%3Aerror",
+          "title": "Logs - search",
+          "text": "Error spikes.",
+          "dwell_s": 200,
+          "t_s": 63,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://sentry.io/organizations/acme/issues/12345/",
+          "title": "TypeError: cannot read properties of undefined - Sentry",
+          "text": "Stack trace.",
+          "dwell_s": 240,
+          "t_s": 266,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://pagerduty.com/incidents/PXYZ123",
+          "title": "Incident #4821 - PagerDuty",
+          "text": "Incident.",
+          "dwell_s": 90,
+          "t_s": 509,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "unl-03",
+      "category": "unlisted-hosts",
+      "intent": "Learn the Go language basics",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://go.dev/tour/welcome/1",
+          "title": "A Tour of Go",
+          "text": "Welcome.",
+          "dwell_s": 300,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://gobyexample.com/goroutines",
+          "title": "Go by Example: Goroutines",
+          "text": "Example.",
+          "dwell_s": 200,
+          "t_s": 303,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://pkg.go.dev/net/http",
+          "title": "http package - net/http - Go Packages",
+          "text": "Package.",
+          "dwell_s": 150,
+          "t_s": 506,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.gopl.io/",
+          "title": "The Go Programming Language",
+          "text": "Book.",
+          "dwell_s": 60,
+          "t_s": 659,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "unl-04",
+      "category": "unlisted-hosts",
+      "intent": "Research local zoning rules for the building permit",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://www.cityofspringfield.example/planning/zoning",
+          "title": "Zoning | City of Springfield",
+          "text": "Zoning.",
+          "dwell_s": 160,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://library.municode.com/il/springfield/codes/code_of_ordinances",
+          "title": "Springfield, Illinois Code of Ordinances | Municode",
+          "text": "Ordinances.",
+          "dwell_s": 240,
+          "t_s": 163,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.cityofspringfield.example/permits/building-permit-application.pdf",
+          "title": "Building Permit Application.pdf",
+          "text": "Form.",
+          "dwell_s": 200,
+          "t_s": 406,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "unl-05",
+      "category": "unlisted-hosts",
+      "intent": "Write unit tests for the cart service",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://jestjs.io/docs/mock-functions",
+          "title": "Mock Functions · Jest",
+          "text": "Mocks.",
+          "dwell_s": 130,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://github.com/acme/cart-service/blob/main/src/cart.js",
+          "title": "cart-service/src/cart.js",
+          "text": "Cart.",
+          "dwell_s": 150,
+          "t_s": 133,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://testing-library.com/docs/queries/about",
+          "title": "About Queries | Testing Library",
+          "text": "Queries.",
+          "dwell_s": 100,
+          "t_s": 286,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://martinfowler.com/articles/mocksArentStubs.html",
+          "title": "Mocks Aren't Stubs",
+          "text": "Article.",
+          "dwell_s": 210,
+          "t_s": 389,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ],
+      "debatable": [
+        {
+          "visit": 3,
+          "reason": "Long essay on testing, unlisted host, nothing in the URL."
+        }
+      ]
+    },
+    {
+      "id": "unl-06",
+      "category": "unlisted-hosts",
+      "intent": "Read the product spec and give feedback",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://acme.notion.site/Product-spec-v2-3f4a",
+          "title": "Product spec v2 - Notion",
+          "text": "Spec.",
+          "dwell_s": 280,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.figma.com/proto/AbC/flows?node-id=1",
+          "title": "Prototype - Figma",
+          "text": "Prototype.",
+          "dwell_s": 160,
+          "t_s": 283,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://acme.slack.com/archives/C123/p456",
+          "title": "Thread - Slack",
+          "text": "Thread.",
+          "dwell_s": 90,
+          "t_s": 446,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "unl-07",
+      "category": "unlisted-hosts",
+      "intent": "Learn how to make pasta from scratch",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://www.seriouseats.com/fresh-pasta-dough-recipe",
+          "title": "Fresh Pasta Dough Recipe | Serious Eats",
+          "text": "Recipe.",
+          "dwell_s": 180,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.bonappetit.com/story/how-to-make-pasta",
+          "title": "How to Make Fresh Pasta | Bon Appétit",
+          "text": "Guide.",
+          "dwell_s": 140,
+          "t_s": 183,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=Pasta0Hand1",
+          "title": "Handmade pasta with Nonna - YouTube",
+          "text": "Video.",
+          "dwell_s": 400,
+          "t_s": 326,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "unl-08",
+      "category": "unlisted-hosts",
+      "intent": "Write the SQL query for the monthly revenue dashboard",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://mode.acme-corp.example/editor/reports/abc",
+          "title": "Monthly revenue - Mode",
+          "text": "Query.",
+          "dwell_s": 250,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.sqlstyle.guide/",
+          "title": "SQL Style Guide",
+          "text": "Style.",
+          "dwell_s": 60,
+          "t_s": 253,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://modern-sql.com/feature/filter",
+          "title": "FILTER clause - modern-sql.com",
+          "text": "SQL.",
+          "dwell_s": 90,
+          "t_s": 316,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.buzzfeed.com/quiz/which-pasta-are-you",
+          "title": "Which pasta are you? - BuzzFeed",
+          "text": "Quiz.",
+          "dwell_s": 100,
+          "t_s": 409,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "unl-09",
+      "category": "unlisted-hosts",
+      "intent": "Prepare for the AWS solutions architect exam",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://aws.amazon.com/certification/certified-solutions-architect-associate/",
+          "title": "AWS Certified Solutions Architect - Associate",
+          "text": "Cert.",
+          "dwell_s": 100,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://tutorialsdojo.com/aws-cheat-sheets/",
+          "title": "AWS Cheat Sheets - Tutorials Dojo",
+          "text": "Cheat sheets.",
+          "dwell_s": 300,
+          "t_s": 103,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://explore.skillbuilder.aws/learn",
+          "title": "AWS Skill Builder",
+          "text": "Learn.",
+          "dwell_s": 500,
+          "t_s": 406,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.udemy.com/course/aws-certified-solutions-architect-associate-saa-c03/",
+          "title": "Ultimate AWS Certified Solutions Architect Associate | Udemy",
+          "text": "Course.",
+          "dwell_s": 1200,
+          "t_s": 909,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ],
+      "debatable": [
+        {
+          "visit": 2,
+          "reason": "Skill Builder, long dwell, nothing in URL matches the intent words."
+        }
+      ]
+    },
+    {
+      "id": "unl-10",
+      "category": "unlisted-hosts",
+      "intent": "Read about home composting and set up a bin",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://www.epa.gov/recycle/composting-home",
+          "title": "Composting At Home | US EPA",
+          "text": "Compost.",
+          "dwell_s": 140,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.thespruce.com/how-to-start-composting-4125457",
+          "title": "How to Start Composting | The Spruce",
+          "text": "Guide.",
+          "dwell_s": 160,
+          "t_s": 143,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.homedepot.com/b/Outdoors-Garden-Center-Compost-Bins/N-5yc1vZc7q1",
+          "title": "Compost bins - The Home Depot",
+          "text": "Bins.",
+          "dwell_s": 100,
+          "t_s": 306,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "unl-11",
+      "category": "unlisted-hosts",
+      "intent": "Write the press release for the product launch",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://docs.google.com/document/d/1PR/edit",
+          "title": "Press release - Google Docs",
+          "text": "Draft.",
+          "dwell_s": 220,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.prnewswire.com/news-releases/example-launch-301000000.html",
+          "title": "Example launch - PR Newswire",
+          "text": "Sample release.",
+          "dwell_s": 70,
+          "t_s": 223,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.apstylebook.com/",
+          "title": "AP Stylebook",
+          "text": "Style.",
+          "dwell_s": 40,
+          "t_s": 296,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.tmz.com/",
+          "title": "TMZ",
+          "text": "Gossip.",
+          "dwell_s": 150,
+          "t_s": 339,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "unl-12",
+      "category": "unlisted-hosts",
+      "intent": "Review the security checklist before launch",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://owasp.org/www-project-top-ten/",
+          "title": "OWASP Top Ten | OWASP Foundation",
+          "text": "Top ten.",
+          "dwell_s": 180,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html",
+          "title": "Authentication - OWASP Cheat Sheet Series",
+          "text": "Auth.",
+          "dwell_s": 150,
+          "t_s": 183,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://securityheaders.com/?q=acme.example",
+          "title": "Security Headers scan",
+          "text": "Scan.",
+          "dwell_s": 40,
+          "t_s": 336,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://observatory.mozilla.org/analyze/acme.example",
+          "title": "Mozilla Observatory",
+          "text": "Scan.",
+          "dwell_s": 40,
+          "t_s": 379,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "unl-13",
+      "category": "unlisted-hosts",
+      "intent": "Learn the basics of personal finance and budgeting",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://www.ramseysolutions.com/budgeting/how-to-make-a-budget",
+          "title": "How to Make a Budget | Ramsey",
+          "text": "Budget.",
+          "dwell_s": 180,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.nerdwallet.com/article/finance/how-to-budget",
+          "title": "How to Budget | NerdWallet",
+          "text": "Budget.",
+          "dwell_s": 150,
+          "t_s": 183,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.mint.example/budget-template",
+          "title": "Budget template",
+          "text": "Template.",
+          "dwell_s": 90,
+          "t_s": 336,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.nba.com/games",
+          "title": "NBA Games | NBA.com",
+          "text": "Scores.",
+          "dwell_s": 130,
+          "t_s": 429,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "unl-14",
+      "category": "unlisted-hosts",
+      "intent": "Write the readme for the open source library",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://github.com/acme/library/blob/main/README.md",
+          "title": "library/README.md",
+          "text": "Readme.",
+          "dwell_s": 250,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.makeareadme.com/",
+          "title": "Make a README",
+          "text": "Guide.",
+          "dwell_s": 60,
+          "t_s": 253,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://shields.io/",
+          "title": "Shields.io: Quality metadata badges",
+          "text": "Badges.",
+          "dwell_s": 40,
+          "t_s": 316,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://choosealicense.com/",
+          "title": "Choose a License",
+          "text": "Licenses.",
+          "dwell_s": 50,
+          "t_s": 359,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "unl-15",
+      "category": "unlisted-hosts",
+      "intent": "Review and sign off on the design handoff",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://www.figma.com/design/Hnd/Handoff",
+          "title": "Handoff - Figma",
+          "text": "Design.",
+          "dwell_s": 300,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://zeroheight.com/acme/styleguide",
+          "title": "Style guide - zeroheight",
+          "text": "Guide.",
+          "dwell_s": 140,
+          "t_s": 303,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://storybook.acme-corp.example/?path=/docs/button--docs",
+          "title": "Button - Storybook",
+          "text": "Components.",
+          "dwell_s": 120,
+          "t_s": 446,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "unl-16",
+      "category": "unlisted-hosts",
+      "intent": "Prepare a lesson on photosynthesis for 8th graders",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://www.nationalgeographic.org/encyclopedia/photosynthesis/",
+          "title": "Photosynthesis | National Geographic Society",
+          "text": "Photosynthesis.",
+          "dwell_s": 140,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://phet.colorado.edu/en/simulations/filter?subjects=biology",
+          "title": "Biology simulations | PhET",
+          "text": "Sims.",
+          "dwell_s": 160,
+          "t_s": 143,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=Ph0t0Synth1",
+          "title": "Photosynthesis explained - Crash Course - YouTube",
+          "text": "Video.",
+          "dwell_s": 720,
+          "t_s": 306,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.teachengineering.org/lessons/view/ph",
+          "title": "Lesson | TeachEngineering",
+          "text": "Lesson.",
+          "dwell_s": 110,
+          "t_s": 1029,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "unl-17",
+      "category": "unlisted-hosts",
+      "intent": "Look into the nursery school application process",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://www.cityofspringfield.example/schools/enrollment",
+          "title": "Enrollment | City of Springfield schools",
+          "text": "Enrollment.",
+          "dwell_s": 150,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.greatschools.org/illinois/springfield/",
+          "title": "Springfield schools | GreatSchools",
+          "text": "Schools.",
+          "dwell_s": 190,
+          "t_s": 153,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.reddit.com/r/Parenting/comments/1sch/how_to_choose_a_preschool/",
+          "title": "How to choose a preschool : r/Parenting",
+          "text": "Thread.",
+          "dwell_s": 160,
+          "t_s": 346,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "unl-18",
+      "category": "unlisted-hosts",
+      "intent": "Learn Excel pivot tables",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://support.microsoft.com/en-us/office/create-a-pivottable-to-analyze-worksheet-data",
+          "title": "Create a PivotTable to analyze worksheet data - Microsoft Support",
+          "text": "Guide.",
+          "dwell_s": 150,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://exceljet.net/pivot-tables",
+          "title": "Excel Pivot Tables | Exceljet",
+          "text": "Pivot tables.",
+          "dwell_s": 180,
+          "t_s": 153,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=P1v0tTab1",
+          "title": "Pivot tables for beginners - YouTube",
+          "text": "Tutorial.",
+          "dwell_s": 600,
+          "t_s": 336,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "unl-19",
+      "category": "unlisted-hosts",
+      "intent": "Debug the Dockerfile build failure",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://docs.docker.com/reference/dockerfile/",
+          "title": "Dockerfile reference | Docker Docs",
+          "text": "Reference.",
+          "dwell_s": 200,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://stackoverflow.com/questions/72345678/docker-build-fails-at-npm-install-step",
+          "title": "Docker build fails at npm install step - Stack Overflow",
+          "text": "Answer.",
+          "dwell_s": 80,
+          "t_s": 203,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://hub.docker.com/_/node",
+          "title": "node - Official Image | Docker Hub",
+          "text": "Image.",
+          "dwell_s": 60,
+          "t_s": 286,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    }
+  ]
+}

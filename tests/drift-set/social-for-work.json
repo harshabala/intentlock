@@ -1,0 +1,601 @@
+{
+  "labelled_by": "agent",
+  "review": "pending-owner",
+  "schema_version": 1,
+  "category": "social-for-work",
+  "sequences": [
+    {
+      "id": "soc-01",
+      "category": "social-for-work",
+      "intent": "Update my LinkedIn profile and apply to jobs",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://www.linkedin.com/in/me/edit/",
+          "title": "Edit profile | LinkedIn",
+          "text": "Headline. About.",
+          "dwell_s": 160,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.linkedin.com/jobs/search/?keywords=product%20manager",
+          "title": "Product manager jobs | LinkedIn",
+          "text": "Jobs matching your search.",
+          "dwell_s": 140,
+          "t_s": 163,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.linkedin.com/feed/",
+          "title": "Feed | LinkedIn",
+          "text": "Posts from your network.",
+          "dwell_s": 120,
+          "t_s": 306,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.glassdoor.com/Reviews/Acme-Reviews-E12345.htm",
+          "title": "Acme Reviews | Glassdoor",
+          "text": "Company reviews.",
+          "dwell_s": 100,
+          "t_s": 429,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ],
+      "debatable": [
+        {
+          "visit": 2,
+          "reason": "LinkedIn feed during a job search: networking or scrolling?"
+        }
+      ]
+    },
+    {
+      "id": "soc-02",
+      "category": "social-for-work",
+      "intent": "Answer customer questions on our company X account",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://x.com/notifications/mentions",
+          "title": "Notifications / X",
+          "text": "Mentions of @acmehq.",
+          "dwell_s": 180,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://x.com/acmehq",
+          "title": "Acme (@acmehq) / X",
+          "text": "Posts and replies.",
+          "dwell_s": 120,
+          "t_s": 183,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://x.com/search?q=acmehq%20help",
+          "title": "acmehq help - Search / X",
+          "text": "People talking about us.",
+          "dwell_s": 150,
+          "t_s": 306,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://x.com/home",
+          "title": "Home / X",
+          "text": "For you.",
+          "dwell_s": 200,
+          "t_s": 459,
+          "via": "load",
+          "label": "drift"
+        }
+      ],
+      "debatable": [
+        {
+          "visit": 3,
+          "reason": "Personal timeline vs. company account: indistinguishable by URL."
+        }
+      ]
+    },
+    {
+      "id": "soc-03",
+      "category": "social-for-work",
+      "intent": "Moderate the community Facebook group",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://www.facebook.com/groups/acmecommunity/admin_activities",
+          "title": "Admin activity | Acme Community | Facebook",
+          "text": "Pending posts.",
+          "dwell_s": 150,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.facebook.com/groups/acmecommunity/pending_posts",
+          "title": "Pending posts | Acme Community",
+          "text": "Review pending posts.",
+          "dwell_s": 160,
+          "t_s": 153,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.facebook.com/",
+          "title": "Facebook",
+          "text": "News feed.",
+          "dwell_s": 120,
+          "t_s": 316,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "soc-04",
+      "category": "social-for-work",
+      "intent": "Schedule next week's posts for the brand Instagram",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://business.facebook.com/latest/content_calendar",
+          "title": "Content calendar - Meta Business Suite",
+          "text": "Scheduled posts.",
+          "dwell_s": 200,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.instagram.com/acme_brand/",
+          "title": "Acme (@acme_brand) • Instagram photos and videos",
+          "text": "Our profile.",
+          "dwell_s": 90,
+          "t_s": 203,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.canva.com/design/DAFpost/edit",
+          "title": "Instagram post - Canva",
+          "text": "Draft post.",
+          "dwell_s": 240,
+          "t_s": 296,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.instagram.com/explore/",
+          "title": "Explore • Instagram",
+          "text": "Explore feed.",
+          "dwell_s": 130,
+          "t_s": 539,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "soc-05",
+      "category": "social-for-work",
+      "intent": "Find a fix for the Webpack build error, check r/webpack",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://www.reddit.com/r/webpack/comments/1a2b/module_not_found_error_after_upgrade/",
+          "title": "Module not found error after upgrade : r/webpack",
+          "text": "Fix: update resolve.fallback.",
+          "dwell_s": 110,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://webpack.js.org/configuration/resolve/",
+          "title": "Resolve | webpack",
+          "text": "Configure how modules are resolved.",
+          "dwell_s": 100,
+          "t_s": 113,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://stackoverflow.com/questions/64557638/webpack-5-module-not-found-cant-resolve-fs",
+          "title": "Webpack 5 Module not found: Can't resolve 'fs' - Stack Overflow",
+          "text": "Set resolve.fallback.",
+          "dwell_s": 80,
+          "t_s": 216,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "soc-06",
+      "category": "social-for-work",
+      "intent": "Ask the Python community how to speed up pandas groupby",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://www.reddit.com/r/learnpython/",
+          "title": "r/learnpython",
+          "text": "Ask questions about Python.",
+          "dwell_s": 40,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.reddit.com/r/learnpython/submit",
+          "title": "Submit to r/learnpython",
+          "text": "Create post.",
+          "dwell_s": 150,
+          "t_s": 43,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://stackoverflow.com/questions/ask",
+          "title": "Ask a Question - Stack Overflow",
+          "text": "Ask a public question.",
+          "dwell_s": 120,
+          "t_s": 196,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://pandas.pydata.org/docs/user_guide/groupby.html",
+          "title": "Group by: split-apply-combine — pandas documentation",
+          "text": "Group by.",
+          "dwell_s": 100,
+          "t_s": 319,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ],
+      "debatable": [
+        {
+          "visit": 0,
+          "reason": "Posting a question: asking the community is the task, but the page is a forum home."
+        }
+      ]
+    },
+    {
+      "id": "soc-07",
+      "category": "social-for-work",
+      "intent": "Look for inspiration for the new logo",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://dribbble.com/search/logo-mark",
+          "title": "Logo mark designs on Dribbble",
+          "text": "Logo designs.",
+          "dwell_s": 140,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.behance.net/search/projects?search=brand%20identity",
+          "title": "Brand identity projects on Behance",
+          "text": "Projects.",
+          "dwell_s": 150,
+          "t_s": 143,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.pinterest.com/search/pins/?q=minimal%20logo",
+          "title": "Minimal logo - Pinterest",
+          "text": "Pins.",
+          "dwell_s": 180,
+          "t_s": 296,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.instagram.com/explore/tags/logodesign/",
+          "title": "#logodesign • Instagram",
+          "text": "Hashtag.",
+          "dwell_s": 120,
+          "t_s": 479,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.instagram.com/p/CxyzUnrel/",
+          "title": "Friend's vacation photos • Instagram",
+          "text": "Photos.",
+          "dwell_s": 150,
+          "t_s": 602,
+          "via": "load",
+          "label": "drift"
+        }
+      ],
+      "debatable": [
+        {
+          "visit": 2,
+          "reason": "Pinterest search for logo inspiration: legitimate for a creative task but social_media is block."
+        },
+        {
+          "visit": 3,
+          "reason": "Instagram hashtag search for logo design."
+        }
+      ]
+    },
+    {
+      "id": "soc-08",
+      "category": "social-for-work",
+      "intent": "Network: reply to recruiters and message former colleagues",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://www.linkedin.com/messaging/",
+          "title": "Messaging | LinkedIn",
+          "text": "Inbox.",
+          "dwell_s": 200,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.linkedin.com/in/former-colleague/",
+          "title": "Former Colleague | LinkedIn",
+          "text": "Profile.",
+          "dwell_s": 70,
+          "t_s": 203,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.linkedin.com/mynetwork/",
+          "title": "My Network | LinkedIn",
+          "text": "Invitations.",
+          "dwell_s": 90,
+          "t_s": 276,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "soc-09",
+      "category": "social-for-work",
+      "intent": "Read what developers say about the new framework release on X",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://x.com/search?q=%23newframework&f=live",
+          "title": "#newframework - Search / X",
+          "text": "Latest posts.",
+          "dwell_s": 150,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://x.com/frameworkteam/status/1790000000001",
+          "title": "Framework Team on X: v3 is out",
+          "text": "Announcement.",
+          "dwell_s": 80,
+          "t_s": 153,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://x.com/celebrity/status/1790000000002",
+          "title": "Celebrity on X: gossip",
+          "text": "Post.",
+          "dwell_s": 120,
+          "t_s": 236,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "soc-10",
+      "category": "social-for-work",
+      "intent": "Join the Discord to ask the library maintainers about the bug",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://discord.com/channels/123456/789012",
+          "title": "Discord | #help | Library",
+          "text": "Maintainer channel.",
+          "dwell_s": 260,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://github.com/acme/library/issues/55",
+          "title": "Crash when parsing empty input · Issue #55",
+          "text": "Report.",
+          "dwell_s": 90,
+          "t_s": 263,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "soc-11",
+      "category": "social-for-work",
+      "intent": "Post the job opening on LinkedIn and Indeed",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://www.linkedin.com/talent/post-a-job",
+          "title": "Post a job | LinkedIn",
+          "text": "Post a job.",
+          "dwell_s": 220,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://employers.indeed.com/p/post-job",
+          "title": "Post a job - Indeed Employer",
+          "text": "Post.",
+          "dwell_s": 200,
+          "t_s": 223,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.linkedin.com/feed/",
+          "title": "Feed | LinkedIn",
+          "text": "Feed.",
+          "dwell_s": 100,
+          "t_s": 426,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ],
+      "debatable": [
+        {
+          "visit": 2,
+          "reason": "Scrolling the feed after posting a job."
+        }
+      ]
+    },
+    {
+      "id": "soc-12",
+      "category": "social-for-work",
+      "intent": "Research how customers talk about our product on social media",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://x.com/search?q=acme%20product",
+          "title": "acme product - Search / X",
+          "text": "Posts.",
+          "dwell_s": 160,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.reddit.com/search/?q=acme%20product",
+          "title": "acme product - Reddit Search",
+          "text": "Results.",
+          "dwell_s": 140,
+          "t_s": 163,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.tiktok.com/search?q=acme%20product",
+          "title": "acme product | TikTok Search",
+          "text": "Videos.",
+          "dwell_s": 130,
+          "t_s": 306,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.facebook.com/search/posts/?q=acme%20product",
+          "title": "acme product - Search results | Facebook",
+          "text": "Posts.",
+          "dwell_s": 110,
+          "t_s": 439,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "soc-13",
+      "category": "social-for-work",
+      "intent": "Write the weekly social media report",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://analytics.twitter.com/user/acmehq/home",
+          "title": "Account analytics - X",
+          "text": "Impressions.",
+          "dwell_s": 120,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://business.facebook.com/latest/insights/",
+          "title": "Insights - Meta Business Suite",
+          "text": "Reach.",
+          "dwell_s": 130,
+          "t_s": 123,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://docs.google.com/spreadsheets/d/1Social/edit",
+          "title": "Social weekly report - Google Sheets",
+          "text": "Table.",
+          "dwell_s": 200,
+          "t_s": 256,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.tiktok.com/foryou",
+          "title": "TikTok",
+          "text": "For You.",
+          "dwell_s": 160,
+          "t_s": 459,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "soc-14",
+      "category": "social-for-work",
+      "intent": "Reconnect with my mentor, send a message on LinkedIn",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://www.linkedin.com/in/mentor-name/",
+          "title": "Mentor Name | LinkedIn",
+          "text": "Profile.",
+          "dwell_s": 40,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.linkedin.com/messaging/compose/",
+          "title": "New message | LinkedIn",
+          "text": "Compose.",
+          "dwell_s": 120,
+          "t_s": 43,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.linkedin.com/feed/news/",
+          "title": "LinkedIn News",
+          "text": "Trending topics.",
+          "dwell_s": 90,
+          "t_s": 166,
+          "via": "load",
+          "label": "drift"
+        }
+      ],
+      "debatable": [
+        {
+          "visit": 2,
+          "reason": "LinkedIn news is on the same host as the task."
+        }
+      ]
+    }
+  ]
+}

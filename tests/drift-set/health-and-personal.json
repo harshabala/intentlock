@@ -1,0 +1,181 @@
+{
+  "labelled_by": "agent",
+  "review": "pending-owner",
+  "schema_version": 1,
+  "category": "health-and-personal",
+  "sequences": [
+    {
+      "id": "hlt-01",
+      "category": "health-and-personal",
+      "intent": "Research treatment options for my knee injury",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://www.mayoclinic.org/diseases-conditions/acl-injury/symptoms-causes/syc-20350738",
+          "title": "ACL injury - Symptoms and causes - Mayo Clinic",
+          "text": "ACL.",
+          "dwell_s": 160,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.hopkinsmedicine.org/health/conditions-and-diseases/acl-injury",
+          "title": "ACL Injury | Johns Hopkins Medicine",
+          "text": "ACL.",
+          "dwell_s": 130,
+          "t_s": 163,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.reddit.com/r/ACL/comments/1rec/recovery_timeline_6_months/",
+          "title": "Recovery timeline 6 months : r/ACL",
+          "text": "Recovery stories.",
+          "dwell_s": 200,
+          "t_s": 296,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.webmd.com/fitness-exercise/acl-injury",
+          "title": "ACL injury - WebMD",
+          "text": "ACL.",
+          "dwell_s": 90,
+          "t_s": 499,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "hlt-02",
+      "category": "health-and-personal",
+      "intent": "Plan my workout and meal prep for the week",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://www.myfitnesspal.com/food/diary",
+          "title": "Food Diary | MyFitnessPal",
+          "text": "Diary.",
+          "dwell_s": 100,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=W0rkout3ek",
+          "title": "30 minute full body workout - YouTube",
+          "text": "Workout.",
+          "dwell_s": 1800,
+          "t_s": 103,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.budgetbytes.com/category/meal-prep/",
+          "title": "Meal Prep Recipes | Budget Bytes",
+          "text": "Recipes.",
+          "dwell_s": 150,
+          "t_s": 1906,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.instagram.com/mealprepking/",
+          "title": "Meal prep king • Instagram",
+          "text": "Profile.",
+          "dwell_s": 90,
+          "t_s": 2059,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ],
+      "debatable": [
+        {
+          "visit": 3,
+          "reason": "Fitness influencer account for meal ideas."
+        }
+      ]
+    },
+    {
+      "id": "hlt-03",
+      "category": "health-and-personal",
+      "intent": "Book a doctor appointment and review my lab results",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://mychart.example/Authentication/Login",
+          "title": "MyChart - Login",
+          "text": "Login.",
+          "dwell_s": 15,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://mychart.example/app/test-results",
+          "title": "Test results - MyChart",
+          "text": "Results.",
+          "dwell_s": 120,
+          "t_s": 18,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://mychart.example/app/schedule",
+          "title": "Schedule an appointment - MyChart",
+          "text": "Schedule.",
+          "dwell_s": 100,
+          "t_s": 141,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.mayoclinic.org/tests-procedures/cholesterol-test/about/pac-20384601",
+          "title": "Cholesterol test - Mayo Clinic",
+          "text": "Info.",
+          "dwell_s": 80,
+          "t_s": 244,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "hlt-04",
+      "category": "health-and-personal",
+      "intent": "Do my meditation and sleep routine",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://www.headspace.com/",
+          "title": "Headspace",
+          "text": "Meditate.",
+          "dwell_s": 600,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=Med1tat10n1",
+          "title": "Guided sleep meditation - YouTube",
+          "text": "Audio.",
+          "dwell_s": 1500,
+          "t_s": 603,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.sleepfoundation.org/sleep-hygiene",
+          "title": "Sleep hygiene | Sleep Foundation",
+          "text": "Tips.",
+          "dwell_s": 120,
+          "t_s": 2106,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    }
+  ]
+}

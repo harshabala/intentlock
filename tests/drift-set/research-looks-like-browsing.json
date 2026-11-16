@@ -1,0 +1,1053 @@
+{
+  "labelled_by": "agent",
+  "review": "pending-owner",
+  "schema_version": 1,
+  "category": "research-looks-like-browsing",
+  "sequences": [
+    {
+      "id": "res-01",
+      "category": "research-looks-like-browsing",
+      "intent": "Research the market for electric cargo bikes",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://www.google.com/search?q=electric+cargo+bike+market+size+2026",
+          "title": "electric cargo bike market size 2026 - Google Search",
+          "text": "About 1,230,000 results. Market report: electric cargo bike sales grew 18%.",
+          "dwell_s": 20,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.grandviewresearch.com/industry-analysis/electric-cargo-bike-market",
+          "title": "Electric Cargo Bike Market Size & Share Report, 2030",
+          "text": "The global electric cargo bike market size was valued at USD 1.6 billion.",
+          "dwell_s": 150,
+          "t_s": 23,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.bbc.com/news/business-67890123",
+          "title": "Cities push cargo bikes for last-mile delivery - BBC News",
+          "text": "Delivery firms are replacing vans with electric cargo bikes in dense city centres.",
+          "dwell_s": 130,
+          "t_s": 176,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Cargo_bike",
+          "title": "Cargo bike - Wikipedia",
+          "text": "A cargo bicycle is a human-powered vehicle designed for transporting loads.",
+          "dwell_s": 95,
+          "t_s": 309,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.reddit.com/r/cargobikes/comments/1xyz/which_brand_for_family_use/",
+          "title": "Which brand for family use? : r/cargobikes",
+          "text": "Owners compare Tern, Riese & Müller and Urban Arrow.",
+          "dwell_s": 160,
+          "t_s": 407,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ],
+      "debatable": [
+        {
+          "visit": 4,
+          "reason": "Owner discussion is genuine market research; forum category is \"warn\" in rules."
+        }
+      ]
+    },
+    {
+      "id": "res-02",
+      "category": "research-looks-like-browsing",
+      "intent": "Research the history of the printing press for my essay",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Printing_press",
+          "title": "Printing press - Wikipedia",
+          "text": "A printing press is a mechanical device for applying pressure to an inked surface.",
+          "dwell_s": 180,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.britannica.com/technology/printing-press",
+          "title": "Printing press | Invention, History, & Facts | Britannica",
+          "text": "The printing press, machine by which text is transferred from type to paper.",
+          "dwell_s": 150,
+          "t_s": 183,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Johannes_Gutenberg",
+          "title": "Johannes Gutenberg - Wikipedia",
+          "text": "Johannes Gensfleisch zur Laden zum Gutenberg was a German goldsmith.",
+          "dwell_s": 130,
+          "t_s": 336,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.bl.uk/collection-items/gutenberg-bible",
+          "title": "Gutenberg Bible | British Library",
+          "text": "The Gutenberg Bible is one of the earliest major books printed with movable type.",
+          "dwell_s": 100,
+          "t_s": 469,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/List_of_The_Simpsons_episodes",
+          "title": "List of The Simpsons episodes - Wikipedia",
+          "text": "The Simpsons is an American animated sitcom.",
+          "dwell_s": 200,
+          "t_s": 572,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "res-03",
+      "category": "research-looks-like-browsing",
+      "intent": "Research how other apps handle onboarding for the redesign",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://www.google.com/search?q=best+app+onboarding+flows",
+          "title": "best app onboarding flows - Google Search",
+          "text": "Onboarding teardown: Duolingo, Notion, Headspace.",
+          "dwell_s": 15,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.nngroup.com/articles/mobile-app-onboarding/",
+          "title": "Mobile-App Onboarding: An Analysis of Components and Techniques",
+          "text": "Onboarding screens should teach the value of the app.",
+          "dwell_s": 160,
+          "t_s": 18,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://growth.design/case-studies/duolingo-user-onboarding",
+          "title": "Duolingo user onboarding case study",
+          "text": "How Duolingo delays sign up.",
+          "dwell_s": 140,
+          "t_s": 181,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.reddit.com/r/UXDesign/comments/1abc/onboarding_patterns_that_work/",
+          "title": "Onboarding patterns that work : r/UXDesign",
+          "text": "Designers share patterns with screenshots.",
+          "dwell_s": 120,
+          "t_s": 324,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://news.ycombinator.com/item?id=39000000",
+          "title": "Ask HN: What onboarding flow impressed you? | Hacker News",
+          "text": "Comments from product people about onboarding.",
+          "dwell_s": 110,
+          "t_s": 447,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://news.ycombinator.com/item?id=39000100",
+          "title": "The Linux kernel mailing list drama | Hacker News",
+          "text": "412 comments.",
+          "dwell_s": 150,
+          "t_s": 560,
+          "via": "load",
+          "label": "drift"
+        }
+      ],
+      "debatable": [
+        {
+          "visit": 3,
+          "reason": "Reddit thread on the research topic. Forum policy would flag it unless the URL names a term."
+        },
+        {
+          "visit": 4,
+          "reason": "Hacker News thread on the topic, same issue."
+        }
+      ]
+    },
+    {
+      "id": "res-04",
+      "category": "research-looks-like-browsing",
+      "intent": "Investigate competitors pricing for our SaaS plan",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://www.competitor-one.example/pricing",
+          "title": "Pricing | Competitor One",
+          "text": "Starter $29/mo, Team $79/mo, Enterprise contact us.",
+          "dwell_s": 120,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.competitor-two.example/plans",
+          "title": "Plans and pricing - Competitor Two",
+          "text": "Free, Pro $15, Business $45.",
+          "dwell_s": 100,
+          "t_s": 123,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.g2.com/categories/project-management",
+          "title": "Best Project Management Software 2026 | G2",
+          "text": "Compare the top project management tools.",
+          "dwell_s": 140,
+          "t_s": 226,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.capterra.com/project-management-software/",
+          "title": "Best Project Management Software | Capterra",
+          "text": "Reviews and pricing.",
+          "dwell_s": 110,
+          "t_s": 369,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.facebook.com/marketplace",
+          "title": "Marketplace | Facebook",
+          "text": "Buy and sell items locally.",
+          "dwell_s": 90,
+          "t_s": 482,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "res-05",
+      "category": "research-looks-like-browsing",
+      "intent": "Gather sources for my paper on microplastics in freshwater",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://scholar.google.com/scholar?q=microplastics+freshwater+sources",
+          "title": "microplastics freshwater sources - Google Scholar",
+          "text": "Microplastics in freshwater ecosystems: a review.",
+          "dwell_s": 25,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.nature.com/articles/s41586-023-00001-1",
+          "title": "Microplastic pollution in rivers | Nature",
+          "text": "We surveyed 38 rivers across Europe.",
+          "dwell_s": 210,
+          "t_s": 28,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://pubmed.ncbi.nlm.nih.gov/34567890/",
+          "title": "Occurrence of microplastics in lake sediments - PubMed",
+          "text": "Abstract: sediment cores from 12 lakes.",
+          "dwell_s": 120,
+          "t_s": 241,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.sciencedirect.com/science/article/pii/S0048969723000001",
+          "title": "Freshwater microplastics: sources and sinks - ScienceDirect",
+          "text": "Review of wastewater and runoff contributions.",
+          "dwell_s": 190,
+          "t_s": 364,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.epa.gov/water-research/microplastics-research",
+          "title": "Microplastics Research | US EPA",
+          "text": "EPA research on microplastics in water.",
+          "dwell_s": 90,
+          "t_s": 557,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "res-06",
+      "category": "research-looks-like-browsing",
+      "intent": "Read up on how mortgage rates are set",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://www.investopedia.com/mortgage/mortgage-rates/",
+          "title": "How Mortgage Rates Work | Investopedia",
+          "text": "Mortgage rates are influenced by the Federal Reserve, inflation and your credit score.",
+          "dwell_s": 180,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.federalreserve.gov/monetarypolicy/openmarket.htm",
+          "title": "Federal Reserve Board - Open Market Operations",
+          "text": "The Federal Open Market Committee directs open market operations.",
+          "dwell_s": 140,
+          "t_s": 183,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.bloomberg.com/news/articles/2026-03-10/mortgage-rates-fall",
+          "title": "Mortgage rates fall as yields drop - Bloomberg",
+          "text": "Thirty-year fixed rates fell this week.",
+          "dwell_s": 90,
+          "t_s": 326,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.consumerfinance.gov/owning-a-home/",
+          "title": "Owning a Home | Consumer Financial Protection Bureau",
+          "text": "Tools and resources for homebuyers.",
+          "dwell_s": 120,
+          "t_s": 419,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ],
+      "debatable": [
+        {
+          "visit": 2,
+          "reason": "Finance news on mortgage rates matches the intent; finance category is \"allow\" at balanced but \"warn\" at strict."
+        }
+      ]
+    },
+    {
+      "id": "res-07",
+      "category": "research-looks-like-browsing",
+      "intent": "Explore ideas for a community garden proposal",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://www.google.com/search?q=community+garden+proposal+examples",
+          "title": "community garden proposal examples - Google Search",
+          "text": "Sample proposals and templates.",
+          "dwell_s": 20,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.communitygarden.org/resources/starting-a-garden",
+          "title": "Starting a community garden | Resources",
+          "text": "Steps to organise volunteers and secure land.",
+          "dwell_s": 150,
+          "t_s": 23,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.pinterest.com/search/pins/?q=community%20garden%20layout",
+          "title": "Community garden layout ideas - Pinterest",
+          "text": "Layouts, raised beds and shared tool sheds.",
+          "dwell_s": 120,
+          "t_s": 176,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=HGdN4PqRsAB",
+          "title": "How we built a neighborhood garden in 6 weeks - YouTube",
+          "text": "Documentary on a volunteer garden build.",
+          "dwell_s": 480,
+          "t_s": 299,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=Zz0Yy1XxWwV",
+          "title": "Top 25 pranks that went wrong - YouTube",
+          "text": "Compilation.",
+          "dwell_s": 260,
+          "t_s": 782,
+          "via": "load",
+          "label": "drift"
+        }
+      ],
+      "debatable": [
+        {
+          "visit": 2,
+          "reason": "Pinterest is social media but here is visual inspiration for a proposal."
+        },
+        {
+          "visit": 3,
+          "reason": "Opaque video URL; content is on topic."
+        }
+      ]
+    },
+    {
+      "id": "res-08",
+      "category": "research-looks-like-browsing",
+      "intent": "Investigate options for switching our team to a different password manager",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://www.google.com/search?q=password+manager+comparison+for+teams",
+          "title": "password manager comparison for teams - Google Search",
+          "text": "Comparison of 1Password, Bitwarden and Dashlane.",
+          "dwell_s": 20,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://bitwarden.com/pricing/business/",
+          "title": "Business Pricing | Bitwarden",
+          "text": "Teams Starter, Teams, Enterprise.",
+          "dwell_s": 110,
+          "t_s": 23,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://1password.com/business-pricing/",
+          "title": "1Password Business pricing",
+          "text": "Business plans.",
+          "dwell_s": 95,
+          "t_s": 136,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.wired.com/story/best-password-managers/",
+          "title": "The Best Password Managers | WIRED",
+          "text": "We tested top password managers.",
+          "dwell_s": 160,
+          "t_s": 234,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.reddit.com/r/sysadmin/comments/1def/team_password_manager_recommendations/",
+          "title": "Team password manager recommendations : r/sysadmin",
+          "text": "Admins discuss Bitwarden vs 1Password.",
+          "dwell_s": 140,
+          "t_s": 397,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "res-09",
+      "category": "research-looks-like-browsing",
+      "intent": "Look into visa requirements for relocating to Canada",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada.html",
+          "title": "Work in Canada - Canada.ca",
+          "text": "Find out if you need a work permit.",
+          "dwell_s": 160,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.cic.gc.ca/english/helpcentre/answer.asp?qnum=10",
+          "title": "Help Centre - Immigration, Refugees and Citizenship Canada",
+          "text": "Who can apply for a work permit.",
+          "dwell_s": 100,
+          "t_s": 163,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.reddit.com/r/ImmigrationCanada/comments/1ghi/express_entry_cut_off_scores/",
+          "title": "Express Entry cut-off scores : r/ImmigrationCanada",
+          "text": "Latest draw results and tips.",
+          "dwell_s": 130,
+          "t_s": 266,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.nytimes.com/2026/02/12/world/canada/immigration-targets.html",
+          "title": "Canada sets new immigration targets - The New York Times",
+          "text": "Government announces targets.",
+          "dwell_s": 80,
+          "t_s": 399,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.nytimes.com/2026/02/12/sports/hockey/playoff-picture.html",
+          "title": "The NHL playoff picture - The New York Times",
+          "text": "Standings.",
+          "dwell_s": 120,
+          "t_s": 482,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "res-10",
+      "category": "research-looks-like-browsing",
+      "intent": "Learn how transformers work in machine learning",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://arxiv.org/abs/1706.03762",
+          "title": "Attention Is All You Need",
+          "text": "We propose a new simple network architecture, the Transformer.",
+          "dwell_s": 170,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://jalammar.github.io/illustrated-transformer/",
+          "title": "The Illustrated Transformer",
+          "text": "Visual walkthrough of the transformer.",
+          "dwell_s": 420,
+          "t_s": 173,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=kCc8FmEb1nY",
+          "title": "Let's build GPT: from scratch, in code, spelled out. - YouTube",
+          "text": "Lecture building a GPT.",
+          "dwell_s": 1800,
+          "t_s": 596,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://huggingface.co/learn/nlp-course/chapter1/4",
+          "title": "How do Transformers work? - Hugging Face NLP Course",
+          "text": "Transformer architecture overview.",
+          "dwell_s": 200,
+          "t_s": 2399,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.twitter.com/someone/status/1790000000000",
+          "title": "Someone on X: spicy take about a celebrity",
+          "text": "Post.",
+          "dwell_s": 60,
+          "t_s": 2602,
+          "via": "load",
+          "label": "drift"
+        }
+      ],
+      "debatable": [
+        {
+          "visit": 2,
+          "reason": "Lecture video, opaque URL, 30 minutes of dwell."
+        }
+      ]
+    },
+    {
+      "id": "res-11",
+      "category": "research-looks-like-browsing",
+      "intent": "Find background on the history of the Hanseatic League",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Hanseatic_League",
+          "title": "Hanseatic League - Wikipedia",
+          "text": "The Hanseatic League was a medieval commercial and defensive confederation.",
+          "dwell_s": 240,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/L%C3%BCbeck",
+          "title": "Lübeck - Wikipedia",
+          "text": "Lübeck was the leading city of the Hanseatic League.",
+          "dwell_s": 110,
+          "t_s": 243,
+          "via": "load",
+          "label": "serves-intent",
+          "note": "one hop away, no keyword in URL"
+        },
+        {
+          "url": "https://www.worldhistory.org/Hanseatic_League/",
+          "title": "Hanseatic League - World History Encyclopedia",
+          "text": "The Hanseatic League.",
+          "dwell_s": 150,
+          "t_s": 356,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Cog_(ship)",
+          "title": "Cog (ship) - Wikipedia",
+          "text": "A cog is a type of ship used from the 12th century.",
+          "dwell_s": 90,
+          "t_s": 509,
+          "via": "load",
+          "label": "serves-intent",
+          "note": "related tangent; no keyword"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Taylor_Swift",
+          "title": "Taylor Swift - Wikipedia",
+          "text": "American singer-songwriter.",
+          "dwell_s": 140,
+          "t_s": 602,
+          "via": "load",
+          "label": "drift"
+        }
+      ],
+      "debatable": [
+        {
+          "visit": 3,
+          "reason": "Wikipedia article on the cog ship: a short related tangent from the topic, not clearly drift."
+        }
+      ]
+    },
+    {
+      "id": "res-12",
+      "category": "research-looks-like-browsing",
+      "intent": "Research reviews of mirrorless cameras under $1500",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://www.dpreview.com/reviews/best-mirrorless-cameras",
+          "title": "Best mirrorless cameras 2026 | DPReview",
+          "text": "Top picks under $1500.",
+          "dwell_s": 180,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=cAmReV1ew2k",
+          "title": "Sony vs Canon vs Fuji mirrorless camera comparison - YouTube",
+          "text": "Comparison review.",
+          "dwell_s": 540,
+          "t_s": 183,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.reddit.com/r/photography/comments/1jkl/mirrorless_recommendations_under_1500/",
+          "title": "Mirrorless recommendations under 1500 : r/photography",
+          "text": "Recommendations.",
+          "dwell_s": 160,
+          "t_s": 726,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.amazon.com/s?k=mirrorless+camera",
+          "title": "Amazon.com : mirrorless camera",
+          "text": "Results for mirrorless camera.",
+          "dwell_s": 100,
+          "t_s": 889,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.amazon.com/s?k=gaming+headset",
+          "title": "Amazon.com : gaming headset",
+          "text": "Results.",
+          "dwell_s": 140,
+          "t_s": 992,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "res-13",
+      "category": "research-looks-like-browsing",
+      "intent": "Collect facts about the Apollo 11 mission for a school talk",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://www.nasa.gov/mission/apollo-11/",
+          "title": "Apollo 11 | NASA",
+          "text": "Apollo 11 was the first mission to land humans on the Moon.",
+          "dwell_s": 140,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Apollo_11",
+          "title": "Apollo 11 - Wikipedia",
+          "text": "Apollo 11 was the American spaceflight that first landed humans on the Moon.",
+          "dwell_s": 200,
+          "t_s": 143,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=RMINSD7MmT4",
+          "title": "Apollo 11 Moon Landing - Original NASA footage - YouTube",
+          "text": "Archive footage.",
+          "dwell_s": 300,
+          "t_s": 346,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Neil_Armstrong",
+          "title": "Neil Armstrong - Wikipedia",
+          "text": "Neil Alden Armstrong was an American astronaut.",
+          "dwell_s": 120,
+          "t_s": 649,
+          "via": "load",
+          "label": "serves-intent",
+          "note": "Wikipedia, no intent keyword in URL"
+        },
+        {
+          "url": "https://www.tiktok.com/@spaceguy/video/7234567890",
+          "title": "Moon landing conspiracy | TikTok",
+          "text": "Short video.",
+          "dwell_s": 80,
+          "t_s": 772,
+          "via": "load",
+          "label": "drift"
+        }
+      ],
+      "debatable": [
+        {
+          "visit": 4,
+          "reason": "Space-related short video may be a distraction or a source; low-quality for a school talk."
+        }
+      ]
+    },
+    {
+      "id": "res-14",
+      "category": "research-looks-like-browsing",
+      "intent": "Research the pros and cons of heat pumps for our house",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://www.energy.gov/energysaver/heat-pump-systems",
+          "title": "Heat Pump Systems | Department of Energy",
+          "text": "A heat pump can provide year-round climate control.",
+          "dwell_s": 150,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.consumerreports.org/appliances/heating-cooling/heat-pump-buying-guide/",
+          "title": "Heat Pump Buying Guide - Consumer Reports",
+          "text": "What to know before buying.",
+          "dwell_s": 140,
+          "t_s": 153,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.reddit.com/r/hvacadvice/comments/1mno/heat_pump_cold_climate_experience/",
+          "title": "Heat pump cold climate experience : r/hvacadvice",
+          "text": "Owner reports.",
+          "dwell_s": 170,
+          "t_s": 296,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=HeAtPuMp123",
+          "title": "Heat pump install cost breakdown - YouTube",
+          "text": "Installer explains costs.",
+          "dwell_s": 360,
+          "t_s": 469,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.reddit.com/r/aww/",
+          "title": "r/aww",
+          "text": "Cute animals.",
+          "dwell_s": 120,
+          "t_s": 832,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "res-15",
+      "category": "research-looks-like-browsing",
+      "intent": "Look for background on the 2008 financial crisis for my class",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://www.federalreservehistory.org/essays/great-recession-and-its-aftermath",
+          "title": "The Great Recession and Its Aftermath | Federal Reserve History",
+          "text": "Overview.",
+          "dwell_s": 160,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Subprime_mortgage_crisis",
+          "title": "Subprime mortgage crisis - Wikipedia",
+          "text": "The subprime mortgage crisis.",
+          "dwell_s": 200,
+          "t_s": 163,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.imdb.com/title/tt1596363/",
+          "title": "The Big Short (2015) - IMDb",
+          "text": "Drama about the housing bubble.",
+          "dwell_s": 90,
+          "t_s": 366,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.imdb.com/title/tt0111161/",
+          "title": "The Shawshank Redemption (1994) - IMDb",
+          "text": "Drama.",
+          "dwell_s": 100,
+          "t_s": 459,
+          "via": "load",
+          "label": "drift"
+        }
+      ],
+      "debatable": [
+        {
+          "visit": 2,
+          "reason": "Film about the crisis: a person might say it is background, rules have no signal either way."
+        }
+      ]
+    },
+    {
+      "id": "res-16",
+      "category": "research-looks-like-browsing",
+      "intent": "Compare laptops for a student under $800",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://www.rtings.com/laptop/reviews/best/by-usage/student",
+          "title": "Best Laptops For Students 2026 - RTINGS.com",
+          "text": "Our recommendations.",
+          "dwell_s": 160,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.bestbuy.com/site/laptop-computers/student-laptops/pcmcat1234",
+          "title": "Student Laptops - Best Buy",
+          "text": "Laptops for students.",
+          "dwell_s": 100,
+          "t_s": 163,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.amazon.com/dp/B0ABCDE123",
+          "title": "Acer Aspire 5 Slim Laptop, 15.6 inches - Amazon.com",
+          "text": "$549. Ryzen 5, 16GB RAM.",
+          "dwell_s": 85,
+          "t_s": 266,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=LaP7opR3v1",
+          "title": "Best student laptops 2026 - YouTube",
+          "text": "Review roundup.",
+          "dwell_s": 420,
+          "t_s": 354,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.amazon.com/dp/B0SNEAKER01",
+          "title": "Nike Air Zoom running shoes - Amazon.com",
+          "text": "Running shoes, $129.",
+          "dwell_s": 120,
+          "t_s": 777,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "res-17",
+      "category": "research-looks-like-browsing",
+      "intent": "Look up case studies on remote team onboarding",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://hbr.org/2023/05/how-to-onboard-remote-employees",
+          "title": "How to Onboard Remote Employees - Harvard Business Review",
+          "text": "Onboarding remote employees requires intent.",
+          "dwell_s": 190,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://about.gitlab.com/handbook/people-group/general-onboarding/",
+          "title": "GitLab Onboarding | The GitLab Handbook",
+          "text": "How GitLab onboards.",
+          "dwell_s": 140,
+          "t_s": 193,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.reddit.com/r/remotework/comments/1pqr/our_remote_onboarding_checklist/",
+          "title": "Our remote onboarding checklist : r/remotework",
+          "text": "Managers share templates.",
+          "dwell_s": 120,
+          "t_s": 336,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.reddit.com/r/AmItheAsshole/",
+          "title": "r/AmItheAsshole",
+          "text": "Top posts.",
+          "dwell_s": 200,
+          "t_s": 459,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "res-18",
+      "category": "research-looks-like-browsing",
+      "intent": "Check what sources say about intermittent fasting",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://www.nih.gov/news-events/nih-research-matters/intermittent-fasting",
+          "title": "Intermittent fasting: What is it, and how does it work? | NIH",
+          "text": "Research summary.",
+          "dwell_s": 150,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://pubmed.ncbi.nlm.nih.gov/31881139/",
+          "title": "Effects of Intermittent Fasting on Health, Aging, and Disease - PubMed",
+          "text": "Abstract.",
+          "dwell_s": 120,
+          "t_s": 153,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/expert-answers/intermittent-fasting/faq-20441303",
+          "title": "Intermittent fasting: What are the benefits? - Mayo Clinic",
+          "text": "Overview.",
+          "dwell_s": 110,
+          "t_s": 276,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.healthline.com/nutrition/intermittent-fasting-guide",
+          "title": "Intermittent Fasting 101 - Healthline",
+          "text": "A guide.",
+          "dwell_s": 100,
+          "t_s": 389,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "res-19",
+      "category": "research-looks-like-browsing",
+      "intent": "Find three academic sources on remote work productivity",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://scholar.google.com/scholar?q=remote+work+productivity",
+          "title": "remote work productivity - Google Scholar",
+          "text": "Results.",
+          "dwell_s": 20,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.nber.org/papers/w31515",
+          "title": "Working from Home and Productivity | NBER",
+          "text": "Evidence from a randomized trial.",
+          "dwell_s": 170,
+          "t_s": 23,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://onlinelibrary.wiley.com/doi/full/10.1002/job.2512",
+          "title": "Telework and productivity - Journal of Organizational Behavior",
+          "text": "Meta-analysis.",
+          "dwell_s": 200,
+          "t_s": 196,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.semanticscholar.org/paper/abc123",
+          "title": "Remote work: a review - Semantic Scholar",
+          "text": "Review.",
+          "dwell_s": 90,
+          "t_s": 399,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://news.ycombinator.com/item?id=38999999",
+          "title": "Study: remote work boosts productivity | Hacker News",
+          "text": "Discussion of the NBER study.",
+          "dwell_s": 110,
+          "t_s": 492,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ],
+      "debatable": [
+        {
+          "visit": 4,
+          "reason": "Discussion thread of the study itself; not a source for the paper."
+        }
+      ]
+    }
+  ]
+}

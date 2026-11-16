@@ -1,0 +1,859 @@
+{
+  "labelled_by": "agent",
+  "review": "pending-owner",
+  "schema_version": 1,
+  "category": "obvious-drift",
+  "sequences": [
+    {
+      "id": "drf-01",
+      "category": "obvious-drift",
+      "intent": "Write the Q3 budget proposal",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://docs.google.com/document/d/1AbCdEf/edit",
+          "title": "Q3 Budget Proposal - Google Docs",
+          "text": "Draft: Headcount, tooling spend and contingency for Q3.",
+          "dwell_s": 180,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://twitter.com/home",
+          "title": "Home / X",
+          "text": "For you. Following. Trending in your area. Live updates on the game last night.",
+          "dwell_s": 45,
+          "t_s": 183,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://www.reddit.com/r/funny/",
+          "title": "r/funny",
+          "text": "Top posts today. My cat learned to open doors. Dog vs vacuum, round two.",
+          "dwell_s": 120,
+          "t_s": 231,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+          "title": "Funniest fails of the year - YouTube",
+          "text": "Compilation of fails. 12M views.",
+          "dwell_s": 200,
+          "t_s": 354,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "drf-02",
+      "category": "obvious-drift",
+      "intent": "Finish the quarterly report for finance",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://docs.google.com/spreadsheets/d/1XyZ/edit#gid=0",
+          "title": "Q3 Finance Report - Google Sheets",
+          "text": "Revenue by region, variance to forecast.",
+          "dwell_s": 220,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.instagram.com/",
+          "title": "Instagram",
+          "text": "Stories. Suggested for you. Sponsored.",
+          "dwell_s": 90,
+          "t_s": 223,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://www.facebook.com/",
+          "title": "Facebook",
+          "text": "What is on your mind? Friends have posted.",
+          "dwell_s": 60,
+          "t_s": 316,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://www.tiktok.com/foryou",
+          "title": "TikTok - Make Your Day",
+          "text": "For You. Following. Trending sounds.",
+          "dwell_s": 150,
+          "t_s": 379,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "drf-03",
+      "category": "obvious-drift",
+      "intent": "Prepare the slide deck for Monday's board meeting",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://docs.google.com/presentation/d/1SlideId/edit",
+          "title": "Board Update - Google Slides",
+          "text": "Slide 4: Revenue trajectory. Slide 5: Hiring plan.",
+          "dwell_s": 150,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.netflix.com/browse",
+          "title": "Netflix",
+          "text": "Continue watching. Trending now. Popular on Netflix.",
+          "dwell_s": 40,
+          "t_s": 153,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://www.netflix.com/watch/81234567",
+          "title": "Watch Season 2 Episode 3 | Netflix",
+          "text": "Playback in progress.",
+          "dwell_s": 600,
+          "t_s": 196,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "drf-04",
+      "category": "obvious-drift",
+      "intent": "Study for the organic chemistry exam",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://www.khanacademy.org/science/organic-chemistry/alkenes-alkynes",
+          "title": "Alkenes and alkynes | Organic chemistry | Khan Academy",
+          "text": "Learn about naming and reactions of alkenes and alkynes.",
+          "dwell_s": 240,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://store.steampowered.com/",
+          "title": "Welcome to Steam",
+          "text": "Featured and recommended. Summer sale. New releases.",
+          "dwell_s": 80,
+          "t_s": 243,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://www.twitch.tv/directory",
+          "title": "Browse - Twitch",
+          "text": "Live channels. Just Chatting. League of Legends.",
+          "dwell_s": 120,
+          "t_s": 326,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://www.reddit.com/r/gaming/",
+          "title": "r/gaming",
+          "text": "Top posts. Patch notes released for the new season.",
+          "dwell_s": 180,
+          "t_s": 449,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "drf-05",
+      "category": "obvious-drift",
+      "intent": "Draft the blog post on onboarding best practices",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://docs.google.com/document/d/1Draft/edit",
+          "title": "Onboarding best practices - draft - Google Docs",
+          "text": "Introduction: The first 30 days shape retention.",
+          "dwell_s": 300,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.espn.com/nba/",
+          "title": "NBA - ESPN",
+          "text": "Scores. Standings. Trade rumors.",
+          "dwell_s": 75,
+          "t_s": 303,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://www.espn.com/nba/story/_/id/39999999/lakers-trade-deadline-recap",
+          "title": "Lakers trade deadline recap - ESPN",
+          "text": "The Lakers made two moves before the deadline.",
+          "dwell_s": 160,
+          "t_s": 381,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "drf-06",
+      "category": "obvious-drift",
+      "intent": "Debug the payment webhook handler",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://github.com/acme/payments/blob/main/src/webhook.ts",
+          "title": "payments/src/webhook.ts at main",
+          "text": "export async function handleWebhook(req) {",
+          "dwell_s": 100,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://9gag.com/",
+          "title": "9GAG: Go Fun The World",
+          "text": "Fresh memes. Hot. Trending.",
+          "dwell_s": 100,
+          "t_s": 103,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://imgur.com/gallery/abc123",
+          "title": "Funny cat pictures - Album on Imgur",
+          "text": "Cat album. 42 images.",
+          "dwell_s": 120,
+          "t_s": 206,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://www.facebook.com/watch/",
+          "title": "Watch | Facebook",
+          "text": "Videos recommended for you.",
+          "dwell_s": 90,
+          "t_s": 329,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "drf-07",
+      "category": "obvious-drift",
+      "intent": "Write the grant application narrative",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://docs.google.com/document/d/1Grant/edit",
+          "title": "Grant narrative v3 - Google Docs",
+          "text": "Project description: community garden network.",
+          "dwell_s": 240,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://x.com/explore",
+          "title": "Explore / X",
+          "text": "Trending. News. Sports. Entertainment.",
+          "dwell_s": 60,
+          "t_s": 243,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://www.tiktok.com/@creator/video/7123456789",
+          "title": "Dance trend | TikTok",
+          "text": "Original sound.",
+          "dwell_s": 90,
+          "t_s": 306,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://www.instagram.com/reels/",
+          "title": "Instagram Reels",
+          "text": "Reels. Suggested.",
+          "dwell_s": 150,
+          "t_s": 399,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "drf-08",
+      "category": "obvious-drift",
+      "intent": "Review the vendor contract before signing",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://drive.google.com/file/d/1Contract/view",
+          "title": "Vendor MSA v4.pdf - Google Drive",
+          "text": "Master Services Agreement. Term: 24 months.",
+          "dwell_s": 200,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=9bZkp7q19f0",
+          "title": "Top 10 celebrity moments - YouTube",
+          "text": "Celebrity highlights.",
+          "dwell_s": 180,
+          "t_s": 203,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://www.buzzfeed.com/quizzes",
+          "title": "Quizzes - BuzzFeed",
+          "text": "Which city should you live in? Take the quiz.",
+          "dwell_s": 120,
+          "t_s": 386,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "drf-09",
+      "category": "obvious-drift",
+      "intent": "Read chapters 4 and 5 for the sociology seminar",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://www.jstor.org/stable/10.2307/1234567",
+          "title": "The Presentation of Self in Everyday Life on JSTOR",
+          "text": "Chapter 4: Discrepant roles.",
+          "dwell_s": 260,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.reddit.com/r/AskReddit/",
+          "title": "r/AskReddit",
+          "text": "What is the weirdest thing you have ever found?",
+          "dwell_s": 140,
+          "t_s": 263,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://www.reddit.com/r/AskReddit/comments/1abc/what_is_the_weirdest_thing_you_have_found/",
+          "title": "What is the weirdest thing you have ever found? : AskReddit",
+          "text": "Top comment: A key to a safe deposit box.",
+          "dwell_s": 200,
+          "t_s": 406,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "drf-10",
+      "category": "obvious-drift",
+      "intent": "Update the project plan and send it to the team",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://app.asana.com/0/1200000/board",
+          "title": "Project plan - Asana",
+          "text": "Board view: Backlog, In progress, Done.",
+          "dwell_s": 120,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.youtube.com/shorts/aBcDeFgHiJk",
+          "title": "Cat jumps into box #shorts - YouTube",
+          "text": "Short video.",
+          "dwell_s": 40,
+          "t_s": 123,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://www.youtube.com/shorts/zYxWvUtSrQp",
+          "title": "Satisfying slime video #shorts - YouTube",
+          "text": "Short video.",
+          "dwell_s": 40,
+          "t_s": 166,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://www.youtube.com/shorts/mNoPqRsTuVw",
+          "title": "Hot take compilation #shorts",
+          "text": "Short video.",
+          "dwell_s": 35,
+          "t_s": 209,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://www.youtube.com/shorts/xXyYzZaAbBc",
+          "title": "Skateboard trick #shorts",
+          "text": "Short video.",
+          "dwell_s": 30,
+          "t_s": 247,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "drf-11",
+      "category": "obvious-drift",
+      "intent": "Fix the broken links on the marketing site",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://github.com/acme/marketing-site/issues/311",
+          "title": "Broken links on /pricing · Issue #311",
+          "text": "Several links return 404 after the redesign.",
+          "dwell_s": 80,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.pinterest.com/",
+          "title": "Pinterest",
+          "text": "Home feed. Ideas for you.",
+          "dwell_s": 100,
+          "t_s": 83,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://www.pinterest.com/pin/123456789/",
+          "title": "Cozy living room ideas | Pinterest",
+          "text": "Save this pin.",
+          "dwell_s": 90,
+          "t_s": 186,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "drf-12",
+      "category": "obvious-drift",
+      "intent": "Work through the algebra practice set",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://www.khanacademy.org/math/algebra/x2f8bb11595b61c86:quadratic-functions-equations",
+          "title": "Quadratic functions & equations | Algebra | Khan Academy",
+          "text": "Practice: Solve quadratics by factoring.",
+          "dwell_s": 300,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.snapchat.com/",
+          "title": "Snapchat",
+          "text": "Spotlight.",
+          "dwell_s": 60,
+          "t_s": 303,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://store.steampowered.com/app/570/Dota_2/",
+          "title": "Dota 2 on Steam",
+          "text": "Play for free.",
+          "dwell_s": 150,
+          "t_s": 366,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "drf-13",
+      "category": "obvious-drift",
+      "intent": "Prepare tomorrow's sales call talking points",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://app.hubspot.com/contacts/123/company/456",
+          "title": "Northwind Traders - Company - HubSpot",
+          "text": "Deals: 2 open. Last activity: 5 days ago.",
+          "dwell_s": 140,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.cnn.com/",
+          "title": "CNN - Breaking News",
+          "text": "Breaking news, latest headlines and videos.",
+          "dwell_s": 70,
+          "t_s": 143,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://www.espn.com/",
+          "title": "ESPN",
+          "text": "Live scores.",
+          "dwell_s": 100,
+          "t_s": 216,
+          "via": "load",
+          "label": "drift"
+        }
+      ],
+      "debatable": [
+        {
+          "visit": 1,
+          "reason": "News is a warn category, not block; a person would call it drift only if unrelated to sales."
+        }
+      ]
+    },
+    {
+      "id": "drf-14",
+      "category": "obvious-drift",
+      "intent": "Edit the wedding video footage",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://www.canva.com/design/DAF1/edit",
+          "title": "Wedding highlights storyboard - Canva",
+          "text": "Storyboard slides.",
+          "dwell_s": 120,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.twitch.tv/some_streamer",
+          "title": "some_streamer - Twitch",
+          "text": "LIVE: Playing Elden Ring.",
+          "dwell_s": 300,
+          "t_s": 123,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://www.twitch.tv/another_streamer",
+          "title": "another_streamer - Twitch",
+          "text": "LIVE: Just Chatting.",
+          "dwell_s": 180,
+          "t_s": 426,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "drf-15",
+      "category": "obvious-drift",
+      "intent": "Write the monthly status email to investors",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://mail.google.com/mail/u/0/#drafts",
+          "title": "Drafts - founder@acme.example - Acme Mail",
+          "text": "Monthly investor update (draft).",
+          "dwell_s": 160,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.reddit.com/r/startups/",
+          "title": "r/startups",
+          "text": "Weekly thread: share your startup. Rants and complaints.",
+          "dwell_s": 150,
+          "t_s": 163,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://www.facebook.com/groups/founders",
+          "title": "Founders Group | Facebook",
+          "text": "Member posts. Ask me anything.",
+          "dwell_s": 120,
+          "t_s": 316,
+          "via": "load",
+          "label": "drift"
+        }
+      ],
+      "debatable": [
+        {
+          "visit": 1,
+          "reason": "Startup subreddit can inform an investor update; in forums category, so rules call it drift. Could be research."
+        }
+      ]
+    },
+    {
+      "id": "drf-16",
+      "category": "obvious-drift",
+      "intent": "Complete the compliance training module",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://acme.learn.example/courses/compliance-2026",
+          "title": "Annual Compliance Training 2026",
+          "text": "Module 3 of 5: Data handling.",
+          "dwell_s": 280,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.hulu.com/",
+          "title": "Hulu",
+          "text": "Stream TV shows and movies.",
+          "dwell_s": 100,
+          "t_s": 283,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://www.disneyplus.com/",
+          "title": "Disney+",
+          "text": "Streaming.",
+          "dwell_s": 90,
+          "t_s": 386,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "drf-17",
+      "category": "obvious-drift",
+      "intent": "Sort and file this month's expense receipts",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://app.expensify.com/reports",
+          "title": "Reports - Expensify",
+          "text": "Open reports. Add expense.",
+          "dwell_s": 100,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.instagram.com/explore/",
+          "title": "Explore • Instagram photos and videos",
+          "text": "Explore.",
+          "dwell_s": 80,
+          "t_s": 103,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://www.threads.net/",
+          "title": "Threads",
+          "text": "Home.",
+          "dwell_s": 90,
+          "t_s": 186,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://bsky.app/",
+          "title": "Bluesky",
+          "text": "Discover feeds.",
+          "dwell_s": 70,
+          "t_s": 279,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "drf-18",
+      "category": "obvious-drift",
+      "intent": "Learn the basics of Spanish verb conjugation",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://www.spanishdict.com/guide/spanish-verb-conjugation",
+          "title": "Spanish Verb Conjugation Guide | SpanishDict",
+          "text": "Learn how to conjugate Spanish verbs.",
+          "dwell_s": 200,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=8aB3dEfGhIj",
+          "title": "I tried the world's spiciest noodles - YouTube",
+          "text": "Challenge video.",
+          "dwell_s": 240,
+          "t_s": 203,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=Kl4mNoPqRsT",
+          "title": "Reacting to my old videos - YouTube",
+          "text": "Vlog.",
+          "dwell_s": 300,
+          "t_s": 446,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "drf-19",
+      "category": "obvious-drift",
+      "intent": "Plan the sprint backlog for next week",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://linear.app/acme/team/ENG/backlog",
+          "title": "Backlog · ENG · Linear",
+          "text": "24 issues in backlog.",
+          "dwell_s": 180,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.reddit.com/r/memes/",
+          "title": "r/memes",
+          "text": "Top posts of the day.",
+          "dwell_s": 90,
+          "t_s": 183,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://knowyourmeme.com/",
+          "title": "Know Your Meme",
+          "text": "Trending memes.",
+          "dwell_s": 100,
+          "t_s": 276,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "drf-20",
+      "category": "obvious-drift",
+      "intent": "Prepare the interview questions for the engineering hire",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://docs.google.com/document/d/1Interview/edit",
+          "title": "Interview rubric - backend engineer - Google Docs",
+          "text": "Questions on system design.",
+          "dwell_s": 200,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.draftkings.com/",
+          "title": "DraftKings Sportsbook",
+          "text": "Bet on today's games.",
+          "dwell_s": 70,
+          "t_s": 203,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://www.espn.com/nfl/",
+          "title": "NFL - ESPN",
+          "text": "Week 10 scores.",
+          "dwell_s": 80,
+          "t_s": 276,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "drf-21",
+      "category": "obvious-drift",
+      "intent": "Write the thesis methodology chapter",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://www.overleaf.com/project/64f1abc",
+          "title": "Thesis - Overleaf, Online LaTeX Editor",
+          "text": "\\chapter{Methodology}",
+          "dwell_s": 400,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://old.reddit.com/r/all/",
+          "title": "r/all",
+          "text": "Top posts across Reddit.",
+          "dwell_s": 180,
+          "t_s": 403,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://www.tumblr.com/dashboard",
+          "title": "Dashboard - Tumblr",
+          "text": "Your feed.",
+          "dwell_s": 150,
+          "t_s": 586,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "drf-22",
+      "category": "obvious-drift",
+      "intent": "Respond to the customer support backlog in Zendesk",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://acme.zendesk.com/agent/filters/12345",
+          "title": "Unsolved tickets - Zendesk",
+          "text": "37 tickets. Oldest 3 days.",
+          "dwell_s": 160,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=PqRsTuVwXyZ",
+          "title": "Study music 24/7 lofi beats - YouTube",
+          "text": "Live: lofi hip hop radio.",
+          "dwell_s": 900,
+          "t_s": 163,
+          "via": "load",
+          "label": "drift"
+        }
+      ],
+      "debatable": [
+        {
+          "visit": 1,
+          "reason": "Background music in a video tab is a common work habit; the rules treat it as video drift."
+        }
+      ]
+    }
+  ]
+}

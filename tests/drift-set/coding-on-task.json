@@ -1,0 +1,492 @@
+{
+  "labelled_by": "agent",
+  "review": "pending-owner",
+  "schema_version": 1,
+  "category": "coding-on-task",
+  "sequences": [
+    {
+      "id": "cod-01",
+      "category": "coding-on-task",
+      "intent": "Fix the pagination bug in the orders API",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://github.com/acme/orders-api/pull/412",
+          "title": "Fix off-by-one in cursor pagination by dana-w · Pull Request #412 · acme/orders-api",
+          "text": "This PR fixes duplicate rows when the last page is requested. Changes: src/pagination.js, tests/pagination.test.js.",
+          "dwell_s": 95,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://stackoverflow.com/questions/61234567/offset-pagination-returns-duplicate-rows",
+          "title": "Offset pagination returns duplicate rows when sorting by created_at - Stack Overflow",
+          "text": "Asked 3 years ago. When sorting by a non-unique column, add a tiebreaker such as the primary key to ORDER BY.",
+          "dwell_s": 70,
+          "t_s": 98,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams",
+          "title": "URLSearchParams - Web APIs | MDN",
+          "text": "The URLSearchParams interface defines utility methods to work with the query string of a URL.",
+          "dwell_s": 40,
+          "t_s": 171,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://github.com/acme/orders-api/issues/398",
+          "title": "Last page of results repeats final item · Issue #398 · acme/orders-api",
+          "text": "Steps to reproduce: request page=3 with limit=20 when total is 41.",
+          "dwell_s": 55,
+          "t_s": 214,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "cod-02",
+      "category": "coding-on-task",
+      "intent": "Add retry logic to the checkout client",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://github.com/acme/checkout-client/blob/main/src/http.ts",
+          "title": "checkout-client/src/http.ts at main · acme/checkout-client",
+          "text": "export async function request(url, init) { const res = await fetch(url, init); ... }",
+          "dwell_s": 120,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch",
+          "title": "Using the Fetch API - Web APIs | MDN",
+          "text": "The Fetch API provides a JavaScript interface for making HTTP requests and processing the responses.",
+          "dwell_s": 85,
+          "t_s": 123,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://aws.amazon.com/builders-library/timeouts-retries-and-backoff-with-jitter/",
+          "title": "Timeouts, retries and backoff with jitter | AWS Builders Library",
+          "text": "Retries can amplify load during an outage. Use capped exponential backoff with jitter.",
+          "dwell_s": 190,
+          "t_s": 211,
+          "via": "load",
+          "label": "serves-intent",
+          "note": "neutral host, no URL keyword, long dwell on a relevant article"
+        },
+        {
+          "url": "https://github.com/acme/checkout-client/pull/77",
+          "title": "Add exponential backoff helper · Pull Request #77",
+          "text": "Adds withRetry(fn, {retries, baseMs}). Tests included.",
+          "dwell_s": 60,
+          "t_s": 404,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ],
+      "debatable": [
+        {
+          "visit": 2,
+          "reason": "Relevant engineering article on an unlisted host; a long read with no keyword in the URL."
+        }
+      ]
+    },
+    {
+      "id": "cod-03",
+      "category": "coding-on-task",
+      "intent": "Debug the flaky login test in CI",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://github.com/acme/webapp/actions/runs/8841120044",
+          "title": "Fix login form validation · acme/webapp · Workflow run",
+          "text": "e2e / login.spec.ts failed on attempt 2: Timeout 30000ms exceeded waiting for selector.",
+          "dwell_s": 110,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://playwright.dev/docs/test-retries",
+          "title": "Retries | Playwright",
+          "text": "Test retries give flaky tests a second chance. Use test.describe.configure({ retries: 2 }).",
+          "dwell_s": 90,
+          "t_s": 113,
+          "via": "load",
+          "label": "serves-intent",
+          "note": "neutral host, no keyword overlap"
+        },
+        {
+          "url": "https://stackoverflow.com/questions/68901234/playwright-test-times-out-waiting-for-selector-only-in-ci",
+          "title": "Playwright test times out waiting for selector only in CI - Stack Overflow",
+          "text": "Headless CI containers are slower; wait for network idle or use expect auto-waiting locators.",
+          "dwell_s": 100,
+          "t_s": 206,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://github.com/acme/webapp/blob/main/tests/e2e/login.spec.ts",
+          "title": "webapp/tests/e2e/login.spec.ts at main",
+          "text": "test('logs in with valid credentials', async ({ page }) => {",
+          "dwell_s": 140,
+          "t_s": 309,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "cod-04",
+      "category": "coding-on-task",
+      "intent": "Refactor the user settings component to use hooks",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://react.dev/reference/react/useReducer",
+          "title": "useReducer - React",
+          "text": "useReducer is a React Hook that lets you add a reducer to your component.",
+          "dwell_s": 100,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent",
+          "note": "react.dev unlisted"
+        },
+        {
+          "url": "https://github.com/acme/dashboard/blob/main/src/components/UserSettings.jsx",
+          "title": "dashboard/src/components/UserSettings.jsx at main",
+          "text": "class UserSettings extends React.Component { constructor(props) {",
+          "dwell_s": 150,
+          "t_s": 103,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://stackoverflow.com/questions/53215285/how-can-i-force-component-to-re-render-with-hooks-in-react",
+          "title": "How can I force component to re-render with hooks in React? - Stack Overflow",
+          "text": "You can use useState with a counter, but prefer fixing the dependency instead.",
+          "dwell_s": 65,
+          "t_s": 256,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://react.dev/learn/you-might-not-need-an-effect",
+          "title": "You Might Not Need an Effect - React",
+          "text": "Effects are an escape hatch from the React paradigm.",
+          "dwell_s": 210,
+          "t_s": 324,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "cod-05",
+      "category": "coding-on-task",
+      "intent": "Write a Python script to rename photos by date",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://docs.python.org/3/library/pathlib.html",
+          "title": "pathlib — Object-oriented filesystem paths — Python 3.12 documentation",
+          "text": "Source code: Lib/pathlib.py. This module offers classes representing filesystem paths.",
+          "dwell_s": 80,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://stackoverflow.com/questions/237079/how-do-i-get-file-creation-and-modification-date-times",
+          "title": "How do I get file creation and modification date/times? - Stack Overflow",
+          "text": "Use os.path.getmtime(path) or Path.stat().st_mtime.",
+          "dwell_s": 55,
+          "t_s": 83,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://pillow.readthedocs.io/en/stable/reference/ExifTags.html",
+          "title": "ExifTags module - Pillow documentation",
+          "text": "This module provides constants and clear-text names for various well-known EXIF tags.",
+          "dwell_s": 75,
+          "t_s": 141,
+          "via": "load",
+          "label": "serves-intent",
+          "note": "unlisted host; photo/exif content is relevant"
+        },
+        {
+          "url": "https://realpython.com/python-pathlib/",
+          "title": "Python 3's pathlib Module: Taming the File System – Real Python",
+          "text": "The pathlib module is part of the standard library.",
+          "dwell_s": 100,
+          "t_s": 219,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "cod-06",
+      "category": "coding-on-task",
+      "intent": "Deploy the billing service to staging",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://github.com/acme/billing-service/actions",
+          "title": "Actions · acme/billing-service",
+          "text": "All workflows. Deploy to staging: succeeded 12 minutes ago.",
+          "dwell_s": 45,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://kubernetes.io/docs/concepts/workloads/controllers/deployment/",
+          "title": "Deployments | Kubernetes",
+          "text": "A Deployment provides declarative updates for Pods and ReplicaSets.",
+          "dwell_s": 150,
+          "t_s": 48,
+          "via": "load",
+          "label": "serves-intent",
+          "note": "unlisted host, no keyword"
+        },
+        {
+          "url": "https://console.aws.amazon.com/ecs/v2/clusters/staging/services",
+          "title": "Amazon ECS - Clusters - staging",
+          "text": "Services (4). billing-service: ACTIVE, desired 2, running 2.",
+          "dwell_s": 70,
+          "t_s": 201,
+          "via": "load",
+          "label": "serves-intent",
+          "note": "console path has staging"
+        },
+        {
+          "url": "https://grafana.acme.example/d/billing/billing-service-latency",
+          "title": "Billing service latency - Grafana",
+          "text": "p95 latency over the last 6 hours.",
+          "dwell_s": 85,
+          "t_s": 274,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "cod-07",
+      "category": "coding-on-task",
+      "intent": "Review the database migration pull request",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://github.com/acme/platform/pull/1893",
+          "title": "Add index on invoices.customer_id · Pull Request #1893 · acme/platform",
+          "text": "Migration 20260412_add_customer_index. Locks: concurrent index creation.",
+          "dwell_s": 130,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.postgresql.org/docs/current/sql-createindex.html",
+          "title": "PostgreSQL: Documentation: CREATE INDEX",
+          "text": "CREATE INDEX constructs an index on the specified column(s) of the specified relation.",
+          "dwell_s": 160,
+          "t_s": 133,
+          "via": "load",
+          "label": "serves-intent",
+          "note": "unlisted host, relevant docs"
+        },
+        {
+          "url": "https://github.com/acme/platform/pull/1893/files",
+          "title": "Files changed · Pull Request #1893 · acme/platform",
+          "text": "db/migrate/20260412_add_customer_index.rb",
+          "dwell_s": 90,
+          "t_s": 296,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ],
+      "debatable": [
+        {
+          "visit": 1,
+          "reason": "Long dwell on unlisted-host docs; the URL shares no word with the intent."
+        }
+      ]
+    },
+    {
+      "id": "cod-08",
+      "category": "coding-on-task",
+      "intent": "Build the search endpoint for the catalog service",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://github.com/acme/catalog-service/blob/main/src/routes/search.ts",
+          "title": "catalog-service/src/routes/search.ts",
+          "text": "router.get(\"/search\", async (req, res) => {",
+          "dwell_s": 90,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-query.html",
+          "title": "Match query | Elasticsearch Guide",
+          "text": "Returns documents that match a provided text, number, date or boolean value.",
+          "dwell_s": 140,
+          "t_s": 93,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://stackoverflow.com/questions/12345678/elasticsearch-fuzzy-search-endpoint-returns-too-many-results",
+          "title": "Elasticsearch fuzzy search endpoint returns too many results - Stack Overflow",
+          "text": "Tune fuzziness and prefix_length.",
+          "dwell_s": 60,
+          "t_s": 236,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.npmjs.com/package/@elastic/elasticsearch",
+          "title": "@elastic/elasticsearch - npm",
+          "text": "The official Node.js client for Elasticsearch.",
+          "dwell_s": 45,
+          "t_s": 299,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "cod-09",
+      "category": "coding-on-task",
+      "intent": "Upgrade the app to TypeScript 5",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://www.typescriptlang.org/docs/handbook/release-notes/typescript-5-0.html",
+          "title": "Documentation - TypeScript 5.0",
+          "text": "Decorators, const type parameters and enum improvements.",
+          "dwell_s": 120,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent",
+          "note": "unlisted host; \"typescript\" in URL"
+        },
+        {
+          "url": "https://github.com/acme/app/pull/230",
+          "title": "chore: bump typescript to 5.4 · Pull Request #230",
+          "text": "Updates tsconfig moduleResolution to bundler.",
+          "dwell_s": 80,
+          "t_s": 123,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://stackoverflow.com/questions/76543210/error-ts5023-unknown-compiler-option-moduleresolution-bundler",
+          "title": "error TS5023: Unknown compiler option 'moduleResolution: bundler' - Stack Overflow",
+          "text": "You need TypeScript 5.0 or newer.",
+          "dwell_s": 50,
+          "t_s": 206,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "cod-10",
+      "category": "coding-on-task",
+      "intent": "Write unit tests for the date parsing module",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://github.com/acme/utils/blob/main/src/date-parse.js",
+          "title": "utils/src/date-parse.js at main",
+          "text": "export function parseDate(input, locale) {",
+          "dwell_s": 80,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://nodejs.org/api/test.html",
+          "title": "Test runner | Node.js Documentation",
+          "text": "The node:test module facilitates the creation of JavaScript tests.",
+          "dwell_s": 120,
+          "t_s": 83,
+          "via": "load",
+          "label": "serves-intent",
+          "note": "neutral host, no keyword"
+        },
+        {
+          "url": "https://stackoverflow.com/questions/2587345/why-does-date-parse-give-incorrect-results",
+          "title": "Why does Date.parse give incorrect results? - Stack Overflow",
+          "text": "Date.parse behaviour for non-ISO strings is implementation-defined.",
+          "dwell_s": 75,
+          "t_s": 206,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/parse",
+          "title": "Date.parse() - JavaScript | MDN",
+          "text": "The Date.parse() static method parses a string representation of a date.",
+          "dwell_s": 45,
+          "t_s": 284,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "cod-11",
+      "category": "coding-on-task",
+      "intent": "Fix the memory leak in the image resizing worker",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://github.com/acme/media-worker/issues/58",
+          "title": "Memory grows unbounded in resize worker · Issue #58",
+          "text": "RSS grows by ~40MB per 100 images; heap snapshot attached.",
+          "dwell_s": 100,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://nodejs.org/en/learn/diagnostics/memory",
+          "title": "Understanding and Tuning Memory | Node.js",
+          "text": "Node.js (a JavaScript runtime) uses the V8 engine.",
+          "dwell_s": 180,
+          "t_s": 103,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://stackoverflow.com/questions/43987654/sharp-library-memory-leak-when-resizing-many-images",
+          "title": "sharp library memory leak when resizing many images - Stack Overflow",
+          "text": "Disable the libvips cache with sharp.cache(false).",
+          "dwell_s": 90,
+          "t_s": 286,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ],
+      "debatable": [
+        {
+          "visit": 1,
+          "reason": "Long dwell on Node.js docs, host unlisted and the URL has no intent word."
+        }
+      ]
+    }
+  ]
+}

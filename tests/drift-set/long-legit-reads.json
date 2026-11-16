@@ -1,0 +1,283 @@
+{
+  "labelled_by": "agent",
+  "review": "pending-owner",
+  "schema_version": 1,
+  "category": "long-legit-reads",
+  "sequences": [
+    {
+      "id": "lng-01",
+      "category": "long-legit-reads",
+      "intent": "Understand how our payment reconciliation works",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://wiki.acme-corp.example/payments/reconciliation-overview",
+          "title": "Reconciliation overview",
+          "text": "Overview.",
+          "dwell_s": 420,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://docs.acme-corp.example/runbooks/recon",
+          "title": "Reconciliation runbook",
+          "text": "Runbook.",
+          "dwell_s": 180,
+          "t_s": 423,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "lng-02",
+      "category": "long-legit-reads",
+      "intent": "Learn about distributed consensus for my reading group",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://raft.github.io/raft.pdf",
+          "title": "In Search of an Understandable Consensus Algorithm",
+          "text": "Paper.",
+          "dwell_s": 900,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://thesecretlivesofdata.com/raft/",
+          "title": "Raft - Understandable Distributed Consensus",
+          "text": "Visualization.",
+          "dwell_s": 300,
+          "t_s": 903,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "lng-03",
+      "category": "long-legit-reads",
+      "intent": "Study the textbook chapter on thermodynamics",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://openstax.org/books/university-physics-volume-2/pages/3-1-heat-and-work",
+          "title": "Heat and work - University Physics Volume 2 | OpenStax",
+          "text": "Chapter.",
+          "dwell_s": 600,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://openstax.org/books/university-physics-volume-2/pages/3-2-first-law",
+          "title": "First law - OpenStax",
+          "text": "Chapter.",
+          "dwell_s": 540,
+          "t_s": 603,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "lng-04",
+      "category": "long-legit-reads",
+      "intent": "Read the architecture decision records before the review",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://github.com/acme/platform/blob/main/docs/adr/0007-event-sourcing.md",
+          "title": "platform/docs/adr/0007-event-sourcing.md",
+          "text": "ADR.",
+          "dwell_s": 300,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://github.com/acme/platform/blob/main/docs/adr/0009-queue-choice.md",
+          "title": "platform/docs/adr/0009-queue-choice.md",
+          "text": "ADR.",
+          "dwell_s": 280,
+          "t_s": 303,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "lng-05",
+      "category": "long-legit-reads",
+      "intent": "Read the new employee handbook sections on benefits",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://handbook.acme-corp.example/benefits/health",
+          "title": "Health benefits - Handbook",
+          "text": "Benefits.",
+          "dwell_s": 400,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://handbook.acme-corp.example/benefits/retirement",
+          "title": "Retirement - Handbook",
+          "text": "Benefits.",
+          "dwell_s": 350,
+          "t_s": 403,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "lng-06",
+      "category": "long-legit-reads",
+      "intent": "Proofread the manuscript for the publisher",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://docs.google.com/document/d/1Manuscript/edit",
+          "title": "Manuscript - Google Docs",
+          "text": "Text.",
+          "dwell_s": 1500,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.merriam-webster.com/dictionary/ephemeral",
+          "title": "Ephemeral | Merriam-Webster",
+          "text": "Definition.",
+          "dwell_s": 15,
+          "t_s": 1503,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://docs.google.com/document/d/1Manuscript/edit",
+          "title": "Manuscript - Google Docs",
+          "text": "Text.",
+          "dwell_s": 1200,
+          "t_s": 1521,
+          "via": "tab-switch",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "lng-07",
+      "category": "long-legit-reads",
+      "intent": "Read the research paper on protein folding for journal club",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://www.nature.com/articles/s41586-021-03819-2",
+          "title": "Highly accurate protein structure prediction with AlphaFold | Nature",
+          "text": "Paper.",
+          "dwell_s": 1200,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.nature.com/articles/s41586-021-03828-1",
+          "title": "Highly accurate protein structure prediction for the human proteome",
+          "text": "Paper.",
+          "dwell_s": 600,
+          "t_s": 1203,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "lng-08",
+      "category": "long-legit-reads",
+      "intent": "Watch the full lecture on convex optimization",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://www.youtube.com/watch?v=McLq1hEq3UY",
+          "title": "Lecture 1 | Convex Optimization - YouTube",
+          "text": "Lecture.",
+          "dwell_s": 3000,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://web.stanford.edu/~boyd/cvxbook/",
+          "title": "Convex Optimization - Boyd and Vandenberghe",
+          "text": "Book.",
+          "dwell_s": 200,
+          "t_s": 3003,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "lng-09",
+      "category": "long-legit-reads",
+      "intent": "Study the case law memo on adverse possession",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://www.law.cornell.edu/wex/adverse_possession",
+          "title": "Adverse possession | Wex | LII",
+          "text": "Definition.",
+          "dwell_s": 240,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://casetext.com/case/howard-v-kunto",
+          "title": "Howard v. Kunto | Casetext",
+          "text": "Case.",
+          "dwell_s": 500,
+          "t_s": 243,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "lng-10",
+      "category": "long-legit-reads",
+      "intent": "Read the long-form article assigned for my media class",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://www.newyorker.com/magazine/2024/03/04/the-case-for-slow-media",
+          "title": "The Case for Slow Media | The New Yorker",
+          "text": "Long read.",
+          "dwell_s": 900,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.theatlantic.com/magazine/archive/2024/05/attention-span-media/678000/",
+          "title": "The Attention Span Problem | The Atlantic",
+          "text": "Long read.",
+          "dwell_s": 700,
+          "t_s": 903,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ],
+      "debatable": [
+        {
+          "visit": 1,
+          "reason": "Second long read on The Atlantic: assigned or not, unknown from the intent."
+        }
+      ]
+    }
+  ]
+}

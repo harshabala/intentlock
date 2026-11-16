@@ -1,0 +1,510 @@
+{
+  "labelled_by": "agent",
+  "review": "pending-owner",
+  "schema_version": 1,
+  "category": "multi-tab-switching",
+  "sequences": [
+    {
+      "id": "tab-01",
+      "category": "multi-tab-switching",
+      "intent": "Compare three project management tools for the team",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://asana.com/pricing",
+          "title": "Pricing | Asana",
+          "text": "Plans.",
+          "dwell_s": 40,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.monday.com/pricing",
+          "title": "Pricing | monday.com",
+          "text": "Plans.",
+          "dwell_s": 30,
+          "t_s": 43,
+          "via": "tab-switch",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://clickup.com/pricing",
+          "title": "Pricing | ClickUp",
+          "text": "Plans.",
+          "dwell_s": 35,
+          "t_s": 76,
+          "via": "tab-switch",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://asana.com/features",
+          "title": "Features | Asana",
+          "text": "Features.",
+          "dwell_s": 30,
+          "t_s": 114,
+          "via": "tab-switch",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.monday.com/features",
+          "title": "Features | monday.com",
+          "text": "Features.",
+          "dwell_s": 25,
+          "t_s": 147,
+          "via": "tab-switch",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://docs.google.com/spreadsheets/d/1Compare/edit",
+          "title": "Tool comparison - Google Sheets",
+          "text": "Table.",
+          "dwell_s": 60,
+          "t_s": 175,
+          "via": "tab-switch",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://clickup.com/features",
+          "title": "Features | ClickUp",
+          "text": "Features.",
+          "dwell_s": 30,
+          "t_s": 238,
+          "via": "tab-switch",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "tab-02",
+      "category": "multi-tab-switching",
+      "intent": "Fix the build by comparing package versions across repos",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://github.com/acme/app-a/blob/main/package.json",
+          "title": "app-a/package.json",
+          "text": "Deps.",
+          "dwell_s": 25,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://github.com/acme/app-b/blob/main/package.json",
+          "title": "app-b/package.json",
+          "text": "Deps.",
+          "dwell_s": 25,
+          "t_s": 28,
+          "via": "tab-switch",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://github.com/acme/app-c/blob/main/package.json",
+          "title": "app-c/package.json",
+          "text": "Deps.",
+          "dwell_s": 25,
+          "t_s": 56,
+          "via": "tab-switch",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.npmjs.com/package/lodash?activeTab=versions",
+          "title": "lodash - npm",
+          "text": "Versions.",
+          "dwell_s": 20,
+          "t_s": 84,
+          "via": "tab-switch",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://github.com/acme/app-a/blob/main/package.json",
+          "title": "app-a/package.json",
+          "text": "Deps.",
+          "dwell_s": 40,
+          "t_s": 107,
+          "via": "tab-switch",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://github.com/acme/app-b/blob/main/package-lock.json",
+          "title": "app-b/package-lock.json",
+          "text": "Lock.",
+          "dwell_s": 30,
+          "t_s": 150,
+          "via": "tab-switch",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "tab-03",
+      "category": "multi-tab-switching",
+      "intent": "Plan the offsite: compare venues and ask the team",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://www.airbnb.com/rooms/111",
+          "title": "Mountain lodge - Airbnb",
+          "text": "Lodge.",
+          "dwell_s": 30,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.airbnb.com/rooms/222",
+          "title": "Lake house - Airbnb",
+          "text": "House.",
+          "dwell_s": 30,
+          "t_s": 33,
+          "via": "tab-switch",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.booking.com/hotel/us/lodge-333.html",
+          "title": "Resort - Booking.com",
+          "text": "Resort.",
+          "dwell_s": 30,
+          "t_s": 66,
+          "via": "tab-switch",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://app.slack.com/client/T123/C456",
+          "title": "Slack | #offsite",
+          "text": "Chat.",
+          "dwell_s": 25,
+          "t_s": 99,
+          "via": "tab-switch",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://docs.google.com/spreadsheets/d/1Offsite/edit",
+          "title": "Offsite options - Sheets",
+          "text": "Options.",
+          "dwell_s": 45,
+          "t_s": 127,
+          "via": "tab-switch",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.airbnb.com/rooms/111",
+          "title": "Mountain lodge - Airbnb",
+          "text": "Lodge.",
+          "dwell_s": 30,
+          "t_s": 175,
+          "via": "tab-switch",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "tab-04",
+      "category": "multi-tab-switching",
+      "intent": "Write the literature review, flipping between papers and my draft",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://www.nature.com/articles/s41562-020-0001-1",
+          "title": "Paper A | Nature",
+          "text": "Paper.",
+          "dwell_s": 40,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://docs.google.com/document/d/1Review/edit",
+          "title": "Lit review - Google Docs",
+          "text": "Draft.",
+          "dwell_s": 60,
+          "t_s": 43,
+          "via": "tab-switch",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.science.org/doi/10.1126/science.abc1234",
+          "title": "Paper B | Science",
+          "text": "Paper.",
+          "dwell_s": 40,
+          "t_s": 106,
+          "via": "tab-switch",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://docs.google.com/document/d/1Review/edit",
+          "title": "Lit review - Google Docs",
+          "text": "Draft.",
+          "dwell_s": 70,
+          "t_s": 149,
+          "via": "tab-switch",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.nature.com/articles/s41562-020-0001-1",
+          "title": "Paper A | Nature",
+          "text": "Paper.",
+          "dwell_s": 30,
+          "t_s": 222,
+          "via": "tab-switch",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://docs.google.com/document/d/1Review/edit",
+          "title": "Lit review - Google Docs",
+          "text": "Draft.",
+          "dwell_s": 80,
+          "t_s": 255,
+          "via": "tab-switch",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "tab-05",
+      "category": "multi-tab-switching",
+      "intent": "Reconcile the budget: spreadsheet, bank site and invoices",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://docs.google.com/spreadsheets/d/1Rec/edit",
+          "title": "Budget reconcile - Google Sheets",
+          "text": "Table.",
+          "dwell_s": 40,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://secure.chase.com/web/auth/dashboard",
+          "title": "Accounts | Chase",
+          "text": "Accounts.",
+          "dwell_s": 20,
+          "t_s": 43,
+          "via": "tab-switch",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://mail.google.com/mail/u/0/#search/invoice",
+          "title": "Search: invoice",
+          "text": "Mail.",
+          "dwell_s": 20,
+          "t_s": 66,
+          "via": "tab-switch",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://docs.google.com/spreadsheets/d/1Rec/edit",
+          "title": "Budget reconcile - Google Sheets",
+          "text": "Table.",
+          "dwell_s": 50,
+          "t_s": 89,
+          "via": "tab-switch",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://app.quickbooks.com/app/bills",
+          "title": "Bills - QuickBooks",
+          "text": "Bills.",
+          "dwell_s": 25,
+          "t_s": 142,
+          "via": "tab-switch",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://docs.google.com/spreadsheets/d/1Rec/edit",
+          "title": "Budget reconcile - Google Sheets",
+          "text": "Table.",
+          "dwell_s": 50,
+          "t_s": 170,
+          "via": "tab-switch",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "tab-06",
+      "category": "multi-tab-switching",
+      "intent": "Work on the quarterly report",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://docs.google.com/spreadsheets/d/1Qr/edit",
+          "title": "Q report - Sheets",
+          "text": "Table.",
+          "dwell_s": 60,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://x.com/home",
+          "title": "Home / X",
+          "text": "Timeline.",
+          "dwell_s": 15,
+          "t_s": 63,
+          "via": "tab-switch",
+          "label": "drift"
+        },
+        {
+          "url": "https://docs.google.com/spreadsheets/d/1Qr/edit",
+          "title": "Q report - Sheets",
+          "text": "Table.",
+          "dwell_s": 40,
+          "t_s": 81,
+          "via": "tab-switch",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.reddit.com/r/funny/",
+          "title": "r/funny",
+          "text": "Funny.",
+          "dwell_s": 15,
+          "t_s": 124,
+          "via": "tab-switch",
+          "label": "drift"
+        },
+        {
+          "url": "https://docs.google.com/spreadsheets/d/1Qr/edit",
+          "title": "Q report - Sheets",
+          "text": "Table.",
+          "dwell_s": 40,
+          "t_s": 142,
+          "via": "tab-switch",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.youtube.com/",
+          "title": "YouTube",
+          "text": "Home.",
+          "dwell_s": 20,
+          "t_s": 185,
+          "via": "tab-switch",
+          "label": "drift"
+        },
+        {
+          "url": "https://www.instagram.com/",
+          "title": "Instagram",
+          "text": "Feed.",
+          "dwell_s": 20,
+          "t_s": 208,
+          "via": "tab-switch",
+          "label": "drift"
+        }
+      ],
+      "debatable": [
+        {
+          "visit": 1,
+          "reason": "Short glances at social between work: drift by page, but only seconds."
+        }
+      ]
+    },
+    {
+      "id": "tab-07",
+      "category": "multi-tab-switching",
+      "intent": "Debug the API: check logs, code and docs side by side",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://logs.acme-corp.example/search?q=api",
+          "title": "Logs",
+          "text": "Logs.",
+          "dwell_s": 30,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://github.com/acme/api/blob/main/src/handler.ts",
+          "title": "api/src/handler.ts",
+          "text": "Code.",
+          "dwell_s": 40,
+          "t_s": 33,
+          "via": "tab-switch",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://swagger.acme-corp.example/",
+          "title": "Swagger UI",
+          "text": "Docs.",
+          "dwell_s": 30,
+          "t_s": 76,
+          "via": "tab-switch",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://logs.acme-corp.example/search?q=api+500",
+          "title": "Logs",
+          "text": "Logs.",
+          "dwell_s": 30,
+          "t_s": 109,
+          "via": "tab-switch",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://github.com/acme/api/blob/main/src/handler.ts",
+          "title": "api/src/handler.ts",
+          "text": "Code.",
+          "dwell_s": 40,
+          "t_s": 142,
+          "via": "tab-switch",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "tab-08",
+      "category": "multi-tab-switching",
+      "intent": "Plan the trip by checking flights, hotels and my calendar",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://www.google.com/travel/flights",
+          "title": "Google Flights",
+          "text": "Flights.",
+          "dwell_s": 40,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.booking.com/searchresults.html?ss=Lisbon",
+          "title": "Hotels in Lisbon - Booking.com",
+          "text": "Hotels.",
+          "dwell_s": 40,
+          "t_s": 43,
+          "via": "tab-switch",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://calendar.google.com/calendar/u/0/r/month",
+          "title": "Calendar - Month",
+          "text": "Calendar.",
+          "dwell_s": 20,
+          "t_s": 86,
+          "via": "tab-switch",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.google.com/travel/flights",
+          "title": "Google Flights",
+          "text": "Flights.",
+          "dwell_s": 40,
+          "t_s": 109,
+          "via": "tab-switch",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.tripadvisor.com/Tourism-g189158-Lisbon.html",
+          "title": "Lisbon travel - Tripadvisor",
+          "text": "Travel.",
+          "dwell_s": 40,
+          "t_s": 152,
+          "via": "tab-switch",
+          "label": "serves-intent"
+        }
+      ]
+    }
+  ]
+}

@@ -11,7 +11,8 @@
     "validate:version": "node scripts/validate-version.mjs",
     "lint": "eslint .",
     "audit:prod": "npm audit --audit-level=moderate",
-    "check": "npm run lint && npm test && npm run verify:static && npm run validate:version -- \"v$(node -p \"require('./manifest.json').version\")\""
+    "check": "npm run lint && npm test && npm run verify:static && npm run validate:version -- \"v$(node -p \"require('./manifest.json').version\")\"",
+    "score:drift": "node scripts/score-drift.mjs"
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",

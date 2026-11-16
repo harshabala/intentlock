@@ -1,0 +1,613 @@
+{
+  "labelled_by": "agent",
+  "review": "pending-owner",
+  "schema_version": 1,
+  "category": "shopping-for-work",
+  "sequences": [
+    {
+      "id": "shp-01",
+      "category": "shopping-for-work",
+      "intent": "Buy a second monitor for my home office",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://www.amazon.com/s?k=27+inch+monitor+4k",
+          "title": "Amazon.com : 27 inch monitor 4k",
+          "text": "Monitors.",
+          "dwell_s": 90,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.amazon.com/dp/B0MONITOR01",
+          "title": "Dell 27 4K USB-C Monitor - Amazon.com",
+          "text": "$399.",
+          "dwell_s": 120,
+          "t_s": 93,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.rtings.com/monitor/reviews/best/by-usage/office",
+          "title": "Best Monitors For Office Work - RTINGS.com",
+          "text": "Reviews.",
+          "dwell_s": 150,
+          "t_s": 216,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.bestbuy.com/site/searchpage.jsp?st=27+inch+monitor",
+          "title": "Best Buy: 27 inch monitor",
+          "text": "Results.",
+          "dwell_s": 80,
+          "t_s": 369,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "shp-02",
+      "category": "shopping-for-work",
+      "intent": "Order printer toner and paper for the office",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://www.staples.com/hp-toner/cat_CL123",
+          "title": "HP Toner - Staples",
+          "text": "Toner.",
+          "dwell_s": 80,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.amazon.com/dp/B0TONER0001",
+          "title": "HP 58A Black Toner Cartridge - Amazon.com",
+          "text": "$89.",
+          "dwell_s": 70,
+          "t_s": 83,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.amazon.com/gp/cart/view.html",
+          "title": "Amazon.com Shopping Cart",
+          "text": "Cart.",
+          "dwell_s": 40,
+          "t_s": 156,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.amazon.com/gp/buy/spc/handlers/display.html",
+          "title": "Place Your Order - Amazon.com",
+          "text": "Checkout.",
+          "dwell_s": 60,
+          "t_s": 199,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "shp-03",
+      "category": "shopping-for-work",
+      "intent": "Research and buy a standing desk for work",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://www.upliftdesk.com/uplift-v2-standing-desk-v2-or-v2-commercial/",
+          "title": "UPLIFT V2 Standing Desk | UPLIFT Desk",
+          "text": "Standing desk.",
+          "dwell_s": 140,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.flexispot.com/standing-desks",
+          "title": "Standing Desks | FlexiSpot",
+          "text": "Desks.",
+          "dwell_s": 110,
+          "t_s": 143,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.wirecutter.com/reviews/best-standing-desk/",
+          "title": "The Best Standing Desks | Wirecutter",
+          "text": "Reviews.",
+          "dwell_s": 160,
+          "t_s": 256,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.amazon.com/s?k=halloween+costumes",
+          "title": "Amazon.com : halloween costumes",
+          "text": "Costumes.",
+          "dwell_s": 120,
+          "t_s": 419,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "shp-04",
+      "category": "shopping-for-work",
+      "intent": "Draft the Q4 operating plan",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://docs.google.com/document/d/1Q4plan/edit",
+          "title": "Q4 operating plan - Google Docs",
+          "text": "Plan.",
+          "dwell_s": 240,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.amazon.com/s?k=wireless+earbuds",
+          "title": "Amazon.com : wireless earbuds",
+          "text": "Earbuds.",
+          "dwell_s": 130,
+          "t_s": 243,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://www.amazon.com/dp/B0EARBUDS01",
+          "title": "Wireless Earbuds Bluetooth 5.3 - Amazon.com",
+          "text": "$39.",
+          "dwell_s": 100,
+          "t_s": 376,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://www.etsy.com/search?q=handmade+mug",
+          "title": "Handmade mug - Etsy",
+          "text": "Mugs.",
+          "dwell_s": 90,
+          "t_s": 479,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "shp-05",
+      "category": "shopping-for-work",
+      "intent": "Buy a laptop for our new designer",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://www.apple.com/shop/buy-mac/macbook-pro",
+          "title": "Buy MacBook Pro - Apple",
+          "text": "Configure.",
+          "dwell_s": 150,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.bhphotovideo.com/c/buy/Laptops/ci/18818",
+          "title": "Laptops - B&H Photo",
+          "text": "Laptops.",
+          "dwell_s": 100,
+          "t_s": 153,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.amazon.com/dp/B0MACBOOK01",
+          "title": "Apple MacBook Pro 14 - Amazon.com",
+          "text": "Price.",
+          "dwell_s": 80,
+          "t_s": 256,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.reddit.com/r/macbookpro/comments/1yza/m3_pro_vs_m3_max_for_design_work/",
+          "title": "M3 Pro vs M3 Max for design work : r/macbookpro",
+          "text": "Thread.",
+          "dwell_s": 130,
+          "t_s": 339,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "shp-06",
+      "category": "shopping-for-work",
+      "intent": "Order pizza for the team lunch on Friday",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://www.doordash.com/store/pizza-place-123",
+          "title": "Pizza Place - DoorDash",
+          "text": "Menu.",
+          "dwell_s": 110,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.doordash.com/cart/",
+          "title": "Your cart - DoorDash",
+          "text": "Cart.",
+          "dwell_s": 60,
+          "t_s": 113,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.ubereats.com/store/other-pizza",
+          "title": "Other Pizza - Uber Eats",
+          "text": "Menu.",
+          "dwell_s": 70,
+          "t_s": 176,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "shp-07",
+      "category": "shopping-for-work",
+      "intent": "Buy a gift for my sister's birthday",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://www.etsy.com/search?q=personalized+jewelry+gift",
+          "title": "Personalized jewelry gift - Etsy",
+          "text": "Gifts.",
+          "dwell_s": 140,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.amazon.com/gift-cards",
+          "title": "Amazon.com Gift Cards",
+          "text": "Gift cards.",
+          "dwell_s": 60,
+          "t_s": 143,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.amazon.com/dp/B0GIFTSET01",
+          "title": "Candle Gift Set - Amazon.com",
+          "text": "Gift set.",
+          "dwell_s": 80,
+          "t_s": 206,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.target.com/c/gifts",
+          "title": "Gifts - Target",
+          "text": "Gifts.",
+          "dwell_s": 100,
+          "t_s": 289,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "shp-08",
+      "category": "shopping-for-work",
+      "intent": "Compare prices on noise-cancelling headphones",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://www.amazon.com/s?k=noise+cancelling+headphones",
+          "title": "Amazon.com : noise cancelling headphones",
+          "text": "Results.",
+          "dwell_s": 100,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.bestbuy.com/site/headphones/noise-cancelling/pcmcat1234",
+          "title": "Noise Cancelling Headphones - Best Buy",
+          "text": "Results.",
+          "dwell_s": 100,
+          "t_s": 103,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://camelcamelcamel.com/product/B0HEADPH01",
+          "title": "Sony WH-1000XM5 Price History - CamelCamelCamel",
+          "text": "Price history.",
+          "dwell_s": 90,
+          "t_s": 206,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=HeadPh0ne5r",
+          "title": "Sony vs Bose vs Apple headphones review - YouTube",
+          "text": "Review.",
+          "dwell_s": 500,
+          "t_s": 299,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.netflix.com/browse",
+          "title": "Netflix",
+          "text": "Browse.",
+          "dwell_s": 90,
+          "t_s": 802,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "shp-09",
+      "category": "shopping-for-work",
+      "intent": "Finish the grant budget spreadsheet",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://docs.google.com/spreadsheets/d/1GrantBudget/edit",
+          "title": "Grant budget - Google Sheets",
+          "text": "Budget.",
+          "dwell_s": 200,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.amazon.com/dp/B0LAPTOP002",
+          "title": "Chromebook for field staff - Amazon.com",
+          "text": "Price check for the budget line.",
+          "dwell_s": 70,
+          "t_s": 203,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.bhphotovideo.com/c/product/1234-REG/field_recorder.html",
+          "title": "Field audio recorder - B&H",
+          "text": "Price check.",
+          "dwell_s": 80,
+          "t_s": 276,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ],
+      "debatable": [
+        {
+          "visit": 1,
+          "reason": "A price lookup that serves a budget line, but the intent says nothing of buying."
+        },
+        {
+          "visit": 2,
+          "reason": "Price lookup for the grant budget; shopping domain, no keyword overlap."
+        }
+      ]
+    },
+    {
+      "id": "shp-10",
+      "category": "shopping-for-work",
+      "intent": "Buy plane tickets for the work conference in Berlin",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://www.google.com/travel/flights?q=flights%20to%20berlin",
+          "title": "Flights to Berlin - Google Flights",
+          "text": "Flights.",
+          "dwell_s": 150,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.kayak.com/flights/NYC-BER/2026-06-10",
+          "title": "Flights from NYC to Berlin | KAYAK",
+          "text": "Flights.",
+          "dwell_s": 120,
+          "t_s": 153,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.booking.com/city/de/berlin.html",
+          "title": "Hotels in Berlin | Booking.com",
+          "text": "Hotels.",
+          "dwell_s": 140,
+          "t_s": 276,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.airbnb.com/s/Berlin--Germany/homes",
+          "title": "Berlin Homes | Airbnb",
+          "text": "Stays.",
+          "dwell_s": 100,
+          "t_s": 419,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "shp-11",
+      "category": "shopping-for-work",
+      "intent": "Order lab supplies for the biology course",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://www.fishersci.com/us/en/catalog/search/products?keyword=petri+dishes",
+          "title": "Petri dishes | Fisher Scientific",
+          "text": "Items.",
+          "dwell_s": 120,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.amazon.com/s?k=pipette+tips",
+          "title": "Amazon.com : pipette tips",
+          "text": "Items.",
+          "dwell_s": 90,
+          "t_s": 123,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.amazon.com/gp/cart/view.html",
+          "title": "Amazon.com Shopping Cart",
+          "text": "Cart.",
+          "dwell_s": 40,
+          "t_s": 216,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "shp-12",
+      "category": "shopping-for-work",
+      "intent": "Edit the product photos for the online store",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://www.canva.com/design/DAFprod/edit",
+          "title": "Product photos - Canva",
+          "text": "Design.",
+          "dwell_s": 220,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.etsy.com/shop/ourshop/listings",
+          "title": "Listings - Etsy Shop Manager",
+          "text": "Listings.",
+          "dwell_s": 140,
+          "t_s": 223,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.shopify.com/admin/products",
+          "title": "Products - Shopify",
+          "text": "Products.",
+          "dwell_s": 120,
+          "t_s": 366,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.etsy.com/search?q=vintage+lamps",
+          "title": "Vintage lamps - Etsy",
+          "text": "Search.",
+          "dwell_s": 150,
+          "t_s": 489,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "shp-13",
+      "category": "shopping-for-work",
+      "intent": "Find and purchase a birthday cake for the team celebration",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://www.google.com/search?q=bakery+cake+order+same+day",
+          "title": "bakery cake order same day - Google Search",
+          "text": "Results.",
+          "dwell_s": 15,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.sweetbakery.example/order/cakes",
+          "title": "Order cakes | Sweet Bakery",
+          "text": "Cakes.",
+          "dwell_s": 110,
+          "t_s": 18,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.sweetbakery.example/checkout",
+          "title": "Checkout | Sweet Bakery",
+          "text": "Checkout.",
+          "dwell_s": 100,
+          "t_s": 131,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "shp-14",
+      "category": "shopping-for-work",
+      "intent": "Prepare the annual budget and procurement list",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://docs.google.com/spreadsheets/d/1Proc/edit",
+          "title": "Procurement list - Google Sheets",
+          "text": "List.",
+          "dwell_s": 200,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.amazon.com/dp/B0DESK00001",
+          "title": "Office chair - Amazon.com",
+          "text": "Price for the list.",
+          "dwell_s": 60,
+          "t_s": 203,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.amazon.com/dp/B0SNEAKERS2",
+          "title": "Running shoes - Amazon.com",
+          "text": "Personal shopping.",
+          "dwell_s": 140,
+          "t_s": 266,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://www.ebay.com/sch/i.html?_nkw=vintage+watch",
+          "title": "vintage watch - eBay",
+          "text": "Personal shopping.",
+          "dwell_s": 110,
+          "t_s": 409,
+          "via": "load",
+          "label": "drift"
+        }
+      ],
+      "debatable": [
+        {
+          "visit": 1,
+          "reason": "Pricing office furniture for a procurement list."
+        }
+      ]
+    }
+  ]
+}

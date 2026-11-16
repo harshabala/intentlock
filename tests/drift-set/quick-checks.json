@@ -1,0 +1,703 @@
+{
+  "labelled_by": "agent",
+  "review": "pending-owner",
+  "schema_version": 1,
+  "category": "quick-checks",
+  "sequences": [
+    {
+      "id": "qck-01",
+      "category": "quick-checks",
+      "intent": "Write the grant application narrative",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://docs.google.com/document/d/1Grant/edit",
+          "title": "Grant narrative - Google Docs",
+          "text": "Narrative.",
+          "dwell_s": 200,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://calendar.google.com/calendar/u/0/r/week",
+          "title": "Calendar - Week of Nov 16",
+          "text": "Check the submission deadline.",
+          "dwell_s": 12,
+          "t_s": 203,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://docs.google.com/document/d/1Grant/edit",
+          "title": "Grant narrative - Google Docs",
+          "text": "Narrative.",
+          "dwell_s": 240,
+          "t_s": 218,
+          "via": "tab-switch",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://mail.google.com/mail/u/0/#search/grant+deadline",
+          "title": "Search results - Acme Mail",
+          "text": "Email from the program officer.",
+          "dwell_s": 15,
+          "t_s": 461,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://docs.google.com/document/d/1Grant/edit",
+          "title": "Grant narrative - Google Docs",
+          "text": "Narrative.",
+          "dwell_s": 200,
+          "t_s": 479,
+          "via": "tab-switch",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "qck-02",
+      "category": "quick-checks",
+      "intent": "Fix the failing unit tests in the parser",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://github.com/acme/parser/blob/main/src/tokenize.js",
+          "title": "parser/src/tokenize.js",
+          "text": "Tokenizer.",
+          "dwell_s": 120,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://translate.google.com/?sl=de&tl=en&text=Fehler",
+          "title": "Google Translate",
+          "text": "Translate an error message from a German library.",
+          "dwell_s": 10,
+          "t_s": 123,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://github.com/acme/parser/blob/main/src/tokenize.js",
+          "title": "parser/src/tokenize.js",
+          "text": "Tokenizer.",
+          "dwell_s": 100,
+          "t_s": 136,
+          "via": "tab-switch",
+          "label": "serves-intent"
+        }
+      ],
+      "debatable": [
+        {
+          "visit": 1,
+          "reason": "Translating a library error: obviously fine for a person, a neutral unlisted host for rules."
+        }
+      ]
+    },
+    {
+      "id": "qck-03",
+      "category": "quick-checks",
+      "intent": "Prepare slides for the 2pm client presentation",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://docs.google.com/presentation/d/1Client/edit",
+          "title": "Client presentation - Google Slides",
+          "text": "Slides.",
+          "dwell_s": 300,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.google.com/maps/dir/Home/Client+HQ",
+          "title": "Directions to Client HQ - Google Maps",
+          "text": "Check the travel time for the 2pm meeting.",
+          "dwell_s": 20,
+          "t_s": 303,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://docs.google.com/presentation/d/1Client/edit",
+          "title": "Client presentation - Google Slides",
+          "text": "Slides.",
+          "dwell_s": 250,
+          "t_s": 326,
+          "via": "tab-switch",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.timeanddate.com/worldclock/converter.html",
+          "title": "Time Zone Converter",
+          "text": "Check the client's local time.",
+          "dwell_s": 18,
+          "t_s": 579,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "qck-04",
+      "category": "quick-checks",
+      "intent": "Write the project proposal for the city council",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://docs.google.com/document/d/1Proposal/edit",
+          "title": "Council proposal - Google Docs",
+          "text": "Proposal.",
+          "dwell_s": 220,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.xe.com/currencyconverter/convert/?Amount=5000&From=USD&To=EUR",
+          "title": "USD to EUR - Xe Currency Converter",
+          "text": "Convert the grant budget figure.",
+          "dwell_s": 12,
+          "t_s": 223,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://docs.google.com/document/d/1Proposal/edit",
+          "title": "Council proposal - Google Docs",
+          "text": "Proposal.",
+          "dwell_s": 200,
+          "t_s": 238,
+          "via": "tab-switch",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "qck-05",
+      "category": "quick-checks",
+      "intent": "Study for the biology midterm",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://www.khanacademy.org/science/biology/cellular-respiration",
+          "title": "Cellular respiration | Biology | Khan Academy",
+          "text": "Lessons.",
+          "dwell_s": 300,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://dictionary.cambridge.org/dictionary/english/mitochondrion",
+          "title": "MITOCHONDRION | Cambridge Dictionary",
+          "text": "Definition.",
+          "dwell_s": 14,
+          "t_s": 303,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://quizlet.com/123/biology-midterm-flashcards/",
+          "title": "Biology midterm flashcards | Quizlet",
+          "text": "Flashcards.",
+          "dwell_s": 200,
+          "t_s": 320,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.google.com/search?q=who+won+the+game+last+night",
+          "title": "who won the game last night - Google Search",
+          "text": "Scores.",
+          "dwell_s": 14,
+          "t_s": 523,
+          "via": "load",
+          "label": "drift"
+        }
+      ],
+      "debatable": [
+        {
+          "visit": 3,
+          "reason": "A 14-second score check: a brief personal glance, perhaps harmless."
+        }
+      ]
+    },
+    {
+      "id": "qck-06",
+      "category": "quick-checks",
+      "intent": "Draft the all-hands announcement",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://docs.google.com/document/d/1Allhands/edit",
+          "title": "All-hands announcement - Google Docs",
+          "text": "Draft.",
+          "dwell_s": 180,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://app.slack.com/client/T123/C456",
+          "title": "Slack | #leadership",
+          "text": "Check what leadership decided.",
+          "dwell_s": 20,
+          "t_s": 183,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://docs.google.com/document/d/1Allhands/edit",
+          "title": "All-hands announcement - Google Docs",
+          "text": "Draft.",
+          "dwell_s": 220,
+          "t_s": 206,
+          "via": "tab-switch",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.google.com/search?q=weather+tomorrow",
+          "title": "weather tomorrow - Google Search",
+          "text": "Weather.",
+          "dwell_s": 10,
+          "t_s": 429,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ],
+      "debatable": [
+        {
+          "visit": 3,
+          "reason": "Checking the weather in the middle of writing."
+        }
+      ]
+    },
+    {
+      "id": "qck-07",
+      "category": "quick-checks",
+      "intent": "Review the contract redlines from legal",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://drive.google.com/file/d/1Redlines/view",
+          "title": "Contract redlines v3.pdf - Google Drive",
+          "text": "Redlines.",
+          "dwell_s": 260,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.law.cornell.edu/wex/indemnity",
+          "title": "Indemnity | Wex | LII / Legal Information Institute",
+          "text": "Definition.",
+          "dwell_s": 40,
+          "t_s": 263,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://dictionary.cambridge.org/dictionary/english/indemnification",
+          "title": "INDEMNIFICATION | Cambridge Dictionary",
+          "text": "Definition.",
+          "dwell_s": 12,
+          "t_s": 306,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://drive.google.com/file/d/1Redlines/view",
+          "title": "Contract redlines v3.pdf",
+          "text": "Redlines.",
+          "dwell_s": 180,
+          "t_s": 321,
+          "via": "tab-switch",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "qck-08",
+      "category": "quick-checks",
+      "intent": "Practice the Chinese vocabulary list",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://quizlet.com/456/hsk-2-vocab/",
+          "title": "HSK 2 vocab | Quizlet",
+          "text": "Flashcards.",
+          "dwell_s": 280,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.mdbg.net/chinese/dictionary?page=worddict&wdqb=%E5%81%A5%E5%BA%B7",
+          "title": "MDBG Chinese-English dictionary",
+          "text": "Lookup.",
+          "dwell_s": 15,
+          "t_s": 283,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://translate.google.com/?sl=zh-CN&tl=en",
+          "title": "Google Translate",
+          "text": "Translate.",
+          "dwell_s": 18,
+          "t_s": 301,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "qck-09",
+      "category": "quick-checks",
+      "intent": "Finish the invoice batch for November",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://app.quickbooks.com/app/invoices",
+          "title": "Invoices - QuickBooks",
+          "text": "Invoices.",
+          "dwell_s": 200,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.google.com/search?q=sales+tax+rate+ohio",
+          "title": "sales tax rate ohio - Google Search",
+          "text": "Rate.",
+          "dwell_s": 10,
+          "t_s": 203,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://tax.ohio.gov/business/sales-and-use",
+          "title": "Sales and Use Tax | Ohio Department of Taxation",
+          "text": "Rates.",
+          "dwell_s": 60,
+          "t_s": 216,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://app.quickbooks.com/app/invoices",
+          "title": "Invoices - QuickBooks",
+          "text": "Invoices.",
+          "dwell_s": 240,
+          "t_s": 279,
+          "via": "tab-switch",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "qck-10",
+      "category": "quick-checks",
+      "intent": "Fix the CSS layout on the pricing page",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://github.com/acme/site/blob/main/styles/pricing.css",
+          "title": "site/styles/pricing.css",
+          "text": "Styles.",
+          "dwell_s": 130,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://caniuse.com/css-grid",
+          "title": "CSS Grid Layout | Can I use",
+          "text": "Support table.",
+          "dwell_s": 25,
+          "t_s": 133,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://css-tricks.com/snippets/css/complete-guide-grid/",
+          "title": "A Complete Guide to CSS Grid | CSS-Tricks",
+          "text": "Guide.",
+          "dwell_s": 100,
+          "t_s": 161,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-areas",
+          "title": "grid-template-areas - CSS | MDN",
+          "text": "Areas.",
+          "dwell_s": 50,
+          "t_s": 264,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "qck-11",
+      "category": "quick-checks",
+      "intent": "Write release notes for version 2.4",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://github.com/acme/app/releases/tag/v2.4.0",
+          "title": "Release v2.4.0 · acme/app",
+          "text": "Notes.",
+          "dwell_s": 140,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://semver.org/",
+          "title": "Semantic Versioning 2.0.0 | Semantic Versioning",
+          "text": "Spec.",
+          "dwell_s": 25,
+          "t_s": 143,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://keepachangelog.com/en/1.1.0/",
+          "title": "Keep a Changelog",
+          "text": "Guide.",
+          "dwell_s": 50,
+          "t_s": 171,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://github.com/acme/app/compare/v2.3.0...v2.4.0",
+          "title": "Comparing v2.3.0...v2.4.0 · acme/app",
+          "text": "Diff.",
+          "dwell_s": 120,
+          "t_s": 224,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "qck-12",
+      "category": "quick-checks",
+      "intent": "Catch up on emails and clear my inbox",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://mail.google.com/mail/u/0/#inbox",
+          "title": "Inbox (143) - Acme Mail",
+          "text": "Inbox.",
+          "dwell_s": 300,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://calendar.google.com/calendar/u/0/r/day",
+          "title": "Calendar - Today",
+          "text": "Today.",
+          "dwell_s": 20,
+          "t_s": 303,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://mail.google.com/mail/u/0/#sent",
+          "title": "Sent Mail - Acme Mail",
+          "text": "Sent.",
+          "dwell_s": 120,
+          "t_s": 326,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.google.com/search?q=how+to+politely+decline+a+meeting",
+          "title": "how to politely decline a meeting - Google Search",
+          "text": "Results.",
+          "dwell_s": 15,
+          "t_s": 449,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "qck-13",
+      "category": "quick-checks",
+      "intent": "Write the weekly team update",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://docs.google.com/document/d/1Weekly/edit",
+          "title": "Weekly update - Google Docs",
+          "text": "Update.",
+          "dwell_s": 160,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://linear.app/acme/team/ENG/active",
+          "title": "Active issues · Linear",
+          "text": "Issues.",
+          "dwell_s": 30,
+          "t_s": 163,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://github.com/acme/app/pulls?q=is%3Amerged",
+          "title": "Merged pull requests · acme/app",
+          "text": "PRs.",
+          "dwell_s": 40,
+          "t_s": 196,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://docs.google.com/document/d/1Weekly/edit",
+          "title": "Weekly update - Google Docs",
+          "text": "Update.",
+          "dwell_s": 200,
+          "t_s": 239,
+          "via": "tab-switch",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "qck-14",
+      "category": "quick-checks",
+      "intent": "Study the history chapter on the French Revolution",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://www.britannica.com/event/French-Revolution",
+          "title": "French Revolution | Causes, Facts, & Summary | Britannica",
+          "text": "Summary.",
+          "dwell_s": 220,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.google.com/maps/place/Bastille",
+          "title": "Bastille - Google Maps",
+          "text": "Where was the Bastille?",
+          "dwell_s": 20,
+          "t_s": 223,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Storming_of_the_Bastille",
+          "title": "Storming of the Bastille - Wikipedia",
+          "text": "Bastille.",
+          "dwell_s": 100,
+          "t_s": 246,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "qck-15",
+      "category": "quick-checks",
+      "intent": "Finish the lab report on titration",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://docs.google.com/document/d/1Lab/edit",
+          "title": "Titration lab report - Google Docs",
+          "text": "Report.",
+          "dwell_s": 260,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.wolframalpha.com/input?i=molarity+of+0.1+mol+in+250+mL",
+          "title": "molarity - Wolfram|Alpha",
+          "text": "Compute.",
+          "dwell_s": 20,
+          "t_s": 263,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.calculator.net/scientific-calculator.html",
+          "title": "Scientific Calculator",
+          "text": "Calculator.",
+          "dwell_s": 30,
+          "t_s": 286,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://docs.google.com/document/d/1Lab/edit",
+          "title": "Titration lab report - Google Docs",
+          "text": "Report.",
+          "dwell_s": 200,
+          "t_s": 319,
+          "via": "tab-switch",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "qck-16",
+      "category": "quick-checks",
+      "intent": "Work on the website redesign mockups",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://www.figma.com/design/XyZ789/Homepage-redesign",
+          "title": "Homepage redesign - Figma",
+          "text": "Canvas.",
+          "dwell_s": 300,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://fonts.google.com/specimen/Inter",
+          "title": "Inter - Google Fonts",
+          "text": "Pick a font.",
+          "dwell_s": 40,
+          "t_s": 303,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://coolors.co/palette/264653-2a9d8f-e9c46a-f4a261-e76f51",
+          "title": "Color palette - Coolors",
+          "text": "Palette.",
+          "dwell_s": 35,
+          "t_s": 346,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.figma.com/design/XyZ789/Homepage-redesign",
+          "title": "Homepage redesign - Figma",
+          "text": "Canvas.",
+          "dwell_s": 260,
+          "t_s": 384,
+          "via": "tab-switch",
+          "label": "serves-intent"
+        }
+      ]
+    }
+  ]
+}

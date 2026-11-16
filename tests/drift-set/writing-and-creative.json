@@ -1,0 +1,422 @@
+{
+  "labelled_by": "agent",
+  "review": "pending-owner",
+  "schema_version": 1,
+  "category": "writing-and-creative",
+  "sequences": [
+    {
+      "id": "wrc-01",
+      "category": "writing-and-creative",
+      "intent": "Write the blog post about our new feature launch",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://docs.google.com/document/d/1Blog/edit",
+          "title": "Feature launch blog - Google Docs",
+          "text": "Draft.",
+          "dwell_s": 400,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.hemingwayapp.com/",
+          "title": "Hemingway Editor",
+          "text": "Editor.",
+          "dwell_s": 100,
+          "t_s": 403,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.grammarly.com/",
+          "title": "Grammarly",
+          "text": "Check.",
+          "dwell_s": 60,
+          "t_s": 506,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://ahrefs.com/blog/blog-post-structure/",
+          "title": "Blog post structure",
+          "text": "Guide.",
+          "dwell_s": 100,
+          "t_s": 569,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.reddit.com/r/AskReddit/",
+          "title": "r/AskReddit",
+          "text": "Questions.",
+          "dwell_s": 140,
+          "t_s": 672,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "wrc-02",
+      "category": "writing-and-creative",
+      "intent": "Edit my short story and fix the dialogue",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://docs.google.com/document/d/1Story/edit",
+          "title": "Short story - Google Docs",
+          "text": "Draft.",
+          "dwell_s": 600,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.thesaurus.com/browse/said",
+          "title": "Said synonyms | Thesaurus.com",
+          "text": "Synonyms.",
+          "dwell_s": 20,
+          "t_s": 603,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.writersdigest.com/write-better-fiction/how-to-write-dialogue",
+          "title": "How to write dialogue | Writer's Digest",
+          "text": "Guide.",
+          "dwell_s": 130,
+          "t_s": 626,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=Gam3pl4y01",
+          "title": "Let's play: a horror game - YouTube",
+          "text": "Gameplay.",
+          "dwell_s": 700,
+          "t_s": 759,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "wrc-03",
+      "category": "writing-and-creative",
+      "intent": "Draft the speech for the wedding toast",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://docs.google.com/document/d/1Toast/edit",
+          "title": "Wedding toast - Google Docs",
+          "text": "Draft.",
+          "dwell_s": 300,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.google.com/search?q=wedding+toast+examples+best+man",
+          "title": "wedding toast examples best man - Google Search",
+          "text": "Results.",
+          "dwell_s": 15,
+          "t_s": 303,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.theknot.com/content/wedding-toast-examples",
+          "title": "Wedding toast examples | The Knot",
+          "text": "Examples.",
+          "dwell_s": 120,
+          "t_s": 321,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "wrc-04",
+      "category": "writing-and-creative",
+      "intent": "Design the poster for the music festival",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://www.figma.com/design/Poster/music-festival",
+          "title": "Music festival poster - Figma",
+          "text": "Canvas.",
+          "dwell_s": 400,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.behance.net/search/projects?search=music%20festival%20poster",
+          "title": "Music festival poster on Behance",
+          "text": "Projects.",
+          "dwell_s": 150,
+          "t_s": 403,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.pinterest.com/search/pins/?q=music%20festival%20poster",
+          "title": "Music festival poster - Pinterest",
+          "text": "Pins.",
+          "dwell_s": 140,
+          "t_s": 556,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://unsplash.com/s/photos/concert-crowd",
+          "title": "Concert crowd photos | Unsplash",
+          "text": "Photos.",
+          "dwell_s": 90,
+          "t_s": 699,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.pinterest.com/search/pins/?q=cat%20memes",
+          "title": "Cat memes - Pinterest",
+          "text": "Pins.",
+          "dwell_s": 120,
+          "t_s": 792,
+          "via": "load",
+          "label": "drift"
+        }
+      ],
+      "debatable": [
+        {
+          "visit": 2,
+          "reason": "Pinterest as a moodboard source for a poster."
+        }
+      ]
+    },
+    {
+      "id": "wrc-05",
+      "category": "writing-and-creative",
+      "intent": "Create the logo for my bakery",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://www.canva.com/create/logos/",
+          "title": "Logo Maker | Canva",
+          "text": "Logos.",
+          "dwell_s": 200,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.looka.com/",
+          "title": "Looka logo maker",
+          "text": "Logo.",
+          "dwell_s": 100,
+          "t_s": 203,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.instagram.com/explore/tags/bakerylogo/",
+          "title": "#bakerylogo • Instagram",
+          "text": "Hashtag.",
+          "dwell_s": 120,
+          "t_s": 306,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.dafont.com/theme.php?cat=106",
+          "title": "Fonts - DaFont",
+          "text": "Fonts.",
+          "dwell_s": 90,
+          "t_s": 429,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "wrc-06",
+      "category": "writing-and-creative",
+      "intent": "Compose the music for the short film",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://soundtrap.com/studio/project/abc",
+          "title": "Short film score - Soundtrap",
+          "text": "Studio.",
+          "dwell_s": 600,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://splice.com/sounds/search?q=strings",
+          "title": "Strings samples | Splice",
+          "text": "Samples.",
+          "dwell_s": 150,
+          "t_s": 603,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=C1nematicSc",
+          "title": "Cinematic scoring techniques - YouTube",
+          "text": "Tutorial.",
+          "dwell_s": 600,
+          "t_s": 756,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://open.spotify.com/playlist/Cinematic",
+          "title": "Cinematic orchestral - Spotify",
+          "text": "Reference music.",
+          "dwell_s": 300,
+          "t_s": 1359,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ],
+      "debatable": [
+        {
+          "visit": 3,
+          "reason": "Reference listening for composition on a streaming site not in any list."
+        }
+      ]
+    },
+    {
+      "id": "wrc-07",
+      "category": "writing-and-creative",
+      "intent": "Write alt text and captions for the photo gallery",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://docs.google.com/spreadsheets/d/1Captions/edit",
+          "title": "Captions - Google Sheets",
+          "text": "Table.",
+          "dwell_s": 300,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.w3.org/WAI/tutorials/images/decision-tree/",
+          "title": "Image Decision Tree | WAI",
+          "text": "Guide.",
+          "dwell_s": 90,
+          "t_s": 303,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://webaim.org/techniques/alttext/",
+          "title": "WebAIM: Alternative Text",
+          "text": "Guide.",
+          "dwell_s": 100,
+          "t_s": 396,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "wrc-08",
+      "category": "writing-and-creative",
+      "intent": "Brainstorm names for the new product",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://docs.google.com/document/d/1Names/edit",
+          "title": "Product names - Google Docs",
+          "text": "Brainstorm.",
+          "dwell_s": 200,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.namecheap.com/domains/registration/results/?domain=acme",
+          "title": "Domain search - Namecheap",
+          "text": "Domains.",
+          "dwell_s": 100,
+          "t_s": 203,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.thesaurus.com/browse/swift",
+          "title": "Swift synonyms",
+          "text": "Synonyms.",
+          "dwell_s": 30,
+          "t_s": 306,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://euipo.europa.eu/eSearch/",
+          "title": "eSearch plus - EUIPO",
+          "text": "Trademarks.",
+          "dwell_s": 120,
+          "t_s": 339,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "wrc-09",
+      "category": "writing-and-creative",
+      "intent": "Finish the screenplay act two",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://www.celtx.com/app/projects/abc",
+          "title": "Screenplay - Celtx",
+          "text": "Script.",
+          "dwell_s": 700,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.imsdb.com/scripts/Casablanca.html",
+          "title": "Casablanca Script at IMSDb",
+          "text": "Script reference.",
+          "dwell_s": 300,
+          "t_s": 703,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.netflix.com/browse",
+          "title": "Netflix",
+          "text": "Browse.",
+          "dwell_s": 100,
+          "t_s": 1006,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://www.netflix.com/watch/70234567",
+          "title": "Watch Episode | Netflix",
+          "text": "Playing.",
+          "dwell_s": 1200,
+          "t_s": 1109,
+          "via": "load",
+          "label": "drift"
+        }
+      ],
+      "debatable": [
+        {
+          "visit": 3,
+          "reason": "Watching a film to learn structure is common for screenwriters."
+        }
+      ]
+    }
+  ]
+}

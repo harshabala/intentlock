@@ -1,0 +1,368 @@
+{
+  "labelled_by": "agent",
+  "review": "pending-owner",
+  "schema_version": 1,
+  "category": "admin-and-comms",
+  "sequences": [
+    {
+      "id": "adm-01",
+      "category": "admin-and-comms",
+      "intent": "Clear my inbox and schedule next week's meetings",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://mail.google.com/mail/u/0/#inbox",
+          "title": "Inbox - Acme Mail",
+          "text": "Inbox.",
+          "dwell_s": 300,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://calendar.google.com/calendar/u/0/r/week",
+          "title": "Calendar - Week",
+          "text": "Calendar.",
+          "dwell_s": 150,
+          "t_s": 303,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://calendly.com/acme/30min",
+          "title": "30 Minute Meeting - Calendly",
+          "text": "Schedule.",
+          "dwell_s": 60,
+          "t_s": 456,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.reddit.com/r/funny/",
+          "title": "r/funny",
+          "text": "Funny.",
+          "dwell_s": 100,
+          "t_s": 519,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "adm-02",
+      "category": "admin-and-comms",
+      "intent": "Process invoices and approve payroll",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://app.gusto.com/payroll",
+          "title": "Payroll - Gusto",
+          "text": "Payroll.",
+          "dwell_s": 200,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://app.quickbooks.com/app/bills",
+          "title": "Bills - QuickBooks",
+          "text": "Bills.",
+          "dwell_s": 180,
+          "t_s": 203,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://mail.google.com/mail/u/0/#search/invoice",
+          "title": "Search: invoice - Gmail",
+          "text": "Mail.",
+          "dwell_s": 90,
+          "t_s": 386,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "adm-03",
+      "category": "admin-and-comms",
+      "intent": "Coordinate with the team on the launch plan on Slack",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://app.slack.com/client/T123/C789",
+          "title": "Slack | #launch",
+          "text": "Channel.",
+          "dwell_s": 300,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://app.slack.com/client/T123/D456",
+          "title": "Slack | DM",
+          "text": "DM.",
+          "dwell_s": 120,
+          "t_s": 303,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://zoom.us/j/9876543210",
+          "title": "Launch sync - Zoom",
+          "text": "Meeting.",
+          "dwell_s": 1800,
+          "t_s": 426,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://docs.google.com/document/d/1Launch/edit",
+          "title": "Launch plan - Google Docs",
+          "text": "Plan.",
+          "dwell_s": 150,
+          "t_s": 2229,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "adm-04",
+      "category": "admin-and-comms",
+      "intent": "Reply to team messages and send the standup update",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://app.slack.com/client/T123/C111",
+          "title": "Slack | #standup",
+          "text": "Standup.",
+          "dwell_s": 200,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://teams.microsoft.com/_#/conversations",
+          "title": "Chat | Microsoft Teams",
+          "text": "Chat.",
+          "dwell_s": 150,
+          "t_s": 203,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://mail.google.com/mail/u/0/#inbox",
+          "title": "Inbox",
+          "text": "Inbox.",
+          "dwell_s": 90,
+          "t_s": 356,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.instagram.com/",
+          "title": "Instagram",
+          "text": "Feed.",
+          "dwell_s": 140,
+          "t_s": 449,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "adm-05",
+      "category": "admin-and-comms",
+      "intent": "Book travel and file the expense report for the sales trip",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://www.expedia.com/Flights",
+          "title": "Expedia Flights",
+          "text": "Flights.",
+          "dwell_s": 140,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://app.expensify.com/reports",
+          "title": "Reports - Expensify",
+          "text": "Reports.",
+          "dwell_s": 160,
+          "t_s": 143,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.hertz.com/rentacar/reservation/",
+          "title": "Reservation | Hertz",
+          "text": "Rental.",
+          "dwell_s": 100,
+          "t_s": 306,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "adm-06",
+      "category": "admin-and-comms",
+      "intent": "Onboard the new hire: set up accounts and send welcome email",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://admin.google.com/ac/users",
+          "title": "Users - Google Admin",
+          "text": "Users.",
+          "dwell_s": 140,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://app.slack.com/admin",
+          "title": "Slack Admin",
+          "text": "Admin.",
+          "dwell_s": 100,
+          "t_s": 143,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://mail.google.com/mail/u/0/#drafts",
+          "title": "Drafts",
+          "text": "Welcome email.",
+          "dwell_s": 140,
+          "t_s": 246,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://acme.bamboohr.com/employees/employee.php?id=77",
+          "title": "New hire - BambooHR",
+          "text": "Profile.",
+          "dwell_s": 90,
+          "t_s": 389,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "adm-07",
+      "category": "admin-and-comms",
+      "intent": "Update the support tickets and answer customers",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://acme.zendesk.com/agent/tickets/4821",
+          "title": "Ticket 4821 - Zendesk",
+          "text": "Ticket.",
+          "dwell_s": 150,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://acme.zendesk.com/agent/filters/55",
+          "title": "Open tickets - Zendesk",
+          "text": "Tickets.",
+          "dwell_s": 120,
+          "t_s": 153,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://intercom.com/a/inbox/abc",
+          "title": "Inbox - Intercom",
+          "text": "Inbox.",
+          "dwell_s": 130,
+          "t_s": 276,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.tiktok.com/foryou",
+          "title": "TikTok",
+          "text": "FYP.",
+          "dwell_s": 150,
+          "t_s": 409,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "adm-08",
+      "category": "admin-and-comms",
+      "intent": "Write and send meeting notes to attendees",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://docs.google.com/document/d/1Notes/edit",
+          "title": "Meeting notes - Google Docs",
+          "text": "Notes.",
+          "dwell_s": 240,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://mail.google.com/mail/u/0/#compose",
+          "title": "New message",
+          "text": "Compose.",
+          "dwell_s": 120,
+          "t_s": 243,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://calendar.google.com/calendar/u/0/r/eventedit/abc",
+          "title": "Event details - Calendar",
+          "text": "Event.",
+          "dwell_s": 30,
+          "t_s": 366,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "adm-09",
+      "category": "admin-and-comms",
+      "intent": "Sort out the insurance paperwork",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://www.bluecross.example/member/claims",
+          "title": "Claims | Member portal",
+          "text": "Claims.",
+          "dwell_s": 150,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.healthcare.gov/",
+          "title": "HealthCare.gov",
+          "text": "Info.",
+          "dwell_s": 100,
+          "t_s": 153,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.google.com/search?q=hsa+eligible+expenses",
+          "title": "hsa eligible expenses - Google Search",
+          "text": "Results.",
+          "dwell_s": 10,
+          "t_s": 256,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    }
+  ]
+}

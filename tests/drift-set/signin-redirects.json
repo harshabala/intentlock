@@ -1,0 +1,601 @@
+{
+  "labelled_by": "agent",
+  "review": "pending-owner",
+  "schema_version": 1,
+  "category": "signin-redirects",
+  "sequences": [
+    {
+      "id": "sig-01",
+      "category": "signin-redirects",
+      "intent": "Update the team roadmap in Notion",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://www.notion.so/login",
+          "title": "Log in | Notion",
+          "text": "Continue with Google.",
+          "dwell_s": 8,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://accounts.google.com/o/oauth2/v2/auth?client_id=notion&redirect_uri=https%3A%2F%2Fwww.notion.so%2F",
+          "title": "Sign in - Google Accounts",
+          "text": "Choose an account to continue to Notion.",
+          "dwell_s": 15,
+          "t_s": 11,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.notion.so/acme/Team-Roadmap-8f3a",
+          "title": "Team Roadmap | Notion",
+          "text": "Roadmap table.",
+          "dwell_s": 240,
+          "t_s": 29,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "sig-02",
+      "category": "signin-redirects",
+      "intent": "Pull the latest invoice data from the billing dashboard",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://billing.acme-corp.example/dashboard",
+          "title": "Billing dashboard",
+          "text": "Redirecting to sign in.",
+          "dwell_s": 3,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=abc",
+          "title": "Sign in to your account",
+          "text": "Enter your work email.",
+          "dwell_s": 20,
+          "t_s": 6,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://acme.okta.com/login/step-up/mfa",
+          "title": "Acme - Verify it's you",
+          "text": "Approve the push notification.",
+          "dwell_s": 25,
+          "t_s": 29,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://billing.acme-corp.example/dashboard/invoices",
+          "title": "Invoices - Billing dashboard",
+          "text": "Invoices table.",
+          "dwell_s": 200,
+          "t_s": 57,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "sig-03",
+      "category": "signin-redirects",
+      "intent": "Review pull requests assigned to me",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://github.com/login?return_to=%2Fpulls%2Fassigned",
+          "title": "Sign in to GitHub · GitHub",
+          "text": "Username or email address.",
+          "dwell_s": 12,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://github.com/sessions/two-factor",
+          "title": "Two-factor authentication",
+          "text": "Authentication code.",
+          "dwell_s": 18,
+          "t_s": 15,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://github.com/pulls/review-requested",
+          "title": "Pull requests · review requested",
+          "text": "Review requested.",
+          "dwell_s": 150,
+          "t_s": 36,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "sig-04",
+      "category": "signin-redirects",
+      "intent": "Write the product requirements doc",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://docs.google.com/document/d/1PRD/edit",
+          "title": "PRD - Google Docs",
+          "text": "Doc opening.",
+          "dwell_s": 4,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fdocs.google.com",
+          "title": "Sign in - Google Accounts",
+          "text": "Sign in to continue to Google Docs.",
+          "dwell_s": 20,
+          "t_s": 7,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://docs.google.com/document/d/1PRD/edit",
+          "title": "PRD - Google Docs",
+          "text": "Requirements.",
+          "dwell_s": 260,
+          "t_s": 30,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "sig-05",
+      "category": "signin-redirects",
+      "intent": "Finish the online tax filing",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://www.irs.gov/filing",
+          "title": "Filing | Internal Revenue Service",
+          "text": "Filing.",
+          "dwell_s": 40,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://sa.www4.irs.gov/ola/",
+          "title": "Online Account | IRS",
+          "text": "Sign in with ID.me.",
+          "dwell_s": 15,
+          "t_s": 43,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://api.id.me/en/session/new",
+          "title": "ID.me - Sign in",
+          "text": "Sign in.",
+          "dwell_s": 30,
+          "t_s": 61,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://sa.www4.irs.gov/ola/accounts",
+          "title": "Account Home | IRS",
+          "text": "Balance.",
+          "dwell_s": 120,
+          "t_s": 94,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "sig-06",
+      "category": "signin-redirects",
+      "intent": "Reply to client emails",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://mail.google.com/mail/u/0/#inbox",
+          "title": "Inbox - Acme Mail",
+          "text": "Inbox.",
+          "dwell_s": 120,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://accounts.google.com/AccountChooser?service=mail",
+          "title": "Choose an account - Google Accounts",
+          "text": "Choose account.",
+          "dwell_s": 8,
+          "t_s": 123,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://mail.google.com/mail/u/1/#inbox",
+          "title": "Inbox (12) - second account",
+          "text": "Inbox.",
+          "dwell_s": 100,
+          "t_s": 134,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "sig-07",
+      "category": "signin-redirects",
+      "intent": "Run the weekly analytics report",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://analytics.google.com/analytics/web/",
+          "title": "Google Analytics",
+          "text": "Redirecting.",
+          "dwell_s": 3,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://accounts.google.com/ServiceLogin?service=analytics",
+          "title": "Sign in - Google Accounts",
+          "text": "Sign in.",
+          "dwell_s": 20,
+          "t_s": 6,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://analytics.google.com/analytics/web/#/p123/reports/intelligenthome",
+          "title": "Reports snapshot - Google Analytics",
+          "text": "Users, sessions.",
+          "dwell_s": 200,
+          "t_s": 29,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "sig-08",
+      "category": "signin-redirects",
+      "intent": "Submit the expense report",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://acme.concur.example/sso",
+          "title": "Single sign-on",
+          "text": "Redirecting.",
+          "dwell_s": 5,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://acme.okta.com/app/concur/sso/saml",
+          "title": "Acme - Okta",
+          "text": "SAML.",
+          "dwell_s": 8,
+          "t_s": 8,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://acme.concur.example/expense/new",
+          "title": "New expense report",
+          "text": "Fill the form.",
+          "dwell_s": 240,
+          "t_s": 19,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "sig-09",
+      "category": "signin-redirects",
+      "intent": "Study with the online course platform",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://www.coursera.org/learn/machine-learning",
+          "title": "Machine Learning | Coursera",
+          "text": "Course page.",
+          "dwell_s": 30,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.coursera.org/?authMode=login",
+          "title": "Log in to Coursera",
+          "text": "Email.",
+          "dwell_s": 20,
+          "t_s": 33,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.coursera.org/learn/machine-learning/lecture/abc/gradient-descent",
+          "title": "Gradient descent | Coursera",
+          "text": "Lecture.",
+          "dwell_s": 420,
+          "t_s": 56,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "sig-10",
+      "category": "signin-redirects",
+      "intent": "Edit the design in Figma",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://www.figma.com/login",
+          "title": "Log in to Figma",
+          "text": "Log in.",
+          "dwell_s": 12,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://accounts.google.com/o/oauth2/auth?client_id=figma",
+          "title": "Sign in - Google Accounts",
+          "text": "Sign in.",
+          "dwell_s": 15,
+          "t_s": 15,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.figma.com/design/AbC123/Checkout-flow",
+          "title": "Checkout flow - Figma",
+          "text": "Canvas.",
+          "dwell_s": 300,
+          "t_s": 33,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "sig-11",
+      "category": "signin-redirects",
+      "intent": "Finish the quarterly report for finance",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://docs.google.com/spreadsheets/d/1Q/edit",
+          "title": "Q report - Google Sheets",
+          "text": "Opening.",
+          "dwell_s": 150,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2F",
+          "title": "Log into Facebook",
+          "text": "Log in.",
+          "dwell_s": 20,
+          "t_s": 153,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://www.facebook.com/",
+          "title": "Facebook",
+          "text": "Feed.",
+          "dwell_s": 120,
+          "t_s": 176,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "sig-12",
+      "category": "signin-redirects",
+      "intent": "Check my bank balance and pay the electricity bill",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://www.chase.com/",
+          "title": "Chase Bank",
+          "text": "Sign in.",
+          "dwell_s": 20,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://secure.chase.com/web/auth/dashboard",
+          "title": "Sign in | Chase",
+          "text": "Sign in.",
+          "dwell_s": 30,
+          "t_s": 23,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://secure.chase.com/web/auth/dashboard#/dashboard/overview",
+          "title": "Accounts | Chase",
+          "text": "Balances.",
+          "dwell_s": 70,
+          "t_s": 56,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.paypal.com/signin",
+          "title": "PayPal: Log in",
+          "text": "Log in.",
+          "dwell_s": 20,
+          "t_s": 129,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ],
+      "debatable": [
+        {
+          "visit": 3,
+          "reason": "Paying a bill may or may not involve PayPal; intent does not say."
+        }
+      ]
+    },
+    {
+      "id": "sig-13",
+      "category": "signin-redirects",
+      "intent": "Write the sprint retrospective notes",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://acme.atlassian.net/login",
+          "title": "Log in with Atlassian account",
+          "text": "Log in.",
+          "dwell_s": 10,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://id.atlassian.com/login?continue=https%3A%2F%2Facme.atlassian.net",
+          "title": "Log in with Atlassian account",
+          "text": "Email.",
+          "dwell_s": 15,
+          "t_s": 13,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://acme.atlassian.net/wiki/spaces/ENG/pages/1234/Sprint+Retro",
+          "title": "Sprint Retro - Confluence",
+          "text": "Notes.",
+          "dwell_s": 220,
+          "t_s": 31,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "sig-14",
+      "category": "signin-redirects",
+      "intent": "Review the open job applications in Greenhouse",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://app.greenhouse.io/sign_in",
+          "title": "Sign in - Greenhouse",
+          "text": "Sign in.",
+          "dwell_s": 20,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://app.greenhouse.io/dashboard",
+          "title": "Dashboard - Greenhouse",
+          "text": "Dashboard.",
+          "dwell_s": 100,
+          "t_s": 23,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://app.greenhouse.io/people?stage=1",
+          "title": "Candidates - Greenhouse",
+          "text": "Candidates.",
+          "dwell_s": 160,
+          "t_s": 126,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "sig-15",
+      "category": "signin-redirects",
+      "intent": "Download the signed contract from the portal",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://portal.vendor.example/",
+          "title": "Vendor portal",
+          "text": "Welcome.",
+          "dwell_s": 5,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://auth.vendor.example/oauth/authorize?client_id=portal",
+          "title": "Authorize access",
+          "text": "Authorize.",
+          "dwell_s": 12,
+          "t_s": 8,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://portal.vendor.example/documents",
+          "title": "Documents - Vendor portal",
+          "text": "Documents.",
+          "dwell_s": 70,
+          "t_s": 23,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "sig-16",
+      "category": "signin-redirects",
+      "intent": "Write the monthly newsletter in Mailchimp",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://login.mailchimp.com/",
+          "title": "Login | Mailchimp",
+          "text": "Log in.",
+          "dwell_s": 12,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://us1.admin.mailchimp.com/campaigns/",
+          "title": "Campaigns | Mailchimp",
+          "text": "Campaigns.",
+          "dwell_s": 50,
+          "t_s": 15,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://us1.admin.mailchimp.com/campaigns/edit?id=123",
+          "title": "Edit campaign | Mailchimp",
+          "text": "Newsletter.",
+          "dwell_s": 300,
+          "t_s": 68,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    }
+  ]
+}

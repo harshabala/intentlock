@@ -1,0 +1,879 @@
+{
+  "labelled_by": "agent",
+  "review": "pending-owner",
+  "schema_version": 1,
+  "category": "rabbit-hole",
+  "sequences": [
+    {
+      "id": "rab-01",
+      "category": "rabbit-hole",
+      "intent": "Research how DNS caching works for the networking assignment",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Domain_Name_System",
+          "title": "Domain Name System - Wikipedia",
+          "text": "DNS.",
+          "dwell_s": 150,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.cloudflare.com/learning/dns/what-is-dns/",
+          "title": "What is DNS? | How DNS works | Cloudflare",
+          "text": "DNS.",
+          "dwell_s": 140,
+          "t_s": 153,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Vint_Cerf",
+          "title": "Vint Cerf - Wikipedia",
+          "text": "Internet pioneer.",
+          "dwell_s": 80,
+          "t_s": 296,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Google",
+          "title": "Google - Wikipedia",
+          "text": "Company.",
+          "dwell_s": 70,
+          "t_s": 379,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Larry_Page",
+          "title": "Larry Page - Wikipedia",
+          "text": "Co-founder.",
+          "dwell_s": 90,
+          "t_s": 452,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Burning_Man",
+          "title": "Burning Man - Wikipedia",
+          "text": "Festival.",
+          "dwell_s": 150,
+          "t_s": 545,
+          "via": "load",
+          "label": "drift"
+        }
+      ],
+      "debatable": [
+        {
+          "visit": 2,
+          "reason": "Biography of an internet pioneer; tangent from the intent."
+        }
+      ]
+    },
+    {
+      "id": "rab-02",
+      "category": "rabbit-hole",
+      "intent": "Fix the null pointer exception in the invoice parser",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://stackoverflow.com/questions/218384/what-is-a-null-pointer-exception",
+          "title": "What is a NullPointerException, and how do I fix it? - Stack Overflow",
+          "text": "Answer.",
+          "dwell_s": 70,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://github.com/acme/invoice-parser/blob/main/src/Parser.java",
+          "title": "invoice-parser/src/Parser.java",
+          "text": "Parser.",
+          "dwell_s": 120,
+          "t_s": 73,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://news.ycombinator.com/",
+          "title": "Hacker News",
+          "text": "Front page.",
+          "dwell_s": 60,
+          "t_s": 196,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://news.ycombinator.com/item?id=40111111",
+          "title": "Show HN: A text editor in 400 lines of C | Hacker News",
+          "text": "Comments.",
+          "dwell_s": 120,
+          "t_s": 259,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://www.reddit.com/r/programming/",
+          "title": "r/programming",
+          "text": "Top posts.",
+          "dwell_s": 150,
+          "t_s": 382,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=Pr0gram1ng0",
+          "title": "Why I quit my FAANG job - YouTube",
+          "text": "Vlog.",
+          "dwell_s": 600,
+          "t_s": 535,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "rab-03",
+      "category": "rabbit-hole",
+      "intent": "Write the introduction for my literature review",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://docs.google.com/document/d/1LitRev/edit",
+          "title": "Literature review - Google Docs",
+          "text": "Draft.",
+          "dwell_s": 300,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://scholar.google.com/scholar?q=social+capital+online+communities",
+          "title": "social capital online communities - Google Scholar",
+          "text": "Results.",
+          "dwell_s": 20,
+          "t_s": 303,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.reddit.com/r/AcademicPsychology/",
+          "title": "r/AcademicPsychology",
+          "text": "Posts.",
+          "dwell_s": 100,
+          "t_s": 326,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://www.reddit.com/r/gradschool/comments/1abc/advisor_ghosting_me/",
+          "title": "Advisor ghosting me : r/gradschool",
+          "text": "Grad school venting thread.",
+          "dwell_s": 180,
+          "t_s": 429,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://www.reddit.com/r/Showerthoughts/",
+          "title": "r/Showerthoughts",
+          "text": "Posts.",
+          "dwell_s": 140,
+          "t_s": 612,
+          "via": "load",
+          "label": "drift"
+        }
+      ],
+      "debatable": [
+        {
+          "visit": 2,
+          "reason": "Academic forum could inform the review; forum category."
+        }
+      ]
+    },
+    {
+      "id": "rab-04",
+      "category": "rabbit-hole",
+      "intent": "Prepare the keynote outline",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://docs.google.com/document/d/1Keynote/edit",
+          "title": "Keynote outline - Google Docs",
+          "text": "Outline.",
+          "dwell_s": 200,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.ted.com/talks/simon_sinek_how_great_leaders_inspire_action",
+          "title": "Simon Sinek: How great leaders inspire action | TED Talk",
+          "text": "Talk.",
+          "dwell_s": 300,
+          "t_s": 203,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.ted.com/talks/some_random_talk_about_octopuses",
+          "title": "The mind-blowing intelligence of octopuses | TED Talk",
+          "text": "Talk.",
+          "dwell_s": 400,
+          "t_s": 506,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=Oct0pusV1d",
+          "title": "Octopus escapes tank - YouTube",
+          "text": "Clip.",
+          "dwell_s": 200,
+          "t_s": 909,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=Oct0pusV2d",
+          "title": "Cephalopod facts - YouTube",
+          "text": "Clip.",
+          "dwell_s": 300,
+          "t_s": 1112,
+          "via": "load",
+          "label": "drift"
+        }
+      ],
+      "debatable": [
+        {
+          "visit": 1,
+          "reason": "Speaking inspiration for a keynote; TED is not in any list."
+        }
+      ]
+    },
+    {
+      "id": "rab-05",
+      "category": "rabbit-hole",
+      "intent": "Compare quotes from three contractors for the kitchen remodel",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://docs.google.com/spreadsheets/d/1Quotes/edit",
+          "title": "Contractor quotes - Google Sheets",
+          "text": "Quotes.",
+          "dwell_s": 200,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.houzz.com/professionals/general-contractors",
+          "title": "Find general contractors | Houzz",
+          "text": "Contractors.",
+          "dwell_s": 120,
+          "t_s": 203,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.houzz.com/photos/modern-living-room-ideas",
+          "title": "Modern living room ideas | Houzz",
+          "text": "Photos.",
+          "dwell_s": 150,
+          "t_s": 326,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://www.pinterest.com/search/pins/?q=garden%20ideas",
+          "title": "Garden ideas - Pinterest",
+          "text": "Pins.",
+          "dwell_s": 180,
+          "t_s": 479,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://www.instagram.com/explore/tags/interiordesign/",
+          "title": "#interiordesign • Instagram",
+          "text": "Hashtag.",
+          "dwell_s": 200,
+          "t_s": 662,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "rab-06",
+      "category": "rabbit-hole",
+      "intent": "Learn about the French Revolution for my history paper",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://en.wikipedia.org/wiki/French_Revolution",
+          "title": "French Revolution - Wikipedia",
+          "text": "Overview.",
+          "dwell_s": 240,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Maximilien_Robespierre",
+          "title": "Maximilien Robespierre - Wikipedia",
+          "text": "Leader.",
+          "dwell_s": 110,
+          "t_s": 243,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Napoleon",
+          "title": "Napoleon - Wikipedia",
+          "text": "Emperor.",
+          "dwell_s": 100,
+          "t_s": 356,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Waterloo_(song)",
+          "title": "Waterloo (song) - Wikipedia",
+          "text": "ABBA.",
+          "dwell_s": 90,
+          "t_s": 459,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/ABBA",
+          "title": "ABBA - Wikipedia",
+          "text": "Band.",
+          "dwell_s": 120,
+          "t_s": 552,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=AbBaDanc1ng",
+          "title": "ABBA - Dancing Queen - YouTube",
+          "text": "Music video.",
+          "dwell_s": 230,
+          "t_s": 675,
+          "via": "load",
+          "label": "drift"
+        }
+      ],
+      "debatable": [
+        {
+          "visit": 2,
+          "reason": "Natural next hop in the history; no keyword links to the intent."
+        }
+      ]
+    },
+    {
+      "id": "rab-07",
+      "category": "rabbit-hole",
+      "intent": "Fix the CSS bug on the checkout page",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://github.com/acme/shop/blob/main/styles/checkout.css",
+          "title": "shop/styles/checkout.css",
+          "text": "CSS.",
+          "dwell_s": 100,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://css-tricks.com/almanac/properties/f/flex/",
+          "title": "flex | CSS-Tricks",
+          "text": "Flex.",
+          "dwell_s": 50,
+          "t_s": 103,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://css-tricks.com/the-great-css-flexbox-vs-grid-debate-2026/",
+          "title": "The great CSS debate",
+          "text": "Opinion.",
+          "dwell_s": 150,
+          "t_s": 156,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://www.reddit.com/r/css/",
+          "title": "r/css",
+          "text": "Posts.",
+          "dwell_s": 130,
+          "t_s": 309,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://www.reddit.com/r/webdev/",
+          "title": "r/webdev",
+          "text": "Posts.",
+          "dwell_s": 120,
+          "t_s": 442,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://www.reddit.com/r/ProgrammerHumor/",
+          "title": "r/ProgrammerHumor",
+          "text": "Memes.",
+          "dwell_s": 200,
+          "t_s": 565,
+          "via": "load",
+          "label": "drift"
+        }
+      ],
+      "debatable": [
+        {
+          "visit": 2,
+          "reason": "Blog opinion piece about the same CSS subject; relevant or procrastination."
+        },
+        {
+          "visit": 3,
+          "reason": "r/css as a place to find a fix, or a scroll?"
+        }
+      ]
+    },
+    {
+      "id": "rab-08",
+      "category": "rabbit-hole",
+      "intent": "Write the thank-you note to our donors",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://docs.google.com/document/d/1Donor/edit",
+          "title": "Donor thank-you - Google Docs",
+          "text": "Draft.",
+          "dwell_s": 200,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.facebook.com/",
+          "title": "Facebook",
+          "text": "Feed.",
+          "dwell_s": 120,
+          "t_s": 203,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://www.facebook.com/photo/?fbid=123",
+          "title": "Photo | Facebook",
+          "text": "Photo.",
+          "dwell_s": 80,
+          "t_s": 326,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://www.facebook.com/watch/?v=456",
+          "title": "Video | Facebook Watch",
+          "text": "Video.",
+          "dwell_s": 200,
+          "t_s": 409,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "rab-09",
+      "category": "rabbit-hole",
+      "intent": "Revise the lesson plan for tomorrow's class",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://docs.google.com/document/d/1Lesson/edit",
+          "title": "Lesson plan - Google Docs",
+          "text": "Plan.",
+          "dwell_s": 240,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.teacherspayteachers.com/Browse/Search:fractions%20worksheet",
+          "title": "Fractions worksheet | Teachers Pay Teachers",
+          "text": "Worksheets.",
+          "dwell_s": 100,
+          "t_s": 243,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.pinterest.com/search/pins/?q=fractions%20activities",
+          "title": "Fractions activities - Pinterest",
+          "text": "Pins.",
+          "dwell_s": 120,
+          "t_s": 346,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.pinterest.com/search/pins/?q=home%20decor",
+          "title": "Home decor - Pinterest",
+          "text": "Pins.",
+          "dwell_s": 150,
+          "t_s": 469,
+          "via": "load",
+          "label": "drift"
+        }
+      ],
+      "debatable": [
+        {
+          "visit": 2,
+          "reason": "Teachers do gather ideas on Pinterest."
+        }
+      ]
+    },
+    {
+      "id": "rab-10",
+      "category": "rabbit-hole",
+      "intent": "Study algorithm complexity for the interview",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://www.bigocheatsheet.com/",
+          "title": "Big-O Algorithm Complexity Cheat Sheet",
+          "text": "Cheat sheet.",
+          "dwell_s": 120,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://leetcode.com/problems/two-sum/",
+          "title": "Two Sum - LeetCode",
+          "text": "Problem.",
+          "dwell_s": 400,
+          "t_s": 123,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://leetcode.com/discuss/general-discussion/interview-prep-2026/",
+          "title": "Interview prep 2026 - LeetCode Discuss",
+          "text": "Discussion.",
+          "dwell_s": 150,
+          "t_s": 526,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://leetcode.com/discuss/general-discussion/salary-compensation-2026/",
+          "title": "Salary compensation 2026 - LeetCode Discuss",
+          "text": "Compensation chatter.",
+          "dwell_s": 200,
+          "t_s": 679,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://www.levels.fyi/",
+          "title": "Levels.fyi",
+          "text": "Compensation data.",
+          "dwell_s": 150,
+          "t_s": 882,
+          "via": "load",
+          "label": "drift"
+        }
+      ],
+      "debatable": [
+        {
+          "visit": 3,
+          "reason": "Same site, comp discussion; related to interviewing but not studying."
+        }
+      ]
+    },
+    {
+      "id": "rab-11",
+      "category": "rabbit-hole",
+      "intent": "Edit chapter 3 of my novel",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://docs.google.com/document/d/1Novel/edit",
+          "title": "Novel - chapter 3 - Google Docs",
+          "text": "Draft.",
+          "dwell_s": 400,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.thesaurus.com/browse/melancholy",
+          "title": "Melancholy synonyms | Thesaurus.com",
+          "text": "Synonyms.",
+          "dwell_s": 15,
+          "t_s": 403,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Victorian_era",
+          "title": "Victorian era - Wikipedia",
+          "text": "Period research for the setting.",
+          "dwell_s": 100,
+          "t_s": 421,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Jack_the_Ripper",
+          "title": "Jack the Ripper - Wikipedia",
+          "text": "Crime.",
+          "dwell_s": 150,
+          "t_s": 524,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=RipperDoc01",
+          "title": "Jack the Ripper documentary - YouTube",
+          "text": "Documentary.",
+          "dwell_s": 900,
+          "t_s": 677,
+          "via": "load",
+          "label": "drift"
+        }
+      ],
+      "debatable": [
+        {
+          "visit": 2,
+          "reason": "Period research for a novel; a writer would say it serves."
+        }
+      ]
+    },
+    {
+      "id": "rab-12",
+      "category": "rabbit-hole",
+      "intent": "Write the cloud cost report",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://console.aws.amazon.com/cost-management/home",
+          "title": "AWS Cost Explorer",
+          "text": "Costs.",
+          "dwell_s": 180,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://docs.google.com/spreadsheets/d/1Cloud/edit",
+          "title": "Cloud cost report - Google Sheets",
+          "text": "Table.",
+          "dwell_s": 200,
+          "t_s": 183,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.twitch.tv/directory",
+          "title": "Browse - Twitch",
+          "text": "Directory.",
+          "dwell_s": 120,
+          "t_s": 386,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://www.twitch.tv/somestreamer",
+          "title": "somestreamer - Twitch",
+          "text": "Live.",
+          "dwell_s": 600,
+          "t_s": 509,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://www.reddit.com/r/Twitch/",
+          "title": "r/Twitch",
+          "text": "Posts.",
+          "dwell_s": 100,
+          "t_s": 1112,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "rab-13",
+      "category": "rabbit-hole",
+      "intent": "Finish refactoring the auth module",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://github.com/acme/app/blob/main/src/auth/session.ts",
+          "title": "app/src/auth/session.ts",
+          "text": "Code.",
+          "dwell_s": 150,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://owasp.org/www-community/attacks/Session_fixation",
+          "title": "Session fixation | OWASP Foundation",
+          "text": "Attack.",
+          "dwell_s": 90,
+          "t_s": 153,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://news.ycombinator.com/item?id=40222222",
+          "title": "Why we left Kubernetes | Hacker News",
+          "text": "Comments.",
+          "dwell_s": 160,
+          "t_s": 246,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://news.ycombinator.com/item?id=40333333",
+          "title": "Ask HN: Side projects that made money? | Hacker News",
+          "text": "Comments.",
+          "dwell_s": 180,
+          "t_s": 409,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://news.ycombinator.com/newest",
+          "title": "New Links | Hacker News",
+          "text": "Newest.",
+          "dwell_s": 120,
+          "t_s": 592,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "rab-14",
+      "category": "rabbit-hole",
+      "intent": "Write a lab report on pendulum motion",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://docs.google.com/document/d/1Pend/edit",
+          "title": "Pendulum lab report - Google Docs",
+          "text": "Report.",
+          "dwell_s": 260,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.physicsclassroom.com/class/waves/Lesson-0/Pendulum-Motion",
+          "title": "Pendulum Motion - The Physics Classroom",
+          "text": "Lesson.",
+          "dwell_s": 110,
+          "t_s": 263,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Pendulum",
+          "title": "Pendulum - Wikipedia",
+          "text": "Pendulum.",
+          "dwell_s": 90,
+          "t_s": 376,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Foucault_pendulum_in_popular_culture",
+          "title": "Foucault pendulum in popular culture - Wikipedia",
+          "text": "Pop culture.",
+          "dwell_s": 100,
+          "t_s": 469,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Da_Vinci_Code",
+          "title": "The Da Vinci Code - Wikipedia",
+          "text": "Novel.",
+          "dwell_s": 140,
+          "t_s": 572,
+          "via": "load",
+          "label": "drift"
+        }
+      ],
+      "debatable": [
+        {
+          "visit": 3,
+          "reason": "A pendulum-related Wikipedia page, but about pop culture; 100s of dwell."
+        }
+      ]
+    },
+    {
+      "id": "rab-15",
+      "category": "rabbit-hole",
+      "intent": "Respond to my manager's feedback on the draft",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://docs.google.com/document/d/1Feedback/edit",
+          "title": "Draft with comments - Google Docs",
+          "text": "Draft.",
+          "dwell_s": 220,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://mail.google.com/mail/u/0/#inbox/FMfcg",
+          "title": "Re: Draft feedback - Acme Mail",
+          "text": "Email.",
+          "dwell_s": 80,
+          "t_s": 223,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://x.com/home",
+          "title": "Home / X",
+          "text": "Timeline.",
+          "dwell_s": 100,
+          "t_s": 306,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://x.com/explore/tabs/trending",
+          "title": "Trending / X",
+          "text": "Trending.",
+          "dwell_s": 90,
+          "t_s": 409,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://x.com/someuser",
+          "title": "Some user / X",
+          "text": "Posts.",
+          "dwell_s": 130,
+          "t_s": 502,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    }
+  ]
+}

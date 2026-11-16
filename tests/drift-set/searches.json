@@ -1,0 +1,577 @@
+{
+  "labelled_by": "agent",
+  "review": "pending-owner",
+  "schema_version": 1,
+  "category": "searches",
+  "sequences": [
+    {
+      "id": "sea-01",
+      "category": "searches",
+      "intent": "Fix the memory leak in the image resizing worker",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://www.google.com/search?q=node+sharp+memory+leak+resize",
+          "title": "node sharp memory leak resize - Google Search",
+          "text": "About 52,000 results.",
+          "dwell_s": 12,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://stackoverflow.com/questions/43987654/sharp-library-memory-leak-when-resizing-many-images",
+          "title": "sharp library memory leak - Stack Overflow",
+          "text": "Answer.",
+          "dwell_s": 90,
+          "t_s": 15,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.google.com/search?q=v8+heap+snapshot+chrome+devtools",
+          "title": "v8 heap snapshot chrome devtools - Google Search",
+          "text": "Results.",
+          "dwell_s": 10,
+          "t_s": 108,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "sea-02",
+      "category": "searches",
+      "intent": "Write the annual performance review for my team",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://www.google.com/search?q=performance+review+phrases+examples",
+          "title": "performance review phrases examples - Google Search",
+          "text": "Results.",
+          "dwell_s": 15,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.google.com/search?q=best+pizza+near+me",
+          "title": "best pizza near me - Google Search",
+          "text": "Pizza places near you. Open now.",
+          "dwell_s": 20,
+          "t_s": 18,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.google.com/search?q=nba+scores+tonight",
+          "title": "nba scores tonight - Google Search",
+          "text": "Live scores.",
+          "dwell_s": 25,
+          "t_s": 41,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "sea-03",
+      "category": "searches",
+      "intent": "Research how to apply for a small business loan",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://www.google.com/search?q=sba+loan+requirements",
+          "title": "sba loan requirements - Google Search",
+          "text": "Results.",
+          "dwell_s": 15,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.sba.gov/funding-programs/loans",
+          "title": "Loans | U.S. Small Business Administration",
+          "text": "SBA loan programs.",
+          "dwell_s": 160,
+          "t_s": 18,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://duckduckgo.com/?q=small+business+loan+application+checklist",
+          "title": "small business loan application checklist at DuckDuckGo",
+          "text": "Results.",
+          "dwell_s": 12,
+          "t_s": 181,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://duckduckgo.com/?q=celebrity+net+worth+2026",
+          "title": "celebrity net worth 2026 at DuckDuckGo",
+          "text": "Results.",
+          "dwell_s": 15,
+          "t_s": 196,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "sea-04",
+      "category": "searches",
+      "intent": "Plan a hiking trip to Patagonia",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://www.google.com/search?q=torres+del+paine+w+trek+itinerary",
+          "title": "torres del paine w trek itinerary - Google Search",
+          "text": "Results.",
+          "dwell_s": 15,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.alltrails.com/trail/chile/magallanes/w-trek",
+          "title": "W Trek, Chile - AllTrails",
+          "text": "Trail info.",
+          "dwell_s": 140,
+          "t_s": 18,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.google.com/search?q=patagonia+flights+from+new+york",
+          "title": "patagonia flights from new york - Google Search",
+          "text": "Flights.",
+          "dwell_s": 20,
+          "t_s": 161,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.google.com/travel/flights",
+          "title": "Google Flights",
+          "text": "Search flights.",
+          "dwell_s": 120,
+          "t_s": 184,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "sea-05",
+      "category": "searches",
+      "intent": "Learn Rust ownership rules",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://www.google.com/search?q=rust+ownership+borrow+checker+explained",
+          "title": "rust ownership borrow checker explained - Google Search",
+          "text": "Results.",
+          "dwell_s": 12,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://doc.rust-lang.org/book/ch04-00-understanding-ownership.html",
+          "title": "Understanding Ownership - The Rust Programming Language",
+          "text": "Ownership.",
+          "dwell_s": 240,
+          "t_s": 15,
+          "via": "load",
+          "label": "serves-intent",
+          "note": "unlisted host; \"ownership\" in URL"
+        },
+        {
+          "url": "https://www.bing.com/search?q=rust+lifetimes+tutorial",
+          "title": "rust lifetimes tutorial - Bing",
+          "text": "Results.",
+          "dwell_s": 10,
+          "t_s": 258,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "sea-06",
+      "category": "searches",
+      "intent": "Prepare the quarterly tax estimate",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://www.google.com/search?q=quarterly+estimated+tax+payment+due+dates",
+          "title": "quarterly estimated tax payment due dates - Google Search",
+          "text": "Results.",
+          "dwell_s": 12,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.irs.gov/businesses/small-businesses-self-employed/estimated-taxes",
+          "title": "Estimated taxes | Internal Revenue Service",
+          "text": "Estimated taxes.",
+          "dwell_s": 170,
+          "t_s": 15,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.google.com/search?q=what+is+the+weather+this+weekend",
+          "title": "what is the weather this weekend - Google Search",
+          "text": "Weather.",
+          "dwell_s": 15,
+          "t_s": 188,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ],
+      "debatable": [
+        {
+          "visit": 2,
+          "reason": "Quick weather lookup in the middle of a task."
+        }
+      ]
+    },
+    {
+      "id": "sea-07",
+      "category": "searches",
+      "intent": "Compare standing desks for the office",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://www.google.com/search?q=best+standing+desk+2026",
+          "title": "best standing desk 2026 - Google Search",
+          "text": "Results.",
+          "dwell_s": 12,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.wirecutter.com/reviews/best-standing-desk/",
+          "title": "The Best Standing Desks | Wirecutter",
+          "text": "Reviews.",
+          "dwell_s": 180,
+          "t_s": 15,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.google.com/search?q=flexispot+vs+uplift+desk",
+          "title": "flexispot vs uplift desk - Google Search",
+          "text": "Results.",
+          "dwell_s": 10,
+          "t_s": 198,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "sea-08",
+      "category": "searches",
+      "intent": "Debug the CORS error in the staging environment",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://www.google.com/search?q=cors+preflight+403+api+gateway",
+          "title": "cors preflight 403 api gateway - Google Search",
+          "text": "Results.",
+          "dwell_s": 10,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS",
+          "title": "Cross-Origin Resource Sharing (CORS) - HTTP | MDN",
+          "text": "CORS.",
+          "dwell_s": 150,
+          "t_s": 13,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.google.com/search?q=api+gateway+options+method+mock+integration",
+          "title": "api gateway options method mock integration - Google Search",
+          "text": "Results.",
+          "dwell_s": 10,
+          "t_s": 166,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-cors.html",
+          "title": "Enabling CORS for a REST API resource - Amazon API Gateway",
+          "text": "CORS.",
+          "dwell_s": 130,
+          "t_s": 179,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "sea-09",
+      "category": "searches",
+      "intent": "Write the cover letter for the data analyst role",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://www.google.com/search?q=data+analyst+cover+letter+example",
+          "title": "data analyst cover letter example - Google Search",
+          "text": "Results.",
+          "dwell_s": 12,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.indeed.com/career-advice/resumes-cover-letters/data-analyst-cover-letter",
+          "title": "How To Write a Data Analyst Cover Letter | Indeed.com",
+          "text": "Guide.",
+          "dwell_s": 140,
+          "t_s": 15,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.google.com/search?q=latest+iphone+rumors",
+          "title": "latest iphone rumors - Google Search",
+          "text": "Results.",
+          "dwell_s": 20,
+          "t_s": 158,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "sea-10",
+      "category": "searches",
+      "intent": "Find a good dentist near me and book a visit",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://www.google.com/search?q=dentist+near+me+open+saturday",
+          "title": "dentist near me open saturday - Google Search",
+          "text": "Results.",
+          "dwell_s": 15,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.google.com/maps/search/dentist/@40.7,-74.0,14z",
+          "title": "dentist - Google Maps",
+          "text": "Map.",
+          "dwell_s": 60,
+          "t_s": 18,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.zocdoc.com/dentists",
+          "title": "Find a Dentist | Zocdoc",
+          "text": "Book.",
+          "dwell_s": 140,
+          "t_s": 81,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "sea-11",
+      "category": "searches",
+      "intent": "Finish the physics problem set on circular motion",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://www.google.com/search?q=centripetal+acceleration+formula",
+          "title": "centripetal acceleration formula - Google Search",
+          "text": "Results.",
+          "dwell_s": 10,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.khanacademy.org/science/physics/centripetal-force-and-gravitation",
+          "title": "Centripetal force and gravitation | Physics | Khan Academy",
+          "text": "Lessons.",
+          "dwell_s": 150,
+          "t_s": 13,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.wolframalpha.com/input?i=2%CF%80r%2Fv+for+r%3D5+v%3D3",
+          "title": "2πr/v for r=5 v=3 - Wolfram|Alpha",
+          "text": "Result.",
+          "dwell_s": 30,
+          "t_s": 166,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.google.com/search?q=who+won+the+super+bowl",
+          "title": "who won the super bowl - Google Search",
+          "text": "Results.",
+          "dwell_s": 15,
+          "t_s": 199,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "sea-12",
+      "category": "searches",
+      "intent": "Look up the tax treatment of stock options",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://www.google.com/search?q=iso+vs+nso+stock+options+tax",
+          "title": "iso vs nso stock options tax - Google Search",
+          "text": "Results.",
+          "dwell_s": 12,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.investopedia.com/terms/i/iso.asp",
+          "title": "Incentive Stock Option (ISO): Definition | Investopedia",
+          "text": "ISO.",
+          "dwell_s": 130,
+          "t_s": 15,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.nerdwallet.com/article/investing/stock-options",
+          "title": "Stock options explained | NerdWallet",
+          "text": "Explained.",
+          "dwell_s": 140,
+          "t_s": 148,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "sea-13",
+      "category": "searches",
+      "intent": "Troubleshoot the printer that will not connect to wifi",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://www.google.com/search?q=hp+laserjet+wont+connect+to+wifi",
+          "title": "hp laserjet wont connect to wifi - Google Search",
+          "text": "Results.",
+          "dwell_s": 12,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://support.hp.com/us-en/document/ish_123456",
+          "title": "HP printers - Printer fails to connect to wireless network | HP Support",
+          "text": "Fix.",
+          "dwell_s": 160,
+          "t_s": 15,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.reddit.com/r/printers/comments/1vwx/laserjet_wifi_dropping/",
+          "title": "LaserJet wifi dropping : r/printers",
+          "text": "Thread.",
+          "dwell_s": 90,
+          "t_s": 178,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "sea-14",
+      "category": "searches",
+      "intent": "Write the abstract for the conference submission",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://www.google.com/search?q=how+to+write+a+conference+abstract",
+          "title": "how to write a conference abstract - Google Search",
+          "text": "Results.",
+          "dwell_s": 10,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.google.com/search?q=cute+puppy+videos",
+          "title": "cute puppy videos - Google Search",
+          "text": "Videos.",
+          "dwell_s": 30,
+          "t_s": 13,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://www.google.com/search?q=cute+puppy+videos&tbm=vid",
+          "title": "cute puppy videos - Google Videos",
+          "text": "Videos.",
+          "dwell_s": 40,
+          "t_s": 46,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "sea-15",
+      "category": "searches",
+      "intent": "Learn about index funds for retirement saving",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://www.bing.com/search?q=index+fund+vs+etf+retirement",
+          "title": "index fund vs etf retirement - Bing",
+          "text": "Results.",
+          "dwell_s": 10,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.bogleheads.org/wiki/Index_funds",
+          "title": "Index funds - Bogleheads",
+          "text": "Wiki.",
+          "dwell_s": 190,
+          "t_s": 13,
+          "via": "load",
+          "label": "serves-intent",
+          "note": "unlisted host; keyword \"funds\" absent from intent; \"index\" is"
+        },
+        {
+          "url": "https://www.vanguard.com/en-us/insights/saving-investing",
+          "title": "Saving and investing | Vanguard",
+          "text": "Insights.",
+          "dwell_s": 140,
+          "t_s": 206,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    }
+  ]
+}
