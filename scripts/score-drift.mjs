@@ -110,7 +110,7 @@ function table(t) {
 export function report(rows, sequences, { failures = false } = {}) {
   const out = [];
   const nv = sequences.reduce((a, s) => a + s.visits.length, 0);
-  out.push(`Drift set: ${sequences.length} sequences, ${nv} visits (labels are agent proposals, review pending-owner)`);
+  out.push(`Drift set: ${sequences.length} sequences, ${nv} visits (labels are agent proposals, accepted by the owner 2026-11-16)`);
   const sections = [
     ['As declared (each sequence at its own preset)', (r) => r.preset === r.declared],
     ...PRESETS.map((p) => [`Every sequence replayed at ${p}`, (r) => r.preset === p]),

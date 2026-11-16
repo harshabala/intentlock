@@ -1,6 +1,8 @@
 # Labelled drift set
 
-**labelled_by: agent, review: pending-owner.** Every label here is an agent's proposal. Nothing in
+**labelled_by: agent, review: accepted-by-owner-2026-11-16.** On 2026-11-16 the owner accepted the labels as they stand ("In the labels, I'm good"), without a case-by-case review; the debatable cases listed below remain open to correction.
+
+Original note: Every label here is an agent's proposal. Nothing in
 this folder encodes the owner's judgement yet, so the baseline numbers are provisional until the
 owner reviews the labels (north-star workstream 1). Do not tune rules against them before that.
 

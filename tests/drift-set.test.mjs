@@ -12,7 +12,7 @@ test('the drift set has at least 200 labelled sequences marked as agent-labelled
   for (const file of new Set(sequences.map((s) => s.file))) {
     const doc = JSON.parse(readFileSync(new URL(`./drift-set/${file}`, import.meta.url), 'utf8'));
     assert.equal(doc.labelled_by, 'agent');
-    assert.equal(doc.review, 'pending-owner');
+    assert.equal(doc.review, 'accepted-by-owner-2026-11-16');
   }
 });
 
