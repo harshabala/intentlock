@@ -597,7 +597,7 @@ function normalizeHostname(h) {
 // Custom rules cover a domain and its subdomains at label boundaries
 // (reddit.com covers old.reddit.com, never reddit.com.evil.test). The most
 // specific rule wins; an allow wins a tie with a block of the same scope.
-function customRuleDecision(hostname, policy) {
+export function customRuleDecision(hostname, policy) {
   const host = normalizeHostname(hostname);
   if (!host) return null;
   let best = null;
@@ -716,7 +716,7 @@ function isKeywordAligned(url, terms) {
 
 // Category-aware alignment: some intent categories have a natural set of site
 // categories that are aligned even without keyword overlap (e.g. job_search + job_boards)
-const CATEGORY_ALIGNMENT = {
+export const CATEGORY_ALIGNMENT = {
   deep_work:           ['productivity'],
   job_search:          ['job_boards', 'professional_network'],
   coding:              ['code_forge', 'documentation', 'ai_tools'],
@@ -739,7 +739,7 @@ const TECHNICAL_QA_HOSTS = ['stackoverflow.com', 'stackexchange.com', 'superuser
   'serverfault.com', 'askubuntu.com', 'mathoverflow.net'];
 const TECHNICAL_QA_INTENTS = new Set(['coding', 'learning']);
 
-function isTechnicalQaHost(hostname) {
+export function isTechnicalQaHost(hostname) {
   const host = normalizeHostname(hostname);
   return TECHNICAL_QA_HOSTS.some(domain => host === domain || host.endsWith(`.${domain}`));
 }
@@ -755,7 +755,7 @@ function isCategoryAligned(hostname, intentCategoryId) {
 
 // Related corrections cover the marked host and its subdomains, never a
 // parent or sibling domain.
-function matchesRelatedHostname(hostname, relatedHostnames) {
+export function matchesRelatedHostname(hostname, relatedHostnames) {
   const host = normalizeHostname(hostname);
   if (!host || !Array.isArray(relatedHostnames)) return false;
   return relatedHostnames.some((raw) => {

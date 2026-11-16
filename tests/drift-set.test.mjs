@@ -1,7 +1,8 @@
 import { readFileSync } from 'node:fs';
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { buildDefaultPolicy, evaluatePolicyDrift } from '../heuristic-policy.js';
+import { buildDefaultPolicy, mergePolicyWithIntent } from '../heuristic-policy.js';
+import { decideDrift } from '../drift-decision.js';
 import { loadSet, replay, scoreAll } from '../scripts/score-drift.mjs';
 
 const sequences = loadSet();
@@ -24,14 +25,17 @@ test('the set covers every hard case and both labels', () => {
   assert.deepEqual([...labels].sort(), ['drift', 'serves-intent']);
 });
 
-test('replay uses the real evaluator: a blocked site locks on arrival', () => {
-  const s = { intent: 'Write the Q3 budget proposal', visits: [{ url: 'https://twitter.com/home', dwell_s: 10, t_s: 0, via: 'load', label: 'drift' }] };
-  const [r] = replay(s, 'balanced');
-  assert.equal(r.locked, true);
-  const direct = evaluatePolicyDrift({
-    intent: s.intent, url: s.visits[0].url, events: [], policy: { ...buildDefaultPolicy('deep_work', 'balanced') }, now: 0,
+test('replay uses the real decision code: a blocked site locks on arrival, a related video only asks', () => {
+  const visit = (url) => ({ intent: 'Write the Q3 budget proposal', visits: [{ url, title: '', text: '', dwell_s: 10, t_s: 0, via: 'load', label: 'drift' }] });
+  const [lock] = replay(visit('https://www.netflix.com/browse'), 'balanced');
+  assert.equal(lock.outcome, 'lock');
+  const direct = decideDrift({
+    intent: 'Write the Q3 budget proposal', url: 'https://www.netflix.com/browse', events: [], now: 0,
+    policy: mergePolicyWithIntent('Write the Q3 budget proposal', buildDefaultPolicy(null, 'balanced')),
   });
-  assert.equal(direct.reason, r.reason);
+  assert.equal(direct.reason, lock.reason);
+  assert.equal(replay(visit('https://www.youtube.com/watch?v=x'), 'balanced')[0].outcome, 'checkin');
+  assert.equal(replay(visit('https://www.netflix.com/browse'), 'balanced', 'legacy')[0].outcome, 'lock');
 });
 
 test('scoring the whole set completes and returns a row per visit per preset', () => {

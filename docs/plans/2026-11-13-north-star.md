@@ -73,6 +73,24 @@ Gaps:
 - **Done when:** the baseline numbers exist. Show them to the owner before changing rules.
 - 2026-11-16: done by an agent. 239 sequences / 892 visits in `tests/drift-set/` (labels are agent proposals, `review: pending-owner`; the 30 most debatable are listed in its README), `npm run score:drift`, baseline in `docs/drift-baseline-2026-11-16.md` (balanced, all sequences: 21.8% wrong locks, 7.3% missed drifts). Verified with `npm run check` (green) and `npm run score:drift` (exit 0). No rules changed. Still needs the owner to review the labels and see the baseline.
 
+### 1b. Check-in before lock (added 2026-11-16, owner request)
+- The extension should talk with the user, not only block: "I'm watching a video, but it is for
+  work." Three outcomes instead of two: aligned (silent), clear drift (lock) and uncertain (check-in).
+- The check-in is a small non-blocking prompt (not the full-screen lock) that names the intent,
+  says in one line why the page looks off, and offers "Yes, this is for my task" (optional short
+  reason), "Just a quick check" (short grace period, then asks again) and "I drifted" (go back or
+  close the tab). No typing on the common path. Shadow root, bundled fonts, reduced motion, keyboard
+  reachable, in the accessibility and contrast checks.
+- "Yes" aligns the site (a single page on hub sites such as YouTube) for this session only, stored
+  with the session and cleared when it ends; never a permanent allow. An explicit allow or block
+  by the user always wins. At most one check-in per site per session unless the grace period expires,
+  plus a global minimum gap. Page title and a short snippet are compared with the intent locally and
+  never stored. The optional AI may choose between check-in and silence, never lock.
+- **Done when:** the scorer reports three outcomes; at the balanced preset wrong locks are under 2 %,
+  prompts on legitimate pages under 10 % and missed drifts under 10 %; browser journeys cover the
+  check-in, each answer, session-only alignment and an explicit block still locking; the full suite
+  and journeys pass.
+
 ### 2. Tighten the logic
 - Use the scorer to drive changes: page content signals beyond the domain, a grace period for
   short detours, smarter handling of search and sign-in pages, and the AI second opinion where

@@ -2,7 +2,8 @@
 // used by the service worker (heuristic-policy.js) and reports right and wrong locks.
 // Exit code is non-zero only on a crash (bad data, exception), never on poor scores.
 //   npm run score:drift                 summary
-//   npm run score:drift -- --failures   also list every wrong lock and missed drift
+//   npm run score:drift -- --failures   also list every wrong lock, prompt and missed drift
+//   npm run score:drift -- --legacy     the original two-outcome rules, for before numbers
 //   npm run score:drift -- --json out.json
 import { readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
@@ -10,6 +11,7 @@ import { fileURLToPath } from 'node:url';
 import {
   buildDefaultPolicy, mergePolicyWithIntent, evaluatePolicyDrift, minimizeSessionEvent,
 } from '../heuristic-policy.js';
+import { decideDrift, sessionAlignKey } from '../drift-decision.js';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const SET_DIR = join(root, 'tests', 'drift-set');
@@ -39,55 +41,85 @@ export function loadSet(dir = SET_DIR) {
   return sequences;
 }
 
-/** Mirrors the worker: log the load/tab-switch event, check, then log each 30 s dwell report and re-check. */
-export function replay(sequence, strictness) {
+const hostOf = (url) => { try { return new URL(url).hostname.replace(/^www\./, '').toLowerCase(); } catch { return ''; } };
+
+/**
+ * Mirrors the worker: log the load/tab-switch event, check, then log each 30 s dwell report and re-check.
+ * engine 'checkin' (default) is the three-outcome decision the worker uses; 'legacy' is the original
+ * two-outcome evaluatePolicyDrift (kept so before/after numbers stay reproducible).
+ * Simulated user: a check-in on a serves-intent visit is answered "yes" (site, or page on a hub, aligned for
+ * the rest of the session); on a drift visit "I drifted" (a later unrelated page on that site locks).
+ * The global minimum gap and the "quick check" grace period are not modelled.
+ */
+export function replay(sequence, strictness, engine = 'checkin') {
   const policy = mergePolicyWithIntent(sequence.intent, buildDefaultPolicy(null, strictness));
   const events = [];
+  const sessionAligned = [];
+  const driftedHosts = [];
   const log = (event) => {
     events.push(minimizeSessionEvent(event, sequence.intent));
     if (events.length > MAX_EVENTS) events.shift();
   };
-  const check = (url, now) => evaluatePolicyDrift({ intent: sequence.intent, url, events: [...events], policy, now });
+  const check = (v, now) => {
+    if (engine === 'legacy') {
+      const r = evaluatePolicyDrift({ intent: sequence.intent, url: v.url, events: [...events], policy, now });
+      return { ...r, outcome: r.shouldIntervene ? 'lock' : 'silent' };
+    }
+    const r = decideDrift({
+      intent: sequence.intent, url: v.url, title: v.title, snippet: v.text, events: [...events], policy, now, sessionAligned, driftedHosts,
+    });
+    return r;
+  };
   return sequence.visits.map((v) => {
     const start = T0 + v.t_s * 1000;
     const end = start + v.dwell_s * 1000;
     log({ timestamp: start, url: v.url, actionType: v.via === 'tab-switch' ? 'TAB_SWITCH' : 'PAGE_LOAD' });
-    let result = check(v.url, start);
+    let result = check(v, start);
     let at = 'navigation';
-    for (let t = start + DWELL_REPORT_MS, done = 0; !result.shouldIntervene && done < end - start;) {
+    for (let t = start + DWELL_REPORT_MS, done = 0; result.outcome === 'silent' && done < end - start;) {
       const stop = Math.min(t, end);
       const delta = stop - start - done;
       if (delta <= 0) break;
       done += delta;
       log({ timestamp: stop, url: v.url, actionType: 'PAGE_DWELL', dwellMs: done, dwellDeltaMs: delta });
-      result = check(v.url, stop);
+      result = check(v, stop);
       at = `dwell ${Math.round(done / 1000)}s`;
       t += DWELL_REPORT_MS;
     }
-    const locked = result.shouldIntervene;
+    if (result.outcome === 'checkin') {
+      if (v.label === 'serves-intent') sessionAligned.push(sessionAlignKey(v.url));
+      else driftedHosts.push(hostOf(v.url));
+    }
     return {
-      locked, reason: result.reason, score: result.score, signals: result.signals,
-      at: locked ? at : null, intentCategory: policy.intentCategoryId,
+      outcome: result.outcome, locked: result.outcome === 'lock', reason: result.reason, score: result.score ?? 0,
+      signals: result.signals || [], at: result.outcome === 'silent' ? null : at,
+      intentCategory: policy.intentCategoryId,
     };
   });
 }
 
 function tally(rows) {
-  const t = { serves: 0, drift: 0, wrongLocks: 0, missed: 0, rightLocks: 0, rightSilent: 0 };
+  const t = { serves: 0, drift: 0, wrongLocks: 0, prompts: 0, rightSilent: 0, missed: 0, driftPrompted: 0, rightLocks: 0 };
   for (const r of rows) {
-    if (r.label === 'serves-intent') { t.serves++; if (r.locked) t.wrongLocks++; else t.rightSilent++; }
-    else { t.drift++; if (r.locked) t.rightLocks++; else t.missed++; }
+    if (r.label === 'serves-intent') {
+      t.serves++;
+      if (r.outcome === 'lock') t.wrongLocks++; else if (r.outcome === 'checkin') t.prompts++; else t.rightSilent++;
+    } else {
+      t.drift++;
+      if (r.outcome === 'lock') t.rightLocks++; else if (r.outcome === 'checkin') t.driftPrompted++; else t.missed++;
+    }
   }
   t.wrongLockRate = t.serves ? t.wrongLocks / t.serves : 0;
+  t.promptRate = t.serves ? t.prompts / t.serves : 0;
   t.missedRate = t.drift ? t.missed / t.drift : 0;
   return t;
 }
 
-export function scoreAll(sequences) {
+export function scoreAll(sequences, engine = 'checkin') {
   const rows = [];
   for (const s of sequences) {
     for (const preset of PRESETS) {
-      const outcomes = replay(s, preset);
+      const outcomes = replay(s, preset, engine);
       s.visits.forEach((v, i) => rows.push({
         id: s.id, category: s.category, intent: s.intent, declared: s.strictness, preset,
         visit: i, url: v.url, title: v.title, label: v.label, dwell_s: v.dwell_s, via: v.via,
@@ -100,10 +132,11 @@ export function scoreAll(sequences) {
 
 const pct = (x) => `${(x * 100).toFixed(1)}%`;
 function table(t) {
+  const c = (n) => String(n).padStart(7);
   return [
-    '                 silent   lock',
-    `  serves-intent  ${String(t.rightSilent).padStart(6)} ${String(t.wrongLocks).padStart(6)}   (wrong locks)`,
-    `  drift          ${String(t.missed).padStart(6)} ${String(t.rightLocks).padStart(6)}   (missed drifts on the left)`,
+    '                  silent  check-in    lock',
+    `  serves-intent ${c(t.rightSilent)} ${c(t.prompts)}  ${c(t.wrongLocks)}   (check-in = prompt, lock = wrong lock)`,
+    `  drift         ${c(t.missed)} ${c(t.driftPrompted)}  ${c(t.rightLocks)}   (silent = missed drift)`,
   ].join('\n');
 }
 
@@ -123,6 +156,7 @@ export function report(rows, sequences, { failures = false } = {}) {
       const sub = p ? sel.filter((r) => r.preset === p) : sel;
       const t = tally(sub);
       out.push(`${p ? `[${p}] ` : ''}visits ${sub.length}: wrong locks ${t.wrongLocks}/${t.serves} (${pct(t.wrongLockRate)}), `
+        + `prompts on legitimate pages ${t.prompts}/${t.serves} (${pct(t.promptRate)}), `
         + `missed drifts ${t.missed}/${t.drift} (${pct(t.missedRate)})`);
       out.push(table(t));
     }
@@ -132,18 +166,18 @@ export function report(rows, sequences, { failures = false } = {}) {
     const by = {};
     for (const r of ref) (by[r[key]] ||= []).push(r);
     return Object.entries(by).map(([name, rs]) => ({ name: String(name), ...tally(rs) }))
-      .sort((a, b) => (b.wrongLocks + b.missed) - (a.wrongLocks + a.missed));
+      .sort((a, b) => (b.wrongLocks + b.prompts + b.missed) - (a.wrongLocks + a.prompts + a.missed));
   };
   const line = (c) => `  ${c.name.padEnd(30)} wrong locks ${String(c.wrongLocks).padStart(3)}/${String(c.serves).padEnd(3)} (${pct(c.wrongLockRate).padStart(6)})  `
-    + `missed ${String(c.missed).padStart(3)}/${String(c.drift).padEnd(3)} (${pct(c.missedRate).padStart(6)})`;
+    + `prompts ${String(c.prompts).padStart(3)} (${pct(c.promptRate).padStart(6)})  missed ${String(c.missed).padStart(3)}/${String(c.drift).padEnd(3)} (${pct(c.missedRate).padStart(6)})`;
   out.push('', '== Worst scenario categories (as declared; by wrong locks + missed drifts) ==');
   for (const c of group('category')) out.push(line(c));
   out.push('', '== By intent category the classifier chose (null = unclassified) ==');
   for (const c of group('intentCategory')) out.push(line(c));
   if (failures) {
     out.push('', '== Failures (as declared) ==');
-    for (const r of ref.filter((x) => (x.label === 'serves-intent') === x.locked)) {
-      const kind = r.locked ? 'WRONG LOCK ' : 'MISSED DRIFT';
+    for (const r of ref.filter((x) => (x.label === 'serves-intent') ? x.outcome !== 'silent' : x.outcome === 'silent')) {
+      const kind = r.outcome === 'lock' ? 'WRONG LOCK ' : r.outcome === 'checkin' ? 'PROMPT     ' : 'MISSED DRIFT';
       out.push(`${kind} ${r.id}#${r.visit} [${r.preset}] ${r.reason} score=${r.score.toFixed(2)} ${r.at || ''} ${r.url}`);
     }
   }
@@ -153,7 +187,9 @@ export function report(rows, sequences, { failures = false } = {}) {
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const args = process.argv.slice(2);
   const sequences = loadSet();
-  const rows = scoreAll(sequences);
+  const engine = args.includes('--legacy') ? 'legacy' : 'checkin';
+  const rows = scoreAll(sequences, engine);
+  console.log(`Engine: ${engine}`);
   console.log(report(rows, sequences, { failures: args.includes('--failures') }));
   const j = args.indexOf('--json');
   if (j >= 0 && args[j + 1]) writeFileSync(args[j + 1], JSON.stringify(rows, null, 1));
