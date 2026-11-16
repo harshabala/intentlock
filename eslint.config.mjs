@@ -4,7 +4,7 @@ import globals from 'globals';
 // Extension sources run as browser/service-worker modules or classic content
 // scripts; tests, scripts and config run in Node.
 export default [
-  { ignores: ['node_modules/**', 'dist/**', 'legacy-extension-source/**', 'test-results/**', 'playwright-report/**'] },
+  { ignores: ['.worktrees/**', '.claude/**', 'node_modules/**', 'dist/**', 'legacy-extension-source/**', 'test-results/**', 'playwright-report/**'] },
   js.configs.recommended,
   {
     languageOptions: {
