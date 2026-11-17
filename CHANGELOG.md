@@ -14,6 +14,8 @@
 - Sessions not ended within 24 hours end automatically; history and diagnostics are pruned in storage at startup and hourly.
 
 ### Added
+- Held-out drift set (`tests/drift-set-heldout/`, 114 sequences) and `npm run score:drift -- --set heldout`; first result in `docs/drift-heldout-2026-11-17.md` (balanced: 0.0% wrong locks, 13.8% prompts, 25.4% missed drifts; targets for prompts and missed drifts not met on unseen data).
+- Relaxed preset: check-in after a 30 second stay on social and streaming sites, and it never locks from inference. After a "yes", a page on a different topic earns one further check-in after 3 minutes. Journey proving a check-in card still answers correctly after a service-worker restart. See `docs/drift-round2-2026-11-17.md`.
 - Check-in before lock: when the rules are unsure the extension asks ("Still on task?") in a small non-blocking card instead of locking. Answers: yes (aligns the site, or the page on hubs like YouTube, for this session only), just a quick check (5 minute grace), I drifted (go back or close). One check-in per site per session and a 90 s global gap. A lock now needs clear drift or a custom block; the optional AI can only ask. Page title and a 300-character snippet are compared with the intent locally and held in memory only.
 - Rule changes driven by `npm run score:drift` (balanced: wrong locks 21.8% to 0.0%, prompts on legitimate pages 7.6%, missed drifts 7.3% to 7.3%); see `docs/drift-after-checkin-2026-11-16.md`.
 - Labelled drift set (`tests/drift-set/`, 239 agent-labelled sequences pending owner review) and `npm run score:drift`, which replays it through the real decision code and reports wrong locks and missed drifts per preset. Baseline in `docs/drift-baseline-2026-11-16.md`. No rules changed.

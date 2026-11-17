@@ -1,7 +1,7 @@
 // checkin-controller.js — service-worker side of the check-in prompt.
 // Everything the user answers is stored on the active session (`session.checkins`), so it is cleared
 // when the session ends and is never a permanent allow. Dependencies are injected so it stays testable.
-import { sessionAlignKey } from './drift-decision.js';
+import { REASK_MS, sessionAlignKey } from './drift-decision.js';
 
 export const CHECKIN_MIN_GAP_MS = 90_000; // global minimum gap between check-ins
 export const CHECKIN_GRACE_MS = 5 * 60 * 1000; // "just a quick check"
@@ -16,13 +16,39 @@ export function checkinState(session) {
 }
 
 export const alignedKeys = (session) => checkinState(session).aligned;
+
+const hostOfKey = (key) => {
+  try {
+    return key.startsWith('host:') ? key.slice(5) : new URL(key.slice(5)).hostname.replace(/^www\./, '').toLowerCase();
+  } catch {
+    return null;
+  }
+};
+
+/** host -> { answer, at, reasked } from the answered sites, for the "second ask after an interval" rules. */
+export function answeredMap(session) {
+  const out = {};
+  for (const [key, site] of Object.entries(checkinState(session).sites)) {
+    const host = hostOfKey(key);
+    if (!host || !site.answer || site.answer === 'quick') continue;
+    const normalized = site.answer === 'yes' ? 'yes' : 'drifted';
+    if (!out[host] || site.at >= out[host].at) out[host] = { answer: normalized, at: site.at, reasked: Boolean(site.reasked) };
+    else if (site.reasked) out[host].reasked = true;
+  }
+  return out;
+}
 export const driftedHosts = (session) => checkinState(session).drifted;
 
 /** One check-in per site per session, unless a "quick check" grace period has expired. */
-export function canAsk(state, key, tabId, now) {
+export function canAsk(state, key, tabId, now, kind = null, host = null) {
   if (now - state.lastAt < CHECKIN_MIN_GAP_MS) return false;
   const pending = state.pending[tabId];
   if (pending && now - pending.at < PENDING_MAX_AGE_MS) return false;
+  // A second ask after an answered "yes" (page on another topic) or "drifted" (relaxed repeat) waits an interval, once.
+  if (kind === 'moved_on' || kind === 'repeat') {
+    const entry = host ? answeredMap({ checkins: state })[host] : null;
+    return Boolean(entry) && !entry.reasked && now - entry.at >= REASK_MS && !state.sites[key]?.answer;
+  }
   const site = state.sites[key];
   if (!site) return true;
   return site.answer === 'quick' && now >= site.graceUntil;
@@ -45,7 +71,9 @@ export function createCheckinController({
       const key = sessionAlignKey(url);
       const state = checkinState(session);
       const t = now();
-      if (!key || !canAsk(state, key, tabId, t)) return false;
+      const host = extractDomain(url);
+      const kind = decision.checkinKind || null;
+      if (!key || !canAsk(state, key, tabId, t, kind, host)) return false;
       const tab = await getTab(tabId);
       if (!tab || sessionAlignKey(tab.url) !== key) return false;
       const id = createId();
@@ -60,6 +88,10 @@ export function createCheckinController({
       }
       state.lastAt = t;
       state.sites[key] = { at: t, answer: null, graceUntil: 0 };
+      if (kind === 'moved_on' || kind === 'repeat') {
+        // This host has now had its one further ask.
+        for (const [k, site] of Object.entries(state.sites)) if (hostOfKey(k) === host) site.reasked = true;
+      }
       state.count += 1;
       await storageSet({ activeSession: session });
       return true;
@@ -81,6 +113,7 @@ export function createCheckinController({
       delete state.pending[tabId];
       const t = now();
       const site = state.sites[pending.key] || { at: t, answer: null, graceUntil: 0 };
+      site.at = t;
       site.answer = kind === 'close' ? 'drifted' : kind;
       if (kind === 'yes') pushUnique(state.aligned, pending.key);
       if (kind === 'quick') site.graceUntil = t + CHECKIN_GRACE_MS;

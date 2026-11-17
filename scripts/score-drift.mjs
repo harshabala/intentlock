@@ -58,6 +58,7 @@ export function replay(sequence, strictness, engine = 'checkin') {
   const events = [];
   const sessionAligned = [];
   const driftedHosts = [];
+  const answered = {};
   const log = (event) => {
     events.push(minimizeSessionEvent(event, sequence.intent));
     if (events.length > MAX_EVENTS) events.shift();
@@ -68,7 +69,7 @@ export function replay(sequence, strictness, engine = 'checkin') {
       return { ...r, outcome: r.shouldIntervene ? 'lock' : 'silent' };
     }
     const r = decideDrift({
-      intent: sequence.intent, url: v.url, title: v.title, snippet: v.text, events: [...events], policy, now, sessionAligned, driftedHosts,
+      intent: sequence.intent, url: v.url, title: v.title, snippet: v.text, events: [...events], policy, now, sessionAligned, driftedHosts, answered,
     });
     return r;
   };
@@ -89,11 +90,18 @@ export function replay(sequence, strictness, engine = 'checkin') {
       t += DWELL_REPORT_MS;
     }
     if (result.outcome === 'checkin') {
-      if (v.label === 'serves-intent') sessionAligned.push(sessionAlignKey(v.url));
-      else driftedHosts.push(hostOf(v.url));
+      const host = hostOf(v.url);
+      const reasked = ['moved_on', 'repeat'].includes(result.checkinKind) || Boolean(answered[host]?.reasked);
+      if (v.label === 'serves-intent') {
+        sessionAligned.push(sessionAlignKey(v.url));
+        answered[host] = { answer: 'yes', at: start, reasked };
+      } else {
+        driftedHosts.push(host);
+        answered[host] = { answer: 'drifted', at: start, reasked };
+      }
     }
     return {
-      outcome: result.outcome, locked: result.outcome === 'lock', reason: result.reason, score: result.score ?? 0,
+      outcome: result.outcome, locked: result.outcome === 'lock', reason: result.reason, checkinKind: result.checkinKind, score: result.score ?? 0,
       signals: result.signals || [], at: result.outcome === 'silent' ? null : at,
       intentCategory: policy.intentCategoryId,
     };

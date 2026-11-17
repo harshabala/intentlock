@@ -1,5 +1,5 @@
-import { test, expect } from './fixtures.mjs';
-import { lockHost, onboard, configure, visit } from './steps.mjs';
+import { test, expect, closedOverlay } from './fixtures.mjs';
+import { lockHost, onboard, configure, start, visit } from './steps.mjs';
 
 // Reads go through an extension page so they keep working after the worker
 // that the fixture discovered has been stopped.
@@ -123,4 +123,52 @@ test('a real one-minute time budget expires and locks the active page', async ({
     .toBe('Time budget exceeded.');
   await expect(work.locator(lockHost)).toBeVisible();
   expect(Date.now()).toBeGreaterThanOrEqual(session.startTime + 60_000);
+});
+
+test('a check-in card stays answerable across a service-worker restart and nothing locks wrongly', async ({ journey }) => {
+  const home = await onboard(journey);
+  await configure(journey);
+  await home.reload();
+  const sessionId = await start(home, journey);
+  const page = await visit(journey, 'video.localhost', '/watch');
+  await expect(page.locator('#intentlock-checkin-host')).toBeVisible();
+  const before = (await pageStorage(home)).activeSession.checkins;
+  expect(Object.keys(before.pending)).toHaveLength(1);
+
+  // Stop the real MV3 worker with the card still open.
+  const cdp = await journey.context.newCDPSession(home);
+  const workerUrl = journey.worker.url();
+  const stopWorker = async () => {
+    const { targetInfos } = await cdp.send('Target.getTargets');
+    for (const info of targetInfos.filter(t => t.type === 'service_worker' && t.url === workerUrl)) {
+      await cdp.send('Target.closeTarget', { targetId: info.targetId }).catch(() => {});
+    }
+    return journey.worker.evaluate(() => true).then(() => 'alive', () => 'dead');
+  };
+  await expect.poll(stopWorker, { timeout: 15_000, intervals: [250, 500, 1_000] }).toBe('dead');
+  await cdp.detach();
+
+  // The card is page-side state; it survives. Answering revives a fresh worker, which must match the
+  // pending check-in from storage alone.
+  await expect(page.locator('#intentlock-checkin-host')).toBeVisible();
+  const card = await closedOverlay(page);
+  try {
+    await card.click('#intentlock-checkin-yes');
+    await expect(page.locator('#intentlock-checkin-host')).not.toBeVisible();
+  } finally {
+    await card.close();
+  }
+  await expect.poll(async () => (await pageStorage(home)).activeSession.checkins.aligned).toEqual(['host:video.localhost']);
+  const after = await pageStorage(home);
+  expect(after.activeSession.id).toBe(sessionId);
+  expect(after.activeSession.checkins.pending).toEqual({});
+  expect(after.activeSession.events.filter(e => e.actionType === 'CHECKIN')).toHaveLength(1);
+  // Nothing locked, and the answered site is not asked about again after the restart.
+  expect(Object.keys(after.interventionStates || {})).toHaveLength(0);
+  await expect(page.locator(lockHost)).not.toBeVisible();
+  await page.reload();
+  await page.waitForTimeout(2500);
+  await expect(page.locator('#intentlock-checkin-host')).not.toBeVisible();
+  await expect(page.locator(lockHost)).not.toBeVisible();
+  expect(Object.keys((await pageStorage(home)).interventionStates || {})).toHaveLength(0);
 });

@@ -85,3 +85,37 @@ test('dwell is counted per page, and dwell reports are not new unrelated events'
   const long = [ev('PAGE_LOAD', 120_000), ...[90, 60, 30, 1].map(t => ev('PAGE_DWELL', t * 1000, { dwellDeltaMs: 30_000 }))];
   assert.equal(decide(intent, 'https://tools.example/x', { events: long }).checkinKind, 'long_stay');
 });
+
+test('relaxed: social and streaming ask after a short stay and nothing locks from inference', () => {
+  const intent = 'Write the Q3 budget proposal';
+  const relaxed = policyFor(intent, 'relaxed');
+  const ev = (type, ago, extra = {}) => ({ timestamp: now - ago, url: 'https://www.netflix.com', actionType: type, ...extra });
+  const at = (events) => decideDrift({ intent, url: 'https://www.netflix.com/browse', policy: relaxed, now, events, title: 'Netflix' });
+  assert.equal(at([ev('PAGE_LOAD', 40_000)]).outcome, 'silent', 'no stay yet');
+  const stay = at([ev('PAGE_LOAD', 40_000), ev('PAGE_DWELL', 10_000, { dwellDeltaMs: 30_000 })]);
+  assert.equal(stay.outcome, 'checkin');
+  assert.equal(stay.checkinKind, 'watched');
+  // A block-category site that balanced would lock only asks at relaxed; a custom block still locks.
+  const forced = policyFor(intent, 'relaxed', { categoryPolicies: { ...relaxed.categoryPolicies, streaming: 'block' } });
+  const asked = decideDrift({ intent, url: 'https://www.netflix.com/browse', policy: forced, now, title: 'Netflix' });
+  assert.equal(asked.outcome, 'checkin');
+  const blocked = policyFor(intent, 'relaxed', { customBlockDomains: ['netflix.com'] });
+  assert.equal(decideDrift({ intent, url: 'https://www.netflix.com/', policy: blocked, now }).outcome, 'lock');
+});
+
+test('after a "yes", a page on a different topic earns one further check-in after the interval', () => {
+  const intent = 'Prepare notes on the Treaty of Westphalia';
+  const ev = (type, ago, extra = {}) => ({ timestamp: now - ago, url: 'https://en.wikipedia.org/wiki/X', actionType: type, ...extra });
+  const url = 'https://en.wikipedia.org/wiki/Game_of_Thrones';
+  const events = [ev('PAGE_LOAD', 60_000), ev('PAGE_DWELL', 20_000, { dwellDeltaMs: 50_000 })];
+  const base = { intent, url, policy: policyFor(intent), now, events, title: 'Game of Thrones - Wikipedia', snippet: 'TV series.' };
+  const fresh = { yes: { answer: 'yes', at: now - 60_000, reasked: false } };
+  assert.equal(decideDrift({ ...base, answered: {} }).outcome, 'silent', 'no earlier yes: only the long-stay rule applies');
+  assert.equal(decideDrift({ ...base, answered: { 'en.wikipedia.org': fresh.yes } }).outcome, 'silent', 'interval not reached');
+  const old = { answer: 'yes', at: now - 4 * 60_000, reasked: false };
+  const ask = decideDrift({ ...base, answered: { 'en.wikipedia.org': old } });
+  assert.equal(ask.checkinKind, 'moved_on');
+  assert.equal(decideDrift({ ...base, answered: { 'en.wikipedia.org': { ...old, reasked: true } } }).outcome, 'silent', 'only one further ask');
+  const related = decideDrift({ ...base, title: 'Peace of Westphalia - Wikipedia', answered: { 'en.wikipedia.org': old } });
+  assert.equal(related.outcome, 'silent', 'a page on the same topic is not asked about');
+});

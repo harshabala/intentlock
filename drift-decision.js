@@ -8,7 +8,11 @@ import {
 } from './heuristic-policy.js';
 
 export const NEUTRAL_UNRELATED_MS = 120_000; // unlisted page with no topic overlap: ask after this long on that page
-export const WARN_DWELL_MS = 60_000; // watched (warn) category without topic overlap: ask after this
+export const WARN_DWELL_MS = 60_000;
+export const SHORT_STAY_MS = 30_000; // relaxed preset: social and streaming ask after this short a stay
+export const AFFIRMED_DWELL_MS = 45_000; // after a "yes": a page on another topic earns one more ask after this
+export const REASK_MS = 3 * 60 * 1000; // a second ask on a site waits at least this long after the answer
+const DISTRACTION_CATEGORIES = ['social_media', 'streaming', 'short_video', 'memes', 'gaming', 'gambling']; // watched (warn) category without topic overlap: ask after this
 const EVENT_WINDOW_MS = 2 * 60 * 1000;
 
 // Sites where one host serves both work and play, so a block-category match alone is not clear drift.
@@ -137,25 +141,37 @@ const silent = (reason, extra = {}) => ({ outcome: 'silent', reason, reasonLabel
  */
 export function decideDrift({
   intent, url, title = '', snippet = '', signals: pageSignals = {}, events = [], policy, now = Date.now(),
-  relatedHostnames = [], sessionAligned = [], driftedHosts = [],
+  relatedHostnames = [], sessionAligned = [], driftedHosts = [], answered = {},
 }) {
   const r = decideInner({
-    intent, url, title, snippet, signals: pageSignals, events, policy, now, relatedHostnames, sessionAligned,
+    intent, url, title, snippet, signals: pageSignals, events, policy, now, relatedHostnames, sessionAligned, answered,
   });
   const p = parse(url);
-  // The user already said this site was a drift; coming back to a page that is still unrelated is a lock.
-  if (r.outcome === 'checkin' && p && matchesRelatedHostname(p.host, driftedHosts)) {
-    return {
-      ...r, outcome: 'lock', reason: 'repeat_drift', score: 0.9,
+  if (!p) return r;
+  const relaxed = policy?.strictness === 'relaxed';
+  const reask = (entry) => Boolean(entry) && !entry.reasked && now - entry.at >= REASK_MS;
+  // The user already said this site was a drift; coming back to a page that is still unrelated is a lock
+  // (relaxed never locks from inference: it asks one more time after the interval instead).
+  if (r.outcome === 'checkin' && matchesRelatedHostname(p.host, driftedHosts)) {
+    const repeat = {
+      ...r, reason: 'repeat_drift', score: 0.9,
       reasonLabel: 'You said earlier that this site was a drift, and this page is still unrelated to your task.',
     };
+    if (!relaxed) return { ...repeat, outcome: 'lock' };
+    return reask(answered[p.host])
+      ? { ...repeat, outcome: 'checkin', checkinKind: 'repeat' }
+      : silent('relaxed_no_lock');
+  }
+  // The relaxed preset is gentle: it may ask, but it never locks from inference.
+  if (relaxed && r.outcome === 'lock' && !r.explicit) {
+    return { ...r, outcome: 'checkin', checkinKind: 'relaxed_ask', score: 0.5 };
   }
   return r;
 }
 
 function decideInner({
   intent, url, title = '', snippet = '', signals: pageSignals = {}, events = [], policy, now = Date.now(),
-  relatedHostnames = [], sessionAligned = [],
+  relatedHostnames = [], sessionAligned = [], answered = {},
 }) {
   const p = parse(url);
   if (!p) return silent('invalid_url');
@@ -175,10 +191,6 @@ function decideInner({
       reasonLabel: 'You visited a site your session has blocked.',
     };
   }
-  // 2. A "yes, this is for my task" answer covers the site for this session only.
-  const alignKey = sessionAlignKey(url);
-  if (alignKey && sessionAligned.includes(alignKey)) return silent('session_aligned', { explicit: true });
-
   const cat = inheritedSiteCategory(p.host);
   const isAuth = AUTH_HOST.test(p.host) || AUTH_PATH.test(p.path) || /[?&]authMode=/i.test(p.search);
   const hostPolicy = cat ? (safePolicy.categoryPolicies?.[cat.categoryId] || 'neutral') : 'neutral';
@@ -198,23 +210,41 @@ function decideInner({
   const hits = topicHits(terms.filter(t => !p.host.includes(t)), `${title} ${snippet}`);
   const query = searchQuery(p);
 
+  const kind = (k, why, reason, extra = {}) => ({
+    outcome: 'checkin', reason, reasonLabel: why, score: 0.5, signals: [...signals, `checkin:${k}`], checkinKind: k, ...extra,
+  });
+  const recent = events.filter(e => e && Number.isFinite(e.timestamp) && e.timestamp <= now && now - e.timestamp <= EVENT_WINDOW_MS);
+  const dwell = pageDwellMs(recent, url);
+  if (dwell > 0) signals.push(`dwell:${Math.round(dwell / 1000)}s`);
+
+  // After a "yes" for this host, a later page on a clearly different topic earns one further check-in,
+  // once the interval since the answer has passed. Needs the page's own signals to judge the topic.
+  const affirmed = answered[p.host];
+  const movedOn = Boolean(affirmed) && affirmed.answer === 'yes' && !affirmed.reasked && now - affirmed.at >= REASK_MS
+    && Boolean(title || snippet) && hits === 0 && !pathMatch && dwell >= AFFIRMED_DWELL_MS
+    && !(cat && safePolicy.categoryPolicies?.[cat.categoryId] === 'allow');
+  const movedOnAsk = () => kind('moved_on', 'You said this site was for your task, but this page looks like a different topic.', 'moved_on_after_yes');
+
+  // 2. A "yes, this is for my task" answer covers the site (or one page on a hub) for this session only.
+  const alignKey = sessionAlignKey(url);
+  if (alignKey && sessionAligned.includes(alignKey)) return movedOn ? movedOnAsk() : silent('session_aligned', { explicit: true });
+
   if (pathMatch) return silent('aligned');
   if (named && !feed) return silent('aligned');
   if (hits > 0) return silent('topic_aligned');
   if (categoryAligned(p.host, intentCategoryId)) return silent('aligned');
   if (isAuth && !(cat && safePolicy.categoryPolicies?.[cat.categoryId] === 'block')) return silent('sign_in');
 
-  const kind = (k, why, reason, extra = {}) => ({
-    outcome: 'checkin', reason, reasonLabel: why, score: 0.5, signals: [...signals, `checkin:${k}`], checkinKind: k, ...extra,
-  });
   const catLabel = cat?.label || 'this site';
 
   // 4. Named site, but a feed page: the intent mentions the site, the feed is not the task.
   if (named && feed) return kind('feed', `This is the ${catLabel === 'this site' ? 'site' : catLabel.toLowerCase()} feed, not the part of the site your task names.`, 'named_site_feed');
 
+  if (movedOn) return movedOnAsk();
+
   // 5. Vague or unclassified intent: never lock. Ask only on sites that are usually off-task.
   if (!classified) {
-    if (hostPolicy === 'block' || (hostPolicy === 'warn' && pageDwellMs(events, url) >= WARN_DWELL_MS)) {
+    if (hostPolicy === 'block' || (hostPolicy === 'warn' && pageDwellMs(events, url) >= (safePolicy.strictness === 'relaxed' && cat && DISTRACTION_CATEGORIES.includes(cat.categoryId) ? SHORT_STAY_MS : WARN_DWELL_MS))) {
       return kind('vague', `${catLabel} is usually off-task, and your intent is too general for me to tell.`, 'vague_intent');
     }
     return silent('vague_intent');
@@ -245,12 +275,10 @@ function decideInner({
   // 9. The user's own policy allows the site: no drift enforcement.
   if (hostPolicy === 'allow') return silent('allowed_category');
 
-  const recent = events.filter(e => e && Number.isFinite(e.timestamp) && e.timestamp <= now && now - e.timestamp <= EVENT_WINDOW_MS);
-  const dwell = pageDwellMs(recent, url);
-  if (dwell > 0) signals.push(`dwell:${Math.round(dwell / 1000)}s`);
   // 10. Watched category (news, shopping, forums...) with no topic overlap.
   if (hostPolicy === 'warn') {
-    if (dwell >= WARN_DWELL_MS) return kind('watched', `${catLabel} doesn't look related to your task.`, 'warn_category_dwell');
+    const watchAfter = safePolicy.strictness === 'relaxed' && cat && DISTRACTION_CATEGORIES.includes(cat.categoryId) ? SHORT_STAY_MS : WARN_DWELL_MS;
+    if (dwell >= watchAfter) return kind('watched', `${catLabel} doesn't look related to your task.`, 'warn_category_dwell');
     return silent('warn_category');
   }
   // 11. Video playing on an unlisted host, or a long stay on a page that never mentions the task.

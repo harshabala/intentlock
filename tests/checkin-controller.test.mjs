@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
+import { REASK_MS } from '../drift-decision.js';
 import {
   CHECKIN_GRACE_MS, CHECKIN_MIN_GAP_MS, canAsk, checkinState, createCheckinController,
 } from '../checkin-controller.js';
@@ -94,4 +95,17 @@ test('nothing is shown for a paused session, a navigated tab or when the page ca
   delete c.store.activeSession.pausedAt;
   assert.equal(await c.controller.maybeShow({ tabId: 7, url: 'https://elsewhere.example/', decision: {} }), false);
   assert.equal((await c.controller.answer({ id: 'nope', answer: 'yes' }, { tab: {} })).ok, false);
+});
+
+test('a second ask on an answered host waits the interval and happens once', () => {
+  const state = checkinState({});
+  const key = 'page:https://en.wikipedia.org/wiki/Other';
+  state.sites['page:https://en.wikipedia.org/wiki/First'] = { at: 1_000_000, answer: 'yes', graceUntil: 0 };
+  const t = 1_000_000 + REASK_MS;
+  assert.equal(canAsk(state, key, 1, t - 1, 'moved_on', 'en.wikipedia.org'), false, 'too soon');
+  assert.equal(canAsk(state, key, 1, t, 'moved_on', 'en.wikipedia.org'), true);
+  assert.equal(canAsk(state, key, 1, t, null, 'en.wikipedia.org'), true, 'a different page is a different site on a hub');
+  state.sites['page:https://en.wikipedia.org/wiki/First'].reasked = true;
+  assert.equal(canAsk(state, key, 1, t, 'moved_on', 'en.wikipedia.org'), false, 'the one further ask was used');
+  assert.equal(canAsk(state, key, 1, t, 'moved_on', 'never-answered.test'), false);
 });

@@ -93,6 +93,9 @@ Gaps:
 
 - 2026-11-16: built by an agent: `drift-decision.js`, `checkin-controller.js`, `checkin-prompt.js`, content/worker wiring, scorer with three outcomes, `tests/browser/checkin.spec.mjs` (5 journeys) and a check-in accessibility/contrast audit. Verified with `npm run check` and `npm run test:browser`. Numbers in `docs/drift-after-checkin-2026-11-16.md`.
 
+- 2026-11-17: an agent wrote the held-out set (`tests/drift-set-heldout/`, 114 sequences, labels pending-owner) before scoring it; first scoring in `docs/drift-heldout-2026-11-17.md`: **balanced, held-out: wrong locks 0.0 %, prompts on legitimate pages 13.8 %, missed drifts 25.4 %. Prompt and missed-drift targets are not met on unseen data** (tuning set: 7.7 % and 5.5 %).
+- 2026-11-17, coordinator decisions (not owner approvals): about one prompt per 13 legitimate pages is acceptable for now; relaxed stays gentle but asks on social and streaming after a short stay and never locks from inference; the worker split stays deferred. Round 2 (relaxed preset, second ask after a "yes", worker-restart journey) in `docs/drift-round2-2026-11-17.md`.
+
 ### 2. Tighten the logic
 - Use the scorer to drive changes: page content signals beyond the domain, a grace period for
   short detours, smarter handling of search and sign-in pages, and the AI second opinion where

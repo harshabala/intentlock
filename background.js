@@ -9,7 +9,7 @@ import {
 } from './heuristic-policy.js';
 import { checkDriftLLM } from './llm.js';
 import { decideDrift } from './drift-decision.js';
-import { createCheckinController, alignedKeys, driftedHosts } from './checkin-controller.js';
+import { createCheckinController, alignedKeys, driftedHosts, answeredMap } from './checkin-controller.js';
 import { clearDriftCache } from './drift-cache.js';
 import { logError, registerErrorLogAuthority } from './error-log.js';
 import { getEffectiveDistractionSites, DEFAULT_DISTRACTION_SITES } from './distraction-sites.js';
@@ -1457,6 +1457,7 @@ function evaluateDrift(url, tabId, { dwellCheck = false, signalsWaited = false }
       relatedHostnames: relatedHostnamesList(),
       sessionAligned: alignedKeys(session),
       driftedHosts: driftedHosts(session),
+      answered: answeredMap(session),
     });
 
     // Inferred outcomes wait a moment for the page's own title and snippet, which may show the topic.
