@@ -42,3 +42,18 @@ test('scoring the whole set completes and returns a row per visit per preset', (
   const rows = scoreAll(sequences);
   assert.equal(rows.length, sequences.reduce((a, s) => a + s.visits.length, 0) * 3);
 });
+
+test('the held-out set exists, is separate from the tuning set and is pending owner review', () => {
+  const held = loadSet(new URL('./drift-set-heldout/', import.meta.url).pathname);
+  assert.ok(held.length >= 100);
+  const tuningIds = new Set(sequences.map((x) => x.id));
+  assert.ok(held.every((x) => !tuningIds.has(x.id)));
+  const tuningUrls = new Set(sequences.flatMap((x) => x.visits.map((v) => v.url)));
+  const overlap = held.flatMap((x) => x.visits).filter((v) => tuningUrls.has(v.url)).length;
+  assert.ok(overlap <= 25, `held-out URLs reused from the tuning set: ${overlap}`);
+  for (const file of new Set(held.map((x) => x.file))) {
+    const doc = JSON.parse(readFileSync(new URL(`./drift-set-heldout/${file}`, import.meta.url), 'utf8'));
+    assert.equal(doc.labelled_by, 'agent');
+    assert.equal(doc.review, 'pending-owner');
+  }
+});

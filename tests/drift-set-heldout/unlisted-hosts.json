@@ -1,0 +1,368 @@
+{
+  "labelled_by": "agent",
+  "review": "pending-owner",
+  "schema_version": 1,
+  "set": "heldout",
+  "category": "unlisted-hosts",
+  "sequences": [
+    {
+      "id": "h-unl-01",
+      "category": "unlisted-hosts",
+      "intent": "Triage the overnight alerts on the data pipeline",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "http://grafana.corp.internal/d/pipe/overview",
+          "title": "Pipeline / Overview",
+          "text": "Dashboards.",
+          "dwell_s": 180,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "http://airflow.corp.internal/dags/nightly_etl/grid",
+          "title": "DAGs",
+          "text": "Grid view.",
+          "dwell_s": 150,
+          "t_s": 183,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "http://wiki.corp.internal/runbooks/etl-failures",
+          "title": "Runbook: failures",
+          "text": "Steps.",
+          "dwell_s": 130,
+          "t_s": 336,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "h-unl-02",
+      "category": "unlisted-hosts",
+      "intent": "Test the signup form on my local dev server",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "http://localhost:3000/signup",
+          "title": "Create account",
+          "text": "Form.",
+          "dwell_s": 140,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "http://localhost:6006/?path=/story/forms--signup",
+          "title": "Storybook",
+          "text": "Stories.",
+          "dwell_s": 100,
+          "t_s": 143,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "http://127.0.0.1:8025/",
+          "title": "MailHog",
+          "text": "Inbox of test mail.",
+          "dwell_s": 60,
+          "t_s": 246,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "h-unl-03",
+      "category": "unlisted-hosts",
+      "intent": "Write the quarterly security review for the board",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://sharepoint.bluefin.example/sites/security/Shared%20Documents/Q3-review.docx",
+          "title": "Q3-review.docx",
+          "text": "Document.",
+          "dwell_s": 300,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://tableau.bluefin.example/views/Incidents/Overview",
+          "title": "Incidents",
+          "text": "Chart.",
+          "dwell_s": 150,
+          "t_s": 303,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.fandom.com/",
+          "title": "Fandom",
+          "text": "Wiki fandom.",
+          "dwell_s": 180,
+          "t_s": 456,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "h-unl-04",
+      "category": "unlisted-hosts",
+      "intent": "Reconcile the vendor invoices against purchase orders",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://erp.bluefin.example/ap/invoices?status=open",
+          "title": "Open invoices",
+          "text": "List.",
+          "dwell_s": 170,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://erp.bluefin.example/po/search",
+          "title": "Purchase orders",
+          "text": "Search.",
+          "dwell_s": 130,
+          "t_s": 173,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://docs.google.com/spreadsheets/d/1Recon/edit",
+          "title": "Recon",
+          "text": "Sheet.",
+          "dwell_s": 200,
+          "t_s": 306,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "h-unl-05",
+      "category": "unlisted-hosts",
+      "intent": "Read the incident postmortem draft and add comments",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://bluefin.notion.site/Postmortem-Apr-9-1c2d",
+          "title": "Apr 9",
+          "text": "Draft.",
+          "dwell_s": 260,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://status.bluefin.example/incidents/4821",
+          "title": "Incident 4821",
+          "text": "Timeline.",
+          "dwell_s": 90,
+          "t_s": 263,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "h-unl-06",
+      "category": "unlisted-hosts",
+      "intent": "Learn Italian vocabulary for the trip",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://www.duolingo.com/learn",
+          "title": "Duolingo",
+          "text": "Lesson path.",
+          "dwell_s": 400,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://context.reverso.net/translation/italian-english/biglietto",
+          "title": "biglietto - Reverso Context",
+          "text": "Examples.",
+          "dwell_s": 20,
+          "t_s": 403,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=ItalianAbc12",
+          "title": "Easy Italian 1 - Street Interviews - YouTube",
+          "text": "Video.",
+          "dwell_s": 420,
+          "t_s": 426,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "h-unl-07",
+      "category": "unlisted-hosts",
+      "intent": "Prepare the allotment planting calendar for spring",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://www.rhs.org.uk/vegetables/grow-your-own",
+          "title": "Grow your own",
+          "text": "Guide.",
+          "dwell_s": 150,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://docs.google.com/spreadsheets/d/1Plant/edit",
+          "title": "Calendar",
+          "text": "Sheet.",
+          "dwell_s": 200,
+          "t_s": 153,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.growveg.com/planting-calendar.aspx",
+          "title": "Planting calendar",
+          "text": "Calendar.",
+          "dwell_s": 130,
+          "t_s": 356,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.zoopla.co.uk/house-prices/",
+          "title": "House prices",
+          "text": "Property.",
+          "dwell_s": 120,
+          "t_s": 489,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "h-unl-08",
+      "category": "unlisted-hosts",
+      "intent": "Translate the user manual into German",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://www.deepl.com/translator",
+          "title": "DeepL Translate",
+          "text": "Translator.",
+          "dwell_s": 200,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.duden.de/rechtschreibung/Bedienungsanleitung",
+          "title": "Bedienungsanleitung | Duden",
+          "text": "Wörterbuch.",
+          "dwell_s": 25,
+          "t_s": 203,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://docs.google.com/document/d/1Manual/edit",
+          "title": "Handbuch",
+          "text": "Dokument.",
+          "dwell_s": 300,
+          "t_s": 231,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "h-unl-09",
+      "category": "unlisted-hosts",
+      "intent": "Draft the show notes for episode 12 of the podcast",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://docs.google.com/document/d/1Show12/edit",
+          "title": "Ep 12",
+          "text": "Draft.",
+          "dwell_s": 220,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://podcasts.apple.com/us/podcast/id123456",
+          "title": "Our podcast on Apple Podcasts",
+          "text": "Page.",
+          "dwell_s": 60,
+          "t_s": 223,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.listennotes.com/",
+          "title": "Listen Notes",
+          "text": "Search.",
+          "dwell_s": 80,
+          "t_s": 286,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "h-unl-10",
+      "category": "unlisted-hosts",
+      "intent": "Study for the CPA exam: revenue recognition",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://www.fasb.org/page/PageContent?pageId=/standards/accounting-standards-updates.html",
+          "title": "FASB",
+          "text": "Standards.",
+          "dwell_s": 150,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.becker.com/cpa-review/",
+          "title": "Becker",
+          "text": "Review.",
+          "dwell_s": 300,
+          "t_s": 153,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=Rev3nue5x1",
+          "title": "ASC 606 in 15 minutes - YouTube",
+          "text": "Lecture.",
+          "dwell_s": 900,
+          "t_s": 456,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.twitch.tv/chessmaster",
+          "title": "chessmaster - Twitch",
+          "text": "Live.",
+          "dwell_s": 400,
+          "t_s": 1359,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    }
+  ]
+}

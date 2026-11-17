@@ -1,0 +1,490 @@
+{
+  "labelled_by": "agent",
+  "review": "pending-owner",
+  "schema_version": 1,
+  "set": "heldout",
+  "category": "coding-on-task",
+  "sequences": [
+    {
+      "id": "h-cod-01",
+      "category": "coding-on-task",
+      "intent": "Eliminate the N+1 queries on the invoices index in our Rails app",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://github.com/bluefin/ledger/pull/2210",
+          "title": "Preload line items by mkaur",
+          "text": "Adds includes(:line_items). Benchmarks attached.",
+          "dwell_s": 110,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://guides.rubyonrails.org/active_record_querying.html",
+          "title": "Active Record Query Interface",
+          "text": "Eager loading associations.",
+          "dwell_s": 190,
+          "t_s": 113,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://stackoverflow.com/questions/97197/what-is-the-n1-selects-problem-in-orm",
+          "title": "What is the N+1 selects problem in ORM? - Stack Overflow",
+          "text": "Answer with examples.",
+          "dwell_s": 80,
+          "t_s": 306,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://github.com/bluefin/ledger/blob/main/app/controllers/invoices_controller.rb",
+          "title": "ledger/app/controllers/invoices_controller.rb",
+          "text": "class InvoicesController",
+          "dwell_s": 130,
+          "t_s": 389,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "h-cod-02",
+      "category": "coding-on-task",
+      "intent": "Port the notification service from Express to Fastify",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://fastify.dev/docs/latest/Guides/Migration-Guide-V4/",
+          "title": "Migration Guide",
+          "text": "Guide.",
+          "dwell_s": 170,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://github.com/bluefin/notify/pull/88",
+          "title": "WIP: new server entry",
+          "text": "Draft PR.",
+          "dwell_s": 90,
+          "t_s": 173,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.npmjs.com/package/@fastify/express",
+          "title": "@fastify/express - npm",
+          "text": "Express compat plugin.",
+          "dwell_s": 60,
+          "t_s": 266,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://blog.platformatic.dev/the-nodejs-event-loop-explained",
+          "title": "Understanding the loop",
+          "text": "Long-form post.",
+          "dwell_s": 150,
+          "t_s": 329,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "h-cod-03",
+      "category": "coding-on-task",
+      "intent": "Add dark mode to the Flutter app",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://docs.flutter.dev/cookbook/design/themes",
+          "title": "Use themes to share colors and font styles",
+          "text": "Themes.",
+          "dwell_s": 140,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://api.flutter.dev/flutter/material/ThemeData-class.html",
+          "title": "ThemeData class - material library - Dart API",
+          "text": "API.",
+          "dwell_s": 100,
+          "t_s": 143,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://stackoverflow.com/questions/60232070/how-to-implement-dark-mode-in-flutter",
+          "title": "How to implement dark mode in flutter? - Stack Overflow",
+          "text": "Answer.",
+          "dwell_s": 70,
+          "t_s": 246,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://pub.dev/packages/adaptive_theme",
+          "title": "adaptive_theme | Flutter package",
+          "text": "Package.",
+          "dwell_s": 60,
+          "t_s": 319,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "h-cod-04",
+      "category": "coding-on-task",
+      "intent": "Write a bash script that rotates the nightly backups",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://www.gnu.org/software/bash/manual/bash.html",
+          "title": "Bash Reference Manual",
+          "text": "Manual.",
+          "dwell_s": 200,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://man7.org/linux/man-pages/man1/find.1.html",
+          "title": "find(1) - Linux manual page",
+          "text": "Manual page.",
+          "dwell_s": 90,
+          "t_s": 203,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://unix.stackexchange.com/questions/155551/how-to-delete-files-older-than-7-days",
+          "title": "How to delete files older than 7 days - Unix & Linux Stack Exchange",
+          "text": "Answer.",
+          "dwell_s": 70,
+          "t_s": 296,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.shellcheck.net/",
+          "title": "ShellCheck – shell script analysis tool",
+          "text": "Paste a script.",
+          "dwell_s": 60,
+          "t_s": 369,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "h-cod-05",
+      "category": "coding-on-task",
+      "intent": "Investigate the slow cold start of our Lambda functions",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://console.aws.amazon.com/lambda/home#/functions/orders-handler",
+          "title": "orders-handler - Lambda",
+          "text": "Function overview.",
+          "dwell_s": 100,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://aws.amazon.com/blogs/compute/operating-lambda-performance-optimization-part-1/",
+          "title": "Operating Lambda: Performance optimization – Part 1",
+          "text": "Blog.",
+          "dwell_s": 220,
+          "t_s": 103,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.reddit.com/r/aws/comments/1qrs/provisioned_concurrency_worth_it/",
+          "title": "Worth it? : r/aws",
+          "text": "Thread.",
+          "dwell_s": 130,
+          "t_s": 326,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://github.com/bluefin/orders/blob/main/serverless.yml",
+          "title": "orders/serverless.yml",
+          "text": "YAML.",
+          "dwell_s": 90,
+          "t_s": 459,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "h-cod-06",
+      "category": "coding-on-task",
+      "intent": "Fix the failing Kubernetes readiness probe on staging",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://k9s.staging.bluefin.internal/pods",
+          "title": "Pods",
+          "text": "Pod list.",
+          "dwell_s": 100,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/",
+          "title": "Configure Liveness, Readiness and Startup Probes",
+          "text": "Probes.",
+          "dwell_s": 180,
+          "t_s": 103,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.reddit.com/r/Kubernetes/comments/1xyz/hot_takes_on_helm/",
+          "title": "Hot takes on Helm : r/Kubernetes",
+          "text": "Opinions.",
+          "dwell_s": 200,
+          "t_s": 286,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://stackoverflow.com/questions/54955445/kubernetes-readiness-probe-failing-connection-refused",
+          "title": "Readiness probe failing: connection refused - Stack Overflow",
+          "text": "Answer.",
+          "dwell_s": 80,
+          "t_s": 489,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ],
+      "debatable": [
+        {
+          "visit": 2,
+          "reason": "Possibly relevant, mostly opinion."
+        }
+      ]
+    },
+    {
+      "id": "h-cod-07",
+      "category": "coding-on-task",
+      "intent": "Build the CSV export for the reports page",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://github.com/bluefin/portal/blob/main/src/reports/export.ts",
+          "title": "portal/src/reports/export.ts",
+          "text": "Code.",
+          "dwell_s": 110,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc4180",
+          "title": "RFC 4180: Common Format and MIME Type for CSV Files",
+          "text": "RFC.",
+          "dwell_s": 120,
+          "t_s": 113,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://csv.js.org/stringify/api/",
+          "title": "Stringify API",
+          "text": "API docs.",
+          "dwell_s": 90,
+          "t_s": 236,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://stackoverflow.com/questions/18848518/excel-opening-utf-8-csv-without-bom",
+          "title": "Excel opening UTF-8 CSV with BOM - Stack Overflow",
+          "text": "Answer.",
+          "dwell_s": 60,
+          "t_s": 329,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "h-cod-08",
+      "category": "coding-on-task",
+      "intent": "Update the Terraform module for the VPC peering",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://registry.terraform.io/modules/terraform-aws-modules/vpc/aws/latest",
+          "title": "terraform-aws-modules/vpc/aws | Terraform Registry",
+          "text": "Module.",
+          "dwell_s": 160,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://developer.hashicorp.com/terraform/language/modules/develop",
+          "title": "Creating Modules",
+          "text": "Docs.",
+          "dwell_s": 140,
+          "t_s": 163,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://github.com/bluefin/infra/pull/301",
+          "title": "peering rework",
+          "text": "PR.",
+          "dwell_s": 100,
+          "t_s": 306,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "h-cod-09",
+      "category": "coding-on-task",
+      "intent": "Solve the dynamic programming problems for the coding interview",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://leetcode.com/problems/coin-change/",
+          "title": "Coin Change - LeetCode",
+          "text": "Problem.",
+          "dwell_s": 600,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://neetcode.io/roadmap",
+          "title": "NeetCode Roadmap",
+          "text": "Roadmap.",
+          "dwell_s": 90,
+          "t_s": 603,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=H9bfqozjoqs",
+          "title": "Coin Change - Dynamic Programming Bottom Up - YouTube",
+          "text": "Video.",
+          "dwell_s": 480,
+          "t_s": 696,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=Zq2mXn9Kp3A",
+          "title": "I rated every pizza in New York - YouTube",
+          "text": "Food video.",
+          "dwell_s": 300,
+          "t_s": 1179,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "h-cod-10",
+      "category": "coding-on-task",
+      "intent": "Review the accessibility audit findings and fix the contrast issues",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://webaim.org/resources/contrastchecker/",
+          "title": "WebAIM: Contrast Checker",
+          "text": "Checker.",
+          "dwell_s": 80,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html",
+          "title": "Understanding Success Criterion 1.4.3",
+          "text": "Understanding doc.",
+          "dwell_s": 160,
+          "t_s": 83,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://github.com/bluefin/portal/issues/512",
+          "title": "Audit findings",
+          "text": "Issue.",
+          "dwell_s": 70,
+          "t_s": 246,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://colorable.jxnblk.com/",
+          "title": "Colorable",
+          "text": "Tool.",
+          "dwell_s": 40,
+          "t_s": 319,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "h-cod-11",
+      "category": "coding-on-task",
+      "intent": "Debug why the iOS build fails on CI",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://app.bitrise.io/build/abc123",
+          "title": "Build #4812",
+          "text": "Failed step: xcodebuild archive.",
+          "dwell_s": 120,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://developer.apple.com/documentation/xcode/resolving-common-notarization-issues",
+          "title": "Resolving common notarization issues",
+          "text": "Apple docs.",
+          "dwell_s": 100,
+          "t_s": 123,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://stackoverflow.com/questions/72018500/xcode-14-code-signing-no-profiles-for-bundle-id",
+          "title": "No profiles for bundle id - Stack Overflow",
+          "text": "Answer.",
+          "dwell_s": 85,
+          "t_s": 226,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://forums.developer.apple.com/forums/thread/712345",
+          "title": "Re: signing",
+          "text": "Forum thread.",
+          "dwell_s": 95,
+          "t_s": 314,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    }
+  ]
+}

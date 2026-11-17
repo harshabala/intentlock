@@ -3,6 +3,7 @@
 // Exit code is non-zero only on a crash (bad data, exception), never on poor scores.
 //   npm run score:drift                 summary
 //   npm run score:drift -- --failures   also list every wrong lock, prompt and missed drift
+//   npm run score:drift -- --set heldout   the held-out set (never tuned against); default is the tuning set
 //   npm run score:drift -- --legacy     the original two-outcome rules, for before numbers
 //   npm run score:drift -- --json out.json
 import { readdirSync, readFileSync, writeFileSync } from 'node:fs';
@@ -14,7 +15,8 @@ import {
 import { decideDrift, sessionAlignKey } from '../drift-decision.js';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
-const SET_DIR = join(root, 'tests', 'drift-set');
+const SET_DIRS = { tuning: join(root, 'tests', 'drift-set'), heldout: join(root, 'tests', 'drift-set-heldout') };
+const SET_DIR = SET_DIRS.tuning;
 const PRESETS = ['relaxed', 'balanced', 'strict'];
 const T0 = 1_700_000_000_000;
 const DWELL_REPORT_MS = 30_000; // page-tracker.js DWELL_REPORT_INTERVAL_MS
@@ -186,10 +188,12 @@ export function report(rows, sequences, { failures = false } = {}) {
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const args = process.argv.slice(2);
-  const sequences = loadSet();
+  const setName = args.includes('--set') ? args[args.indexOf('--set') + 1] : 'tuning';
+  if (!SET_DIRS[setName]) throw new Error(`unknown set ${setName}; use tuning or heldout`);
+  const sequences = loadSet(SET_DIRS[setName]);
   const engine = args.includes('--legacy') ? 'legacy' : 'checkin';
   const rows = scoreAll(sequences, engine);
-  console.log(`Engine: ${engine}`);
+  console.log(`Engine: ${engine}, set: ${setName}`);
   console.log(report(rows, sequences, { failures: args.includes('--failures') }));
   const j = args.indexOf('--json');
   if (j >= 0 && args[j + 1]) writeFileSync(args[j + 1], JSON.stringify(rows, null, 1));

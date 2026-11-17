@@ -1,0 +1,120 @@
+{
+  "labelled_by": "agent",
+  "review": "pending-owner",
+  "schema_version": 1,
+  "set": "heldout",
+  "category": "health-and-personal",
+  "sequences": [
+    {
+      "id": "h-hea-01",
+      "category": "health-and-personal",
+      "intent": "Look up information about my new medication",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://medlineplus.gov/druginfo/meds/a601234.html",
+          "title": "Drug information",
+          "text": "MedlinePlus.",
+          "dwell_s": 150,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.drugs.com/mtm/example.html",
+          "title": "Side effects",
+          "text": "Drugs.com.",
+          "dwell_s": 120,
+          "t_s": 153,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.reddit.com/r/AskDocs/comments/1zz/starting_this_med/",
+          "title": "Starting this med : r/AskDocs",
+          "text": "Thread.",
+          "dwell_s": 110,
+          "t_s": 276,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "h-hea-02",
+      "category": "health-and-personal",
+      "intent": "Create a 12-week running plan for a 10k",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://www.runnersworld.com/training/a20812/10k-training-plan/",
+          "title": "10K plan",
+          "text": "Plan.",
+          "dwell_s": 150,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://docs.google.com/spreadsheets/d/1Run/edit",
+          "title": "Plan",
+          "text": "Sheet.",
+          "dwell_s": 200,
+          "t_s": 153,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.strava.com/athletes/12345",
+          "title": "Athlete profile",
+          "text": "Strava.",
+          "dwell_s": 90,
+          "t_s": 356,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ],
+      "debatable": [
+        {
+          "visit": 2,
+          "reason": "Fitness social network used for planning."
+        }
+      ]
+    },
+    {
+      "id": "h-hea-03",
+      "category": "health-and-personal",
+      "intent": "Meal plan and grocery list for the week",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://www.budgetbytes.com/category/recipes/",
+          "title": "Recipes",
+          "text": "Recipes.",
+          "dwell_s": 150,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.instacart.com/store/aldi/storefront",
+          "title": "Aldi",
+          "text": "Groceries.",
+          "dwell_s": 130,
+          "t_s": 153,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://docs.google.com/document/d/1Grocery/edit",
+          "title": "List",
+          "text": "List.",
+          "dwell_s": 80,
+          "t_s": 286,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    }
+  ]
+}

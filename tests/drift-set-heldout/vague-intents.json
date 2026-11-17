@@ -1,0 +1,131 @@
+{
+  "labelled_by": "agent",
+  "review": "pending-owner",
+  "schema_version": 1,
+  "set": "heldout",
+  "category": "vague-intents",
+  "sequences": [
+    {
+      "id": "h-vag-01",
+      "category": "vague-intents",
+      "intent": "be productive",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://docs.google.com/document/d/1Misc2/edit",
+          "title": "Notes",
+          "text": "Doc.",
+          "dwell_s": 300,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=Vague00111",
+          "title": "Prank compilation - YouTube",
+          "text": "Compilation.",
+          "dwell_s": 400,
+          "t_s": 303,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "h-vag-02",
+      "category": "vague-intents",
+      "intent": "errands",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://www.google.com/maps/search/post+office",
+          "title": "post office - Maps",
+          "text": "Map.",
+          "dwell_s": 40,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.usps.com/",
+          "title": "USPS",
+          "text": "Post.",
+          "dwell_s": 70,
+          "t_s": 43,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.amazon.com/gp/css/order-history",
+          "title": "Orders",
+          "text": "Orders.",
+          "dwell_s": 60,
+          "t_s": 116,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "h-vag-03",
+      "category": "vague-intents",
+      "intent": "free time",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://www.reddit.com/r/all/",
+          "title": "r/all",
+          "text": "Posts.",
+          "dwell_s": 300,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.youtube.com/",
+          "title": "YouTube",
+          "text": "Home.",
+          "dwell_s": 200,
+          "t_s": 303,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "h-vag-04",
+      "category": "vague-intents",
+      "intent": "admin",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://mail.google.com/mail/u/0/#inbox",
+          "title": "Inbox",
+          "text": "Mail.",
+          "dwell_s": 150,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://app.slack.com/client/T1/C1",
+          "title": "Slack",
+          "text": "Chat.",
+          "dwell_s": 120,
+          "t_s": 153,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.twitch.tv/directory",
+          "title": "Browse",
+          "text": "Streams.",
+          "dwell_s": 200,
+          "t_s": 276,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,213 @@
+{
+  "labelled_by": "agent",
+  "review": "pending-owner",
+  "schema_version": 1,
+  "set": "heldout",
+  "category": "social-for-work",
+  "sequences": [
+    {
+      "id": "h-soc-01",
+      "category": "social-for-work",
+      "intent": "Reply to comments on the company LinkedIn page",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://www.linkedin.com/company/bluefin/admin/notifications/",
+          "title": "Notifications",
+          "text": "Notifications.",
+          "dwell_s": 150,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.linkedin.com/company/bluefin/posts/",
+          "title": "Posts",
+          "text": "Posts.",
+          "dwell_s": 120,
+          "t_s": 153,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.linkedin.com/feed/",
+          "title": "Feed",
+          "text": "Feed.",
+          "dwell_s": 160,
+          "t_s": 276,
+          "via": "load",
+          "label": "drift"
+        }
+      ],
+      "debatable": [
+        {
+          "visit": 2,
+          "reason": "Feed on the same host as the task."
+        }
+      ]
+    },
+    {
+      "id": "h-soc-02",
+      "category": "social-for-work",
+      "intent": "Find a solution to the Docker networking issue on Reddit and Discord",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://www.reddit.com/r/docker/comments/1bnm/container_cant_reach_host/",
+          "title": "Container can’t reach host : r/docker",
+          "text": "Thread.",
+          "dwell_s": 120,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://discord.com/channels/9911/8822",
+          "title": "#help | Docker community",
+          "text": "Chat.",
+          "dwell_s": 200,
+          "t_s": 123,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "h-soc-03",
+      "category": "social-for-work",
+      "intent": "Collect customer quotes from social media for the case study",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://x.com/search?q=bluefin%20love&f=live",
+          "title": "bluefin love - Search / X",
+          "text": "Posts.",
+          "dwell_s": 140,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.instagram.com/explore/tags/bluefin/",
+          "title": "#bluefin • Instagram",
+          "text": "Tags.",
+          "dwell_s": 110,
+          "t_s": 143,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.facebook.com/bluefinhq/reviews",
+          "title": "Reviews | Bluefin",
+          "text": "Reviews.",
+          "dwell_s": 100,
+          "t_s": 256,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "h-soc-04",
+      "category": "social-for-work",
+      "intent": "Post the weekly update in the team Slack and check replies",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://app.slack.com/client/T1/C9",
+          "title": "Slack | #weekly",
+          "text": "Channel.",
+          "dwell_s": 180,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://app.slack.com/client/T1/C10",
+          "title": "Slack | #random",
+          "text": "Channel.",
+          "dwell_s": 90,
+          "t_s": 183,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ],
+      "debatable": [
+        {
+          "visit": 1,
+          "reason": "Random channel inside the work tool."
+        }
+      ]
+    },
+    {
+      "id": "h-soc-05",
+      "category": "social-for-work",
+      "intent": "Ask on Mastodon for beta testers of our app",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://mastodon.social/home",
+          "title": "Home - Mastodon",
+          "text": "Compose.",
+          "dwell_s": 130,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://mastodon.social/@bluefin",
+          "title": "Bluefin (@bluefin)",
+          "text": "Profile.",
+          "dwell_s": 80,
+          "t_s": 133,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://mastodon.social/explore",
+          "title": "Explore",
+          "text": "Trending.",
+          "dwell_s": 200,
+          "t_s": 216,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "h-soc-06",
+      "category": "social-for-work",
+      "intent": "Scout for speakers: browse X and LinkedIn for AI safety researchers",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://x.com/search?q=ai%20safety%20researcher&f=user",
+          "title": "People search",
+          "text": "People.",
+          "dwell_s": 130,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.linkedin.com/search/results/people/?keywords=ai%20safety",
+          "title": "People",
+          "text": "People.",
+          "dwell_s": 150,
+          "t_s": 133,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://x.com/home",
+          "title": "Home / X",
+          "text": "Timeline.",
+          "dwell_s": 170,
+          "t_s": 286,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    }
+  ]
+}

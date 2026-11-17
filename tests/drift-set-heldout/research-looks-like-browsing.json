@@ -1,0 +1,373 @@
+{
+  "labelled_by": "agent",
+  "review": "pending-owner",
+  "schema_version": 1,
+  "set": "heldout",
+  "category": "research-looks-like-browsing",
+  "sequences": [
+    {
+      "id": "h-res-01",
+      "category": "research-looks-like-browsing",
+      "intent": "Research whether to adopt a four-day work week at our company",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://www.google.com/search?q=four+day+week+trial+results",
+          "title": "four day week trial results - Google Search",
+          "text": "Results.",
+          "dwell_s": 15,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.theguardian.com/business/2023/feb/21/uk-four-day-week-trial-results",
+          "title": "Results of UK trial",
+          "text": "Article.",
+          "dwell_s": 160,
+          "t_s": 18,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.4dayweek.com/uk-pilot-programme",
+          "title": "Pilot programme",
+          "text": "Programme.",
+          "dwell_s": 120,
+          "t_s": 181,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.reddit.com/r/4dayweek/",
+          "title": "r/4dayweek",
+          "text": "Community.",
+          "dwell_s": 140,
+          "t_s": 304,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.theguardian.com/football",
+          "title": "Football | The Guardian",
+          "text": "Football news.",
+          "dwell_s": 130,
+          "t_s": 447,
+          "via": "load",
+          "label": "drift"
+        }
+      ],
+      "debatable": [
+        {
+          "visit": 3,
+          "reason": "Advocacy forum; mixed evidence quality."
+        }
+      ]
+    },
+    {
+      "id": "h-res-02",
+      "category": "research-looks-like-browsing",
+      "intent": "Look into the best way to insulate an old brick house",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://www.energysavingtrust.org.uk/advice/solid-wall-insulation/",
+          "title": "Solid wall insulation",
+          "text": "Advice.",
+          "dwell_s": 150,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=InsulBrick11",
+          "title": "Internal vs external wall insulation - YouTube",
+          "text": "Video.",
+          "dwell_s": 540,
+          "t_s": 153,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.diynot.com/diy/threads/internal-wall-insulation-damp.4455/",
+          "title": "Thread",
+          "text": "Forum thread.",
+          "dwell_s": 170,
+          "t_s": 696,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.bbc.co.uk/news/business-66012345",
+          "title": "Retrofit grants explained",
+          "text": "News.",
+          "dwell_s": 90,
+          "t_s": 869,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "h-res-03",
+      "category": "research-looks-like-browsing",
+      "intent": "Get background on the Suez Canal for a geography report",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Suez_Canal",
+          "title": "Suez Canal - Wikipedia",
+          "text": "Canal.",
+          "dwell_s": 220,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.britannica.com/topic/Suez-Canal",
+          "title": "Suez Canal | Definition, History | Britannica",
+          "text": "Entry.",
+          "dwell_s": 120,
+          "t_s": 223,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Ever_Given",
+          "title": "Ever Given - Wikipedia",
+          "text": "2021 blockage.",
+          "dwell_s": 100,
+          "t_s": 346,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/List_of_Marvel_Cinematic_Universe_films",
+          "title": "List of Marvel Cinematic Universe films",
+          "text": "Films.",
+          "dwell_s": 150,
+          "t_s": 449,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "h-res-04",
+      "category": "research-looks-like-browsing",
+      "intent": "Explore options for solar panels and battery storage at home",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://www.energy.gov/eere/solar/homeowners-guide-federal-tax-credit-solar-photovoltaics",
+          "title": "Homeowner’s guide",
+          "text": "Guide.",
+          "dwell_s": 160,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.energysage.com/solar/",
+          "title": "Solar Panels",
+          "text": "Marketplace.",
+          "dwell_s": 130,
+          "t_s": 163,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.reddit.com/r/solar/comments/1aaa/battery_worth_it/",
+          "title": "Is the battery worth it? : r/solar",
+          "text": "Thread.",
+          "dwell_s": 180,
+          "t_s": 296,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=SolarBatt22",
+          "title": "Real costs after one year - YouTube",
+          "text": "Video.",
+          "dwell_s": 600,
+          "t_s": 479,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "h-res-05",
+      "category": "research-looks-like-browsing",
+      "intent": "Read about the causes of the Great Depression for my exam",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://www.history.com/topics/great-depression/great-depression-history",
+          "title": "Great Depression History",
+          "text": "History.",
+          "dwell_s": 200,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.khanacademy.org/humanities/us-history/rise-to-world-power/great-depression/a/the-great-depression",
+          "title": "The Great Depression",
+          "text": "Article.",
+          "dwell_s": 240,
+          "t_s": 203,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Smoot%E2%80%93Hawley_Tariff_Act",
+          "title": "Smoot–Hawley Tariff Act - Wikipedia",
+          "text": "Act.",
+          "dwell_s": 100,
+          "t_s": 446,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Super_Bowl_LVIII",
+          "title": "Super Bowl LVIII - Wikipedia",
+          "text": "Game.",
+          "dwell_s": 140,
+          "t_s": 549,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "h-res-06",
+      "category": "research-looks-like-browsing",
+      "intent": "Collect evidence on screen time and teenagers",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://pubmed.ncbi.nlm.nih.gov/32204255/",
+          "title": "Screen time and adolescent wellbeing",
+          "text": "Abstract.",
+          "dwell_s": 140,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.cdc.gov/healthyschools/mental-health/index.htm",
+          "title": "Mental health",
+          "text": "CDC.",
+          "dwell_s": 100,
+          "t_s": 143,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.pewresearch.org/internet/2022/08/10/teens-social-media-and-technology-2022/",
+          "title": "Teens, Social Media and Technology 2022",
+          "text": "Report.",
+          "dwell_s": 220,
+          "t_s": 246,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://news.ycombinator.com/item?id=39777777",
+          "title": "Discussion | Hacker News",
+          "text": "Comments.",
+          "dwell_s": 90,
+          "t_s": 469,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ],
+      "debatable": [
+        {
+          "visit": 3,
+          "reason": "Forum discussion of the study."
+        }
+      ]
+    },
+    {
+      "id": "h-res-07",
+      "category": "research-looks-like-browsing",
+      "intent": "Find out how to start a small beekeeping hobby",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://www.bbka.org.uk/beginners",
+          "title": "Beginners",
+          "text": "Guide.",
+          "dwell_s": 140,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=BeeStart001",
+          "title": "Starting with one hive - YouTube",
+          "text": "Video.",
+          "dwell_s": 700,
+          "t_s": 143,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.reddit.com/r/Beekeeping/",
+          "title": "r/Beekeeping",
+          "text": "Community.",
+          "dwell_s": 160,
+          "t_s": 846,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.amazon.com/s?k=beginner+beekeeping+kit",
+          "title": "Amazon.com : beginner beekeeping kit",
+          "text": "Kits.",
+          "dwell_s": 90,
+          "t_s": 1009,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "h-res-08",
+      "category": "research-looks-like-browsing",
+      "intent": "Understand how vaccines are tested",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://www.who.int/news-room/feature-stories/detail/how-are-vaccines-developed",
+          "title": "How are vaccines developed?",
+          "text": "WHO.",
+          "dwell_s": 180,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.nature.com/articles/d41586-020-02003-2",
+          "title": "The race for coronavirus vaccines",
+          "text": "News feature.",
+          "dwell_s": 220,
+          "t_s": 183,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.cdc.gov/vaccinesafety/ensuringsafety/history/index.html",
+          "title": "Vaccine safety history",
+          "text": "CDC.",
+          "dwell_s": 140,
+          "t_s": 406,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    }
+  ]
+}

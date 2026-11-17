@@ -1,0 +1,350 @@
+{
+  "labelled_by": "agent",
+  "review": "pending-owner",
+  "schema_version": 1,
+  "set": "heldout",
+  "category": "obvious-drift",
+  "sequences": [
+    {
+      "id": "h-obv-01",
+      "category": "obvious-drift",
+      "intent": "Reconcile the petty cash ledger for October",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://docs.google.com/spreadsheets/d/1Petty/edit",
+          "title": "Petty cash",
+          "text": "Ledger.",
+          "dwell_s": 200,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.hulu.com/watch/abc",
+          "title": "Watch now - Hulu",
+          "text": "Playing.",
+          "dwell_s": 500,
+          "t_s": 203,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://www.reddit.com/r/nextfuckinglevel/",
+          "title": "r/nextfuckinglevel",
+          "text": "Posts.",
+          "dwell_s": 120,
+          "t_s": 706,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "h-obv-02",
+      "category": "obvious-drift",
+      "intent": "Finish the lesson slides on the water cycle",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://docs.google.com/presentation/d/1Water/edit",
+          "title": "Water cycle",
+          "text": "Slides.",
+          "dwell_s": 260,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.instagram.com/reel/Cabc123/",
+          "title": "Reel • Instagram",
+          "text": "Reel.",
+          "dwell_s": 60,
+          "t_s": 263,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://www.instagram.com/",
+          "title": "Instagram",
+          "text": "Feed.",
+          "dwell_s": 80,
+          "t_s": 326,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "h-obv-03",
+      "category": "obvious-drift",
+      "intent": "Write the abstract for the cardiology conference",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://www.overleaf.com/project/65aa11",
+          "title": "Abstract",
+          "text": "LaTeX.",
+          "dwell_s": 300,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.twitch.tv/directory/game/Valorant",
+          "title": "Valorant - Twitch",
+          "text": "Streams.",
+          "dwell_s": 200,
+          "t_s": 303,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://store.epicgames.com/en-US/",
+          "title": "Epic Games Store",
+          "text": "Games.",
+          "dwell_s": 120,
+          "t_s": 506,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "h-obv-04",
+      "category": "obvious-drift",
+      "intent": "Update the website footer links",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://github.com/bluefin/site/blob/main/src/Footer.tsx",
+          "title": "site/src/Footer.tsx",
+          "text": "Code.",
+          "dwell_s": 100,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=Fnn4Km2Lp9Q",
+          "title": "Unbelievable 100 layer cake - YouTube",
+          "text": "Cooking.",
+          "dwell_s": 240,
+          "t_s": 103,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=Zt7Rr1Wq8Lm",
+          "title": "Reacting to old cartoons - YouTube",
+          "text": "Reaction.",
+          "dwell_s": 300,
+          "t_s": 346,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "h-obv-05",
+      "category": "obvious-drift",
+      "intent": "Grade the midterm essays for English 101",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://canvas.college.example/courses/101/gradebook",
+          "title": "Gradebook",
+          "text": "Gradebook.",
+          "dwell_s": 260,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.draftkings.com/lobby",
+          "title": "DraftKings",
+          "text": "Lobby.",
+          "dwell_s": 90,
+          "t_s": 263,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://www.espn.com/nfl/scoreboard",
+          "title": "Scoreboard",
+          "text": "NFL.",
+          "dwell_s": 120,
+          "t_s": 356,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "h-obv-06",
+      "category": "obvious-drift",
+      "intent": "Clean up the CRM duplicates before the sales review",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://app.hubspot.com/contacts/77/objects/0-1/views/all",
+          "title": "Contacts",
+          "text": "Contacts.",
+          "dwell_s": 180,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.tiktok.com/@chef/video/72",
+          "title": "Cooking hack | TikTok",
+          "text": "Video.",
+          "dwell_s": 100,
+          "t_s": 183,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://www.tiktok.com/foryou",
+          "title": "TikTok",
+          "text": "FYP.",
+          "dwell_s": 140,
+          "t_s": 286,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "h-obv-07",
+      "category": "obvious-drift",
+      "intent": "Proofread the annual report",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://docs.google.com/document/d/1Annual/edit",
+          "title": "Annual report",
+          "text": "Doc.",
+          "dwell_s": 500,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.netflix.com/browse/genre/83",
+          "title": "TV Shows - Netflix",
+          "text": "Browse.",
+          "dwell_s": 90,
+          "t_s": 503,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "h-obv-08",
+      "category": "obvious-drift",
+      "intent": "Calibrate the lab instrument and log the readings",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://labarchives.example/notebook/22",
+          "title": "Notebook",
+          "text": "Entry.",
+          "dwell_s": 200,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://imgur.com/gallery/funny-animals",
+          "title": "Funny animals",
+          "text": "Gallery.",
+          "dwell_s": 180,
+          "t_s": 203,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://www.reddit.com/r/AnimalsBeingDerps/",
+          "title": "r/AnimalsBeingDerps",
+          "text": "Posts.",
+          "dwell_s": 150,
+          "t_s": 386,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "h-obv-09",
+      "category": "obvious-drift",
+      "intent": "Draft the monthly newsletter for the neighbourhood association",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://docs.google.com/document/d/1News/edit",
+          "title": "Newsletter",
+          "text": "Draft.",
+          "dwell_s": 200,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.facebook.com/marketplace/category/vehicles",
+          "title": "Marketplace",
+          "text": "Cars.",
+          "dwell_s": 150,
+          "t_s": 203,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://www.facebook.com/",
+          "title": "Facebook",
+          "text": "Feed.",
+          "dwell_s": 100,
+          "t_s": 356,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "h-obv-10",
+      "category": "obvious-drift",
+      "intent": "Fix the broken build",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://github.com/bluefin/app/actions/runs/991",
+          "title": "CI run",
+          "text": "Failed.",
+          "dwell_s": 90,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://bsky.app/profile/someone.bsky.social",
+          "title": "Someone (@someone) — Bluesky",
+          "text": "Posts.",
+          "dwell_s": 100,
+          "t_s": 93,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://x.com/search?q=cats&src=typed_query",
+          "title": "cats - Search / X",
+          "text": "Posts.",
+          "dwell_s": 120,
+          "t_s": 196,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    }
+  ]
+}

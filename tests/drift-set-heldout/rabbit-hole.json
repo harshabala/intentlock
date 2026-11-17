@@ -1,0 +1,256 @@
+{
+  "labelled_by": "agent",
+  "review": "pending-owner",
+  "schema_version": 1,
+  "set": "heldout",
+  "category": "rabbit-hole",
+  "sequences": [
+    {
+      "id": "h-rab-01",
+      "category": "rabbit-hole",
+      "intent": "Understand how TCP congestion control works for the networking exam",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://en.wikipedia.org/wiki/TCP_congestion_control",
+          "title": "TCP congestion control - Wikipedia",
+          "text": "Congestion control.",
+          "dwell_s": 220,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.cloudflare.com/learning/ddos/glossary/tcp-ip/",
+          "title": "What is TCP/IP?",
+          "text": "Primer.",
+          "dwell_s": 100,
+          "t_s": 223,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Van_Jacobson",
+          "title": "Van Jacobson - Wikipedia",
+          "text": "Biography.",
+          "dwell_s": 70,
+          "t_s": 326,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Berkeley,_California",
+          "title": "Berkeley, California - Wikipedia",
+          "text": "City.",
+          "dwell_s": 90,
+          "t_s": 399,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/People%27s_Park_(Berkeley)",
+          "title": "People’s Park - Wikipedia",
+          "text": "Park.",
+          "dwell_s": 160,
+          "t_s": 492,
+          "via": "load",
+          "label": "drift"
+        }
+      ],
+      "debatable": [
+        {
+          "visit": 2,
+          "reason": "Biography of the algorithm inventor."
+        }
+      ]
+    },
+    {
+      "id": "h-rab-02",
+      "category": "rabbit-hole",
+      "intent": "Write the cover note for the loan application",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://docs.google.com/document/d/1Loan/edit",
+          "title": "Cover note",
+          "text": "Draft.",
+          "dwell_s": 240,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.reddit.com/r/personalfinance/",
+          "title": "r/personalfinance",
+          "text": "Community.",
+          "dwell_s": 100,
+          "t_s": 243,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://www.reddit.com/r/WhitePeopleTwitter/",
+          "title": "r/WhitePeopleTwitter",
+          "text": "Memes.",
+          "dwell_s": 180,
+          "t_s": 346,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://www.reddit.com/r/pics/",
+          "title": "r/pics",
+          "text": "Pictures.",
+          "dwell_s": 160,
+          "t_s": 529,
+          "via": "load",
+          "label": "drift"
+        }
+      ],
+      "debatable": [
+        {
+          "visit": 1,
+          "reason": "Finance forum could help the note."
+        }
+      ]
+    },
+    {
+      "id": "h-rab-03",
+      "category": "rabbit-hole",
+      "intent": "Learn about sourdough fermentation chemistry for my blog post",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://www.seriouseats.com/sourdough-science",
+          "title": "The science of sourdough",
+          "text": "Article.",
+          "dwell_s": 200,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Sourdough",
+          "title": "Sourdough - Wikipedia",
+          "text": "Bread.",
+          "dwell_s": 130,
+          "t_s": 203,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/San_Francisco",
+          "title": "San Francisco - Wikipedia",
+          "text": "City.",
+          "dwell_s": 90,
+          "t_s": 336,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Golden_Gate_Bridge",
+          "title": "Golden Gate Bridge - Wikipedia",
+          "text": "Bridge.",
+          "dwell_s": 150,
+          "t_s": 429,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "h-rab-04",
+      "category": "rabbit-hole",
+      "intent": "Finalize the sprint demo script",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://docs.google.com/document/d/1Demo/edit",
+          "title": "Demo script",
+          "text": "Script.",
+          "dwell_s": 220,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=Demo0Tube01",
+          "title": "Best demos ever? - YouTube",
+          "text": "Compilation.",
+          "dwell_s": 220,
+          "t_s": 223,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=Rando0Tube2",
+          "title": "Wild animal rescues - YouTube",
+          "text": "Rescue.",
+          "dwell_s": 300,
+          "t_s": 446,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=Rando0Tube3",
+          "title": "Wild animal rescues 2 - YouTube",
+          "text": "Rescue.",
+          "dwell_s": 300,
+          "t_s": 749,
+          "via": "load",
+          "label": "drift"
+        }
+      ],
+      "debatable": [
+        {
+          "visit": 1,
+          "reason": "Demo inspiration vs time sink."
+        }
+      ]
+    },
+    {
+      "id": "h-rab-05",
+      "category": "rabbit-hole",
+      "intent": "Prepare notes on the Treaty of Westphalia",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Peace_of_Westphalia",
+          "title": "Peace of Westphalia - Wikipedia",
+          "text": "Treaty.",
+          "dwell_s": 240,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.britannica.com/event/Peace-of-Westphalia",
+          "title": "Peace of Westphalia | Britannica",
+          "text": "Entry.",
+          "dwell_s": 130,
+          "t_s": 243,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Thirty_Years%27_War",
+          "title": "Thirty Years’ War - Wikipedia",
+          "text": "War.",
+          "dwell_s": 170,
+          "t_s": 376,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Game_of_Thrones",
+          "title": "Game of Thrones - Wikipedia",
+          "text": "TV series.",
+          "dwell_s": 150,
+          "t_s": 549,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    }
+  ]
+}

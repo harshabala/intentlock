@@ -1,0 +1,449 @@
+{
+  "labelled_by": "agent",
+  "review": "pending-owner",
+  "schema_version": 1,
+  "set": "heldout",
+  "category": "web-noise",
+  "sequences": [
+    {
+      "id": "h-web-01",
+      "category": "web-noise",
+      "intent": "Read the article about the new tax law",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://www.ft.com/content/abc-def",
+          "title": "Tax law explained",
+          "text": "Article.",
+          "dwell_s": 5,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://consent.ft.com/consent?next=https://www.ft.com/content/abc-def",
+          "title": "Your privacy",
+          "text": "Cookie preferences.",
+          "dwell_s": 10,
+          "t_s": 8,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.ft.com/content/abc-def",
+          "title": "Tax law explained",
+          "text": "Article.",
+          "dwell_s": 220,
+          "t_s": 21,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "h-web-02",
+      "category": "web-noise",
+      "intent": "Download and read the annual report PDF",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://investors.bluefin.example/static-files/annual-report-2025.pdf",
+          "title": "annual-report-2025.pdf",
+          "text": "PDF.",
+          "dwell_s": 320,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://investors.bluefin.example/financials",
+          "title": "Financials",
+          "text": "Reports.",
+          "dwell_s": 60,
+          "t_s": 323,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "h-web-03",
+      "category": "web-noise",
+      "intent": "Study the lease agreement before signing",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://files.landlord.example/lease-2026.pdf",
+          "title": "lease-2026.pdf",
+          "text": "PDF.",
+          "dwell_s": 400,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.nolo.com/legal-encyclopedia/lease-clauses",
+          "title": "Lease clauses",
+          "text": "Guide.",
+          "dwell_s": 150,
+          "t_s": 403,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "h-web-04",
+      "category": "web-noise",
+      "intent": "Order replacement parts for the dishwasher",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://www.partselect.com/",
+          "title": "PartSelect",
+          "text": "Home.",
+          "dwell_s": 20,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.partselect.com/cookie-settings",
+          "title": "Cookie settings",
+          "text": "Cookies.",
+          "dwell_s": 8,
+          "t_s": 23,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.partselect.com/PS11752778-Whirlpool-W10195416-Dishrack-Roller.htm",
+          "title": "Dishrack roller",
+          "text": "Part.",
+          "dwell_s": 100,
+          "t_s": 34,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.partselect.com/Cart/",
+          "title": "Cart",
+          "text": "Cart.",
+          "dwell_s": 60,
+          "t_s": 137,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "h-web-05",
+      "category": "web-noise",
+      "intent": "Plan the garage sale",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "chrome://newtab/",
+          "title": "New Tab",
+          "text": "New tab.",
+          "dwell_s": 5,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.craigslist.org/about/sites",
+          "title": "craigslist",
+          "text": "Sites.",
+          "dwell_s": 40,
+          "t_s": 8,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.facebook.com/marketplace/create/item",
+          "title": "Create listing",
+          "text": "Listing.",
+          "dwell_s": 150,
+          "t_s": 51,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ],
+      "debatable": [
+        {
+          "visit": 2,
+          "reason": "Selling on a social marketplace for the sale."
+        }
+      ]
+    },
+    {
+      "id": "h-web-06",
+      "category": "web-noise",
+      "intent": "Write the email to the landlord",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://mail.google.com/mail/u/0/#drafts",
+          "title": "Drafts",
+          "text": "Drafts.",
+          "dwell_s": 170,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://t.co/abc123",
+          "title": "Redirecting",
+          "text": "Redirect.",
+          "dwell_s": 2,
+          "t_s": 173,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.tenantsunion.example/repairs",
+          "title": "Repairs",
+          "text": "Guide.",
+          "dwell_s": 90,
+          "t_s": 178,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ],
+      "debatable": [
+        {
+          "visit": 1,
+          "reason": "Link shortener redirect with no context."
+        }
+      ]
+    },
+    {
+      "id": "h-web-07",
+      "category": "web-noise",
+      "intent": "Escribir el informe trimestral para el equipo",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://docs.google.com/document/d/1Informe/edit",
+          "title": "Informe trimestral",
+          "text": "Documento.",
+          "dwell_s": 300,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.rae.es/drae2001/informe",
+          "title": "informe | Diccionario",
+          "text": "Definición.",
+          "dwell_s": 15,
+          "t_s": 303,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.marca.com/futbol.html",
+          "title": "Fútbol",
+          "text": "Noticias de fútbol.",
+          "dwell_s": 160,
+          "t_s": 321,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "h-web-08",
+      "category": "web-noise",
+      "intent": "Den Projektplan für das Quartal fertigstellen",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://app.asana.com/0/1/list",
+          "title": "Projektplan",
+          "text": "Aufgaben.",
+          "dwell_s": 240,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.bild.de/sport/",
+          "title": "Sport",
+          "text": "Sportnachrichten.",
+          "dwell_s": 130,
+          "t_s": 243,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "h-web-09",
+      "category": "web-noise",
+      "intent": "来週のプレゼン資料を作る",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://docs.google.com/presentation/d/1Jp/edit",
+          "title": "プレゼン",
+          "text": "スライド.",
+          "dwell_s": 300,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://ja.wikipedia.org/wiki/プレゼンテーション",
+          "title": "プレゼンテーション - Wikipedia",
+          "text": "概要.",
+          "dwell_s": 80,
+          "t_s": 303,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.nicovideo.jp/ranking",
+          "title": "ランキング",
+          "text": "動画ランキング.",
+          "dwell_s": 200,
+          "t_s": 386,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "h-web-10",
+      "category": "web-noise",
+      "intent": "Réviser le chapitre sur la photosynthèse",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://fr.khanacademy.org/science/biology/photosynthesis",
+          "title": "Photosynthèse",
+          "text": "Cours.",
+          "dwell_s": 260,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.lequipe.fr/",
+          "title": "L’Équipe",
+          "text": "Sport.",
+          "dwell_s": 120,
+          "t_s": 263,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "h-web-11",
+      "category": "web-noise",
+      "intent": "Reset the router and fix the wifi dropouts",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "http://192.168.1.1/",
+          "title": "Router login",
+          "text": "Admin.",
+          "dwell_s": 120,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "http://192.168.1.1/wireless",
+          "title": "Wireless",
+          "text": "Settings.",
+          "dwell_s": 100,
+          "t_s": 123,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.speedtest.net/",
+          "title": "Speedtest",
+          "text": "Test.",
+          "dwell_s": 50,
+          "t_s": 226,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "h-web-12",
+      "category": "web-noise",
+      "intent": "Back up the family photos to the NAS",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "http://nas.local:5000/",
+          "title": "DSM",
+          "text": "NAS.",
+          "dwell_s": 160,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "http://nas.local:5000/webman/index.cgi",
+          "title": "Photos",
+          "text": "Photos.",
+          "dwell_s": 140,
+          "t_s": 163,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "h-web-13",
+      "category": "web-noise",
+      "intent": "Draft the invoice for the Henderson project",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://app.quickbooks.com/app/invoice?txnId=9",
+          "title": "Invoice 1042",
+          "text": "Draft.",
+          "dwell_s": 200,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "about:blank",
+          "title": "",
+          "text": "",
+          "dwell_s": 3,
+          "t_s": 203,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.google.com/",
+          "title": "Google",
+          "text": "Home.",
+          "dwell_s": 10,
+          "t_s": 209,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://app.quickbooks.com/app/invoice?txnId=9",
+          "title": "Invoice 1042",
+          "text": "Draft.",
+          "dwell_s": 150,
+          "t_s": 222,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    }
+  ]
+}

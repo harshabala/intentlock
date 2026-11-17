@@ -1,0 +1,299 @@
+{
+  "labelled_by": "agent",
+  "review": "pending-owner",
+  "schema_version": 1,
+  "set": "heldout",
+  "category": "signin-redirects",
+  "sequences": [
+    {
+      "id": "h-sig-01",
+      "category": "signin-redirects",
+      "intent": "Download the March bank statement",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://www.bankofexample.com/",
+          "title": "Bank of Example",
+          "text": "Home.",
+          "dwell_s": 10,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://login.bankofexample.com/oauth/authorize?client_id=web",
+          "title": "Sign in",
+          "text": "Sign in.",
+          "dwell_s": 20,
+          "t_s": 13,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://login.bankofexample.com/mfa",
+          "title": "Verify",
+          "text": "Code.",
+          "dwell_s": 25,
+          "t_s": 36,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://secure.bankofexample.com/accounts/statements",
+          "title": "Statements",
+          "text": "Statements.",
+          "dwell_s": 70,
+          "t_s": 64,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "h-sig-02",
+      "category": "signin-redirects",
+      "intent": "Check my pull requests",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://github.com/pulls",
+          "title": "Pull requests",
+          "text": "List.",
+          "dwell_s": 5,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://github.com/login?return_to=%2Fpulls",
+          "title": "Sign in to GitHub",
+          "text": "Sign in.",
+          "dwell_s": 15,
+          "t_s": 8,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://github.com/login/device",
+          "title": "Device",
+          "text": "Code.",
+          "dwell_s": 10,
+          "t_s": 26,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://github.com/pulls",
+          "title": "Pull requests",
+          "text": "List.",
+          "dwell_s": 120,
+          "t_s": 39,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "h-sig-03",
+      "category": "signin-redirects",
+      "intent": "Update the team calendar",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://outlook.office.com/calendar",
+          "title": "Calendar",
+          "text": "Redirect.",
+          "dwell_s": 4,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://login.microsoftonline.com/organizations/oauth2/v2.0/authorize",
+          "title": "Sign in",
+          "text": "Sign in.",
+          "dwell_s": 15,
+          "t_s": 7,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://login.microsoftonline.com/kmsi",
+          "title": "Stay signed in?",
+          "text": "Prompt.",
+          "dwell_s": 6,
+          "t_s": 25,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://outlook.office.com/calendar/view/week",
+          "title": "Calendar - Week",
+          "text": "Calendar.",
+          "dwell_s": 150,
+          "t_s": 34,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "h-sig-04",
+      "category": "signin-redirects",
+      "intent": "Book a dentist appointment",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://patient.dentalexample.com/",
+          "title": "Patient portal",
+          "text": "Home.",
+          "dwell_s": 6,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://patient.dentalexample.com/login",
+          "title": "Log in",
+          "text": "Log in.",
+          "dwell_s": 20,
+          "t_s": 9,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://patient.dentalexample.com/login?error=expired",
+          "title": "Log in",
+          "text": "Session expired.",
+          "dwell_s": 14,
+          "t_s": 32,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://patient.dentalexample.com/appointments/new",
+          "title": "New appointment",
+          "text": "Form.",
+          "dwell_s": 110,
+          "t_s": 49,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "h-sig-05",
+      "category": "signin-redirects",
+      "intent": "Finish my timesheet",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://time.bluefin.example/",
+          "title": "Timesheets",
+          "text": "Redirect.",
+          "dwell_s": 3,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://sso.bluefin.example/saml/login",
+          "title": "Single sign-on",
+          "text": "SSO.",
+          "dwell_s": 8,
+          "t_s": 6,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://time.bluefin.example/week/46",
+          "title": "Week 46",
+          "text": "Entries.",
+          "dwell_s": 120,
+          "t_s": 17,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "h-sig-06",
+      "category": "signin-redirects",
+      "intent": "Read the shared contract",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://app.docusign.com/documents/details/abc",
+          "title": "Document",
+          "text": "Redirect.",
+          "dwell_s": 4,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.facebook.com/login.php",
+          "title": "Log into Facebook",
+          "text": "Log in.",
+          "dwell_s": 15,
+          "t_s": 7,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://www.facebook.com/home.php",
+          "title": "Facebook",
+          "text": "Feed.",
+          "dwell_s": 90,
+          "t_s": 25,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "h-sig-07",
+      "category": "signin-redirects",
+      "intent": "Share the folder with the auditors",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://drive.google.com/drive/folders/1Aud",
+          "title": "Audit - Google Drive",
+          "text": "Folder.",
+          "dwell_s": 80,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://accounts.google.com/ServiceLogin?continue=https://drive.google.com",
+          "title": "Sign in",
+          "text": "Sign in.",
+          "dwell_s": 12,
+          "t_s": 83,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://accounts.google.com/signin/v2/challenge/pwd",
+          "title": "Welcome",
+          "text": "Password.",
+          "dwell_s": 12,
+          "t_s": 98,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://drive.google.com/drive/folders/1Aud",
+          "title": "Audit - Google Drive",
+          "text": "Folder.",
+          "dwell_s": 100,
+          "t_s": 113,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,226 @@
+{
+  "labelled_by": "agent",
+  "review": "pending-owner",
+  "schema_version": 1,
+  "set": "heldout",
+  "category": "quick-checks",
+  "sequences": [
+    {
+      "id": "h-qui-01",
+      "category": "quick-checks",
+      "intent": "Prepare the client proposal",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://docs.google.com/document/d/1Prop/edit",
+          "title": "Proposal",
+          "text": "Draft.",
+          "dwell_s": 240,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.xe.com/currencyconverter/convert/?Amount=1&From=GBP&To=USD",
+          "title": "GBP to USD",
+          "text": "Rate.",
+          "dwell_s": 10,
+          "t_s": 243,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://docs.google.com/document/d/1Prop/edit",
+          "title": "Proposal",
+          "text": "Draft.",
+          "dwell_s": 200,
+          "t_s": 256,
+          "via": "tab-switch",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.timeanddate.com/worldclock/",
+          "title": "World clock",
+          "text": "Clock.",
+          "dwell_s": 10,
+          "t_s": 459,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "h-qui-02",
+      "category": "quick-checks",
+      "intent": "Write the unit tests for the parser",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://github.com/bluefin/parse/blob/main/test/parse.test.js",
+          "title": "parse.test.js",
+          "text": "Tests.",
+          "dwell_s": 140,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://regex101.com/",
+          "title": "regex101",
+          "text": "Regex.",
+          "dwell_s": 40,
+          "t_s": 143,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://github.com/bluefin/parse/blob/main/test/parse.test.js",
+          "title": "parse.test.js",
+          "text": "Tests.",
+          "dwell_s": 130,
+          "t_s": 186,
+          "via": "tab-switch",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://jsonformatter.org/",
+          "title": "JSON Formatter",
+          "text": "Tool.",
+          "dwell_s": 25,
+          "t_s": 319,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "h-qui-03",
+      "category": "quick-checks",
+      "intent": "Study for the driving theory test",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://www.gov.uk/theory-test",
+          "title": "Theory test",
+          "text": "Gov.",
+          "dwell_s": 130,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.drivingtestsuccess.com/",
+          "title": "Practice",
+          "text": "Quiz.",
+          "dwell_s": 300,
+          "t_s": 133,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.google.com/search?q=arsenal+score",
+          "title": "arsenal score - Google Search",
+          "text": "Score.",
+          "dwell_s": 12,
+          "t_s": 436,
+          "via": "load",
+          "label": "drift"
+        },
+        {
+          "url": "https://www.drivingtestsuccess.com/",
+          "title": "Practice",
+          "text": "Quiz.",
+          "dwell_s": 280,
+          "t_s": 451,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ],
+      "debatable": [
+        {
+          "visit": 2,
+          "reason": "Short score check."
+        }
+      ]
+    },
+    {
+      "id": "h-qui-04",
+      "category": "quick-checks",
+      "intent": "Write the project status email",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://mail.google.com/mail/u/0/#drafts",
+          "title": "Drafts",
+          "text": "Draft.",
+          "dwell_s": 150,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://linear.app/bluefin/team/ENG/active",
+          "title": "Active",
+          "text": "Issues.",
+          "dwell_s": 25,
+          "t_s": 153,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://calendar.google.com/calendar/u/0/r/week",
+          "title": "Calendar",
+          "text": "Week.",
+          "dwell_s": 12,
+          "t_s": 181,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://mail.google.com/mail/u/0/#drafts",
+          "title": "Drafts",
+          "text": "Draft.",
+          "dwell_s": 180,
+          "t_s": 196,
+          "via": "tab-switch",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "h-qui-05",
+      "category": "quick-checks",
+      "intent": "Edit the training video script",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://docs.google.com/document/d/1Script/edit",
+          "title": "Script",
+          "text": "Script.",
+          "dwell_s": 260,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.thesaurus.com/browse/simple",
+          "title": "Simple synonyms",
+          "text": "Synonyms.",
+          "dwell_s": 12,
+          "t_s": 263,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.hemingwayapp.com/",
+          "title": "Hemingway",
+          "text": "Editor.",
+          "dwell_s": 50,
+          "t_s": 278,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    }
+  ]
+}

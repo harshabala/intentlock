@@ -1,0 +1,164 @@
+{
+  "labelled_by": "agent",
+  "review": "pending-owner",
+  "schema_version": 1,
+  "set": "heldout",
+  "category": "writing-and-creative",
+  "sequences": [
+    {
+      "id": "h-wri-01",
+      "category": "writing-and-creative",
+      "intent": "Write chapter 7 of the memoir",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://docs.google.com/document/d/1Memoir/edit",
+          "title": "Ch 7",
+          "text": "Draft.",
+          "dwell_s": 800,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.thefreedictionary.com/nostalgia",
+          "title": "nostalgia",
+          "text": "Definition.",
+          "dwell_s": 15,
+          "t_s": 803,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.reddit.com/r/AskReddit/comments/1q/ghost_stories/",
+          "title": "Ghost stories : r/AskReddit",
+          "text": "Thread.",
+          "dwell_s": 300,
+          "t_s": 821,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "h-wri-02",
+      "category": "writing-and-creative",
+      "intent": "Design the cover for the album",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://www.photopea.com/",
+          "title": "Photopea",
+          "text": "Editor.",
+          "dwell_s": 600,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://unsplash.com/s/photos/abstract-texture",
+          "title": "Abstract texture photos",
+          "text": "Photos.",
+          "dwell_s": 120,
+          "t_s": 603,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://fonts.google.com/?query=display",
+          "title": "Display fonts",
+          "text": "Fonts.",
+          "dwell_s": 60,
+          "t_s": 726,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.pinterest.com/search/pins/?q=album%20cover%20art",
+          "title": "Album cover art",
+          "text": "Pins.",
+          "dwell_s": 150,
+          "t_s": 789,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ],
+      "debatable": [
+        {
+          "visit": 3,
+          "reason": "Pinterest moodboard."
+        }
+      ]
+    },
+    {
+      "id": "h-wri-03",
+      "category": "writing-and-creative",
+      "intent": "Draft the speech for the retirement party",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://docs.google.com/document/d/1Speech/edit",
+          "title": "Speech",
+          "text": "Draft.",
+          "dwell_s": 260,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.google.com/search?q=retirement+speech+opening+lines",
+          "title": "retirement speech opening lines - Google Search",
+          "text": "Results.",
+          "dwell_s": 10,
+          "t_s": 263,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.tiktok.com/foryou",
+          "title": "TikTok",
+          "text": "FYP.",
+          "dwell_s": 170,
+          "t_s": 276,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "h-wri-04",
+      "category": "writing-and-creative",
+      "intent": "Illustrate the children's book spread",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://procreate.example/gallery/spread",
+          "title": "Spread",
+          "text": "Canvas.",
+          "dwell_s": 500,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.behance.net/search/projects?search=children%20book%20illustration",
+          "title": "Children book illustration",
+          "text": "Projects.",
+          "dwell_s": 140,
+          "t_s": 503,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=Gouache001",
+          "title": "Gouache textures tutorial - YouTube",
+          "text": "Tutorial.",
+          "dwell_s": 420,
+          "t_s": 646,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    }
+  ]
+}

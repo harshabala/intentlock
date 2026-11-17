@@ -1,0 +1,304 @@
+{
+  "labelled_by": "agent",
+  "review": "pending-owner",
+  "schema_version": 1,
+  "set": "heldout",
+  "category": "searches",
+  "sequences": [
+    {
+      "id": "h-sea-01",
+      "category": "searches",
+      "intent": "Renew my passport before the trip",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://www.google.com/search?q=renew+passport+online",
+          "title": "renew passport online - Google Search",
+          "text": "Results.",
+          "dwell_s": 12,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://travel.state.gov/content/travel/en/passports/have-passport/renew.html",
+          "title": "Renew",
+          "text": "Official.",
+          "dwell_s": 150,
+          "t_s": 15,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.google.com/search?q=celebrity+divorce+news",
+          "title": "celebrity divorce news - Google Search",
+          "text": "Results.",
+          "dwell_s": 20,
+          "t_s": 168,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "h-sea-02",
+      "category": "searches",
+      "intent": "Write the grant report for the arts council",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://www.bing.com/search?q=arts+council+reporting+guidelines",
+          "title": "arts council reporting guidelines - Search",
+          "text": "Results.",
+          "dwell_s": 10,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://duckduckgo.com/?q=logic+model+template+nonprofit",
+          "title": "logic model template nonprofit at DuckDuckGo",
+          "text": "Results.",
+          "dwell_s": 10,
+          "t_s": 13,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.bing.com/search?q=best+budget+smartphones",
+          "title": "best budget smartphones - Search",
+          "text": "Results.",
+          "dwell_s": 20,
+          "t_s": 26,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "h-sea-03",
+      "category": "searches",
+      "intent": "Fix the memory error when loading large parquet files",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://www.google.com/search?q=pandas+read_parquet+memory+error+chunks",
+          "title": "pandas read_parquet memory - Google Search",
+          "text": "Results.",
+          "dwell_s": 10,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://arrow.apache.org/docs/python/parquet.html",
+          "title": "Reading and Writing the Apache Parquet Format",
+          "text": "Docs.",
+          "dwell_s": 120,
+          "t_s": 13,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.google.com/search?q=pyarrow+iter_batches",
+          "title": "pyarrow iter_batches - Google Search",
+          "text": "Results.",
+          "dwell_s": 10,
+          "t_s": 136,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "h-sea-04",
+      "category": "searches",
+      "intent": "Plan a weekend in Lisbon",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://www.google.com/search?q=things+to+do+in+lisbon",
+          "title": "things to do in lisbon - Google Search",
+          "text": "Results.",
+          "dwell_s": 12,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.timeout.com/lisbon",
+          "title": "Lisbon travel guide",
+          "text": "Guide.",
+          "dwell_s": 140,
+          "t_s": 15,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.google.com/maps/search/pastel+de+nata+lisbon",
+          "title": "pastel de nata - Google Maps",
+          "text": "Map.",
+          "dwell_s": 40,
+          "t_s": 158,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.google.com/search?q=stock+market+today",
+          "title": "stock market today - Google Search",
+          "text": "Quotes.",
+          "dwell_s": 20,
+          "t_s": 201,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "h-sea-05",
+      "category": "searches",
+      "intent": "Understand the new GDPR guidance on cookies",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://www.google.com/search?q=edpb+cookie+banner+guidelines",
+          "title": "edpb cookie banner guidelines - Google Search",
+          "text": "Results.",
+          "dwell_s": 10,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.edpb.europa.eu/our-work-tools/our-documents/guidelines_en",
+          "title": "Guidelines",
+          "text": "EDPB.",
+          "dwell_s": 170,
+          "t_s": 13,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
+          "title": "Regulation (EU) 2016/679",
+          "text": "GDPR text.",
+          "dwell_s": 200,
+          "t_s": 186,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "h-sea-06",
+      "category": "searches",
+      "intent": "Finish the thesis literature review",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://scholar.google.com/scholar?q=urban+heat+island+mitigation+review",
+          "title": "urban heat island mitigation review - Scholar",
+          "text": "Results.",
+          "dwell_s": 15,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.sciencedirect.com/science/article/pii/S0378778820300001",
+          "title": "Mitigation strategies",
+          "text": "Article.",
+          "dwell_s": 220,
+          "t_s": 18,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.google.com/search?q=how+tall+is+lebron+james",
+          "title": "how tall is lebron james - Google Search",
+          "text": "Answer.",
+          "dwell_s": 12,
+          "t_s": 241,
+          "via": "load",
+          "label": "drift"
+        }
+      ],
+      "debatable": [
+        {
+          "visit": 2,
+          "reason": "Ten-second trivia lookup."
+        }
+      ]
+    },
+    {
+      "id": "h-sea-07",
+      "category": "searches",
+      "intent": "Choose a reliable used car",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://www.google.com/search?q=most+reliable+used+cars+under+10000",
+          "title": "most reliable used cars under 10000 - Google Search",
+          "text": "Results.",
+          "dwell_s": 12,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.consumerreports.org/cars/used-cars/",
+          "title": "Used cars",
+          "text": "Reports.",
+          "dwell_s": 160,
+          "t_s": 15,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.carfax.com/vehicle/ABC",
+          "title": "Report",
+          "text": "History report.",
+          "dwell_s": 90,
+          "t_s": 178,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "h-sea-08",
+      "category": "searches",
+      "intent": "Set up the new office printer",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://www.google.com/search?q=brother+hl-l2350dw+setup+wifi",
+          "title": "brother setup wifi - Google Search",
+          "text": "Results.",
+          "dwell_s": 10,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://support.brother.com/g/b/downloadtop.aspx?c=us&lang=en&prod=hll2350dw",
+          "title": "Downloads",
+          "text": "Drivers.",
+          "dwell_s": 100,
+          "t_s": 13,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://duckduckgo.com/?q=funny+dog+videos",
+          "title": "funny dog videos at DuckDuckGo",
+          "text": "Videos.",
+          "dwell_s": 25,
+          "t_s": 116,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    }
+  ]
+}

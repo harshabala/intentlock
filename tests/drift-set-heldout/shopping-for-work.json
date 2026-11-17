@@ -1,0 +1,264 @@
+{
+  "labelled_by": "agent",
+  "review": "pending-owner",
+  "schema_version": 1,
+  "set": "heldout",
+  "category": "shopping-for-work",
+  "sequences": [
+    {
+      "id": "h-sho-01",
+      "category": "shopping-for-work",
+      "intent": "Buy a laminator and binding supplies for the classroom",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://www.officedepot.com/a/browse/laminators/N=5+516000/",
+          "title": "Laminators",
+          "text": "Products.",
+          "dwell_s": 90,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.amazon.com/dp/B0LAMIN001",
+          "title": "Scotch Thermal Laminator - Amazon.com",
+          "text": "Price.",
+          "dwell_s": 80,
+          "t_s": 93,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.amazon.com/gp/cart/view.html",
+          "title": "Cart",
+          "text": "Cart.",
+          "dwell_s": 40,
+          "t_s": 176,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "h-sho-02",
+      "category": "shopping-for-work",
+      "intent": "Order the conference swag",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://www.vistaprint.com/promotional-products",
+          "title": "Promotional products",
+          "text": "Products.",
+          "dwell_s": 120,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.sticker-mule.example/custom-stickers",
+          "title": "Custom stickers",
+          "text": "Quote.",
+          "dwell_s": 100,
+          "t_s": 123,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.etsy.com/search?q=wedding+gifts",
+          "title": "Wedding gifts - Etsy",
+          "text": "Gifts.",
+          "dwell_s": 130,
+          "t_s": 226,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "h-sho-03",
+      "category": "shopping-for-work",
+      "intent": "Compare ergonomic keyboards for the dev team",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://www.rtings.com/keyboard/reviews/best/ergonomic",
+          "title": "Best ergonomic keyboards",
+          "text": "Reviews.",
+          "dwell_s": 160,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.amazon.com/dp/B0KEYBD001",
+          "title": "Kinesis Advantage - Amazon.com",
+          "text": "Price.",
+          "dwell_s": 90,
+          "t_s": 163,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.reddit.com/r/ErgoMechKeyboards/comments/1yy/first_split/",
+          "title": "First split? : r/ErgoMechKeyboards",
+          "text": "Thread.",
+          "dwell_s": 140,
+          "t_s": 256,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=ErgoBoard01",
+          "title": "Ergo keyboard comparison - YouTube",
+          "text": "Review.",
+          "dwell_s": 500,
+          "t_s": 399,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "h-sho-04",
+      "category": "shopping-for-work",
+      "intent": "Prepare the equipment budget for the new lab",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://docs.google.com/spreadsheets/d/1LabBudget/edit",
+          "title": "Lab budget",
+          "text": "Sheet.",
+          "dwell_s": 200,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.fishersci.com/shop/products/centrifuge",
+          "title": "Centrifuge",
+          "text": "Price quote.",
+          "dwell_s": 70,
+          "t_s": 203,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.amazon.com/dp/B0PIPETTE01",
+          "title": "Pipette set - Amazon.com",
+          "text": "Price.",
+          "dwell_s": 60,
+          "t_s": 276,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ],
+      "debatable": [
+        {
+          "visit": 1,
+          "reason": "Price checks for the budget."
+        },
+        {
+          "visit": 2,
+          "reason": "Price checks for the budget."
+        }
+      ]
+    },
+    {
+      "id": "h-sho-05",
+      "category": "shopping-for-work",
+      "intent": "Find a gift for my manager's retirement",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://www.etsy.com/search?q=retirement+gift",
+          "title": "Retirement gift - Etsy",
+          "text": "Gifts.",
+          "dwell_s": 140,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.amazon.com/s?k=retirement+gifts+for+men",
+          "title": "Amazon.com : retirement gifts",
+          "text": "Gifts.",
+          "dwell_s": 100,
+          "t_s": 143,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.nordstrom.com/browse/gifts",
+          "title": "Gifts",
+          "text": "Gifts.",
+          "dwell_s": 90,
+          "t_s": 246,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "h-sho-06",
+      "category": "shopping-for-work",
+      "intent": "Draft the company holiday party plan",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://docs.google.com/document/d/1Party/edit",
+          "title": "Party plan",
+          "text": "Plan.",
+          "dwell_s": 220,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.opentable.com/r/bluefin-bistro",
+          "title": "Bistro",
+          "text": "Venue.",
+          "dwell_s": 70,
+          "t_s": 223,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.amazon.com/s?k=ps5+games",
+          "title": "Amazon.com : ps5 games",
+          "text": "Games.",
+          "dwell_s": 150,
+          "t_s": 296,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "h-sho-07",
+      "category": "shopping-for-work",
+      "intent": "Buy a replacement charger for my work laptop",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://www.dell.com/en-us/shop/accessories/ac-adapter",
+          "title": "AC adapter",
+          "text": "Chargers.",
+          "dwell_s": 80,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.amazon.com/dp/B0CHARGE001",
+          "title": "65W USB-C charger - Amazon.com",
+          "text": "Price.",
+          "dwell_s": 70,
+          "t_s": 83,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    }
+  ]
+}

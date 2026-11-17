@@ -1,0 +1,253 @@
+{
+  "labelled_by": "agent",
+  "review": "pending-owner",
+  "schema_version": 1,
+  "set": "heldout",
+  "category": "video-for-work",
+  "sequences": [
+    {
+      "id": "h-vid-01",
+      "category": "video-for-work",
+      "intent": "Learn Figma auto layout",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://www.youtube.com/watch?v=FigAuto0001",
+          "title": "Auto layout in 12 minutes - YouTube",
+          "text": "Tutorial.",
+          "dwell_s": 720,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://help.figma.com/hc/en-us/articles/360040451373",
+          "title": "Guide to auto layout",
+          "text": "Help.",
+          "dwell_s": 130,
+          "t_s": 723,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=FigAuto0002",
+          "title": "Responsive design tips - YouTube",
+          "text": "Tutorial.",
+          "dwell_s": 500,
+          "t_s": 856,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "h-vid-02",
+      "category": "video-for-work",
+      "intent": "Watch the recorded all-hands and write up action items",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://bluefin.zoom.us/rec/share/abc",
+          "title": "All hands recording",
+          "text": "Recording.",
+          "dwell_s": 1800,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://docs.google.com/document/d/1Actions/edit",
+          "title": "Action items",
+          "text": "Doc.",
+          "dwell_s": 240,
+          "t_s": 1803,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "h-vid-03",
+      "category": "video-for-work",
+      "intent": "Follow along with the Python decorators lesson",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://www.youtube.com/watch?v=PyDeco0001",
+          "title": "Python Decorators - YouTube",
+          "text": "Lesson.",
+          "dwell_s": 780,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://realpython.com/primer-on-python-decorators/",
+          "title": "Primer on Python Decorators",
+          "text": "Article.",
+          "dwell_s": 220,
+          "t_s": 783,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=Funny00099",
+          "title": "Skateboard fails 2026 - YouTube",
+          "text": "Fails.",
+          "dwell_s": 240,
+          "t_s": 1006,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "h-vid-04",
+      "category": "video-for-work",
+      "intent": "Learn how to change a bike tyre",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://www.youtube.com/watch?v=BikeTyre001",
+          "title": "Fix a flat - YouTube",
+          "text": "Video.",
+          "dwell_s": 360,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.parktool.com/en-us/blog/repair-help/tire-and-tube-installation-clincher",
+          "title": "Tire installation",
+          "text": "Guide.",
+          "dwell_s": 100,
+          "t_s": 363,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "h-vid-05",
+      "category": "video-for-work",
+      "intent": "Prepare the product training session using last year's recording",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://vimeo.com/884412300",
+          "title": "Training 2025",
+          "text": "Recording.",
+          "dwell_s": 900,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://docs.google.com/presentation/d/1Train/edit",
+          "title": "Training deck",
+          "text": "Slides.",
+          "dwell_s": 300,
+          "t_s": 903,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=Trailer0021",
+          "title": "New movie trailer - YouTube",
+          "text": "Trailer.",
+          "dwell_s": 150,
+          "t_s": 1206,
+          "via": "load",
+          "label": "drift"
+        }
+      ]
+    },
+    {
+      "id": "h-vid-06",
+      "category": "video-for-work",
+      "intent": "Take the free machine learning course on YouTube",
+      "strictness": "relaxed",
+      "visits": [
+        {
+          "url": "https://www.youtube.com/watch?v=MLCourse001",
+          "title": "Lecture 1 - YouTube",
+          "text": "Lecture.",
+          "dwell_s": 2400,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=MLCourse002",
+          "title": "Lecture 2 - YouTube",
+          "text": "Lecture.",
+          "dwell_s": 2400,
+          "t_s": 2403,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "h-vid-07",
+      "category": "video-for-work",
+      "intent": "Wind down in the evening with some TV",
+      "strictness": "balanced",
+      "visits": [
+        {
+          "url": "https://www.disneyplus.com/home",
+          "title": "Disney+",
+          "text": "Home.",
+          "dwell_s": 90,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://www.disneyplus.com/play/abc",
+          "title": "Playing",
+          "text": "Episode.",
+          "dwell_s": 3000,
+          "t_s": 93,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    },
+    {
+      "id": "h-vid-08",
+      "category": "video-for-work",
+      "intent": "Review the usability test session videos",
+      "strictness": "strict",
+      "visits": [
+        {
+          "url": "https://app.maze.co/sessions/55",
+          "title": "Session 55",
+          "text": "Recording.",
+          "dwell_s": 600,
+          "t_s": 0,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://app.maze.co/sessions/56",
+          "title": "Session 56",
+          "text": "Recording.",
+          "dwell_s": 560,
+          "t_s": 603,
+          "via": "load",
+          "label": "serves-intent"
+        },
+        {
+          "url": "https://miro.com/app/board/uXjOne/",
+          "title": "Findings",
+          "text": "Board.",
+          "dwell_s": 220,
+          "t_s": 1166,
+          "via": "load",
+          "label": "serves-intent"
+        }
+      ]
+    }
+  ]
+}
