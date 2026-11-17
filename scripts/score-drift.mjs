@@ -142,10 +142,10 @@ function table(t) {
   ].join('\n');
 }
 
-export function report(rows, sequences, { failures = false } = {}) {
+export function report(rows, sequences, { failures = false, note = 'labels are agent proposals' } = {}) {
   const out = [];
   const nv = sequences.reduce((a, s) => a + s.visits.length, 0);
-  out.push(`Drift set: ${sequences.length} sequences, ${nv} visits (labels are agent proposals, accepted by the owner 2026-11-16)`);
+  out.push(`Drift set: ${sequences.length} sequences, ${nv} visits (${note})`);
   const sections = [
     ['As declared (each sequence at its own preset)', (r) => r.preset === r.declared],
     ...PRESETS.map((p) => [`Every sequence replayed at ${p}`, (r) => r.preset === p]),
@@ -194,7 +194,10 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const engine = args.includes('--legacy') ? 'legacy' : 'checkin';
   const rows = scoreAll(sequences, engine);
   console.log(`Engine: ${engine}, set: ${setName}`);
-  console.log(report(rows, sequences, { failures: args.includes('--failures') }));
+  console.log(report(rows, sequences, {
+    failures: args.includes('--failures'),
+    note: setName === 'heldout' ? 'labels by agent, review pending-owner' : 'labels by agent, accepted by the owner 2026-11-16',
+  }));
   const j = args.indexOf('--json');
   if (j >= 0 && args[j + 1]) writeFileSync(args[j + 1], JSON.stringify(rows, null, 1));
 }
