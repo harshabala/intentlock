@@ -30,7 +30,7 @@ Verified:
 - `node scripts/score-drift.mjs --set heldout` (held-out): exit 0, 0% wrong locks, 12.8% prompts, 23.8% missed drift.
 Looked at in the browser:
 - `docs/design/directions-preview.html`: Verified all three design directions across the Lock Screen, Check-in Prompt, and New Tab declaration views. Direction A offers the clearest visual restraint and passes all WCAG AAA contrast ratios.
-Commits: <pending commit>
+Commits: 9a00c7b
 Not verified:
 - Live AI provider integration with real proprietary API keys (owner-held keys not stored/provided).
 Needs the owner:
