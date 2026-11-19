@@ -12,6 +12,7 @@ Verified:
 - `npm run check`: 400 tests passed, 74 static checks passed, 0 failed.
 Verified also: `npm run test:browser` twice, 17 passed and 0 failed each time. The second run includes the check-in card staying answerable across a service-worker restart. I did not view the screens myself.
 Needs the owner: the held-out targets are still unmet. Design direction is not chosen.
+Commits: `1f877caa401735f498d8430246f713f47aface24`.
 Plan score: 8 to 8.
 
 ## 2026-11-19, Antigravity (Gemini 3.8 Flash)
