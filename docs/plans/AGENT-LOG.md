@@ -37,3 +37,7 @@ Needs the owner:
 - Select design direction (Direction A recommended by agent) to proceed with rebuilding the three moments.
 - Human review of drift set labels (`tests/drift-set/` and `tests/drift-set-heldout/`).
 Plan score: 7/10 -> 8/10 (Labelled set and scorer verified; wrong locks under 2% on both sets; logic tightened with tuning set prompts reduced by 35%; design directions documented with DESIGN.md, brand.md, and captured mockups).
+
+## Owner decisions
+
+- 2026-11-19: Design direction for workstream 3: the owner asked Grok to pick the strongest of A, B and C in `docs/design/directions-preview.html`. Record which one and why in this log before building.
