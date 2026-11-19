@@ -33,7 +33,8 @@ export const INTENT_CATEGORIES = [
     keywords: ['code', 'coding', 'programming', 'debug', 'feature', 'bug', 'fix', 'refactor',
       'deploy', 'build', 'test', 'api', 'function', 'component', 'module', 'react', 'python',
       'javascript', 'typescript', 'extension', 'backend', 'frontend', 'script', 'class',
-      'database', 'query', 'endpoint', 'pull', 'request', 'merge', 'commit'],
+      'database', 'query', 'endpoint', 'pull', 'request', 'merge', 'commit',
+      'heap', 'devtools', 'stack', 'error', 'exception', 'trace', 'profile', 'async', 'git'],
     defaultStrictness: 'strict',
   },
   {
@@ -42,7 +43,8 @@ export const INTENT_CATEGORIES = [
     description: 'Studying a topic, taking a course, reading technical material',
     keywords: ['learn', 'study', 'course', 'tutorial', 'understand', 'lecture', 'lesson',
       'chapter', 'book', 'documentation', 'algorithm', 'concept', 'machine', 'data', 'science',
-      'math', 'physics', 'history', 'language', 'certificate', 'exam', 'practice'],
+      'math', 'physics', 'history', 'language', 'certificate', 'exam', 'practice',
+      'formula', 'equation', 'theorem', 'problem', 'solution', 'notes', 'exercises'],
     defaultStrictness: 'balanced',
   },
   {
@@ -69,7 +71,7 @@ export const INTENT_CATEGORIES = [
     description: 'Email, scheduling, invoicing, and operational tasks',
     keywords: ['email', 'calendar', 'schedule', 'invoice', 'billing', 'expense', 'meeting',
       'agenda', 'slack', 'admin', 'operational', 'payroll', 'contract', 'sign', 'approval',
-      'onboard', 'offboard', 'ticket', 'helpdesk'],
+      'onboard', 'offboard', 'ticket', 'helpdesk', 'tax', 'taxes', 'inbox', 'receipt', 'vendor', 'accounting', 'claim', 'claims'],
     defaultStrictness: 'relaxed',
   },
   {
@@ -87,7 +89,7 @@ export const INTENT_CATEGORIES = [
     description: 'Medical research, fitness, nutrition, or mental health tasks',
     keywords: ['health', 'fitness', 'workout', 'diet', 'nutrition', 'medical', 'doctor',
       'symptom', 'exercise', 'wellness', 'mental', 'therapy', 'medication', 'appointment',
-      'insurance', 'prescription', 'condition'],
+      'insurance', 'prescription', 'condition', 'hsa', 'fsa', 'benefit', 'dental', 'vision'],
     defaultStrictness: 'relaxed',
   },
   {
@@ -102,7 +104,7 @@ export const INTENT_CATEGORIES = [
     id: 'communication',
     label: 'Communication',
     description: 'Messaging, email catch-up, or coordinating with others',
-    keywords: ['message', 'chat', 'email', 'communicate', 'reply', 'respond', 'send',
+    keywords: ['message', 'chat', 'email', 'inbox', 'communicate', 'reply', 'respond', 'send',
       'coordinate', 'team', 'colleague', 'client', 'follow', 'meeting', 'standup',
       'update', 'sync', 'discuss'],
     defaultStrictness: 'relaxed',
@@ -123,6 +125,11 @@ const STOP_WORDS = new Set([
   'make', 'need', 'page', 'some', 'task', 'that', 'this', 'with', 'your',
   'going', 'want', 'just', 'doing', 'today', 'been', 'will', 'should',
   'could', 'would', 'when', 'what', 'which', 'where', 'very',
+  'the', 'and', 'for', 'are', 'who', 'how', 'was', 'were', 'not', 'out',
+  'our', 'new', 'top', 'get', 'all', 'any', 'use', 'two', 'day', 'see',
+  'way', 'try', 'let', 'per', 'off', 'may', 'but', 'did', 'can', 'why',
+  'yes', 'yet', 'her', 'him', 'his', 'its', 'too', 'set', 'run', 'act',
+  'add', 'ask', 'say', 'one', 'has', 'had',
 ]);
 
 function tokenize(text) {
@@ -331,12 +338,17 @@ export const SITE_CATEGORIES = [
       'developer.mozilla.org', 'devdocs.io', 'docs.python.org',
       'docs.microsoft.com', 'learn.microsoft.com', 'docs.aws.amazon.com',
       'cloud.google.com', 'developer.apple.com', 'developer.android.com',
-      'docs.docker.com', 'kubernetes.io', 'reactjs.org', 'vuejs.org',
+      'docs.docker.com', 'kubernetes.io', 'reactjs.org', 'react.dev', 'vuejs.org',
       'angular.io', 'nextjs.org', 'svelte.dev', 'deno.land',
       'nodejs.org', 'npmjs.com', 'pypi.org', 'crates.io', 'pkg.go.dev',
       'rubygems.org', 'packagist.org', 'hex.pm', 'docs.rs',
       'cppreference.com', 'en.cppreference.com', 'php.net',
       'ruby-doc.org', 'javadoc.io', 'docs.spring.io',
+      'postgresql.org', 'jestjs.io', 'gobyexample.com', 'owasp.org',
+      'git-scm.com', 'typescriptlang.org', 'archlinux.org', 'w3schools.com',
+      'geeksforgeeks.org', 'baeldung.com', 'tutorialspoint.com', 'mdn.dev',
+      'web.dev', 'vitest.dev', 'vitejs.dev', 'playwright.dev', 'eslint.org',
+      'prettier.io', 'tailwindcss.com', 'bun.sh', 'prisma.io', 'rust-lang.org', 'golang.org',
     ],
   },
   {
@@ -439,6 +451,7 @@ export const SITE_CATEGORIES = [
       'jira.atlassian.com', 'confluence.atlassian.com',
       'basecamp.com', 'wrike.com', 'teamwork.com', 'smartsheet.com',
       'craft.do', 'bear.app', 'ulysses.app', 'ia.net',
+      'admin.google.com', 'quickbooks.com', 'intuit.com', 'intercom.com', 'zeroheight.com', 'sentry.io',
     ],
   },
   {
@@ -672,7 +685,7 @@ function parseUrl(url) {
 
 export function intentTerms(intent) {
   return [...new Set(
-    tokenize(intent).filter(w => w.length > 3 && !STOP_WORDS.has(w))
+    tokenize(intent).filter(w => w.length >= 3 && !STOP_WORDS.has(w))
   )];
 }
 
@@ -736,7 +749,8 @@ export const CATEGORY_ALIGNMENT = {
 // they are working references. This is deliberately narrow: other forums
 // (reddit, Hacker News) stay subject to the forum policy.
 const TECHNICAL_QA_HOSTS = ['stackoverflow.com', 'stackexchange.com', 'superuser.com',
-  'serverfault.com', 'askubuntu.com', 'mathoverflow.net'];
+  'serverfault.com', 'askubuntu.com', 'mathoverflow.net', 'forums.developer.apple.com',
+  'forum.unity.com', 'discourse.org'];
 const TECHNICAL_QA_INTENTS = new Set(['coding', 'learning']);
 
 export function isTechnicalQaHost(hostname) {

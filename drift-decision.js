@@ -266,6 +266,9 @@ function decideInner({
   }
   // 8. Searches: does the query relate to the task?
   if (query !== null) {
+    if (p.host.includes('scholar.google') && ['research', 'learning', 'writing'].includes(intentCategoryId)) {
+      return silent('scholar_research');
+    }
     const qTokens = words(query).filter(t => t.length > 2 && !STOP.has(t));
     const lexicon = [...terms, ...categoryLexicon(intentCategoryId)];
     const related = qTokens.some(q => lexicon.some(t => termMatches(q, t)));

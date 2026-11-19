@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IntentLock — Design Directions (Lock, Check-in, New Tab)</title>
+  <style>
+    @font-face {
+      font-family: 'PlexMono';
+      src: url('../../fonts/IBMPlexMono-Regular.woff2') format('woff2');
+      font-weight: 400;
+    }
+    @font-face {
+      font-family: 'SourceSerif';
+      src: url('../../fonts/SourceSerif4-Regular.woff2') format('woff2');
+      font-weight: 400;
+    }
+    @font-face {
+      font-family: 'SourceSerif';
+      src: url('../../fonts/SourceSerif4-Italic.woff2') format('woff2');
+      font-weight: 400;
+      font-style: italic;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #080808;
+      color: #e5e5e5;
+      font-family: 'PlexMono', ui-monospace, monospace;
+      padding: 32px 24px;
+      line-height: 1.5;
+    }
+
+    h1 {
+      font-family: 'SourceSerif', Georgia, serif;
+      font-size: 28px;
+      font-weight: 400;
+      margin-bottom: 8px;
+      color: #fff;
+    }
+    .subtitle {
+      font-size: 13px;
+      color: #888;
+      margin-bottom: 32px;
+      max-width: 800px;
+    }
+
+    .direction-section {
+      margin-bottom: 64px;
+      border: 1px solid #222;
+      border-radius: 4px;
+      background: #0d0d0d;
+      padding: 24px;
+    }
+    .direction-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      border-bottom: 1px solid #222;
+      padding-bottom: 16px;
+      margin-bottom: 24px;
+    }
+    .direction-title {
+      font-family: 'SourceSerif', Georgia, serif;
+      font-size: 22px;
+      color: #fff;
+    }
+    .direction-tag {
+      font-size: 11px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 2px;
+    }
+
+    .screens-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 24px;
+    }
+
+    .screen-card {
+      border: 1px solid #222;
+      border-radius: 4px;
+      overflow: hidden;
+      background: #000;
+      display: flex;
+      flex-direction: column;
+    }
+    .screen-label {
+      padding: 10px 14px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      background: #141414;
+      border-bottom: 1px solid #222;
+      color: #aaa;
+    }
+    .screen-view {
+      padding: 24px 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 380px;
+      position: relative;
+    }
+
+    /* ─── DIRECTION A: Terminal Discipline ─── */
+    .dir-a {
+      --bg: #000000;
+      --fg: #ffffff;
+      --muted: #a3a3a3;
+      --border: #ffffff;
+      --line-width: 1px;
+      --radius: 2px;
+      --font-mono: 'PlexMono', monospace;
+      --font-serif: 'SourceSerif', serif;
+    }
+    .dir-a .direction-tag {
+      background: #fff;
+      color: #000;
+      font-weight: 600;
+    }
+    .dir-a .hatch-bg {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='12'%3E%3Cpath d='M0 12L20 0' stroke='rgba(255,255,255,0.08)' stroke-width='1' fill='none'/%3E%3C/svg%3E");
+      background-size: 20px 12px;
+    }
+    .dir-a .lock-panel {
+      background: #000;
+      border: 1px solid #fff;
+      border-radius: 2px;
+      padding: 24px;
+      max-width: 360px;
+      margin: 0 auto;
+      box-shadow: 0 12px 36px rgba(0,0,0,0.8);
+    }
+    .dir-a .lock-heading {
+      font-family: var(--font-serif);
+      font-size: 18px;
+      font-weight: 400;
+      margin-bottom: 8px;
+    }
+    .dir-a .lock-meta {
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+    .dir-a .lock-intent-quote {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 15px;
+      line-height: 1.4;
+      padding: 10px 12px;
+      border-left: 2px solid #fff;
+      background: #111;
+      margin-bottom: 16px;
+    }
+    .dir-a .btn-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .dir-a button {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      min-height: 40px;
+      padding: 0 12px;
+      background: transparent;
+      color: #fff;
+      border: 1px solid #fff;
+      border-radius: 2px;
+      cursor: pointer;
+      text-align: left;
+    }
+    .dir-a button.primary {
+      background: #fff;
+      color: #000;
+      font-weight: 600;
+    }
+
+    .dir-a .checkin-card {
+      border: 1px solid #fff;
+      background: #000;
+      border-radius: 2px;
+      padding: 16px;
+      max-width: 320px;
+      margin-left: auto;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+    }
+    .dir-a .checkin-card h3 {
+      font-family: var(--font-serif);
+      font-size: 15px;
+      font-weight: 400;
+      margin-bottom: 4px;
+    }
+    .dir-a .checkin-card p {
+      font-size: 11px;
+      color: #bbb;
+      margin-bottom: 12px;
+    }
+
+    .dir-a .newtab-box {
+      max-width: 400px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .dir-a .newtab-box h2 {
+      font-family: var(--font-serif);
+      font-size: 20px;
+      font-weight: 400;
+      margin-bottom: 12px;
+    }
+    .dir-a .newtab-input {
+      width: 100%;
+      background: #000;
+      border: 1px solid #fff;
+      color: #fff;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      padding: 12px;
+      border-radius: 2px;
+      margin-bottom: 12px;
+      outline: none;
+    }
+
+    /* ─── DIRECTION B: Warm Obsidian ─── */
+    .dir-b {
+      --bg: #121316;
+      --surface: #1a1c22;
+      --fg: #f4f3ef;
+      --muted: #9ba1a6;
+      --amber: #f59e0b;
+      --border: rgba(255,255,255,0.12);
+      --radius: 6px;
+      --font-mono: 'PlexMono', monospace;
+      --font-serif: 'SourceSerif', serif;
+    }
+    .dir-b .direction-tag {
+      background: #f59e0b;
+      color: #000;
+      font-weight: 600;
+    }
+    .dir-b .screen-view {
+      background: #121316;
+    }
+    .dir-b .lock-panel {
+      background: #1a1c22;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 24px;
+      max-width: 360px;
+      margin: 0 auto;
+      box-shadow: 0 16px 48px rgba(0,0,0,0.5);
+    }
+    .dir-b .lock-heading {
+      font-family: var(--font-serif);
+      font-size: 18px;
+      font-weight: 400;
+      color: #f4f3ef;
+      margin-bottom: 6px;
+    }
+    .dir-b .lock-meta {
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+    .dir-b .lock-intent-quote {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 15px;
+      line-height: 1.4;
+      padding: 10px 14px;
+      border-left: 2px solid var(--amber);
+      background: rgba(245, 158, 11, 0.06);
+      border-radius: 0 4px 4px 0;
+      margin-bottom: 16px;
+      color: #fff;
+    }
+    .dir-b button {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      min-height: 40px;
+      padding: 0 14px;
+      background: rgba(255,255,255,0.04);
+      color: #f4f3ef;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      cursor: pointer;
+      text-align: left;
+    }
+    .dir-b button.primary {
+      background: var(--amber);
+      color: #000;
+      border-color: var(--amber);
+      font-weight: 600;
+    }
+    .dir-b .checkin-card {
+      border: 1px solid var(--border);
+      background: #1a1c22;
+      border-radius: 6px;
+      padding: 16px;
+      max-width: 320px;
+      margin-left: auto;
+      box-shadow: 0 12px 32px rgba(0,0,0,0.6);
+    }
+    .dir-b .checkin-card h3 {
+      font-family: var(--font-serif);
+      font-size: 15px;
+      font-weight: 400;
+      margin-bottom: 4px;
+      color: #f4f3ef;
+    }
+    .dir-b .checkin-card p {
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+    .dir-b .newtab-box h2 {
+      font-family: var(--font-serif);
+      font-size: 20px;
+      font-weight: 400;
+      margin-bottom: 12px;
+      color: #f4f3ef;
+    }
+    .dir-b .newtab-input {
+      width: 100%;
+      background: #1a1c22;
+      border: 1px solid var(--border);
+      color: #f4f3ef;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      padding: 12px;
+      border-radius: 4px;
+      margin-bottom: 12px;
+      outline: none;
+    }
+    .dir-b .newtab-input:focus {
+      border-color: var(--amber);
+    }
+
+    /* ─── DIRECTION C: The Shutter ─── */
+    .dir-c {
+      --bg: #0d0e11;
+      --surface: #181a20;
+      --fg: #f8fafc;
+      --muted: #94a3b8;
+      --orange: #ea580c;
+      --border: #334155;
+      --radius: 3px;
+      --font-mono: 'PlexMono', monospace;
+    }
+    .dir-c .direction-tag {
+      background: #ea580c;
+      color: #fff;
+      font-weight: 600;
+    }
+    .dir-c .screen-view {
+      background: #0d0e11;
+    }
+    .dir-c .lock-panel {
+      background: #181a20;
+      border: 1px solid #334155;
+      border-radius: 3px;
+      padding: 22px;
+      max-width: 360px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .dir-c .lock-panel::before {
+      content: '+';
+      position: absolute;
+      top: 4px;
+      left: 6px;
+      font-size: 10px;
+      color: #ea580c;
+    }
+    .dir-c .lock-panel::after {
+      content: '+';
+      position: absolute;
+      top: 4px;
+      right: 6px;
+      font-size: 10px;
+      color: #ea580c;
+    }
+    .dir-c .lock-heading {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #ea580c;
+      margin-bottom: 8px;
+    }
+    .dir-c .lock-meta {
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+    .dir-c .lock-intent-quote {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      padding: 8px 12px;
+      background: #0d0e11;
+      border: 1px solid #27272a;
+      margin-bottom: 14px;
+      color: #fff;
+    }
+    .dir-c button {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      min-height: 38px;
+      padding: 0 12px;
+      background: #27272a;
+      color: #f8fafc;
+      border: 1px solid #3f3f46;
+      border-radius: 2px;
+      cursor: pointer;
+      text-align: left;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .dir-c button.primary {
+      background: #ea580c;
+      color: #fff;
+      border-color: #ea580c;
+      font-weight: 600;
+    }
+    .dir-c .checkin-card {
+      border: 1px solid #334155;
+      background: #181a20;
+      border-radius: 3px;
+      padding: 14px;
+      max-width: 320px;
+      margin-left: auto;
+    }
+    .dir-c .checkin-card h3 {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #ea580c;
+      margin-bottom: 4px;
+    }
+    .dir-c .checkin-card p {
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+    .dir-c .newtab-box h2 {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #f8fafc;
+      margin-bottom: 12px;
+    }
+    .dir-c .newtab-input {
+      width: 100%;
+      background: #181a20;
+      border: 1px solid #334155;
+      color: #fff;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      padding: 10px;
+      border-radius: 2px;
+      margin-bottom: 12px;
+      outline: none;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>IntentLock — Design Directions</h1>
+  <p class="subtitle">
+    Evaluation of three candidate design languages across the three primary user moments: Full-Screen Lock (Intervention), Bottom-Right Check-in Card ("Still on task?"), and New Tab (Intent Declaration).
+  </p>
+
+  <!-- DIRECTION A -->
+  <section class="direction-section dir-a">
+    <div class="direction-header">
+      <div>
+        <h2 class="direction-title">Direction A: Terminal Discipline (Visualized Value Monochrome) [RECOMMENDED]</h2>
+        <p style="font-size: 12px; color: #888; margin-top: 4px;">Dual-state stark monochrome, 1px hairlines, 2px radius, monospace telemetry + serif statement of intent, diagonal hatch backdrop.</p>
+      </div>
+      <span class="direction-tag">Choice: Agent Pick</span>
+    </div>
+
+    <div class="screens-grid">
+      <!-- 1. Lock Screen -->
+      <div class="screen-card">
+        <div class="screen-label">1. Lock Screen (Intervention)</div>
+        <div class="screen-view hatch-bg">
+          <div class="lock-panel">
+            <h3 class="lock-heading">You are drifting from your intent.</h3>
+            <p class="lock-meta">Session active for 24m · youtube.com/feed is off-task</p>
+            <div class="lock-intent-quote">"Finish the quarterly financial analysis for leadership review"</div>
+            <div class="btn-group">
+              <button class="primary">Reflect & continue (5 min)</button>
+              <button>Close this tab [Esc]</button>
+              <button>End session</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Check-in Card -->
+      <div class="screen-card">
+        <div class="screen-label">2. Check-in Prompt ("Still on task?")</div>
+        <div class="screen-view" style="background: #141414;">
+          <div class="checkin-card">
+            <h3>Still on task?</h3>
+            <p>You opened Reddit during <em>Quarterly analysis</em>.</p>
+            <div class="btn-group">
+              <button class="primary">[1] Yes, this is for my task</button>
+              <button>[2] Quick check (2 min)</button>
+              <button>[3] I drifted — go back</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. New Tab -->
+      <div class="screen-card">
+        <div class="screen-label">3. New Tab (Declaration)</div>
+        <div class="screen-view">
+          <div class="newtab-box">
+            <h2>Declare your intent.</h2>
+            <input class="newtab-input" value="Draft quarterly report" readonly>
+            <div style="display: flex; gap: 8px;">
+              <button class="primary" style="flex: 1;">Lock in [Enter]</button>
+              <button style="width: 80px; text-align: center;">45 min</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIRECTION B -->
+  <section class="direction-section dir-b">
+    <div class="direction-header">
+      <div>
+        <h2 class="direction-title">Direction B: Warm Obsidian (Monastic Focus Sanctuary)</h2>
+        <p style="font-size: 12px; color: #888; margin-top: 4px;">Deep charcoal #121316, warm ivory text, amber beacon accent (#f59e0b), 6px organic radius, calming focus atmosphere.</p>
+      </div>
+      <span class="direction-tag">Alternative 1</span>
+    </div>
+
+    <div class="screens-grid">
+      <!-- 1. Lock Screen -->
+      <div class="screen-card">
+        <div class="screen-label">1. Lock Screen (Intervention)</div>
+        <div class="screen-view">
+          <div class="lock-panel">
+            <h3 class="lock-heading">Pause. A moment to reflect.</h3>
+            <p class="lock-meta">You drifted to youtube.com · Session 24m elapsed</p>
+            <div class="lock-intent-quote">"Finish the quarterly financial analysis for leadership review"</div>
+            <div class="btn-group" style="display: flex; flex-direction: column; gap: 8px;">
+              <button class="primary">Continue with reflection</button>
+              <button>Return to previous tab</button>
+              <button>Complete session</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Check-in Card -->
+      <div class="screen-card">
+        <div class="screen-label">2. Check-in Prompt ("Still on task?")</div>
+        <div class="screen-view" style="background: #0a0b0d;">
+          <div class="checkin-card">
+            <h3>Still aligned?</h3>
+            <p>Browsing reddit.com while working on <em>Quarterly analysis</em>.</p>
+            <div class="btn-group" style="display: flex; flex-direction: column; gap: 8px;">
+              <button class="primary">Yes, serving my task</button>
+              <button>Brief 2-minute pause</button>
+              <button>I drifted</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. New Tab -->
+      <div class="screen-card">
+        <div class="screen-label">3. New Tab (Declaration)</div>
+        <div class="screen-view">
+          <div class="newtab-box">
+            <h2>What will you focus on?</h2>
+            <input class="newtab-input" value="Draft quarterly report" readonly>
+            <div style="display: flex; gap: 8px;">
+              <button class="primary" style="flex: 1;">Begin focus session</button>
+              <button style="width: 80px; text-align: center;">45m</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIRECTION C -->
+  <section class="direction-section dir-c">
+    <div class="direction-header">
+      <div>
+        <h2 class="direction-title">Direction C: The Shutter (Technical Aperture)</h2>
+        <p style="font-size: 12px; color: #888; margin-top: 4px;">Tactile camera & optics instrument, safety orange (#ea580c) aperture lines, technical telemetry, crosshairs, industrial geometry.</p>
+      </div>
+      <span class="direction-tag">Alternative 2</span>
+    </div>
+
+    <div class="screens-grid">
+      <!-- 1. Lock Screen -->
+      <div class="screen-card">
+        <div class="screen-label">1. Lock Screen (Intervention)</div>
+        <div class="screen-view">
+          <div class="lock-panel">
+            <h3 class="lock-heading">LOCK // DRIFT DETECTED</h3>
+            <p class="lock-meta">TARGET_HOST: youtube.com // CONFIDENCE: 0.95</p>
+            <div class="lock-intent-quote">INTENT: Finish quarterly financial analysis</div>
+            <div class="btn-group" style="display: flex; flex-direction: column; gap: 8px;">
+              <button class="primary">OVERRIDE WITH REFLECTION [5M]</button>
+              <button>KILL TAB [ESC]</button>
+              <button>DISCHARGE SESSION</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Check-in Card -->
+      <div class="screen-card">
+        <div class="screen-label">2. Check-in Prompt ("Still on task?")</div>
+        <div class="screen-view" style="background: #050608;">
+          <div class="checkin-card">
+            <h3>CHECK // STATUS CONFIRMATION</h3>
+            <p>reddit.com is unverified for active intent.</p>
+            <div class="btn-group" style="display: flex; flex-direction: column; gap: 8px;">
+              <button class="primary">[1] VERIFIED ON-TASK</button>
+              <button>[2] 2-MIN TRANSIT</button>
+              <button>[3] ABORT / RETURN</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. New Tab -->
+      <div class="screen-card">
+        <div class="screen-label">3. New Tab (Declaration)</div>
+        <div class="screen-view">
+          <div class="newtab-box">
+            <h2>INITIALIZE INTENT</h2>
+            <input class="newtab-input" value="Draft quarterly report" readonly>
+            <div style="display: flex; gap: 8px;">
+              <button class="primary" style="flex: 1;">ENGAGE LOCK [ENTER]</button>
+              <button style="width: 80px; text-align: center;">45M</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>

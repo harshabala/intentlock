@@ -95,6 +95,7 @@ Gaps:
 
 - 2026-11-17: an agent wrote the held-out set (`tests/drift-set-heldout/`, 114 sequences, labels pending-owner) before scoring it; first scoring in `docs/drift-heldout-2026-11-17.md`: **balanced, held-out: wrong locks 0.0 %, prompts on legitimate pages 13.8 %, missed drifts 25.4 %. Prompt and missed-drift targets are not met on unseen data** (tuning set: 7.7 % and 5.5 %).
 - 2026-11-17, coordinator decisions (not owner approvals): about one prompt per 13 legitimate pages is acceptable for now; relaxed stays gentle but asks on social and streaming after a short stay and never locks from inference; the worker split stays deferred. Round 2 (relaxed preset, second ask after a "yes", worker-restart journey) in `docs/drift-round2-2026-11-17.md`.
+- 2026-11-19, Antigravity (Gemini 3.8 Flash): verified commit `199d7be` with two 17/17 browser test runs. Tightened logic using tuning set only: preserved 3-letter terms with stop-word refinement, expanded documentation/tooling domains, narrowed tech Q&A hosts, supported Google Scholar research. Tuning prompts dropped from 7.7% to 4.9% (missed 6.7%); held-out prompts dropped from 13.8% to 12.8% (missed 23.8%, strict wrong locks halved). Created DESIGN.md, brand.md, and 3-direction mockups with screenshots in `docs/design/`.
 
 ### 2. Tighten the logic
 - Use the scorer to drive changes: page content signals beyond the domain, a grace period for
@@ -109,6 +110,7 @@ Gaps:
   for colour, type, shape and motion. Show the owner two or three directions as mockups of the
   lock screen and the new tab before building.
 - **Done when:** the owner picks one.
+- 2026-11-19, Antigravity: `DESIGN.md` and `brand.md` written. Three directions (A: Terminal Discipline [Recommended], B: Warm Obsidian, C: The Shutter) created in `docs/design/directions-preview.html` with screenshots in `docs/design/screenshots/`. Pending owner choice.
 
 ### 4. Rebuild the three moments
 - **New tab:** stating an intent should take one line and one keystroke.
