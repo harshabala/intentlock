@@ -37,6 +37,12 @@ function words(text) {
   return String(text || '').toLowerCase().match(/[a-z0-9]+/g) || [];
 }
 
+// A title can name a different activity even when the topic word is also in it.
+// The phrase comes from the tuning set, not from a site name.
+function titleNamesDifferentActivity(title) {
+  return /\bin popular culture\b/i.test(title || '');
+}
+
 function stem(w) {
   for (const suffix of ['ations', 'ation', 'ings', 'ing', 'ions', 'ion', 'ed', 'es', 's']) {
     if (w.length - suffix.length >= 4 && w.endsWith(suffix)) return w.slice(0, -suffix.length);
@@ -204,7 +210,7 @@ function decideInner({
   const label = p.host.split('.').slice(-2, -1)[0] || '';
   const named = hostMatch || (label.length <= 3 && words(intent).includes(label));
   // Only sites built around a feed have one; a company's home page is not a feed.
-  const feedSite = cat && ['social_media', 'short_video', 'streaming', 'forums', 'memes', 'news'].includes(cat.categoryId);
+  const feedSite = cat && ['social_media', 'short_video', 'streaming', 'forums', 'memes', 'news', 'professional_network'].includes(cat.categoryId);
   const feed = feedSite && FEED_SEGMENTS.has((p.path.split('/')[1] || '').toLowerCase()) && !p.search.includes('q=');
   // Words that only name the site do not count as topic evidence.
   const hits = topicHits(terms.filter(t => !p.host.includes(t)), `${title} ${snippet}`);
@@ -229,10 +235,14 @@ function decideInner({
   const alignKey = sessionAlignKey(url);
   if (alignKey && sessionAligned.includes(alignKey)) return movedOn ? movedOnAsk() : silent('session_aligned', { explicit: true });
 
+  if (titleNamesDifferentActivity(title)) {
+    return kind('side_topic', 'The title names a different activity from your task.', 'side_topic');
+  }
   if (pathMatch) return silent('aligned');
   if (named && !feed) return silent('aligned');
   if (hits > 0) return silent('topic_aligned');
-  if (categoryAligned(p.host, intentCategoryId)) return silent('aligned');
+  // A feed is not the task even when the site's category matches the intent.
+  if (categoryAligned(p.host, intentCategoryId) && !feed) return silent('aligned');
   if (isAuth && !(cat && safePolicy.categoryPolicies?.[cat.categoryId] === 'block')) return silent('sign_in');
 
   const catLabel = cat?.label || 'this site';

@@ -119,3 +119,22 @@ test('after a "yes", a page on a different topic earns one further check-in afte
   const related = decideDrift({ ...base, title: 'Peace of Westphalia - Wikipedia', answered: { 'en.wikipedia.org': old } });
   assert.equal(related.outcome, 'silent', 'a page on the same topic is not asked about');
 });
+
+test('a title that names a different activity is not alignment', () => {
+  const intent = 'Write a lab report on pendulum motion';
+  const side = decide(intent, 'https://en.wikipedia.org/wiki/Foucault_pendulum_in_popular_culture', {
+    title: 'Foucault pendulum in popular culture - Wikipedia',
+  });
+  assert.notEqual(side.outcome, 'silent');
+  const article = decide(intent, 'https://en.wikipedia.org/wiki/Pendulum', {
+    title: 'Pendulum - Wikipedia',
+  });
+  assert.equal(article.outcome, 'silent');
+});
+
+test('naming a site does not cover its feed when the category also matches', () => {
+  const intent = 'Reconnect with my mentor, send a message on LinkedIn';
+  const feed = decide(intent, 'https://www.linkedin.com/feed/news/', { title: 'LinkedIn News' });
+  assert.equal(feed.outcome, 'checkin');
+  assert.equal(feed.checkinKind, 'feed');
+});

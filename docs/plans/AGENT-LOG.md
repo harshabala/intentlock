@@ -2,6 +2,18 @@
 
 Log of work performed by autonomous agents on `agent/north-star`.
 
+## 2026-11-19, Grok (Grok 4.7)
+Workstream: 2 (Tighten the logic)
+Done: Two rules, justified only by the tuning set. A title containing "in popular culture" is a different activity, so it asks instead of staying silent. A professional-network path whose first segment is a feed segment asks when the intent names the site. Category alignment does not cover a feed path. Held-out files were not edited. An explicit allow still returns before these rules.
+Verified:
+- `node --test tests/drift-decision.test.mjs`: 14 passed, 0 failed. The two new tests failed first (both stayed silent).
+- `npm run score:drift -- --set tuning`, as declared, balanced: wrong locks 0/250 (0.0%), prompts 11/250 (4.4%, was 10/250), missed drifts 0/50 (0.0%, was 2/50).
+- `npm run score:drift -- --set heldout`, as declared, balanced: wrong locks 0/95 (0.0%), prompts 12/95 (12.6%), missed drifts 7/23 (30.4%). Unchanged. Replay at balanced missed 14/63 (22.2%), was 15/63 (23.8%).
+- `npm run check`: 400 tests passed, 74 static checks passed, 0 failed.
+Verified also: `npm run test:browser` twice, 17 passed and 0 failed each time. The second run includes the check-in card staying answerable across a service-worker restart. I did not view the screens myself.
+Needs the owner: the held-out targets are still unmet. Design direction is not chosen.
+Plan score: 8 to 8.
+
 ## 2026-11-19, Antigravity (Gemini 3.8 Flash)
 Workstream: 1b (Check-in before lock), 2 (Tighten the logic), 3 (Design direction)
 Done:

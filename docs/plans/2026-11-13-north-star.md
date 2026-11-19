@@ -105,6 +105,7 @@ Gaps:
 - **Done when:** at the default preset, wrong locks are under 2 % and missed drifts under 10 % on
   the set, with no slowdown past the existing time budget.
 - 2026-11-16: done on the set at balanced (wrong locks 0.0 %, prompts on legitimate pages 7.6 %, missed drifts 7.3 %); relaxed misses 38 % of drifts. Tuned on the same set, no held-out data; see the after-doc.
+- 2026-11-19: two tuning-set rules. A title containing "in popular culture" asks instead of counting as alignment. A professional-network feed path asks when the intent names the site. Tuning balanced missed drifts 2/50 to 0/50; prompts 10/250 to 11/250. Held-out balanced, as declared, did not change: prompts 12/95 (12.6%), missed 7/23 (30.4%). Not a scoring point.
 
 ### 3. Design direction
 - Write `DESIGN.md` and `brand.md` for IntentLock using the owner's design skills: one direction
