@@ -2,6 +2,13 @@
 
 Log of work performed by autonomous agents on `agent/north-star`.
 
+## 2026-11-21, Grok (Grok 4.7)
+Workstream: 3 (Design direction) and 4 (Rebuild the three moments)
+Done: Picked A, Terminal Discipline. A lock should be a calm instrument. A has the highest contrast, the fonts were already bundled, B's amber would soften the lock, and C adds noise. Dark muted is now #a3a3a3 and light muted is #666666. The lock, check-in card, and new tab were already black, white, 2px radius, IBM Plex Mono, and Source Serif 4. Before and after shots are distinct files: docs/design/screenshots/before-lock.png, after-lock.png, before-checkin.png, after-checkin.png, before-new-tab.png, after-new-tab.png. I looked at all six. They are the same calm instrument; the muted change is small on screen. Not a scoring point.
+Verified: `npm run check` — 400 tests passed, 74 static checks passed, 0 failed. `npm run test:browser` twice — 17 passed, 0 failed each time, including the check-in card staying answerable across a service-worker restart. Reduced motion, keyboard access, and contrast checks are in that suite and passed.
+Needs the owner: accept a screen recording. Held-out targets are still unmet.
+Plan score: 8 to 8.
+
 ## 2026-11-19, Grok (Grok 4.7)
 Workstream: 2 (Tighten the logic)
 Done: Two rules, justified only by the tuning set. A title containing "in popular culture" is a different activity, so it asks instead of staying silent. A professional-network path whose first segment is a feed segment asks when the intent names the site. Category alignment does not cover a feed path. Held-out files were not edited. An explicit allow still returns before these rules.
@@ -90,3 +97,4 @@ Why the 12 balanced held-out legitimate pages were prompted:
 
 - 2026-11-19: Design direction for workstream 3: the owner asked Grok to pick the strongest of A, B and C in `docs/design/directions-preview.html`. Record which one and why in this log before building.
 - 2026-11-21 (clarified): this is the owner's final answer. The choice is delegated to the agent: pick A, B or C yourself, write the pick and the reason here, then build it. Do not wait for another decision.
+- 2026-11-21: Picked A, Terminal Discipline. A lock should be a calm instrument, not a warm notebook and not a HUD. A has the highest contrast, black on white at 21:1, and the fonts are already bundled. B's amber would soften the one moment that must be unmistakable. C adds visual noise. Building the lock, the check-in card, and the new tab to these tokens.

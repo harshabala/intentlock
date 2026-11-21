@@ -837,7 +837,7 @@ test('bundled VV fonts or documented family names remain and no outline none reg
   assert.equal(/outline:\s*none/.test(css), false);
   assert.match(css, /--bg-white:\s*#ffffff/);
   assert.match(css, /--fg-black:\s*#000000/);
-  assert.match(css, /--muted-black:\s*#1a1a1a/);
+  assert.match(css, /--muted-black:\s*#666666/);
 });
 
 test('onboarding second step is not named showStep3', async () => {

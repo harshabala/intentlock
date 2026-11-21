@@ -54,7 +54,7 @@
   align-items: center;
   gap: 8px;
   min-height: 44px;
-  color: var(--muted, #e6e6e6);
+  color: var(--muted, #a3a3a3);
 }
 
 .related-toggle input {

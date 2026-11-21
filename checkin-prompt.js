@@ -37,7 +37,7 @@
       font-weight: 400;
       line-height: 1.35;
     }
-    p { margin: 0 0 8px; font-size: 12px; line-height: 1.6; color: #e6e6e6; }
+    p { margin: 0 0 8px; font-size: 12px; line-height: 1.6; color: #a3a3a3; }
     .intent { font-family: "IntentLock Source Serif", "Iowan Old Style", Palatino, Georgia, serif; font-size: 14px; color: #fff; }
     .actions { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
     button {

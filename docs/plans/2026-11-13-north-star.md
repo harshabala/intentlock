@@ -114,6 +114,8 @@ Gaps:
 - **Done when:** the owner picks one.
 - 2026-11-19, Antigravity: `DESIGN.md` and `brand.md` written. Three directions (A: Terminal Discipline [Recommended], B: Warm Obsidian, C: The Shutter) created in `docs/design/directions-preview.html` with screenshots in `docs/design/screenshots/`. Pending owner choice.
 
+- 2026-11-21: picked A, Terminal Discipline. Reason is in the agent log under Owner decisions. Not a scoring point until a recording is accepted.
+
 ### 4. Rebuild the three moments
 - **New tab:** stating an intent should take one line and one keystroke.
 - **Lock:** scenario 2. Entry and exit motion, reduced-motion support, and include it in the

@@ -55,12 +55,12 @@
       font-family: "IntentLock Plex Mono", ui-monospace, "SF Mono", monospace;
       --bg-white: #ffffff;
       --fg-black: #000000;
-      --muted-black: #1a1a1a;
+      --muted-black: #666666;
       --line-width: 1px;
       --corner-radius: 2px;
       --bg: #000000;
       --fg: #ffffff;
-      --muted: #e6e6e6;
+      --muted: #a3a3a3;
       --line: #ffffff;
       --surface: #000000;
       --error: #ffffff;
