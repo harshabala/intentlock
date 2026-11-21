@@ -7,6 +7,7 @@ Workstream: 3 (Design direction) and 4 (Rebuild the three moments)
 Done: Picked A, Terminal Discipline. A lock should be a calm instrument. A has the highest contrast, the fonts were already bundled, B's amber would soften the lock, and C adds noise. Dark muted is now #a3a3a3 and light muted is #666666. The lock, check-in card, and new tab were already black, white, 2px radius, IBM Plex Mono, and Source Serif 4. Before and after shots are distinct files: docs/design/screenshots/before-lock.png, after-lock.png, before-checkin.png, after-checkin.png, before-new-tab.png, after-new-tab.png. I looked at all six. They are the same calm instrument; the muted change is small on screen. Not a scoring point.
 Verified: `npm run check` — 400 tests passed, 74 static checks passed, 0 failed. `npm run test:browser` twice — 17 passed, 0 failed each time, including the check-in card staying answerable across a service-worker restart. Reduced motion, keyboard access, and contrast checks are in that suite and passed.
 Needs the owner: accept a screen recording. Held-out targets are still unmet.
+Commits: `5ed01467e6ece9dae671cdb47b8efc83126fc4bc`.
 Plan score: 8 to 8.
 
 ## 2026-11-19, Grok (Grok 4.7)
