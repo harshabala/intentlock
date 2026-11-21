@@ -89,3 +89,4 @@ Why the 12 balanced held-out legitimate pages were prompted:
 ## Owner decisions
 
 - 2026-11-19: Design direction for workstream 3: the owner asked Grok to pick the strongest of A, B and C in `docs/design/directions-preview.html`. Record which one and why in this log before building.
+- 2026-11-21 (clarified): this is the owner's final answer. The choice is delegated to the agent: pick A, B or C yourself, write the pick and the reason here, then build it. Do not wait for another decision.
