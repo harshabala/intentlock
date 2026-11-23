@@ -15,8 +15,17 @@
 
     <div class="section">
       <div class="diagnostics-actions">
-        <button id="copy-log-btn" class="complete-btn">Copy log</button>
-        <button id="clear-log-btn" class="danger-btn">Clear log</button>
+        <button id="copy-log-btn" class="complete-btn" type="button" aria-label="Copy log">
+          <span class="swap-labels" aria-hidden="true">
+            <span class="swap-layer swap-current">Copy log</span>
+            <span class="swap-layer swap-next">Copied</span>
+          </span>
+        </button>
+        <button id="clear-log-btn" class="danger-btn" type="button" aria-label="Clear log" aria-describedby="clear-log-hold">
+          <span class="hold-label">Clear log</span>
+          <span class="hold-fill" aria-hidden="true">Clear log</span>
+        </button>
+        <span id="clear-log-hold" class="hold-instructions">Press and hold for 1.2 seconds. Release to cancel.</span>
       </div>
       <div id="copy-status" class="hidden status-feedback"></div>
 

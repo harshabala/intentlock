@@ -1491,6 +1491,87 @@ button.popup-link {
   flex: 1;
 }
 
+/* Text swap: both labels share one grid cell, so the control stays as wide as the longer label. */
+#copy-log-btn .swap-labels {
+  display: inline-grid;
+  overflow: hidden;
+}
+
+#copy-log-btn .swap-layer {
+  grid-area: 1 / 1;
+  white-space: nowrap;
+  transition-property: opacity, transform;
+  transition-duration: 220ms;
+  transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+#copy-log-btn .swap-current {
+  opacity: 1;
+  transform: none;
+}
+
+#copy-log-btn .swap-next {
+  opacity: 0;
+  transform: translateY(120%);
+}
+
+#copy-log-btn.is-copied .swap-current {
+  opacity: 0;
+  transform: translateY(-120%);
+}
+
+#copy-log-btn.is-copied .swap-next {
+  opacity: 1;
+  transform: none;
+}
+
+/* Hold to confirm: the fill is the clock. It grows left to right and retracts if the press ends early. */
+#clear-log-btn {
+  --hold-duration: 1200ms;
+  --hold-ease: cubic-bezier(0.23, 1, 0.32, 1);
+  position: relative;
+  overflow: hidden;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+#clear-log-btn .hold-fill {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--fg);
+  color: var(--bg);
+  border-radius: inherit;
+  clip-path: inset(0 100% 0 0);
+  pointer-events: none;
+  transition: clip-path 180ms var(--hold-ease);
+}
+
+#clear-log-btn.is-holding,
+#clear-log-btn.is-holding:hover {
+  background-color: transparent;
+  color: var(--fg);
+  border-color: var(--line);
+}
+
+#clear-log-btn.is-holding .hold-fill {
+  clip-path: inset(0);
+  transition: clip-path var(--hold-duration) linear;
+}
+
+.hold-instructions {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
 .diagnostics-filters {
   margin-bottom: 20px;
 }
@@ -1699,5 +1780,13 @@ button.popup-link {
   *::after {
     animation: none !important;
     transition: none !important;
+  }
+
+  #copy-log-btn .swap-layer {
+    transform: none;
+  }
+
+  #clear-log-btn .hold-fill {
+    display: none;
   }
 }
