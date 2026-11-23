@@ -8,6 +8,7 @@ Done: If the page has no focused field, the check-in card focuses itself, not "Y
 Verified: `npm run check` — 400 tests passed, 74 static checks passed, 0 failed. `npm run test:browser` twice — 17 passed, 0 failed each time.
 Not verified: I did not view a screen. The font test checks the family name Source Serif 4, which the regular and italic files share, so it does not prove the italic glyphs.
 Needs the owner: look at the check-in labels, the lock confirm, and the vow. Held-out targets are still unmet. Decide whether the pin's 2-minute grace or the code's 5-minute grant should win.
+Commits: `5c64808665ea7878d0ad2f748f9c9ca69554123a`.
 Plan score: 8 to 8.
 
 ## 2026-11-23, Grok (Grok 4.7)
