@@ -2,6 +2,15 @@
 
 Log of work performed by autonomous agents on `agent/north-star`.
 
+## 2026-11-23, Grok (Grok 4.7)
+Workstream: Design microinteractions on diagnostics (not a scoring workstream)
+Done: Copy log stacks "Copy log" and "Copied" in one grid cell, so the button stays as wide as the longer label. When the copy succeeds, the outgoing label slides up and fades in 220ms. Clear log is a 1200ms hold: a black-and-white fill grows left to right, and releasing early cancels without clearing. Reduced motion swaps instantly and clears on a normal click, with no fill. End session is unchanged. Direction A only: black and white, IBM Plex Mono, 2px radius. Legacy sources were not edited.
+Verified: `npm run check` — 400 tests passed, 74 static checks passed, 0 failed. `npm run test:browser` twice — 17 passed, 0 failed each time.
+Not verified: I did not view a screen. The browser suite does not press these two controls, so the slide and the fill were not watched.
+Needs the owner: look at Copy log and Clear log on the diagnostics page. Held-out targets are still unmet.
+Commits: `f91de9642cd5246708ba4862c6239ed612db0b4e`.
+Plan score: 8 to 8.
+
 ## 2026-11-21, Grok (Grok 4.7)
 Workstream: 3 (Design direction) and 4 (Rebuild the three moments)
 Done: Picked A, Terminal Discipline. A lock should be a calm instrument. A has the highest contrast, the fonts were already bundled, B's amber would soften the lock, and C adds noise. Dark muted is now #a3a3a3 and light muted is #666666. The lock, check-in card, and new tab were already black, white, 2px radius, IBM Plex Mono, and Source Serif 4. Before and after shots are distinct files: docs/design/screenshots/before-lock.png, after-lock.png, before-checkin.png, after-checkin.png, before-new-tab.png, after-new-tab.png. I looked at all six. They are the same calm instrument; the muted change is small on screen. Not a scoring point.
