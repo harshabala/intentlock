@@ -117,3 +117,19 @@ Why the 12 balanced held-out legitimate pages were prompted:
 - 2026-11-19: Design direction for workstream 3: the owner asked Grok to pick the strongest of A, B and C in `docs/design/directions-preview.html`. Record which one and why in this log before building.
 - 2026-11-21 (clarified): this is the owner's final answer. The choice is delegated to the agent: pick A, B or C yourself, write the pick and the reason here, then build it. Do not wait for another decision.
 - 2026-11-21: Picked A, Terminal Discipline. A lock should be a calm instrument, not a warm notebook and not a HUD. A has the highest contrast, black on white at 21:1, and the fonts are already bundled. B's amber would soften the one moment that must be unmistakable. C adds visual noise. Building the lock, the check-in card, and the new tab to these tokens.
+
+## 2026-11-23, Antigravity (Gemini 3.8 Flash)
+Workstream: Impeccable Audit Remediation (Finding 4)
+Done:
+- Added `keydown` Escape handler to in-page check-in dialog (`checkin-prompt.js`).
+- Bound Escape dismissal listener to `card` within the shadow root and active document listener during `show()`, cleanly unsubscribing in `hide()`.
+
+Verified:
+- `npm run lint` -> Passed cleanly with 0 errors.
+- `npm test` -> 400 tests passed (400 passed, 0 failed).
+
+Commits: pending
+Not verified: Live external network requests (offline keyless).
+Needs the owner: None.
+Plan score: 9.0/10.
+

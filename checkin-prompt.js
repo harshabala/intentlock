@@ -119,10 +119,19 @@
       for (const button of els.buttons) {
         button.addEventListener('click', () => answer(button.dataset.answer));
       }
+      card.addEventListener('keydown', onKeyDown);
       els.reason.addEventListener('keydown', (event) => {
         if (event.key === 'Enter') answer('yes');
       });
       shadow.append(style, card);
+    }
+
+    function onKeyDown(event) {
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        event.stopPropagation();
+        hide();
+      }
     }
 
     function setBusy(value) {
@@ -180,6 +189,7 @@
       else enter();
       // Do not focus "Yes". Enter or Space on that button would record alignment.
       // The card itself affirms nothing; Tab still reaches the answers.
+      document.addEventListener('keydown', onKeyDown);
       focusCardIfPageHasNone();
       if (typeof requestAnimationFrame === 'function') {
         requestAnimationFrame(() => {
@@ -190,6 +200,7 @@
 
     function hide() {
       state = null;
+      document.removeEventListener('keydown', onKeyDown);
       if (host) host.style.setProperty('display', 'none', 'important');
     }
 
