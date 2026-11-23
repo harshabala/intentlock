@@ -143,9 +143,26 @@ Verified:
 - `npm run lint` -> Passed cleanly with 0 errors.
 - `npm test` -> 400 tests passed.
 
-Commits: pending
+Commits: 650e3f7
 Not verified: Live external network requests (offline keyless).
 Needs the owner: None.
 Plan score: 9.0/10.
+
+## 2026-11-23, Antigravity (Gemini 3.8 Flash)
+Workstream: Impeccable Audit Remediation (Finding 8)
+Done:
+- Removed side-tab border accent anti-patterns from `docs/design/directions-preview.html`.
+- Replaced asymmetric `border-left: 2px solid ...` on `.lock-intent-quote` in candidate preview directions with clean, uniform hairline borders and radii.
+
+Verified:
+- `npm run lint` -> Passed cleanly with 0 errors.
+- `npm test` -> 400 tests passed.
+- `impeccable detect` -> Zero side-tab anti-patterns detected in `directions-preview.html`.
+
+Commits: 3790e5c
+Not verified: Live external network requests (offline keyless).
+Needs the owner: None.
+Plan score: 9.0/10.
+
 
 
