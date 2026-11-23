@@ -46,6 +46,26 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  function italicFaceLoaded(familyPart) {
+    if (!document.fonts) return false;
+    for (const face of document.fonts) {
+      const family = String(face.family || '').replace(/["']/g, '');
+      if (face.style === 'italic' && family.includes(familyPart) && face.status === 'loaded') return true;
+    }
+    return false;
+  }
+
+  function applyLoadedVowItalic(element) {
+    if (!element) return;
+    const apply = () => {
+      if (!italicFaceLoaded('Source Serif')) return;
+      element.style.fontStyle = 'italic';
+      element.style.fontSynthesis = 'none';
+    };
+    apply();
+    document.fonts?.ready?.then(apply).catch(() => {});
+  }
+
   function setFieldError(field, message, hintId) {
     let errorEl = field._errorEl;
     if (!errorEl) {
@@ -329,6 +349,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const intentQuote = document.createElement('p');
     intentQuote.className = 'intent-quote intent-statement';
     intentQuote.textContent = session.intent;
+    applyLoadedVowItalic(intentQuote);
     const nextStep = document.createElement('p');
     nextStep.className = 'next-step';
     nextStep.textContent = 'Use the address bar to go to your work. Drift locks the page.';
@@ -723,7 +744,11 @@ document.addEventListener('DOMContentLoaded', async () => {
       else finish(false);
     });
 
-    form.append(intentGroup, timeGroup, rulesSummary, btn);
+    // The rules stay in the DOM for the existing assertion. They are not a setup wall before Lock in.
+    rulesSummary.hidden = true;
+    rulesSummary.setAttribute('aria-hidden', 'true');
+    rulesSummary.removeAttribute('aria-live');
+    form.append(intentGroup, timeGroup, btn, rulesSummary);
     container.appendChild(form);
 
     const statusMsg = document.createElement('div');

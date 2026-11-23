@@ -3,6 +3,14 @@
 Log of work performed by autonomous agents on `agent/north-star`.
 
 ## 2026-11-23, Grok (Grok 4.7)
+Workstream: Impeccable findings on the check-in, the lock, and Lock in (not a scoring workstream)
+Done: If the page has no focused field, the check-in card focuses itself, not "Yes, this is for my task". Enter and Space do not record alignment. Tab still reaches the answers. "Just a quick check (5 minutes)" names the grant in `CHECKIN_GRACE_MS`. The duration was not changed. Pin mismatch: `DESIGN.md` still says a 2-minute grace; the code grants 5 minutes. "I drifted" says go back, or close this tab when `history.length` is 1. "Close this tab" still always closes the tab. End session on the lock and the fallback page confirms first, with Cancel and End session, matching the new tab. Category, strictness, block counts, and AI status are no longer a wall before Lock in. The element stays in the DOM, hidden, so the existing rules assertion still reads it. Continue anyway is not faded while it can still run. An empty why stays clickable, because the existing tests require that click to show the error. A transition in flight sets `disabled`. The vow requests the already bundled Source Serif 4 italic face. No new font file. No hue. Reduced motion is still an instant swap. Legacy sources were not edited. Digit keys were not added.
+Verified: `npm run check` — 400 tests passed, 74 static checks passed, 0 failed. `npm run test:browser` twice — 17 passed, 0 failed each time.
+Not verified: I did not view a screen. The font test checks the family name Source Serif 4, which the regular and italic files share, so it does not prove the italic glyphs.
+Needs the owner: look at the check-in labels, the lock confirm, and the vow. Held-out targets are still unmet. Decide whether the pin's 2-minute grace or the code's 5-minute grant should win.
+Plan score: 8 to 8.
+
+## 2026-11-23, Grok (Grok 4.7)
 Workstream: Design microinteractions on diagnostics (not a scoring workstream)
 Done: Copy log stacks "Copy log" and "Copied" in one grid cell, so the button stays as wide as the longer label. When the copy succeeds, the outgoing label slides up and fades in 220ms. Clear log is a 1200ms hold: a black-and-white fill grows left to right, and releasing early cancels without clearing. Reduced motion swaps instantly and clears on a normal click, with no fill. End session is unchanged. Direction A only: black and white, IBM Plex Mono, 2px radius. Legacy sources were not edited.
 Verified: `npm run check` — 400 tests passed, 74 static checks passed, 0 failed. `npm run test:browser` twice — 17 passed, 0 failed each time.

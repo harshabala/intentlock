@@ -137,10 +137,19 @@ for (const colorScheme of ['light', 'dark']) {
       const buttons = [...shadow.querySelectorAll('button')].map(b => b.textContent.trim());
       const focusable = [...shadow.querySelectorAll('button, input')].every(el => el.tabIndex >= 0);
       const role = shadow.querySelector('[role=dialog]').getAttribute('aria-modal');
-      return { problems: run(shadow), buttons, focusable, role };
+      const drifted = history.length > 1 ? 'I drifted, go back' : 'I drifted, close this tab';
+      const yesFocused = shadow.activeElement === shadow.getElementById('intentlock-checkin-yes');
+      return { problems: run(shadow), buttons, focusable, role, drifted, yesFocused };
     }, audit.toString());
     expect(result.problems).toEqual([]);
-    expect(result.buttons).toEqual(['Yes, this is for my task', 'Just a quick check', 'I drifted', 'Close this tab']);
+    expect(result.buttons).toEqual([
+      'Yes, this is for my task',
+      'Just a quick check (5 minutes)',
+      result.drifted,
+      'Close this tab',
+    ]);
+    expect(['I drifted, go back', 'I drifted, close this tab']).toContain(result.drifted);
+    expect(result.yesFocused).toBe(false);
     expect(result.focusable).toBe(true);
     expect(result.role).toBe('false'); // non-blocking: never modal
   });

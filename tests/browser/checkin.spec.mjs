@@ -122,7 +122,15 @@ test('the card is reachable by keyboard and an explicit block still locks after 
   const page = await ask(journey);
   const card = await closedOverlay(page);
   try {
-    // With nothing focused on the page, the card takes focus on its first answer; Tab reaches the rest.
+    // With nothing focused, the card takes focus on itself, not on Yes. Enter and Space must not align.
+    await expect.poll(() => card.read('#intentlock-checkin-yes', 'this.getRootNode().activeElement === this')).toBe(false);
+    await expect.poll(() => card.read('.card', 'this.getRootNode().activeElement === this')).toBe(true);
+    await page.keyboard.press('Enter');
+    await page.keyboard.press('Space');
+    await expect(page.locator(cardHost)).toBeVisible();
+    expect((await activeCheckins(journey)).sites?.['host:video.localhost']?.answer ?? null).not.toBe('yes');
+    // Tab still reaches the answers, in order.
+    await page.keyboard.press('Tab');
     await expect.poll(() => card.read('#intentlock-checkin-yes', 'this.getRootNode().activeElement === this')).toBe(true);
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');

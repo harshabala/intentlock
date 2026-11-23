@@ -123,6 +123,22 @@ async function submitTransition(transition, details = {}) {
   return result.response;
 }
 
+function applyLoadedVowItalic(element) {
+  if (!element || !document.fonts) return;
+  const apply = () => {
+    let loaded = false;
+    for (const face of document.fonts) {
+      const family = String(face.family || '').replace(/["']/g, '');
+      if (face.style === 'italic' && family.includes('Source Serif') && face.status === 'loaded') loaded = true;
+    }
+    if (!loaded) return;
+    element.style.fontStyle = 'italic';
+    element.style.fontSynthesis = 'none';
+  };
+  apply();
+  document.fonts.ready.then(apply).catch(() => {});
+}
+
 document.addEventListener('DOMContentLoaded', async () => {
   const reasonText = document.getElementById('reason-text');
   const currentIntent = document.getElementById('current-intent');
@@ -139,13 +155,14 @@ document.addEventListener('DOMContentLoaded', async () => {
     const hasWhy = Boolean(reflectionInput?.value.trim());
     if (overrideBtn) {
       overrideBtn.disabled = transitionInFlight;
+      // Do not set aria-disabled. A faded button that still runs is a lie.
+      // Empty why stays clickable so the error can be shown; in-flight sets disabled.
       if (!hasWhy) {
         overrideBtn.setAttribute('aria-describedby', 'continue-hint');
-        overrideBtn.setAttribute('aria-disabled', 'true');
       } else {
         overrideBtn.removeAttribute('aria-describedby');
-        overrideBtn.removeAttribute('aria-disabled');
       }
+      overrideBtn.removeAttribute('aria-disabled');
     }
   }
 
@@ -200,6 +217,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   } else {
     currentIntent.textContent = 'No active session found.';
   }
+  applyLoadedVowItalic(currentIntent);
   const title = document.getElementById('intervention-title');
   if (interventionState?.reason === 'Time budget exceeded.') {
     if (title) title.textContent = 'Time budget exceeded.';
@@ -253,34 +271,112 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
   });
 
-  endSessionBtn.addEventListener('click', async () => {
-    if (transitionInFlight) return;
-    setTransitionBusy(true);
-    try {
-      const result = await submitTransition('end-session');
-      if (!result) return;
-      if (result.closeTab) {
-        const closed = await closeCurrentTab((error) => setError(error));
-        if (!closed) {
-          const endedContainer = replaceWithMessage('Session ended', 'Your session has been recorded. Close this tab to finish.');
-          const retryButton = document.createElement('button');
-          retryButton.type = 'button';
-          retryButton.className = 'primary-btn';
-          retryButton.textContent = 'Close tab';
-          retryButton.addEventListener('click', async () => {
-            retryButton.disabled = true;
-            const retryClosed = await closeCurrentTab((error) => setError(error));
-            if (!retryClosed) retryButton.disabled = false;
-          });
-          endedContainer?.appendChild(retryButton);
-          setError('The tab could not be closed automatically.');
-        }
-      } else {
-        replaceWithMessage('Session ended', 'Your session has been recorded.');
-      }
-    } finally {
-      setTransitionBusy(false);
+  function sessionEndCopy(active) {
+    if (!active) return 'End this session?';
+    const now = Date.now();
+    const end = Number.isFinite(active.pausedAt) ? active.pausedAt : now;
+    const pausedMs = Number.isFinite(active.pausedMs) && active.pausedMs > 0 ? active.pausedMs : 0;
+    const elapsed = Number.isFinite(active.startTime)
+      ? Math.max(0, Math.round((end - active.startTime - pausedMs) / 60000))
+      : 0;
+    const events = Array.isArray(active.events) ? active.events : [];
+    const overrides = typeof active.overrideCount === 'number'
+      ? active.overrideCount
+      : events.filter((event) => event?.actionType === 'OVERRIDE').length;
+    return `${elapsed} minutes. ${overrides} override${overrides !== 1 ? 's' : ''}. End this session?`;
+  }
+
+  function confirmEndSession(trigger, onConfirm) {
+    if (document.querySelector('.confirm-overlay')) return;
+    const overlay = document.createElement('div');
+    overlay.className = 'confirm-overlay';
+    const dialog = document.createElement('div');
+    dialog.className = 'confirm-dialog';
+    dialog.setAttribute('role', 'dialog');
+    dialog.setAttribute('aria-modal', 'true');
+    const heading = document.createElement('h3');
+    heading.id = 'lock-end-title';
+    heading.textContent = 'End session?';
+    dialog.setAttribute('aria-labelledby', heading.id);
+    const copy = document.createElement('p');
+    copy.textContent = sessionEndCopy(session);
+    const actions = document.createElement('div');
+    actions.className = 'confirm-actions';
+    const cancelBtn = document.createElement('button');
+    cancelBtn.type = 'button';
+    cancelBtn.className = 'complete-btn';
+    cancelBtn.textContent = 'Cancel';
+    const confirmBtn = document.createElement('button');
+    confirmBtn.type = 'button';
+    confirmBtn.textContent = 'End session';
+    function closeDialog() {
+      document.removeEventListener('keydown', onKeydown, true);
+      overlay.remove();
+      if (trigger && typeof trigger.focus === 'function') trigger.focus();
     }
+    function onKeydown(event) {
+      if (!overlay.isConnected) return;
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        event.stopPropagation();
+        closeDialog();
+        return;
+      }
+      if (event.key !== 'Tab') return;
+      const focusable = [cancelBtn, confirmBtn].filter((button) => !button.disabled);
+      const index = focusable.indexOf(document.activeElement);
+      event.preventDefault();
+      const next = event.shiftKey
+        ? focusable[(index <= 0 ? focusable.length : index) - 1]
+        : focusable[(index + 1) % focusable.length];
+      next?.focus();
+    }
+    document.addEventListener('keydown', onKeydown, true);
+    cancelBtn.addEventListener('click', () => closeDialog());
+    confirmBtn.addEventListener('click', () => {
+      closeDialog();
+      onConfirm();
+    });
+    actions.append(cancelBtn, confirmBtn);
+    dialog.append(heading, copy, actions);
+    overlay.appendChild(dialog);
+    document.body.appendChild(overlay);
+    if (typeof requestAnimationFrame === 'function') requestAnimationFrame(() => overlay.classList.add('is-open'));
+    else overlay.classList.add('is-open');
+    cancelBtn.focus();
+  }
+
+  endSessionBtn.addEventListener('click', () => {
+    if (transitionInFlight) return;
+    confirmEndSession(endSessionBtn, async () => {
+      if (transitionInFlight) return;
+      setTransitionBusy(true);
+      try {
+        const result = await submitTransition('end-session');
+        if (!result) return;
+        if (result.closeTab) {
+          const closed = await closeCurrentTab((error) => setError(error));
+          if (!closed) {
+            const endedContainer = replaceWithMessage('Session ended', 'Your session has been recorded. Close this tab to finish.');
+            const retryButton = document.createElement('button');
+            retryButton.type = 'button';
+            retryButton.className = 'primary-btn';
+            retryButton.textContent = 'Close tab';
+            retryButton.addEventListener('click', async () => {
+              retryButton.disabled = true;
+              const retryClosed = await closeCurrentTab((error) => setError(error));
+              if (!retryClosed) retryButton.disabled = false;
+            });
+            endedContainer?.appendChild(retryButton);
+            setError('The tab could not be closed automatically.');
+          }
+        } else {
+          replaceWithMessage('Session ended', 'Your session has been recorded.');
+        }
+      } finally {
+        setTransitionBusy(false);
+      }
+    });
   });
 
   reflectionForm.addEventListener('submit', async (event) => {

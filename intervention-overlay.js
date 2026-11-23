@@ -117,6 +117,8 @@
     }
     .intent-quote {
       font-family: "IntentLock Source Serif", "Iowan Old Style", Palatino, Georgia, serif;
+      font-style: italic;
+      font-synthesis: none;
       font-size: 16px;
       font-weight: 400;
       line-height: 1.35;
@@ -214,11 +216,48 @@
       background: transparent;
       color: var(--fg);
     }
-    button:disabled,
-    button[aria-disabled="true"] {
+    button:disabled {
       opacity: 0.4;
       cursor: not-allowed;
       transform: none;
+    }
+    .confirm-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #000;
+    }
+    .confirm-dialog {
+      box-sizing: border-box;
+      width: min(380px, calc(100% - 32px));
+      padding: 24px;
+      background: #000;
+      color: #fff;
+      border: 1px solid #fff;
+      border-radius: 2px;
+    }
+    .confirm-dialog h3 {
+      font-family: "IntentLock Source Serif", "Iowan Old Style", Palatino, Georgia, serif;
+      font-size: 16px;
+      font-weight: 400;
+      margin: 0 0 12px;
+      color: #fff;
+    }
+    .confirm-dialog p {
+      margin: 0 0 24px;
+      font-size: 12px;
+      line-height: 1.5;
+      color: #a3a3a3;
+    }
+    .confirm-actions {
+      display: flex;
+      gap: 12px;
+    }
+    .confirm-actions button {
+      flex: 1 1 0;
     }
     .related-row {
       display: flex;
@@ -280,6 +319,8 @@
     let rootVisibilitySnapshot = null;
     let hideFinishTimer = null;
     let hideEndHandler = null;
+    let endConfirm = null;
+    let endConfirmToken = 0;
 
     function enforceDocumentRootVisibility() {
       const rootElement = document.documentElement;
@@ -329,13 +370,14 @@
       if (overrideBtn) {
         overrideBtn.disabled = transitionInFlight;
         overrideBtn.setAttribute('aria-busy', String(transitionInFlight));
+        // Do not set aria-disabled. A faded button that still runs is a lie.
+        // Empty why stays clickable so the error can be shown; in-flight sets disabled.
         if (!hasWhy) {
           overrideBtn.setAttribute('aria-describedby', CONTINUE_HINT_ID);
-          overrideBtn.setAttribute('aria-disabled', 'true');
         } else {
           overrideBtn.removeAttribute('aria-describedby');
-          overrideBtn.removeAttribute('aria-disabled');
         }
+        overrideBtn.removeAttribute('aria-disabled');
       }
     }
 
@@ -373,6 +415,25 @@
     }
 
     function onKeyDown(event) {
+      if (endConfirm) {
+        if (event.key === 'Escape') {
+          event.preventDefault();
+          event.stopPropagation();
+          closeEndConfirm();
+          return;
+        }
+        if (event.key !== 'Tab') return;
+        const focusable = Array.from(endConfirm.querySelectorAll('button')).filter((button) => !button.disabled);
+        if (focusable.length === 0) return;
+        const active = shadow.activeElement || document.activeElement;
+        const index = focusable.indexOf(active);
+        event.preventDefault();
+        const next = event.shiftKey
+          ? focusable[(index <= 0 ? focusable.length : index) - 1]
+          : focusable[(index + 1) % focusable.length];
+        next?.focus();
+        return;
+      }
       if (event.key !== 'Tab') return;
       const elements = focusableElements();
       if (elements.length === 0) return;
@@ -514,7 +575,6 @@
       overrideBtn.className = 'override-btn btn--ghost';
       overrideBtn.textContent = 'Continue anyway';
       overrideBtn.setAttribute('aria-describedby', CONTINUE_HINT_ID);
-      overrideBtn.setAttribute('aria-disabled', 'true');
       overrideBtn.addEventListener('click', () => {
         if (transitionInFlight) return;
         const reflection = reflectionInput.value.trim();
@@ -544,11 +604,12 @@
         endBtn.className = 'end-session-btn';
         endBtn.textContent = 'End session';
         endBtn.addEventListener('click', () => {
-          if (transitionInFlight) return;
-          setTransitionBusy(true);
-          Promise.resolve(onEndSession(currentState))
-            .catch((error) => setError(error.message || 'Unable to end the session.'))
-            .finally(() => setTransitionBusy(false));
+          if (transitionInFlight || endConfirm) return;
+          const token = ++endConfirmToken;
+          readActiveSession().then((session) => {
+            if (token !== endConfirmToken || !lockedVisible || transitionInFlight || endConfirm) return;
+            openEndConfirm(session);
+          });
         });
         actions.appendChild(endBtn);
       }
@@ -601,6 +662,107 @@
       previousFocus = null;
     }
 
+    function sessionEndCopy(session) {
+      if (!session) return 'End this session?';
+      const now = Date.now();
+      const end = Number.isFinite(session.pausedAt) ? session.pausedAt : now;
+      const pausedMs = Number.isFinite(session.pausedMs) && session.pausedMs > 0 ? session.pausedMs : 0;
+      const elapsed = Number.isFinite(session.startTime)
+        ? Math.max(0, Math.round((end - session.startTime - pausedMs) / 60000))
+        : 0;
+      const events = Array.isArray(session.events) ? session.events : [];
+      const overrides = typeof session.overrideCount === 'number'
+        ? session.overrideCount
+        : events.filter((event) => event?.actionType === 'OVERRIDE').length;
+      return `${elapsed} minutes. ${overrides} override${overrides !== 1 ? 's' : ''}. End this session?`;
+    }
+
+    function readActiveSession() {
+      return new Promise((resolve) => {
+        const get = globalThis.chrome?.storage?.local?.get;
+        if (typeof get !== 'function') {
+          resolve(null);
+          return;
+        }
+        try {
+          get.call(chrome.storage.local, ['activeSession'], (result) => resolve(result?.activeSession || null));
+        } catch {
+          resolve(null);
+        }
+      });
+    }
+
+    function closeEndConfirm(restoreFocus = true) {
+      endConfirm?.remove();
+      endConfirm = null;
+      if (restoreFocus && endBtn && !transitionInFlight && typeof endBtn.focus === 'function') endBtn.focus();
+    }
+
+    function runEndSession() {
+      if (transitionInFlight || typeof onEndSession !== 'function') return;
+      setTransitionBusy(true);
+      Promise.resolve(onEndSession(currentState))
+        .catch((error) => setError(error.message || 'Unable to end the session.'))
+        .finally(() => setTransitionBusy(false));
+    }
+
+    function openEndConfirm(session) {
+      if (!shadow || endConfirm) return;
+      const overlay = document.createElement('div');
+      overlay.className = 'confirm-overlay';
+      const dialog = document.createElement('div');
+      dialog.className = 'confirm-dialog';
+      dialog.setAttribute('role', 'dialog');
+      dialog.setAttribute('aria-modal', 'true');
+      const heading = document.createElement('h3');
+      heading.id = 'intentlock-end-title';
+      heading.textContent = 'End session?';
+      dialog.setAttribute('aria-labelledby', heading.id);
+      const copy = document.createElement('p');
+      copy.textContent = sessionEndCopy(session);
+      const actions = document.createElement('div');
+      actions.className = 'confirm-actions';
+      const cancelBtn = document.createElement('button');
+      cancelBtn.type = 'button';
+      cancelBtn.textContent = 'Cancel';
+      const confirmBtn = document.createElement('button');
+      confirmBtn.type = 'button';
+      confirmBtn.textContent = 'End session';
+      cancelBtn.addEventListener('click', () => closeEndConfirm());
+      confirmBtn.addEventListener('click', () => {
+        closeEndConfirm();
+        runEndSession();
+      });
+      actions.append(cancelBtn, confirmBtn);
+      dialog.append(heading, copy, actions);
+      overlay.appendChild(dialog);
+      shadow.appendChild(overlay);
+      endConfirm = overlay;
+      cancelBtn.focus();
+    }
+
+    function italicFaceLoaded(doc, familyPart) {
+      if (!doc?.fonts) return false;
+      for (const face of doc.fonts) {
+        const family = String(face.family || '').replace(/["']/g, '');
+        if (face.style === 'italic' && family.includes(familyPart) && face.status === 'loaded') return true;
+      }
+      return false;
+    }
+
+    function applyLoadedVowItalic(element) {
+      if (!element) return;
+      const apply = () => {
+        if (!italicFaceLoaded(document, 'Source Serif')) return;
+        element.style.fontStyle = 'italic';
+        element.style.fontSynthesis = 'none';
+      };
+      apply();
+      try {
+        document.fonts?.ready?.then(apply).catch(() => {});
+      } catch { /* the stylesheet already requests italic */ }
+    }
+
     function show({ reason = DRIFT_COPY, intent = '', state = null } = {}) {
       ensureHost();
       cancelHideAnimation();
@@ -612,6 +774,7 @@
       setReasonDisplay(reason);
       const intentEl = shadow.querySelector('[data-role="intent"]');
       if (intentEl) intentEl.textContent = intent || 'No active session intent.';
+      applyLoadedVowItalic(intentEl);
       reflectionInput.value = '';
       reflectionInput.removeAttribute('aria-invalid');
       if (markRelatedInput) markRelatedInput.checked = false;
@@ -637,6 +800,8 @@
     }
 
     function hide() {
+      endConfirmToken += 1;
+      closeEndConfirm(false);
       lockedVisible = false;
       setTransitionBusy(false);
       setPageInteractionBlocked(false);

@@ -97,14 +97,15 @@
       card.setAttribute('aria-modal', 'false');
       card.setAttribute('aria-labelledby', 'intentlock-checkin-title');
       card.setAttribute('aria-describedby', 'intentlock-checkin-why');
+      card.tabIndex = -1;
       card.innerHTML = `
         <h2 id="intentlock-checkin-title">Still on task?</h2>
         <p class="intent" data-role="intent"></p>
         <p id="intentlock-checkin-why" data-role="why"></p>
         <div class="actions">
           <button type="button" id="intentlock-checkin-yes" class="primary" data-answer="yes">Yes, this is for my task</button>
-          <button type="button" id="intentlock-checkin-quick" data-answer="quick">Just a quick check</button>
-          <button type="button" id="intentlock-checkin-drifted" data-answer="drifted">I drifted</button>
+          <button type="button" id="intentlock-checkin-quick" data-answer="quick">Just a quick check (5 minutes)</button>
+          <button type="button" id="intentlock-checkin-drifted" data-answer="drifted">I drifted, go back</button>
           <button type="button" id="intentlock-checkin-close" class="link" data-answer="close">Close this tab</button>
         </div>
         <input type="text" maxlength="200" aria-label="Optional: why this is for your task" placeholder="Optional: why it is for your task">
@@ -113,6 +114,7 @@
       els.why = card.querySelector('[data-role="why"]');
       els.error = card.querySelector('[data-role="error"]');
       els.reason = card.querySelector('input');
+      els.drifted = card.querySelector('#intentlock-checkin-drifted');
       els.buttons = Array.from(card.querySelectorAll('button'));
       for (const button of els.buttons) {
         button.addEventListener('click', () => answer(button.dataset.answer));
@@ -140,11 +142,33 @@
         });
     }
 
+    // CHECKIN_GRACE_MS in checkin-controller.js grants 5 minutes. The label names that grant.
+    // history.length is 1 when this page is the only entry, so there is nowhere to go back.
+    function driftedLabel() {
+      const length = globalThis.history?.length;
+      return length > 1 ? 'I drifted, go back' : 'I drifted, close this tab';
+    }
+
+    function pageOwnsFocus() {
+      const active = document.activeElement;
+      if (!active || active === document.body || active === document.documentElement) return false;
+      if (host && (active === host || host.contains(active))) return false;
+      return true;
+    }
+
+    function focusCardIfPageHasNone() {
+      if (pageOwnsFocus()) return;
+      card.focus();
+    }
+
     function show({ id, intent = '', why = '' } = {}) {
       ensureHost();
       state = { id };
       els.intent.textContent = intent ? `Your intent: ${intent}` : 'No active session intent.';
       els.why.textContent = why;
+      els.drifted.textContent = driftedLabel();
+      const closeBtn = card.querySelector('#intentlock-checkin-close');
+      if (closeBtn) closeBtn.textContent = 'Close this tab';
       els.reason.value = '';
       els.error.textContent = '';
       setBusy(false);
@@ -154,9 +178,14 @@
       const enter = () => card.classList.add('is-in');
       if (typeof requestAnimationFrame === 'function') requestAnimationFrame(enter);
       else enter();
-      // Never steal focus from something the user is typing into; Tab reaches the card otherwise.
-      const active = document.activeElement;
-      if (!active || active === document.body || active === document.documentElement) els.buttons[0].focus();
+      // Do not focus "Yes". Enter or Space on that button would record alignment.
+      // The card itself affirms nothing; Tab still reaches the answers.
+      focusCardIfPageHasNone();
+      if (typeof requestAnimationFrame === 'function') {
+        requestAnimationFrame(() => {
+          if (state) focusCardIfPageHasNone();
+        });
+      }
     }
 
     function hide() {

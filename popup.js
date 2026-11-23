@@ -35,10 +35,27 @@ function formatSessionMinutes(session) {
   return `${Math.max(0, fromActive)} min`;
 }
 
+function applyLoadedVowItalic(element) {
+  if (!element || !document.fonts) return;
+  const apply = () => {
+    let loaded = false;
+    for (const face of document.fonts) {
+      const family = String(face.family || '').replace(/["']/g, '');
+      if (face.style === 'italic' && family.includes('Source Serif') && face.status === 'loaded') loaded = true;
+    }
+    if (!loaded) return;
+    element.style.fontStyle = 'italic';
+    element.style.fontSynthesis = 'none';
+  };
+  apply();
+  document.fonts.ready.then(apply).catch(() => {});
+}
+
 function quotedIntent(text) {
   const el = document.createElement('p');
   el.className = 'session-intent intent-quote intent-statement';
   el.textContent = text || '';
+  applyLoadedVowItalic(el);
   return el;
 }
 

@@ -146,6 +146,8 @@ h1,
 
 .intent-statement {
   font-size: 16px;
+  font-style: italic;
+  font-synthesis: none;
 }
 
 .vv-hatch,
@@ -375,8 +377,7 @@ select:focus-visible {
   outline-offset: 2px;
 }
 
-button:disabled,
-button[aria-disabled="true"] {
+button:disabled {
   opacity: 0.4;
   cursor: not-allowed;
   transform: none;
@@ -848,6 +849,8 @@ body.popup .header::after {
   border-radius: var(--corner-radius);
   margin-bottom: 12px;
   font-family: var(--font-serif);
+  font-style: italic;
+  font-synthesis: none;
   font-size: 14px;
   line-height: 1.5;
   color: var(--fg);
