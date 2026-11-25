@@ -164,5 +164,13 @@ Not verified: Live external network requests (offline keyless).
 Needs the owner: None.
 Plan score: 9.0/10.
 
+## 2026-11-25, Antigravity (Gemini)
+Workstream: UI/UX Pro Max Audit Remediation
+Done:
+- `newtab.css`: added `:hover` styles for `:root.theme-dark .primary-btn`, `.btn--primary`, `#start-btn`, and `body.intervention .primary-btn`, `.btn--primary`.
+- `intervention.css`: added `cursor: pointer;` to `.related-toggle` and `.related-toggle input`.
+Verified:
+- `npm run lint`: clean (0 errors, 0 warnings).
+
 
 

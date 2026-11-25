@@ -57,11 +57,13 @@
   gap: 8px;
   min-height: 44px;
   color: var(--muted, #a3a3a3);
+  cursor: pointer;
 }
 
 .related-toggle input {
   width: 18px;
   height: 18px;
+  cursor: pointer;
 }
 
 .transition-error {

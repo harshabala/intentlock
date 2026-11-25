@@ -528,6 +528,15 @@ body.intervention .btn--primary {
   border-color: #ffffff;
 }
 
+:root.theme-dark .primary-btn:hover,
+:root.theme-dark .btn--primary:hover,
+:root.theme-dark #start-btn:hover,
+body.intervention .primary-btn:hover,
+body.intervention .btn--primary:hover {
+  background-color: #e5e5e5;
+  border-color: #e5e5e5;
+}
+
 .session-actions {
   display: flex;
   flex-direction: column;
